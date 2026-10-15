@@ -69,6 +69,23 @@ CREATE TABLE IF NOT EXISTS course_embeddings (
 CREATE INDEX IF NOT EXISTS idx_courses_semester ON courses(semester_id);
 CREATE INDEX IF NOT EXISTS idx_courses_name ON courses(course_name);
 CREATE INDEX IF NOT EXISTS idx_embeddings_semester ON course_embeddings(semester_id);
+
+CREATE TABLE IF NOT EXISTS programs (
+    slug TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    program_type TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS program_required (
+    program_slug TEXT NOT NULL,
+    code TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS program_pools (
+    program_slug TEXT NOT NULL,
+    label TEXT NOT NULL,
+    credits TEXT NOT NULL,
+    rule TEXT NOT NULL,
+    detail TEXT NOT NULL
+);
 """
 
 VEC_TABLE_SQL = f"""
@@ -231,6 +248,35 @@ def upsert_catalog_courses(
     if owned:
         conn.close()
     return len(rows)
+
+
+def replace_programs(
+    programs: list[tuple],
+    required: list[tuple],
+    pools: list[tuple],
+    conn: sqlite3.Connection | None = None,
+) -> int:
+    """Replace program, required-course, and elective-pool rows."""
+    conn, owned = _ensure(conn)
+    conn.execute("DELETE FROM program_pools")
+    conn.execute("DELETE FROM program_required")
+    conn.execute("DELETE FROM programs")
+    conn.executemany(
+        "INSERT INTO programs (slug, name, program_type) VALUES (?, ?, ?)",
+        programs,
+    )
+    conn.executemany(
+        "INSERT INTO program_required (program_slug, code) VALUES (?, ?)",
+        required,
+    )
+    conn.executemany(
+        "INSERT INTO program_pools (program_slug, label, credits, rule, detail) VALUES (?, ?, ?, ?, ?)",
+        pools,
+    )
+    conn.commit()
+    if owned:
+        conn.close()
+    return len(programs)
 
 
 def upsert_semester(

@@ -20,9 +20,11 @@ from pathlib import Path
 from urllib.parse import urljoin, urlsplit, urlunsplit
 
 import requests
+import sys
 from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 DATA_DIR = ROOT / "www" / "data"
 OUTPUT_PATH = DATA_DIR / "programs.json"
 
@@ -761,9 +763,27 @@ def main() -> None:
 
     scraped = [scrape_program(program) for program in programs]
     payload = group_programs(scraped)
+    store_programs(payload)
+
+
+def store_programs(payload: dict) -> None:
+    from app.db import connect, replace_programs
+    from fill_electives import annotate, rows_from
+
+    conn = connect()
+    prefixes = set()
+    for row in conn.execute("SELECT code FROM catalog_courses"):
+        parts = str(row["code"] or "").split()
+        if parts:
+            prefixes.add(parts[0])
+    count = annotate(payload, prefixes)
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"Wrote {payload['program_count']} programs to {OUTPUT_PATH}")
+    print(f"Wrote {payload['program_count']} programs to {OUTPUT_PATH} ({count} electives)")
+    programs, required, pools = rows_from(payload)
+    stored = replace_programs(programs, required, pools, conn)
+    conn.close()
+    print(f"Loaded {stored} programs, {len(required)} required, {len(pools)} pools into SQLite")
 
 
 if __name__ == "__main__":
