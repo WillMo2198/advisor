@@ -39,7 +39,7 @@ test('leaves mark alternatives', () => {
 });
 
 test('index: sections, CRNs, dependents, ancestors', () => {
-  assert.equal(index.semester, 'Fall 2026');
+  assert.equal(index.semester, 'Spring 2027');
   assert.equal(index.crnMap.get('10161').course, 'CS 331');
   const deps = index.get('CS 331').dependents.map((d) => d.code);
   for (const c of ['CS 351', 'CS 425', 'CS 430', 'CS 480', 'CS 481']) assert.ok(deps.includes(c), c);
@@ -59,10 +59,11 @@ test('search: comma list, code, CRN, words', () => {
   const graphics = search(index, 'comp graphics').results.map((x) => x.course.code);
   assert.equal(graphics[0], 'CS 411');
   assert.ok(search(index, 'sokolova').results.some((x) => x.course.code === 'CS 330'));
-  assert.ok(search(index, 'stuart 104').results.some((x) => x.course.code === 'CS 100'));
+  assert.ok(search(index, 'stuart 104').results.some((x) => x.course.code === 'CS 487'));
+  assert.ok(search(index, 'deep learning').results.some((x) => x.course.code === 'CS 495'));
   const math = search(index, 'math').results.map((x) => x.course.code);
   assert.ok(math.every((c) => c.startsWith('MATH') || index.get(c).description.toLowerCase().includes('math')));
-  assert.ok(search(index, 'fall 2026').results.length > 10);
+  assert.ok(search(index, 'spring 2027').results.length > 10);
   assert.ok(search(index, 'mwf').results.some((x) => x.course.code === 'MATH 251'));
   assert.deepEqual(search(index, '').results, []);
   assert.deepEqual(search(index, '   ,  ,').results, []);

@@ -18,10 +18,18 @@ export function neededItems(audit, program, index, { exclude = new Set(), electi
   // Courses named in the prerequisites of required courses we still need
   // (so a choice like the communication elective can also open CS 485).
   const wantedLeaves = new Set();
-  for (const g of audit.groups) {
-    for (const slot of g.slots || []) {
-      for (const code of slot.missing || []) for (const leaf of courseLeaves(index.get(code)?.prereq)) wantedLeaves.add(leaf.code);
+  const wantedFor = new Map(); // leaf code -> required courses that need it
+  const want = (code) => {
+    for (const leaf of courseLeaves(index.get(code)?.prereq)) {
+      wantedLeaves.add(leaf.code);
+      if (!wantedFor.has(leaf.code)) wantedFor.set(leaf.code, []);
+      if (!wantedFor.get(leaf.code).includes(code)) wantedFor.get(leaf.code).push(code);
     }
+  };
+  for (const g of audit.groups) {
+    for (const slot of g.slots || []) for (const code of slot.missing || []) want(code);
+    // saved (planned) courses still need their prerequisites too
+    for (const c of g.courses) if (c.status === 'planned') want(c.code);
   }
   const groupDef = (id) => program.groups.find((g) => g.id === id);
 
@@ -48,7 +56,7 @@ export function neededItems(audit, program, index, { exclude = new Set(), electi
           const code = known.length ? known.shift() : (wanted.length ? wanted.shift() : options[0]);
           options.splice(options.indexOf(code), 1);
           if (index.has(code) || wantedLeaves.has(code)) {
-            const why = !index.has(code) ? `Also opens ${[...audit.groups.flatMap((x) => (x.slots || []).flatMap((sl) => sl.missing || []))].filter((m) => courseLeaves(index.get(m)?.prereq).some((l) => l.code === code)).join(', ')}` : '';
+            const why = !index.has(code) && wantedFor.get(code)?.length ? `Also opens ${wantedFor.get(code).join(', ')}` : '';
             add({ code, title: titleFor(code, index, program), credits: creditsFor(code, index, program), kind: 'choice', group: g.id, groupName: g.name, alternatives: from.codes.filter((c) => c !== code), why });
             left -= def.count ? 1 : creditsFor(code, index, program);
           } else {
@@ -136,9 +144,11 @@ function chainHeights(items, index) {
  *   done:   Set of codes finished before the first planned term (completed + in progress + saved)
  *   grades: Map code -> grade (for minimum-grade rules)
  *   maxCredits: per term (default 15)
+ *   locked: { termKey: [codes] } courses already chosen for a term (the saved sections for the
+ *           schedule term). They go in that term first and count toward its credits.
  * Returns { terms: [{ key, label, items, credits }], later: [items with reasons], items }.
  */
-export function planSemesters(audit, program, index, { done = new Set(), grades = new Map(), maxCredits = 15, terms } = {}) {
+export function planSemesters(audit, program, index, { done = new Set(), grades = new Map(), maxCredits = 15, terms, locked = {} } = {}) {
   const forecast = index.forecast;
   const termList = terms || forecast?.terms || [];
   const items = neededItems(audit, program, index, { exclude: done });
@@ -159,6 +169,19 @@ export function planSemesters(audit, program, index, { done = new Set(), grades 
     const chosen = [];
     let credits = 0;
     const thisTerm = new Set();
+    const lockedHere = new Set(locked[term.key] || []);
+    for (const code of lockedHere) {
+      if (thisTerm.has(code) || finished.has(code)) continue;
+      const it = { code, title: titleFor(code, index, program), credits: creditsFor(code, index, program), kind: 'saved', placed: term.key };
+      const course = index.get(code);
+      if (course && evaluate(course.prereq, { completed: finished, current: lockedHere, grades, textRules: 'plan' }) !== 'met') {
+        it.warning = 'Prerequisites are not finished before this term.';
+      }
+      chosen.push(it);
+      credits += it.credits;
+      thisTerm.add(code);
+      for (const p of pending) if (p.code === code) p.placed = term.key;
+    }
     let placedSomething = true;
     // loop so that a course can join a term after its same-term corequisite is placed
     while (placedSomething) {
@@ -217,4 +240,20 @@ export function planSemesters(audit, program, index, { done = new Set(), grades 
   });
 
   return { terms: plan, later, items: pending };
+}
+
+/** The forecast term that matches the app's schedule semester (for example "S27" for "Spring 2027"), or ''. */
+export function scheduleTermKey(index) {
+  return index.forecast?.terms?.find((t) => t.label === index.semester)?.key || '';
+}
+
+/**
+ * done / locked options for planSemesters from what the student has.
+ * Saved sections belong to the schedule term when that term is in the plan; otherwise they count as done.
+ */
+export function planInputs(index, { completed, inProgress, saved }) {
+  const key = scheduleTermKey(index);
+  const savedList = [...saved].filter((c) => !completed.has(c) && !inProgress.has(c));
+  if (key) return { done: new Set([...completed, ...inProgress]), locked: { [key]: savedList } };
+  return { done: new Set([...completed, ...inProgress, ...savedList]), locked: {} };
 }

@@ -6,7 +6,7 @@ import { courseLeaves, normalizeCode } from './prereq.js';
 const DAY_NAMES = { U: 'Sunday', M: 'Monday', T: 'Tuesday', W: 'Wednesday', R: 'Thursday', F: 'Friday', S: 'Saturday' };
 
 /**
- * pop.ai stores sections as { "Fall 2026": { Class: [...], Internet: [...] } }.
+ * pop.ai stores sections as { "Spring 2027": { Class: [...], Internet: [...] } }.
  * Its scraper output can also be { Class: [...] }. Accept both.
  */
 function flattenSections(sections, fallbackSemester) {
@@ -50,7 +50,7 @@ export function dayWords(days) {
  * `forecast` (optional) is data/forecast.json: the CS department's tentative future offerings.
  */
 export function buildIndex(catalog, offerings, forecast = null) {
-  const semester = offerings?.semester_name || 'Fall 2026';
+  const semester = offerings?.semester_name || 'Spring 2027';
   const courses = new Map();
   const departments = catalog.departments || {};
 

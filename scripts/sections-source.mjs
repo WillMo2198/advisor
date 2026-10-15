@@ -1,16 +1,15 @@
-// SAMPLE section data for Fall 2026. It is NOT the real IIT schedule.
+// SAMPLE section data for Spring 2027. It is NOT the real IIT schedule.
+// Only CS courses that the department's tentative schedule lists for Spring 2027 have sections.
 // CRNs, times, rooms, seats, and instructor names are made up so the app has something to show.
 // To use real data, run the pop.ai scraper and import its export (see README.md).
 //
-// Row format: [course, crn, bucket, scheduleType, days, time, where, instructor, seatsAvailable]
+// Row format: [course, crn, bucket, scheduleType, days, time, where, instructor, seatsAvailable, specialTitle?]
 // `time` uses the same format as pop.ai's scraper ("11:25 AM - 12:40 PM").
 
-export const semester = 'Fall 2026';
-export const termCode = '202710'; // pop.ai term_code('fall', 2026)
+export const semester = 'Spring 2027';
+export const termCode = '202720'; // pop.ai term_code('spring', 2027)
 
 export const rows = [
-  ['CS 100', 10101, 'Class', 'Lecture', 'W', '3:15 PM - 4:30 PM', 'Stuart Building 104', 'Dana Whitaker', 18],
-  ['CS 100', 10102, 'Class', 'Lecture', 'R', '3:15 PM - 4:30 PM', 'Stuart Building 104', 'Dana Whitaker', 4],
 
   ['CS 104', 10111, 'Class', 'Lecture', 'MW', '8:35 AM - 9:50 AM', 'Rettaliata Engr Center 104', 'Omar Haddad', 22],
 
@@ -36,8 +35,6 @@ export const rows = [
 
   ['CS 351', 10191, 'Class', 'Lecture', 'MW', '3:15 PM - 4:30 PM', 'Rettaliata Engr Center 106', 'Samuel Adeyemi', 3],
 
-  ['CS 411', 10201, 'Class', 'Lecture', 'TR', '3:15 PM - 4:30 PM', 'Stuart Building 104', 'Tomas Ortega', 16],
-
   ['CS 422', 10211, 'Class', 'Lecture', 'M', '6:25 PM - 9:05 PM', 'Stuart Building 111', 'Laura Jensen', 27],
 
   ['CS 425', 10221, 'Class', 'Lecture', 'MW', '10 AM - 11:15 AM', 'Siegel Hall 118', 'Irene Park', 13],
@@ -46,8 +43,6 @@ export const rows = [
   ['CS 430', 10231, 'Class', 'Lecture', 'TR', '11:25 AM - 12:40 PM', 'Stuart Building 104', 'Elena Sokolova', 8],
 
   ['CS 440', 10241, 'Class', 'Lecture', 'MW', '3:15 PM - 4:30 PM', 'Siegel Hall 118', 'Hannah Novak', 19],
-
-  ['CS 445', 10251, 'Class', 'Lecture', 'TR', '1:50 PM - 3:05 PM', 'Siegel Hall 118', 'Marcus Bell', 21],
 
   ['CS 450', 10261, 'Class', 'Lecture', 'MW', '11:25 AM - 12:40 PM', 'Rettaliata Engr Center 104', 'Samuel Adeyemi', 5],
 
@@ -60,6 +55,17 @@ export const rows = [
   ['CS 484', 10301, 'Class', 'Lecture', 'TR', '3:15 PM - 4:30 PM', 'Wishnick Hall 113', 'Laura Jensen', 0],
 
   ['CS 487', 10311, 'Class', 'Lecture', 'MW', '8:35 AM - 9:50 AM', 'Stuart Building 104', 'Irene Park', 23],
+
+  ['CS 110', 10112, 'Class', 'Lecture', 'TR', '3:15 PM - 4:30 PM', 'Rettaliata Engr Center 104', 'Omar Haddad', 26],
+
+  ['CS 415', 10205, 'Class', 'Lecture', 'MW', '11:25 AM - 12:40 PM', 'Stuart Building 104', 'Tomas Ortega', 18],
+
+  ['CS 455', 10265, 'Class', 'Lecture', 'TR', '1:50 PM - 3:05 PM', 'Stuart Building 111', 'Samuel Adeyemi', 22],
+
+  ['CS 485', 10305, 'Class', 'Lecture', 'W', '6:25 PM - 9:05 PM', 'Stuart Building 104', 'Dana Whitaker', 15],
+  ['CS 485', 10306, 'Class', 'Lecture', 'TR', '10 AM - 11:15 AM', 'Wishnick Hall 113', 'Dana Whitaker', 4],
+
+  ['CS 495', 10315, 'Class', 'Lecture', 'MW', '3:15 PM - 4:30 PM', 'Perlstein Hall 131', 'Laura Jensen', 12, 'Introduction to Deep Learning'],
 
   ['MATH 151', 20101, 'Class', 'Lecture', 'MWF', '10 AM - 10:50 AM', 'Life Sciences 152', 'Rosa Delgado', 30],
   ['MATH 151', 20102, 'Class', 'Recitation/Discussion', 'T', '10 AM - 11:15 AM', 'Life Sciences 152', 'Rosa Delgado', 30],

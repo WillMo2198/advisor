@@ -2,10 +2,10 @@
 //
 // In your pop.ai checkout:
 //   python scraping/scrape_descriptions.py
-//   python scraping/scrape_courses.py fall 2026 -s CS MATH
-//   python -c "from app.db import write_semester_files; write_semester_files('fall', 2026)"
-// That writes www/data/fall_2026.json. Then here:
-//   node scripts/import-pop.mjs ../pop.ai/www/data/fall_2026.json [--subjects CS,MATH]
+//   python scraping/scrape_courses.py spring 2027 -s CS MATH
+//   python -c "from app.db import write_semester_files; write_semester_files('spring', 2027)"
+// That writes www/data/spring_2027.json. Then here:
+//   node scripts/import-pop.mjs ../pop.ai/www/data/spring_2027.json [--subjects CS,MATH]
 //
 // This replaces data/sections.json. Prerequisite trees still come from data/catalog.json.
 
@@ -23,7 +23,7 @@ const subjects = subjIdx >= 0 && args[subjIdx + 1]
   : null;
 
 if (!file) {
-  console.error('usage: node scripts/import-pop.mjs <pop.ai fall_2026.json> [--subjects CS,MATH]');
+  console.error('usage: node scripts/import-pop.mjs <pop.ai spring_2027.json> [--subjects CS,MATH]');
   process.exit(1);
 }
 

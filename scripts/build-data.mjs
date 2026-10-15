@@ -29,7 +29,7 @@ for (const c of courses) {
 
 const byCourse = new Map();
 const crns = new Set();
-for (const [code, crn, bucket, scheduleType, days, time, where, instructor, available] of rows) {
+for (const [code, crn, bucket, scheduleType, days, time, where, instructor, available, specialTitle = ''] of rows) {
   if (!codes.has(code)) errors.push(`section ${crn}: unknown course ${code}`);
   if (crns.has(crn)) errors.push(`duplicate CRN ${crn}`);
   crns.add(crn);
@@ -42,7 +42,7 @@ for (const [code, crn, bucket, scheduleType, days, time, where, instructor, avai
     schedule_type: scheduleType,
     type: bucket,
     available,
-    special_title: '',
+    special_title: specialTitle,
     meetings: [{ days, time, where, instructors: [instructor], dates: '' }],
   });
 }
@@ -52,6 +52,15 @@ const forecastCsv = readFileSync(join(root, 'data', 'source', 'future-cs-offerin
 const forecast = parseForecastCsv(forecastCsv);
 if (!forecast.terms.length) errors.push('forecast: no term columns');
 for (const w of forecast.warnings) console.warn(`forecast: ${w}`);
+
+// Sample sections must match the forecast: a CS course gets sections only in a term it is offered.
+const termKey = forecast.terms.find((t) => t.label === semester)?.key;
+if (termKey) {
+  for (const code of byCourse.keys()) {
+    const offered = forecast.courses[code];
+    if (offered && !offered.includes(termKey)) errors.push(`sections: ${code} is not on the forecast for ${semester}`);
+  }
+}
 
 // ----- degree programs -----
 for (const prog of programs) {

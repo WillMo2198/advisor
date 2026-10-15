@@ -49,7 +49,7 @@ Each request sends three system blocks:
 | `data/catalog.json` | 52 real courses (all CS undergrad + bridge courses, and the MATH courses CS needs) from catalog.iit.edu, read October 2026. Each has `prereqText` (catalog wording) and `prereq` (the same rule as a tree). |
 | `data/programs.json` | Degree requirements. Built from `scripts/programs-source.mjs`. Today: B.S. in Computer Science, 2025–2026 catalog (121 credits). |
 | `data/forecast.json` | The CS department's *Tentative Schedule of Future Computer Science Courses*, built from `data/source/future-cs-offerings.csv`. |
-| `data/sections.json` | **Sample** Fall 2026 sections. CRNs, times, rooms, seats, and instructor names are made up. Same shape as pop.ai's export. |
+| `data/sections.json` | **Sample** Spring 2027 sections, only for CS courses the forecast lists for Spring 2027. CRNs, times, rooms, seats, and instructor names are made up. Same shape as pop.ai's export. |
 
 ### The prerequisite tree
 
@@ -78,14 +78,14 @@ In your pop.ai checkout:
 
 ```bash
 python scraping/scrape_descriptions.py
-python scraping/scrape_courses.py fall 2026 -s CS MATH
-python -c "from app.db import write_semester_files; write_semester_files('fall', 2026)"
+python scraping/scrape_courses.py spring 2027 -s CS MATH
+python -c "from app.db import write_semester_files; write_semester_files('spring', 2027)"
 ```
 
 Then here:
 
 ```bash
-npm run import:pop -- ../pop.ai/www/data/fall_2026.json --subjects CS,MATH
+npm run import:pop -- ../pop.ai/www/data/spring_2027.json --subjects CS,MATH
 npm start
 ```
 

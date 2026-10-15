@@ -231,3 +231,26 @@ test('chat context and offline answers include degree progress', () => {
   const elig = studentContextBlock(index, 'can I take CS 480?', ctx, programs);
   assert.match(elig, /CS 480 Introduction to Artificial Intelligence[\s\S]*Eligibility: prerequisites met/);
 });
+
+test('Spring 2027 is the schedule term: saved sections fill that term of the plan', async () => {
+  const { planInputs, scheduleTermKey } = await import('../public/js/core/planner.js');
+  assert.equal(index.semester, 'Spring 2027');
+  assert.equal(scheduleTermKey(index), 'S27');
+  // every CS course with sample sections is on the forecast for Spring 2027
+  for (const c of index.list) if (c.subject === 'CS' && c.sections.length) assert.equal(offeredIn(forecast, c.code, 'S27'), true, c.code);
+  const audit = auditDegree(program, sample.courses, { index, planned: ['CS 440', 'CS 485'] });
+  const best = bestAttempts(sample.courses);
+  const completed = new Set(best.filter((r) => r.status === 'completed').map((r) => r.code));
+  const inProgress = new Set(best.filter((r) => r.status === 'in-progress').map((r) => r.code));
+  const inputs = planInputs(index, { completed, inProgress, saved: ['CS 440', 'CS 485'] });
+  assert.deepEqual(inputs.locked, { S27: ['CS 440', 'CS 485'] });
+  const plan = planSemesters(audit, program, index, { ...inputs, grades: new Map(), maxCredits: 15 });
+  const s27 = plan.terms[0];
+  assert.equal(s27.key, 'S27');
+  const saved = s27.items.filter((i) => i.kind === 'saved').map((i) => i.code);
+  assert.deepEqual(saved, ['CS 440', 'CS 485']);
+  // CS 485 needs a COM course first; the plan flags it
+  assert.match(s27.items.find((i) => i.code === 'CS 485').warning, /Prerequisites/);
+  assert.ok(s27.credits <= 15);
+  assert.ok(!plan.terms.slice(1).some((t) => t.items.some((i) => i.code === 'CS 440')));
+});

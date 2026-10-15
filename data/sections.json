@@ -1,60 +1,14 @@
 {
-  "semester_name": "Fall 2026",
-  "term_code": "202710",
+  "semester_name": "Spring 2027",
+  "term_code": "202720",
   "sample": true,
   "note": "SAMPLE sections. CRNs, times, rooms, seats, and instructors are made up. Import real data from pop.ai (see README).",
   "courses": [
     {
-      "name": "CS 100",
-      "title": "Introduction to the Profession",
-      "sections": {
-        "Fall 2026": {
-          "Class": [
-            {
-              "crn": "10101",
-              "schedule_type": "Lecture",
-              "type": "Class",
-              "available": 18,
-              "special_title": "",
-              "meetings": [
-                {
-                  "days": "W",
-                  "time": "3:15 PM - 4:30 PM",
-                  "where": "Stuart Building 104",
-                  "instructors": [
-                    "Dana Whitaker"
-                  ],
-                  "dates": ""
-                }
-              ]
-            },
-            {
-              "crn": "10102",
-              "schedule_type": "Lecture",
-              "type": "Class",
-              "available": 4,
-              "special_title": "",
-              "meetings": [
-                {
-                  "days": "R",
-                  "time": "3:15 PM - 4:30 PM",
-                  "where": "Stuart Building 104",
-                  "instructors": [
-                    "Dana Whitaker"
-                  ],
-                  "dates": ""
-                }
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
       "name": "CS 104",
       "title": "Introduction to Computer Programming for Engineers",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "10111",
@@ -82,7 +36,7 @@
       "name": "CS 115",
       "title": "Object-Oriented Programming I",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "10121",
@@ -146,7 +100,7 @@
       "name": "CS 116",
       "title": "Object-Oriented Programming II",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "10131",
@@ -192,7 +146,7 @@
       "name": "CS 201",
       "title": "Accelerated Introduction to Computer Science",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "10141",
@@ -238,7 +192,7 @@
       "name": "CS 330",
       "title": "Discrete Structures",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "10151",
@@ -266,7 +220,7 @@
       "name": "CS 331",
       "title": "Data Structures and Algorithms",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "10161",
@@ -332,7 +286,7 @@
       "name": "CS 340",
       "title": "Programming Paradigms and Patterns",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "10171",
@@ -360,7 +314,7 @@
       "name": "CS 350",
       "title": "Computer Organization and Assembly Language Programming",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "10181",
@@ -388,7 +342,7 @@
       "name": "CS 351",
       "title": "Systems Programming",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "10191",
@@ -413,38 +367,10 @@
       }
     },
     {
-      "name": "CS 411",
-      "title": "Computer Graphics",
-      "sections": {
-        "Fall 2026": {
-          "Class": [
-            {
-              "crn": "10201",
-              "schedule_type": "Lecture",
-              "type": "Class",
-              "available": 16,
-              "special_title": "",
-              "meetings": [
-                {
-                  "days": "TR",
-                  "time": "3:15 PM - 4:30 PM",
-                  "where": "Stuart Building 104",
-                  "instructors": [
-                    "Tomas Ortega"
-                  ],
-                  "dates": ""
-                }
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
       "name": "CS 422",
       "title": "Data Mining",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "10211",
@@ -472,7 +398,7 @@
       "name": "CS 425",
       "title": "Database Organization",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "10221",
@@ -520,7 +446,7 @@
       "name": "CS 430",
       "title": "Introduction to Algorithms",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "10231",
@@ -548,7 +474,7 @@
       "name": "CS 440",
       "title": "Programming Languages and Translators",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "10241",
@@ -573,38 +499,10 @@
       }
     },
     {
-      "name": "CS 445",
-      "title": "Object Oriented Design and Programming",
-      "sections": {
-        "Fall 2026": {
-          "Class": [
-            {
-              "crn": "10251",
-              "schedule_type": "Lecture",
-              "type": "Class",
-              "available": 21,
-              "special_title": "",
-              "meetings": [
-                {
-                  "days": "TR",
-                  "time": "1:50 PM - 3:05 PM",
-                  "where": "Siegel Hall 118",
-                  "instructors": [
-                    "Marcus Bell"
-                  ],
-                  "dates": ""
-                }
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
       "name": "CS 450",
       "title": "Operating Systems",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "10261",
@@ -632,7 +530,7 @@
       "name": "CS 458",
       "title": "Introduction to Information Security",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "10271",
@@ -660,7 +558,7 @@
       "name": "CS 480",
       "title": "Introduction to Artificial Intelligence",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "10281",
@@ -688,7 +586,7 @@
       "name": "CS 481",
       "title": "Artificial Intelligence Language Understanding",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "10291",
@@ -716,7 +614,7 @@
       "name": "CS 484",
       "title": "Introduction to Machine Learning",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "10301",
@@ -744,7 +642,7 @@
       "name": "CS 487",
       "title": "Software Engineering I",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "10311",
@@ -769,10 +667,168 @@
       }
     },
     {
+      "name": "CS 110",
+      "title": "Computing Principles",
+      "sections": {
+        "Spring 2027": {
+          "Class": [
+            {
+              "crn": "10112",
+              "schedule_type": "Lecture",
+              "type": "Class",
+              "available": 26,
+              "special_title": "",
+              "meetings": [
+                {
+                  "days": "TR",
+                  "time": "3:15 PM - 4:30 PM",
+                  "where": "Rettaliata Engr Center 104",
+                  "instructors": [
+                    "Omar Haddad"
+                  ],
+                  "dates": ""
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "CS 415",
+      "title": "Introduction to Human-Computer Interaction",
+      "sections": {
+        "Spring 2027": {
+          "Class": [
+            {
+              "crn": "10205",
+              "schedule_type": "Lecture",
+              "type": "Class",
+              "available": 18,
+              "special_title": "",
+              "meetings": [
+                {
+                  "days": "MW",
+                  "time": "11:25 AM - 12:40 PM",
+                  "where": "Stuart Building 104",
+                  "instructors": [
+                    "Tomas Ortega"
+                  ],
+                  "dates": ""
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "CS 455",
+      "title": "Data Communications",
+      "sections": {
+        "Spring 2027": {
+          "Class": [
+            {
+              "crn": "10265",
+              "schedule_type": "Lecture",
+              "type": "Class",
+              "available": 22,
+              "special_title": "",
+              "meetings": [
+                {
+                  "days": "TR",
+                  "time": "1:50 PM - 3:05 PM",
+                  "where": "Stuart Building 111",
+                  "instructors": [
+                    "Samuel Adeyemi"
+                  ],
+                  "dates": ""
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "CS 485",
+      "title": "Computers and Society",
+      "sections": {
+        "Spring 2027": {
+          "Class": [
+            {
+              "crn": "10305",
+              "schedule_type": "Lecture",
+              "type": "Class",
+              "available": 15,
+              "special_title": "",
+              "meetings": [
+                {
+                  "days": "W",
+                  "time": "6:25 PM - 9:05 PM",
+                  "where": "Stuart Building 104",
+                  "instructors": [
+                    "Dana Whitaker"
+                  ],
+                  "dates": ""
+                }
+              ]
+            },
+            {
+              "crn": "10306",
+              "schedule_type": "Lecture",
+              "type": "Class",
+              "available": 4,
+              "special_title": "",
+              "meetings": [
+                {
+                  "days": "TR",
+                  "time": "10 AM - 11:15 AM",
+                  "where": "Wishnick Hall 113",
+                  "instructors": [
+                    "Dana Whitaker"
+                  ],
+                  "dates": ""
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "CS 495",
+      "title": "Topics in Computer Science",
+      "sections": {
+        "Spring 2027": {
+          "Class": [
+            {
+              "crn": "10315",
+              "schedule_type": "Lecture",
+              "type": "Class",
+              "available": 12,
+              "special_title": "Introduction to Deep Learning",
+              "meetings": [
+                {
+                  "days": "MW",
+                  "time": "3:15 PM - 4:30 PM",
+                  "where": "Perlstein Hall 131",
+                  "instructors": [
+                    "Laura Jensen"
+                  ],
+                  "dates": ""
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
       "name": "MATH 151",
       "title": "Calculus I",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "20101",
@@ -818,7 +874,7 @@
       "name": "MATH 152",
       "title": "Calculus II",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "20111",
@@ -864,7 +920,7 @@
       "name": "MATH 230",
       "title": "Introduction to Discrete Math",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "20121",
@@ -892,7 +948,7 @@
       "name": "MATH 251",
       "title": "Multivariate and Vector Calculus",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "20131",
@@ -938,7 +994,7 @@
       "name": "MATH 252",
       "title": "Introduction to Differential Equations",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "20141",
@@ -966,7 +1022,7 @@
       "name": "MATH 332",
       "title": "Linear Algebra: Theory and Applications",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "20151",
@@ -994,7 +1050,7 @@
       "name": "MATH 474",
       "title": "Probability and Statistics",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "20161",
@@ -1040,7 +1096,7 @@
       "name": "MATH 475",
       "title": "Probability",
       "sections": {
-        "Fall 2026": {
+        "Spring 2027": {
           "Class": [
             {
               "crn": "20171",

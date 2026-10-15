@@ -2,7 +2,7 @@
 
 import { parseTranscriptText, linesFromPdfItems, gradeStatus, cleanRecords, bestAttempts, REPEATABLE } from '../core/transcript.js';
 import { auditDegree } from '../core/audit.js';
-import { planSemesters } from '../core/planner.js';
+import { planSemesters, planInputs } from '../core/planner.js';
 import { normalizeCode } from '../core/prereq.js';
 import { esc } from './util.js';
 
@@ -84,6 +84,7 @@ function planItem(it, known, note = '') {
     choice: `<span class="tag">${esc(it.groupName)}</span>`,
     elective: '<span class="tag">Suggested CS elective</span>',
     placeholder: `<span class="tag ph">${esc(it.groupName)}</span>`,
+    saved: '<span class="tag saved">Saved section</span>',
   };
   const name = it.code
     ? `${known(it.code) ? `<button type="button" class="code-link" data-code="${esc(it.code)}">${esc(it.code)}</button>` : `<strong>${esc(it.code)}</strong>`} <span class="plan-title">${esc(it.title || '')}</span>`
@@ -116,7 +117,7 @@ export function renderDegree(el, ctx) {
   const audit = auditDegree(program, transcript.courses, { index, planned });
   const maxCredits = transcript.maxCredits || 15;
   const plan = planSemesters(audit, program, index, {
-    done: new Set([...completed, ...inProgress, ...planned]), grades, maxCredits,
+    ...planInputs(index, { completed, inProgress, saved: planned }), grades, maxCredits,
   });
   const t = audit.totals;
   const pct = (n) => `${Math.max(0, Math.min(100, (n / t.required) * 100)).toFixed(1)}%`;
@@ -176,7 +177,7 @@ export function renderDegree(el, ctx) {
       if (!term.items.length) return;
       html += `<section class="plan-term">
           <h3>${i === plan.terms.findIndex((x) => x.items.length) ? '<span class="next-badge">Next</span>' : ''}${esc(term.label)} <span class="muted small">· ${term.credits} credits</span></h3>
-          <ul>${term.items.map((it) => planItem(it, known)).join('')}</ul>
+          <ul>${term.items.map((it) => planItem(it, known, it.warning || '')).join('')}</ul>
         </section>`;
     });
     if (plan.later.length) {
