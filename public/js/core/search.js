@@ -48,6 +48,7 @@ export function courseSearchText(course, opts) {
   let text = `${course.code}: ${course.title}`;
   text += ` ${course.department} ${course.satisfies || ''}`;
   if (opts.searchDescriptions) text += ` ${course.description || ''}`;
+  if (opts.searchSections && course.futureTerms?.length) text += ` ${course.futureTerms.join(' ')}`;
   if (opts.searchSections && course.sections.length) {
     const semesters = new Set(course.sections.map((s) => s.semester));
     text += ` ${[...semesters].join(' ')}`;

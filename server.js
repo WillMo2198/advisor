@@ -13,6 +13,7 @@ import { buildIndex } from './public/js/core/catalog.js';
 import { courseDataBlock, readClientContext, studentContextBlock } from './lib/context.js';
 import { offlineAnswer } from './lib/offline.js';
 import { streamClaude } from './lib/claude.js';
+import { readTranscriptWithClaude } from './lib/transcript-ai.js';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 
@@ -44,8 +45,10 @@ const config = {
 const readJson = (file) => JSON.parse(readFileSync(file, 'utf8'));
 const catalog = readJson(join(ROOT, 'data', 'catalog.json'));
 const sections = readJson(join(ROOT, 'data', 'sections.json'));
-const index = buildIndex(catalog, sections);
-const COURSE_DATA = courseDataBlock(index);
+const forecast = existsSync(join(ROOT, 'data', 'forecast.json')) ? readJson(join(ROOT, 'data', 'forecast.json')) : null;
+const { programs } = existsSync(join(ROOT, 'data', 'programs.json')) ? readJson(join(ROOT, 'data', 'programs.json')) : { programs: [] };
+const index = buildIndex(catalog, sections, forecast);
+const COURSE_DATA = courseDataBlock(index, programs);
 
 let instructionsCache = { mtime: 0, text: '' };
 function instructions() {
@@ -186,7 +189,7 @@ async function handleChat(req, res) {
 
   if (!config.apiKey) {
     send({ type: 'meta', mode: 'offline' });
-    send({ type: 'text', text: offlineAnswer(index, question, ctx) });
+    send({ type: 'text', text: offlineAnswer(index, question, ctx, programs) });
     send({ type: 'done' });
     return res.end();
   }
@@ -205,7 +208,7 @@ async function handleChat(req, res) {
       system: [
         { type: 'text', text: instructions() },
         { type: 'text', text: COURSE_DATA, cache_control: { type: 'ephemeral' } },
-        { type: 'text', text: studentContextBlock(index, question, ctx) },
+        { type: 'text', text: studentContextBlock(index, question, ctx, programs) },
       ],
       messages,
       signal: controller.signal,
@@ -229,6 +232,39 @@ async function handleChat(req, res) {
   }
 }
 
+// ---------- transcript reading with Claude (only when the student asks) ----------
+async function handleTranscript(req, res) {
+  const ip = req.socket.remoteAddress || 'unknown';
+  if (rateLimited(ip)) return sendJson(res, 429, { error: 'Too many requests in a short time. Wait a few minutes and try again.' });
+  if (!config.apiKey) {
+    return sendJson(res, 503, { error: 'Reading transcripts with Claude needs ANTHROPIC_API_KEY on the server. You can still upload a text-based PDF, an .html or .txt file, or paste the text.' });
+  }
+  let body;
+  try {
+    body = JSON.parse(await readBody(req, 12 * 1024 * 1024));
+  } catch (err) {
+    return sendJson(res, err.status || 400, { error: err.status === 413 ? 'The file is too large (limit about 8 MB).' : 'Send JSON: { "file": {...} } or { "text": "..." }.' });
+  }
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 120_000);
+  res.on('close', () => controller.abort());
+  try {
+    const out = await readTranscriptWithClaude(
+      { text: body?.text, file: body?.file && { mediaType: String(body.file.mediaType || ''), data: body.file.data } },
+      { apiKey: config.apiKey, baseUrl: config.baseUrl, model: config.model, signal: controller.signal },
+    );
+    return sendJson(res, 200, out);
+  } catch (err) {
+    if (res.destroyed) return undefined;
+    if (err.name === 'AbortError') return sendJson(res, 504, { error: 'Reading the transcript took too long. Try again.' });
+    if (err.safe) return sendJson(res, err.status || 502, { error: err.message });
+    console.error('[transcript]', err);
+    return sendJson(res, 502, { error: 'Could not reach the Claude API. Try again.' });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 // ---------- routes ----------
 const PUBLIC = join(ROOT, 'public');
 const DATA = join(ROOT, 'data');
@@ -247,7 +283,13 @@ export const server = http.createServer(async (req, res) => {
         sampleSections: index.sample,
         courses: index.courses.size,
         sections: index.crnMap.size,
+        forecastTerms: forecast ? forecast.terms.map((t) => t.label) : [],
+        programs: programs.map((p) => p.id),
       });
+    }
+    if (path === '/api/transcript') {
+      if (req.method !== 'POST') return sendJson(res, 405, { error: 'Use POST.' });
+      return await handleTranscript(req, res);
     }
     if (path === '/api/chat') {
       if (req.method !== 'POST') return sendJson(res, 405, { error: 'Use POST.' });
@@ -257,7 +299,7 @@ export const server = http.createServer(async (req, res) => {
 
     if (req.method !== 'GET' && req.method !== 'HEAD') return sendJson(res, 405, { error: 'Method not allowed.' });
 
-    if (path === '/data/catalog.json' || path === '/data/sections.json') {
+    if (['/data/catalog.json', '/data/sections.json', '/data/forecast.json', '/data/programs.json'].includes(path)) {
       return serveFile(res, join(DATA, path.slice('/data/'.length)), req);
     }
     const file = safePath(PUBLIC, path === '/' ? '/index.html' : path);

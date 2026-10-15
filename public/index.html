@@ -72,7 +72,7 @@
             <div class="chips" id="completed-chips"></div>
             <input id="completed-input" type="text" autocomplete="off" placeholder="Type a code and press Enter, e.g. CS 115">
           </div>
-          <p class="hint">Used for “can I take it?” checks, the graph, and the chat advisor.</p>
+          <p class="hint" id="completed-hint">Used for “can I take it?” checks, the graph, and the chat advisor.</p>
         </div>
         <div class="filter-row">
           <div class="filter-block">
@@ -123,6 +123,7 @@
         <button type="button" role="tab" class="tab" id="tab-schedule" aria-controls="view-schedule" data-tab="schedule">Schedule</button>
         <button type="button" role="tab" class="tab" id="tab-chat" aria-controls="view-chat" data-tab="chat">Chat</button>
         <button type="button" role="tab" class="tab" id="tab-graph" aria-controls="view-graph" data-tab="graph">Course Graph</button>
+        <button type="button" role="tab" class="tab" id="tab-degree" aria-controls="view-degree" data-tab="degree">Degree</button>
       </div>
 
       <!-- Schedule -->
@@ -188,6 +189,35 @@
           </div>
         </div>
         <div class="card graph-detail" id="graph-detail" hidden></div>
+      </section>
+      <!-- Degree progress -->
+      <section class="view" id="view-degree" role="tabpanel" aria-labelledby="tab-degree" hidden>
+        <div class="card">
+          <h2 class="card-title">Degree Progress</h2>
+          <p class="muted">Upload your unofficial transcript to see what is left for your degree and get a semester-by-semester plan.</p>
+        </div>
+        <div class="card upload-card">
+          <div class="drop" id="drop" tabindex="0" role="button" aria-label="Upload your unofficial transcript">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+            <strong>Drop your unofficial transcript here</strong>
+            <span class="muted small">PDF from MyIIT / Banner, a saved web page (.html), text, or a screenshot</span>
+          </div>
+          <input type="file" id="transcript-file" accept=".pdf,.html,.htm,.txt,.png,.jpg,.jpeg,.webp,.gif,application/pdf,text/html,text/plain,image/*" hidden>
+          <div class="upload-actions">
+            <button type="button" class="btn" id="pick-file">Choose file</button>
+            <button type="button" class="btn" id="paste-toggle">Paste text</button>
+            <button type="button" class="btn" id="try-sample">Try a sample</button>
+            <button type="button" class="link-btn" id="clear-transcript">Clear transcript</button>
+          </div>
+          <div id="paste-box" hidden>
+            <label for="paste-text" class="sr-only">Transcript text</label>
+            <textarea id="paste-text" rows="6" placeholder="Open your unofficial transcript, select all (Ctrl/Cmd + A), copy, and paste it here."></textarea>
+            <button type="button" class="btn" id="paste-go">Read text</button>
+          </div>
+          <div class="upload-status" id="upload-status" aria-live="polite"></div>
+          <p class="hint">Your transcript is read and saved only in this browser. If you press “Read with Claude”, the file is sent to the Claude API to read it and is not stored.</p>
+        </div>
+        <div id="degree-body"></div>
       </section>
     </aside>
   </div>

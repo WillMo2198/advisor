@@ -45,8 +45,11 @@ export function dayWords(days) {
   return String(days || '').split('').map((d) => DAY_NAMES[d]).filter(Boolean);
 }
 
-/** Build the index. `catalog` is data/catalog.json, `offerings` is data/sections.json (pop.ai export shape). */
-export function buildIndex(catalog, offerings) {
+/**
+ * Build the index. `catalog` is data/catalog.json, `offerings` is data/sections.json (pop.ai export shape),
+ * `forecast` (optional) is data/forecast.json: the CS department's tentative future offerings.
+ */
+export function buildIndex(catalog, offerings, forecast = null) {
   const semester = offerings?.semester_name || 'Fall 2026';
   const courses = new Map();
   const departments = catalog.departments || {};
@@ -109,6 +112,16 @@ export function buildIndex(catalog, offerings) {
     course.dependents.sort((a, b) => a.code.localeCompare(b.code, 'en', { numeric: true }));
   }
 
+  // Future offerings from the forecast
+  if (forecast?.courses) {
+    const labels = new Map((forecast.terms || []).map((t) => [t.key, t.label]));
+    for (const course of courses.values()) {
+      const keys = forecast.courses[course.code];
+      course.futureTerms = keys ? keys.map((k) => labels.get(k) || k) : null;
+      course.forecastNote = forecast.notes?.[course.code] || '';
+    }
+  }
+
   const sorted = [...courses.values()].sort((a, b) =>
     a.subject === b.subject ? Number(a.number) - Number(b.number) : a.subject.localeCompare(b.subject));
 
@@ -116,6 +129,7 @@ export function buildIndex(catalog, offerings) {
     semester,
     termCode: offerings?.term_code || '',
     sample: !!offerings?.sample,
+    forecast: forecast || null,
     source: catalog.source || '',
     courses,
     list: sorted,

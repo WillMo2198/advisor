@@ -1,0 +1,220 @@
+// Semester planner: turns what is left in a degree audit into a term-by-term plan.
+// Uses prerequisite trees (data/catalog.json) and the CS department's tentative
+// future offerings (data/forecast.json). No DOM code here.
+
+import { evaluate, courseLeaves } from './prereq.js';
+import { offeredIn } from './forecast.js';
+import { creditsFor, titleFor } from './audit.js';
+
+const subject = (code) => code.split(' ')[0];
+const level = (code) => Number(code.split(' ')[1][0]) * 100;
+
+/** Courses that need to be taken, built from the audit's remaining requirements. */
+export function neededItems(audit, program, index, { exclude = new Set(), electiveCount } = {}) {
+  const items = [];
+  const taken = new Set([...exclude]);
+  for (const g of audit.groups) for (const c of g.courses) taken.add(c.code);
+  const add = (item) => { items.push(item); if (item.code) taken.add(item.code); };
+  // Courses named in the prerequisites of required courses we still need
+  // (so a choice like the communication elective can also open CS 485).
+  const wantedLeaves = new Set();
+  for (const g of audit.groups) {
+    for (const slot of g.slots || []) {
+      for (const code of slot.missing || []) for (const leaf of courseLeaves(index.get(code)?.prereq)) wantedLeaves.add(leaf.code);
+    }
+  }
+  const groupDef = (id) => program.groups.find((g) => g.id === id);
+
+  for (const g of audit.groups) {
+    if (g.status !== 'remaining') continue;
+    const def = groupDef(g.id);
+    if (g.type === 'all') {
+      for (const slot of g.slots) {
+        if (slot.status !== 'remaining') continue;
+        for (const code of slot.missing) {
+          if (taken.has(code)) continue;
+          add({ code, title: titleFor(code, index, program), credits: creditsFor(code, index, program), kind: 'required', group: g.id, groupName: g.name });
+        }
+      }
+    } else if (g.type === 'pick') {
+      const from = def.from || {};
+      let left = def.count ? def.count - g.courses.length : g.creditsLeft;
+      if (from.codes) {
+        // choose one listed course: prefer one in the catalog (we know its prerequisites)
+        const options = from.codes.filter((c) => !taken.has(c));
+        const known = options.filter((c) => index.has(c));
+        const wanted = options.filter((c) => wantedLeaves.has(c));
+        while (left > 0 && options.length) {
+          const code = known.length ? known.shift() : (wanted.length ? wanted.shift() : options[0]);
+          options.splice(options.indexOf(code), 1);
+          if (index.has(code) || wantedLeaves.has(code)) {
+            const why = !index.has(code) ? `Also opens ${[...audit.groups.flatMap((x) => (x.slots || []).flatMap((sl) => sl.missing || []))].filter((m) => courseLeaves(index.get(m)?.prereq).some((l) => l.code === code)).join(', ')}` : '';
+            add({ code, title: titleFor(code, index, program), credits: creditsFor(code, index, program), kind: 'choice', group: g.id, groupName: g.name, alternatives: from.codes.filter((c) => c !== code), why });
+            left -= def.count ? 1 : creditsFor(code, index, program);
+          } else {
+            add({ code: null, label: `${g.name}`, hint: `One of ${from.codes.join(', ')}`, credits: def.credits, kind: 'placeholder', group: g.id, groupName: g.name, examples: from.codes });
+            left = 0;
+          }
+        }
+      } else if (g.id === 'cs-electives' || (from.subjects?.length === 1 && from.subjects[0] === 'CS')) {
+        // suggest CS electives we can plan: in the catalog, on the forecast, no "permission" rules
+        const cands = index.list.filter((c) => c.subject === 'CS' && level(c.code) >= (from.minLevel || 0)
+          && !from.exclude?.includes(c.code) && !from.capCodes?.includes(c.code) && !c.bridge && !taken.has(c.code)
+          && !(c.prereq && courseLeaves(c.prereq).length === 0) // only a text rule like "Instructor permission"
+          && Number(c.credits) >= 3 // skip variable-credit topics and 1-credit seminars
+          && (index.forecast?.courses?.[c.code]?.length ?? 0) > 0);
+        cands.sort((a, b) => (index.forecast.courses[b.code].length - index.forecast.courses[a.code].length) || Number(a.number) - Number(b.number));
+        let n = electiveCount ?? Infinity;
+        for (const c of cands) {
+          if (left <= 0 || n <= 0) break;
+          const credits = creditsFor(c.code, index, program);
+          add({ code: c.code, title: c.title, credits, kind: 'elective', group: g.id, groupName: g.name });
+          left -= credits; n--;
+        }
+        while (left > 0) {
+          add({ code: null, label: 'CS elective', hint: 'Any CS course at the 300 level or above (not CS 401 or 402)', credits: Math.min(3, left), kind: 'placeholder', group: g.id, groupName: g.name });
+          left -= 3;
+        }
+      } else {
+        const per = g.id === 'ipro' ? 3 : Math.min(3, left);
+        while (left > 0) {
+          const credits = Math.min(per, left);
+          add({ code: null, label: g.id === 'ipro' ? 'IPRO' : g.name, hint: def.note || '', credits, kind: 'placeholder', group: g.id, groupName: g.name });
+          left -= credits;
+        }
+      }
+    } else if (g.type === 'hss') {
+      for (const part of g.parts) {
+        const missing = part.need - part.have.length;
+        const labels = {
+          hum100: 'HUM 100-level course',
+          h200: 'Humanities (H) course, 200+',
+          s: 'Social science (S) course',
+          'hs-extra': 'Humanities, social science, or COM course',
+        };
+        for (let i = 0; i < missing; i++) {
+          add({ code: null, label: labels[part.id] || part.label, hint: part.label, credits: 3, kind: 'placeholder', group: g.id, groupName: g.name });
+        }
+        if (part.problem && missing <= 0) {
+          add({ code: null, label: 'Social science (S) course, 200+ or another field', hint: part.problem, credits: 3, kind: 'placeholder', group: g.id, groupName: g.name });
+        }
+      }
+    } else if (g.type === 'free') {
+      let left = g.creditsLeft;
+      while (left > 0) {
+        const credits = Math.min(3, left);
+        add({ code: null, label: 'Free elective', hint: 'Any course', credits, kind: 'placeholder', group: g.id, groupName: g.name });
+        left -= credits;
+      }
+    }
+  }
+  return items;
+}
+
+/** How long the chain of needed courses that depends on each item is (longer = take sooner). */
+function chainHeights(items, index) {
+  const codes = new Set(items.filter((i) => i.code).map((i) => i.code));
+  const children = new Map([...codes].map((c) => [c, []]));
+  for (const code of codes) {
+    const course = index.get(code);
+    for (const leaf of courseLeaves(course?.prereq)) if (codes.has(leaf.code) && leaf.code !== code) children.get(leaf.code).push(code);
+  }
+  const memo = new Map();
+  const h = (code, depth = 0) => {
+    if (memo.has(code)) return memo.get(code);
+    if (depth > codes.size) return 0;
+    const v = 1 + Math.max(0, ...children.get(code).map((c) => h(c, depth + 1)));
+    memo.set(code, v);
+    return v;
+  };
+  return new Map([...codes].map((c) => [c, h(c)]));
+}
+
+/**
+ * Build a plan.
+ *   audit, program, index: from auditDegree / data files
+ *   done:   Set of codes finished before the first planned term (completed + in progress + saved)
+ *   grades: Map code -> grade (for minimum-grade rules)
+ *   maxCredits: per term (default 15)
+ * Returns { terms: [{ key, label, items, credits }], later: [items with reasons], items }.
+ */
+export function planSemesters(audit, program, index, { done = new Set(), grades = new Map(), maxCredits = 15, terms } = {}) {
+  const forecast = index.forecast;
+  const termList = terms || forecast?.terms || [];
+  const items = neededItems(audit, program, index, { exclude: done });
+  const heights = chainHeights(items, index);
+  const priority = (it) => {
+    const base = { required: 100, choice: 70, elective: 50, placeholder: 30 }[it.kind] || 0;
+    const height = it.code ? (heights.get(it.code) || 1) : 0;
+    // spread placeholders: IPRO and Core Curriculum courses a bit ahead of free electives
+    const ph = it.kind === 'placeholder' ? ({ ipro: 6, hss: 5, 'science-elective': 4, 'comm-elective': 4, 'cs-electives': 3, free: 0 }[it.group] || 2) : 0;
+    return base + height * 12 + ph;
+  };
+
+  const finished = new Set(done);
+  const pending = items.map((it, i) => ({ ...it, id: i, priority: priority(it) }));
+  const plan = [];
+
+  for (const term of termList) {
+    const chosen = [];
+    let credits = 0;
+    const thisTerm = new Set();
+    let placedSomething = true;
+    // loop so that a course can join a term after its same-term corequisite is placed
+    while (placedSomething) {
+      placedSomething = false;
+      const ready = pending
+        .filter((it) => !it.placed)
+        .filter((it) => {
+          if (!it.code) return true;
+          const offered = offeredIn(forecast, it.code, term.key);
+          if (offered === false) return false;
+          if (offered === null && (subject(it.code) === 'CS' || subject(it.code) === 'CSP') && forecast) return false;
+          const course = index.get(it.code);
+          if (!course) return true; // e.g. PHYS 123: no prerequisite data in this app
+          return evaluate(course.prereq, { completed: finished, current: thisTerm, grades, textRules: 'plan' }) === 'met';
+        })
+        .sort((a, b) => b.priority - a.priority || (a.code || '~').localeCompare(b.code || '~'));
+      // keep about one course of room for Core Curriculum and other placeholder courses each term
+      const placeholdersLeft = pending.some((p) => !p.placed && !p.code);
+      const realCap = placeholdersLeft ? maxCredits - 3 : maxCredits;
+      for (const it of ready) {
+        if (credits + it.credits > (it.code ? realCap : maxCredits)) continue;
+        // keep placeholders from crowding out: at most 2 per term while real courses remain
+        if (it.kind === 'placeholder' && chosen.filter((c) => c.kind === 'placeholder').length >= 2
+          && pending.some((p) => !p.placed && p.code)) continue;
+        it.placed = term.key;
+        chosen.push(it);
+        credits += it.credits;
+        if (it.code) thisTerm.add(it.code);
+        placedSomething = true;
+        break; // re-check readiness (same-term corequisites)
+      }
+    }
+    // fill leftover room with placeholders even if real courses remain (they may be blocked)
+    for (const it of pending.filter((p) => !p.placed && !p.code).sort((a, b) => b.priority - a.priority)) {
+      if (credits + it.credits > maxCredits) continue;
+      it.placed = term.key;
+      chosen.push(it);
+      credits += it.credits;
+    }
+    for (const code of thisTerm) finished.add(code);
+    plan.push({ key: term.key, label: term.label, items: chosen, credits });
+  }
+
+  const later = pending.filter((it) => !it.placed).map((it) => {
+    let reason = 'No room in the plan; add another term or raise the credit limit.';
+    if (it.code) {
+      const offeredAny = forecast?.courses?.[it.code];
+      if (offeredAny && offeredAny.length === 0) reason = 'Not on the department forecast for these terms.';
+      else if (!offeredAny && (subject(it.code) === 'CS' || subject(it.code) === 'CSP')) reason = 'Not on the department forecast.';
+      else {
+        const course = index.get(it.code);
+        if (course && evaluate(course.prereq, { completed: finished, grades, textRules: 'plan' }) !== 'met') reason = 'Prerequisites are not done by the last planned term.';
+      }
+    }
+    return { ...it, reason };
+  });
+
+  return { terms: plan, later, items: pending };
+}

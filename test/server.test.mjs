@@ -21,6 +21,14 @@ before(async () => {
     req.on('data', (c) => { body += c; });
     req.on('end', () => {
       lastRequest = { headers: req.headers, body: JSON.parse(body), url: req.url };
+      if (!lastRequest.body.stream) {
+        // transcript reading (not streamed)
+        res.writeHead(200, { 'content-type': 'application/json' });
+        return res.end(JSON.stringify({
+          type: 'message', role: 'assistant', stop_reason: 'end_turn',
+          content: [{ type: 'text', text: '```json\n{"courses":[{"code":"cs 331","title":"Data Structures and Algorithms","credits":3,"grade":"A","term":"Fall 2025","status":"completed"},{"code":"bad"}],"warnings":["Row 7 was blurry"]}\n```' }],
+        }));
+      }
       if (upstreamMode === 'unauthorized') {
         res.writeHead(401, { 'content-type': 'application/json' });
         return res.end(JSON.stringify({ type: 'error', error: { type: 'authentication_error', message: 'invalid x-api-key' } }));
@@ -134,4 +142,41 @@ test('static files are served and paths cannot escape', async () => {
   assert.equal((await fetch(`${base}/..%2fserver.js`)).status, 404);
   assert.equal((await fetch(`${base}/data/../.env`)).status, 404);
   assert.equal((await fetch(`${base}/nope.html`)).status, 404);
+});
+
+test('transcript reading with Claude (PDF and text)', async () => {
+  const post = (body) => fetch(`${base}/api/transcript`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
+  let res = await post({ file: { mediaType: 'application/pdf', data: 'JVBERi0xLjQK' } });
+  assert.equal(res.status, 200);
+  const out = await res.json();
+  assert.deepEqual(out.courses.map((c) => c.code), ['CS 331']);
+  assert.equal(out.courses[0].status, 'completed');
+  assert.deepEqual(out.warnings, ['Row 7 was blurry']);
+  const sent = lastRequest.body;
+  assert.equal(sent.stream, undefined);
+  assert.equal(sent.messages[0].content[0].type, 'document');
+  assert.equal(sent.messages[0].content[0].source.media_type, 'application/pdf');
+  assert.match(sent.system, /return the courses as JSON/);
+
+  res = await post({ file: { mediaType: 'image/png', data: 'iVBORw0KGgo=' } });
+  assert.equal(res.status, 200);
+  assert.equal(lastRequest.body.messages[0].content[0].type, 'image');
+
+  res = await post({ text: 'CS 331 Data Structures A 3.000' });
+  assert.equal(res.status, 200);
+  assert.match(lastRequest.body.messages[0].content[0].text, /<transcript>/);
+
+  assert.equal((await post({ file: { mediaType: 'application/zip', data: 'AAAA' } })).status, 400);
+  assert.equal((await post({ file: { mediaType: 'application/pdf', data: 'not base64 !!' } })).status, 400);
+  assert.equal((await post({})).status, 400);
+  assert.equal((await fetch(`${base}/api/transcript`)).status, 405);
+});
+
+test('forecast and program data are served', async () => {
+  const f = await (await fetch(`${base}/data/forecast.json`)).json();
+  assert.deepEqual(f.terms.map((t) => t.key), ['S27', 'F27', 'S28', 'F28']);
+  const p = await (await fetch(`${base}/data/programs.json`)).json();
+  assert.equal(p.programs[0].id, 'bs-cs');
+  assert.equal((await fetch(`${base}/vendor/pdfjs/pdf.min.mjs`)).headers.get('content-type'), 'text/javascript; charset=utf-8');
+  assert.equal((await fetch(`${base}/samples/sample-transcript.txt`)).status, 200);
 });

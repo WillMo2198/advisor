@@ -2,13 +2,15 @@
 // Checks the data on the way: bad codes, duplicate CRNs, bad times, unknown courses.
 //   node scripts/build-data.mjs
 
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { courses, departments } from './catalog-source.mjs';
 import { rows, semester, termCode } from './sections-source.mjs';
 import { normalizeCode, courseLeaves } from '../public/js/core/prereq.js';
 import { parseRange } from '../public/js/core/schedule.js';
+import { parseForecastCsv } from '../public/js/core/forecast.js';
+import { programs } from './programs-source.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const errors = [];
@@ -45,6 +47,30 @@ for (const [code, crn, bucket, scheduleType, days, time, where, instructor, avai
   });
 }
 
+// ----- future offerings (CS department's tentative schedule) -----
+const forecastCsv = readFileSync(join(root, 'data', 'source', 'future-cs-offerings.csv'), 'utf8');
+const forecast = parseForecastCsv(forecastCsv);
+if (!forecast.terms.length) errors.push('forecast: no term columns');
+for (const w of forecast.warnings) console.warn(`forecast: ${w}`);
+
+// ----- degree programs -----
+for (const prog of programs) {
+  let sum = 0;
+  for (const g of prog.groups) {
+    sum += g.credits;
+    for (const slot of g.slots || []) {
+      for (const option of slot) {
+        for (const code of option) {
+          if (normalizeCode(code) !== code) errors.push(`${prog.id}/${g.id}: bad code ${code}`);
+          if (!codes.has(code) && !prog.credits?.[code]) errors.push(`${prog.id}/${g.id}: ${code} has no credits (add it to the catalog or to credits)`);
+        }
+      }
+    }
+    for (const code of g.from?.codes || []) if (normalizeCode(code) !== code) errors.push(`${prog.id}/${g.id}: bad code ${code}`);
+  }
+  if (sum !== prog.totalCredits) errors.push(`${prog.id}: groups add up to ${sum}, not ${prog.totalCredits}`);
+}
+
 if (errors.length) {
   console.error(errors.join('\n'));
   process.exit(1);
@@ -72,4 +98,11 @@ const sections = {
 mkdirSync(join(root, 'data'), { recursive: true });
 writeFileSync(join(root, 'data', 'catalog.json'), JSON.stringify(catalog, null, 2) + '\n');
 writeFileSync(join(root, 'data', 'sections.json'), JSON.stringify(sections, null, 2) + '\n');
-console.log(`Wrote ${courses.length} courses and ${rows.length} sample sections.`);
+writeFileSync(join(root, 'data', 'forecast.json'), JSON.stringify({
+  source: 'Tentative Schedule of Future Computer Science Courses (data/source/future-cs-offerings.csv). Tentative: the department may change it.',
+  terms: forecast.terms,
+  courses: forecast.courses,
+  notes: forecast.notes,
+}, null, 2) + '\n');
+writeFileSync(join(root, 'data', 'programs.json'), JSON.stringify({ programs }, null, 2) + '\n');
+console.log(`Wrote ${courses.length} courses, ${rows.length} sample sections, ${Object.keys(forecast.courses).length} forecast courses (${forecast.terms.map((t) => t.key).join(', ')}), ${programs.length} program(s).`);

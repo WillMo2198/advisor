@@ -1,4 +1,4 @@
-// advisor. — main app: loads data, runs search, and wires the three tabs.
+// advisor. — main app: loads data, runs search, and wires the four tabs.
 
 import { buildIndex, creditNumber } from './core/catalog.js';
 import { search, highlightPieces } from './core/search.js';
@@ -7,6 +7,8 @@ import { esc, $, $$, store, linkCodes, debounce } from './ui/util.js';
 import { renderSchedule, wireSchedule } from './ui/schedule-view.js';
 import { renderGraph, renderDetail, wireGraphHover } from './ui/graph-view.js';
 import { createChat } from './ui/chat.js';
+import { renderDegree, wireDegree } from './ui/degree-view.js';
+import { bestAttempts, cleanRecords } from './core/transcript.js';
 
 // ---------- state ----------
 const DEFAULT_OPTIONS = {
@@ -36,7 +38,17 @@ const state = {
   completed: store.get('completed', []),
   tab: store.get('tab', 'schedule'),
   graphSelected: null,
+  transcript: loadTranscript(),
+  programs: [],
+  health: null,
 };
+
+function loadTranscript() {
+  const t = store.get('transcript', null);
+  if (!t || !Array.isArray(t.courses)) return null;
+  const courses = cleanRecords(t.courses);
+  return courses.length ? { ...t, courses } : null;
+}
 
 const els = {
   search: $('#search'),
@@ -84,7 +96,24 @@ updateThemeButton();
 
 // ---------- helpers ----------
 const known = (code) => !!state.index?.has(code);
-const completedSet = () => new Set(state.completed);
+// Courses from the transcript: completed, in progress, and grades (best attempt per course).
+let tCache = { ref: null, sets: null };
+function transcriptSets() {
+  if (tCache.ref === state.transcript && tCache.sets) return tCache.sets;
+  const best = state.transcript ? bestAttempts(state.transcript.courses) : [];
+  const sets = {
+    completed: new Set(best.filter((r) => r.status === 'completed').map((r) => r.code)),
+    inProgress: new Set(best.filter((r) => r.status === 'in-progress').map((r) => r.code)),
+    grades: new Map(best.filter((r) => r.grade).map((r) => [r.code, r.grade])),
+  };
+  tCache = { ref: state.transcript, sets };
+  return sets;
+}
+/** Courses finished: entered by hand or on the transcript. */
+const doneSet = () => new Set([...state.completed, ...transcriptSets().completed]);
+/** For "can I take it next term?": finished plus in progress now. */
+const completedSet = () => new Set([...doneSet(), ...transcriptSets().inProgress]);
+const gradeMap = () => transcriptSets().grades;
 const plannedCourses = () => new Set(state.saved.map((crn) => state.index.crnMap.get(crn)?.course).filter(Boolean));
 
 function hl(text) {
@@ -92,15 +121,20 @@ function hl(text) {
 }
 
 function eligibilityBadge(course) {
+  if (doneSet().has(course.code)) {
+    const g = gradeMap().get(course.code);
+    return `<span class="badge ok">✓ Completed${g ? ` · ${esc(g)}` : ''}</span>`;
+  }
+  if (transcriptSets().inProgress.has(course.code)) return '<span class="badge">In progress now</span>';
   const done = completedSet();
-  if (done.has(course.code)) return '<span class="badge ok">✓ Completed</span>';
   if (!done.size) return '';
   const planned = plannedCourses();
   planned.delete(course.code);
-  const st = evaluate(course.prereq, { completed: done, current: planned });
-  if (st === 'met') return '<span class="badge ok">You can take this</span>';
-  const missing = missingParts(course.prereq, { completed: done, current: planned }).join('; ');
-  if (st === 'unknown') return `<span class="badge warn">Needs: ${esc(missing)}</span>`;
+  const st = { completed: done, current: planned, grades: gradeMap() };
+  const result = evaluate(course.prereq, st);
+  if (result === 'met') return '<span class="badge ok">You can take this</span>';
+  const missing = missingParts(course.prereq, st).join('; ');
+  if (result === 'unknown') return `<span class="badge warn">Needs: ${esc(missing)}</span>`;
   return `<span class="badge no">Missing: ${esc(missing)}</span>`;
 }
 
@@ -126,7 +160,7 @@ function courseMatchesFilters(course) {
     if (done.has(course.code)) return false;
     const planned = plannedCourses();
     planned.delete(course.code);
-    if (evaluate(course.prereq, { completed: done, current: planned }) !== 'met') return false;
+    if (evaluate(course.prereq, { completed: done, current: planned, grades: gradeMap() }) !== 'met') return false;
   }
   return true;
 }
@@ -195,6 +229,9 @@ function courseCard(course) {
 
   html += `<p class="meta-line"><b>Prerequisites:</b> ${course.prereqText ? linkCodes(course.prereqText, known) : 'None'}</p>`;
   if (course.note) html += `<p class="meta-line">${esc(course.note)}</p>`;
+  if (course.futureTerms) {
+    html += `<p class="meta-line"><b>Future terms:</b> ${course.futureTerms.length ? course.futureTerms.map((t) => hl(t)).join(', ') : 'Not on the department’s forecast'} <span class="tent">(tentative${course.forecastNote ? ` · ${esc(course.forecastNote)}` : ''})</span></p>`;
+  }
   if (course.dependents.length) {
     html += `<p class="meta-line"><b>Unlocks:</b> ${course.dependents.map((d, i, a) => `<span class="nw"><button type="button" class="code-link" data-code="${esc(d.code)}">${esc(d.code)}</button>${i < a.length - 1 ? ',' : ''}</span>`).join(' ')}</p>`;
   }
@@ -208,11 +245,13 @@ function courseCard(course) {
     html += `<p class="meta-line">No ${esc(state.index.semester)} sections in this data.</p>`;
   }
 
-  const done = completedSet().has(course.code);
+  const done = state.completed.includes(course.code);
+  const onTranscript = transcriptSets().completed.has(course.code);
   html += `<div class="course-actions">
       <button type="button" class="btn" data-graph="${esc(course.code)}">Show graph</button>
       <button type="button" class="btn" data-ask="${esc(course.code)}">Ask advisor</button>
-      <button type="button" class="btn${done ? ' on' : ''}" data-complete="${esc(course.code)}" aria-pressed="${done}">${done ? '✓ Completed' : 'Mark completed'}</button>
+      ${onTranscript ? '<span class="btn on" aria-disabled="true">✓ On your transcript</span>'
+        : `<button type="button" class="btn${done ? ' on' : ''}" data-complete="${esc(course.code)}" aria-pressed="${done}">${done ? '✓ Completed' : 'Mark completed'}</button>`}
       ${state.options.showLinks && !course.stub ? `<a class="btn" href="${catalogUrl(course.code)}" target="_blank" rel="noopener noreferrer" title="Open the ${esc(course.subject)} page of the IIT catalog">Catalog ↗</a>` : ''}
     </div>`;
   return `${html}</article>`;
@@ -277,16 +316,48 @@ function renderAfterChange() {
   if (state.filters.eligible) runSearch(); else renderResults();
   renderScheduleTab();
   renderGraphTab();
+  renderDegreeTab();
 }
 
 function renderCompletedChips() {
   els.completedChips.innerHTML = state.completed.map((c) => `<span class="chip${known(c) ? '' : ' unknown'}">${esc(c)}<button type="button" data-uncomplete="${esc(c)}" aria-label="Remove ${esc(c)}">×</button></span>`).join('');
+  const t = transcriptSets();
+  const hint = $('#completed-hint');
+  if (hint) {
+    hint.textContent = state.transcript
+      ? `Plus ${t.completed.size} completed and ${t.inProgress.size} in-progress courses from your transcript (Degree tab).`
+      : 'Used for “can I take it?” checks, the graph, and the chat advisor. Or upload your transcript on the Degree tab.';
+  }
+}
+
+// ---------- degree ----------
+function setTranscript(t) {
+  state.transcript = t && t.courses?.length ? t : null;
+  store.set('transcript', state.transcript);
+  renderCompletedChips();
+  if (state.filters.eligible) runSearch(); else { renderResults(); renderGraphTab(); }
+  renderDegreeTab();
+}
+let lastDegree = null;
+function renderDegreeTab() {
+  if (state.tab !== 'degree') return;
+  lastDegree = renderDegree($('#degree-body'), {
+    index: state.index,
+    programs: state.programs,
+    transcript: state.transcript,
+    savedCourses: plannedCourses(),
+    known,
+  });
+}
+function askAboutPlan() {
+  setTab('chat');
+  chat.ask('Look at my degree progress and the draft semester plan. Is it a good plan for next semester? Suggest changes, and tell me which electives fit me best.');
 }
 
 // ---------- tabs ----------
 let scheduleLayout = null;
 function setTab(tab) {
-  if (!['schedule', 'chat', 'graph'].includes(tab)) tab = 'schedule';
+  if (!['schedule', 'chat', 'graph', 'degree'].includes(tab)) tab = 'schedule';
   state.tab = tab;
   store.set('tab', tab);
   for (const t of $$('.tab')) {
@@ -297,9 +368,11 @@ function setTab(tab) {
   $('#view-schedule').hidden = tab !== 'schedule';
   $('#view-chat').hidden = tab !== 'chat';
   $('#view-graph').hidden = tab !== 'graph';
+  $('#view-degree').hidden = tab !== 'degree';
   $('#chat-fab').classList.toggle('hide', tab === 'chat');
   if (tab === 'schedule') scheduleLayout?.place();
   if (tab === 'graph') renderGraphTab();
+  if (tab === 'degree') renderDegreeTab();
 }
 
 function renderScheduleTab() {
@@ -540,16 +613,22 @@ let chat;
 async function start() {
   let catalog;
   let sections;
+  let forecast = null;
+  let programs = { programs: [] };
+  const getJson = (url) => fetch(url).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); });
   try {
-    [catalog, sections] = await Promise.all([
-      fetch('/data/catalog.json').then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); }),
-      fetch('/data/sections.json').then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+    [catalog, sections] = await Promise.all([getJson('/data/catalog.json'), getJson('/data/sections.json')]);
+    [forecast, programs] = await Promise.all([
+      getJson('/data/forecast.json').catch(() => null),
+      getJson('/data/programs.json').catch(() => ({ programs: [] })),
     ]);
   } catch {
     $('#content').innerHTML = '<p class="data-note">Could not load the course data. Start the app with <code>npm start</code> and open the address it prints.</p>';
     return;
   }
-  state.index = buildIndex(catalog, sections);
+  state.index = buildIndex(catalog, sections, forecast);
+  state.programs = programs.programs || [];
+  fetch('/api/health').then((r) => r.json()).then((h) => { state.health = h; }).catch(() => {});
   const idx = state.index;
 
   // drop saved CRNs that no longer exist (for example after importing new data)
@@ -584,12 +663,27 @@ async function start() {
       query: state.query,
       savedCrns: state.saved,
       completed: state.completed,
+      transcript: state.transcript?.courses || [],
+      programId: state.transcript?.programId || '',
+      maxCredits: state.transcript?.maxCredits || 15,
       focus: state.focus.length ? state.focus : state.results.slice(0, 3).map((r) => r.course.code),
     }),
     onCodeClick: (code) => setQuery(code),
   });
 
   wire();
+  wireDegree({
+    drop: $('#drop'), file: $('#transcript-file'), pick: $('#pick-file'), pasteToggle: $('#paste-toggle'),
+    pasteBox: $('#paste-box'), pasteText: $('#paste-text'), pasteGo: $('#paste-go'), sample: $('#try-sample'),
+    status: $('#upload-status'), body: $('#degree-body'), clear: $('#clear-transcript'),
+  }, {
+    getTranscript: () => state.transcript,
+    setTranscript,
+    hasClaude: () => state.health?.mode === 'claude',
+    onCode: (code) => setQuery(code),
+    askPlan: askAboutPlan,
+    catalogTitles: new Map(idx.list.map((c) => [c.code, c.title])),
+  });
   renderScheduleTab();
   setTab(state.tab);
 

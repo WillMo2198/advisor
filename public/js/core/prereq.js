@@ -84,23 +84,44 @@ export function treeToText(tree) {
   return walk(tree, null);
 }
 
+/** True when `grade` is at least `minGrade` (letter grades only). */
+const GRADE_RANK = { A: 4, B: 3, C: 2, D: 1, E: 0, F: 0 };
+export function meetsMinGrade(grade, minGrade) {
+  if (!minGrade || !grade) return true;
+  const g = String(grade).toUpperCase().replace(/[+-]$/, '');
+  const m = String(minGrade).toUpperCase();
+  if (!(m in GRADE_RANK)) return true; // e.g. "S" (satisfactory) -> any passing grade
+  if (!(g in GRADE_RANK)) return true; // P, S, TR, CR: cannot compare, count it
+  return GRADE_RANK[g] >= GRADE_RANK[m];
+}
+
 /**
  * Check a tree against what the student has done.
  *   completed: Set of course codes already passed
  *   current:   Set of course codes planned for the same term (for concurrent leaves)
  * Returns 'met', 'unmet', or 'unknown'.
  * Text leaves ("Graduate standing", "Instructor permission") are 'unknown': the app cannot check them.
- * Minimum grades are not checked; the app only knows a course was completed.
+ * grades (optional): Map of code -> letter grade. When a rule has a minimum grade and the grade
+ * is known, a lower grade does not count. Grades like P, S, or TR (transfer) count as meeting it.
+ * textRules (optional): 'unknown' (default) or 'plan'. With 'plan' (used for an undergraduate plan),
+ * "Graduate standing" counts as unmet, so "MATH 251 or Graduate standing" waits for MATH 251,
+ * and other text rules (placement scores, permission) count as met.
  */
-export function evaluate(tree, { completed = new Set(), current = new Set() } = {}) {
+export function evaluate(tree, state = {}) {
+  const { completed = new Set(), current = new Set(), grades = null } = state;
   if (!tree) return 'met';
   if (tree.type === 'course') {
-    if (completed.has(tree.code)) return 'met';
+    if (completed.has(tree.code)) {
+      return grades && !meetsMinGrade(grades.get(tree.code), tree.minGrade) ? 'unmet' : 'met';
+    }
     if (tree.concurrent && current.has(tree.code)) return 'met';
     return 'unmet';
   }
-  if (tree.type === 'text') return 'unknown';
-  const results = tree.children.map((ch) => evaluate(ch, { completed, current }));
+  if (tree.type === 'text') {
+    if (state.textRules === 'plan') return /graduate standing/i.test(tree.text) ? 'unmet' : 'met';
+    return 'unknown';
+  }
+  const results = tree.children.map((ch) => evaluate(ch, state));
   if (tree.type === 'and') {
     if (results.includes('unmet')) return 'unmet';
     if (results.includes('unknown')) return 'unknown';

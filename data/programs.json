@@ -1,0 +1,273 @@
+{
+  "programs": [
+    {
+      "id": "bs-cs",
+      "name": "B.S. in Computer Science",
+      "catalogYear": "2025–2026",
+      "totalCredits": 121,
+      "source": "https://catalog.iit.edu/undergraduate/colleges/computing/computer-science/bs/",
+      "notes": [
+        "Course attributes like (H), (S), (N), and (C) are not on transcripts. The app guesses them from the subject, so confirm with your official degree audit or academic advisor.",
+        "The Core Curriculum rule of 36 credits of (C) communication-intensive courses is not checked.",
+        "CS specializations (AI, Data Science, Security, and others) are not included."
+      ],
+      "credits": {
+        "PHYS 123": 4,
+        "PHYS 221": 4
+      },
+      "titles": {
+        "PHYS 123": "General Physics I: Mechanics",
+        "PHYS 221": "General Physics II: Electricity and Magnetism",
+        "COM 321": "Technical Communication",
+        "COM 324": "Document Design",
+        "COM 328": "Verbal and Visual Communication",
+        "COM 335": "Intercultural Communication",
+        "COM 425": "Editing"
+      },
+      "groups": [
+        {
+          "id": "cs-core",
+          "name": "Computer Science Requirements",
+          "credits": 36,
+          "type": "all",
+          "note": "CS 201 is a one-semester accelerated course equal to the CS 115 and CS 116 sequence.",
+          "slots": [
+            [
+              [
+                "CS 100"
+              ]
+            ],
+            [
+              [
+                "CS 115",
+                "CS 116"
+              ],
+              [
+                "CS 201"
+              ]
+            ],
+            [
+              [
+                "CS 330"
+              ]
+            ],
+            [
+              [
+                "CS 331"
+              ]
+            ],
+            [
+              [
+                "CS 350"
+              ]
+            ],
+            [
+              [
+                "CS 351"
+              ]
+            ],
+            [
+              [
+                "CS 425"
+              ]
+            ],
+            [
+              [
+                "CS 430"
+              ]
+            ],
+            [
+              [
+                "CS 440"
+              ]
+            ],
+            [
+              [
+                "CS 450"
+              ]
+            ],
+            [
+              [
+                "CS 485"
+              ]
+            ],
+            [
+              [
+                "CS 487"
+              ]
+            ]
+          ]
+        },
+        {
+          "id": "math-core",
+          "name": "Mathematics Requirements",
+          "credits": 20,
+          "type": "all",
+          "slots": [
+            [
+              [
+                "MATH 151"
+              ]
+            ],
+            [
+              [
+                "MATH 152"
+              ]
+            ],
+            [
+              [
+                "MATH 251"
+              ]
+            ],
+            [
+              [
+                "MATH 332"
+              ],
+              [
+                "MATH 333"
+              ]
+            ],
+            [
+              [
+                "MATH 474"
+              ],
+              [
+                "MATH 475"
+              ]
+            ]
+          ]
+        },
+        {
+          "id": "science-core",
+          "name": "Science Requirements",
+          "credits": 8,
+          "type": "all",
+          "slots": [
+            [
+              [
+                "PHYS 123"
+              ]
+            ],
+            [
+              [
+                "PHYS 221"
+              ]
+            ]
+          ]
+        },
+        {
+          "id": "math-elective",
+          "name": "Mathematics Elective",
+          "credits": 3,
+          "type": "pick",
+          "count": 1,
+          "from": {
+            "codes": [
+              "MATH 252",
+              "MATH 350",
+              "MATH 380",
+              "MATH 410",
+              "MATH 435",
+              "MATH 453",
+              "MATH 454",
+              "MATH 476",
+              "MATH 481"
+            ]
+          }
+        },
+        {
+          "id": "comm-elective",
+          "name": "Communication Elective",
+          "credits": 3,
+          "type": "pick",
+          "count": 1,
+          "from": {
+            "codes": [
+              "COM 321",
+              "COM 324",
+              "COM 328",
+              "COM 335",
+              "COM 425"
+            ]
+          }
+        },
+        {
+          "id": "science-elective",
+          "name": "Science Elective",
+          "credits": 3,
+          "type": "pick",
+          "note": "Biology, chemistry, food science, materials science, or another (N) natural science course. Not physics. Lab not required.",
+          "from": {
+            "subjects": [
+              "BIOL",
+              "CHEM",
+              "FDSN",
+              "MS"
+            ]
+          }
+        },
+        {
+          "id": "ipro",
+          "name": "Interprofessional Projects (IPRO)",
+          "credits": 6,
+          "type": "pick",
+          "note": "At least two IPRO experiences.",
+          "from": {
+            "subjects": [
+              "IPRO"
+            ]
+          }
+        },
+        {
+          "id": "cs-electives",
+          "name": "Computer Science Electives",
+          "credits": 12,
+          "type": "pick",
+          "note": "Any CS course at the 300 level or higher, including graduate CS courses, except CS 401 and CS 402. Up to 6 credits of CS 491 or CS 497.",
+          "from": {
+            "subjects": [
+              "CS"
+            ],
+            "minLevel": 300,
+            "exclude": [
+              "CS 401",
+              "CS 402"
+            ],
+            "capCodes": [
+              "CS 491",
+              "CS 497"
+            ],
+            "capCredits": 6
+          }
+        },
+        {
+          "id": "hss",
+          "name": "Humanities and Social Sciences",
+          "credits": 21,
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
+        },
+        {
+          "id": "free",
+          "name": "Free Electives",
+          "credits": 9,
+          "type": "free"
+        }
+      ]
+    }
+  ]
+}
