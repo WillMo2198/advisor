@@ -1,0 +1,17 @@
+{
+  "name": "advisor",
+  "version": "1.0.0",
+  "description": "advisor. — a course advisor for Illinois Tech with a prerequisite graph, a pop.ai-style schedule, and Claude chat.",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=18.17"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "build:data": "node scripts/build-data.mjs",
+    "import:pop": "node scripts/import-pop.mjs",
+    "test": "node --test"
+  }
+}
