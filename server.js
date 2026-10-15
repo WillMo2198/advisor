@@ -14,6 +14,7 @@ import { courseDataBlock, readClientContext, studentContextBlock } from './lib/c
 import { offlineAnswer } from './lib/offline.js';
 import { streamClaude } from './lib/claude.js';
 import { readTranscriptWithClaude } from './lib/transcript-ai.js';
+import { advisorPlan, rulePlan } from './lib/plan-ai.js';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 
@@ -265,6 +266,41 @@ async function handleTranscript(req, res) {
   }
 }
 
+// ---------- recommended plan ----------
+async function handlePlan(req, res) {
+  const ip = req.socket.remoteAddress || 'unknown';
+  if (rateLimited(ip)) return sendJson(res, 429, { error: 'Too many requests in a short time. Wait a few minutes and try again.' });
+  let body;
+  try {
+    body = JSON.parse(await readBody(req, 256 * 1024));
+  } catch (err) {
+    return sendJson(res, err.status || 400, { error: 'Send JSON: { "context": {...}, "messages": [...] }.' });
+  }
+  const ctx = readClientContext(body?.context, index);
+  if (!ctx.transcript.length) return sendJson(res, 400, { error: 'Upload your transcript on the Degree tab first.' });
+  const messages = (Array.isArray(body?.messages) ? body.messages : [])
+    .filter((m) => m && (m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string' && m.content.trim())
+    .slice(-24).map((m) => ({ role: m.role, content: m.content.slice(0, 1500) }));
+  if (body?.mode === 'rules' || !config.apiKey) return sendJson(res, 200, rulePlan(index, programs, ctx));
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 120_000);
+  res.on('close', () => controller.abort());
+  try {
+    const plan = await advisorPlan({
+      index, programs, ctx, messages, instructions: instructions(), courseData: COURSE_DATA, config, signal: controller.signal,
+    });
+    if (res.destroyed) return undefined;
+    return sendJson(res, 200, plan);
+  } catch (err) {
+    if (res.destroyed) return undefined;
+    if (err.name === 'AbortError') return sendJson(res, 504, { error: 'Making the plan took too long. Try again.' });
+    console.error('[plan]', err);
+    return sendJson(res, 500, { error: 'Could not make the plan.' });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 // ---------- routes ----------
 const PUBLIC = join(ROOT, 'public');
 const DATA = join(ROOT, 'data');
@@ -286,6 +322,10 @@ export const server = http.createServer(async (req, res) => {
         forecastTerms: forecast ? forecast.terms.map((t) => t.label) : [],
         programs: programs.map((p) => p.id),
       });
+    }
+    if (path === '/api/plan') {
+      if (req.method !== 'POST') return sendJson(res, 405, { error: 'Use POST.' });
+      return await handlePlan(req, res);
     }
     if (path === '/api/transcript') {
       if (req.method !== 'POST') return sendJson(res, 405, { error: 'Use POST.' });

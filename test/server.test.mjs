@@ -21,6 +21,21 @@ before(async () => {
     req.on('data', (c) => { body += c; });
     req.on('end', () => {
       lastRequest = { headers: req.headers, body: JSON.parse(body), url: req.url };
+      if (!lastRequest.body.stream && JSON.stringify(lastRequest.body.system).includes('PLAN TASK')) {
+        // recommended plan: one course is in a term the forecast skips, one breaks a prerequisite
+        res.writeHead(200, { 'content-type': 'application/json' });
+        return res.end(JSON.stringify({ content: [{ type: 'text', text: JSON.stringify({
+          summary: 'Finish in Spring 2028.',
+          graduation: 'Spring 2028',
+          terms: [
+            { term: 'Spring 2027', courses: [{ code: 'CS 450', credits: 3, requirement: 'Computer Science Requirements', reason: 'Required.' }, { code: 'CS 485', credits: 3, requirement: 'Computer Science Requirements', reason: 'Required.' }] },
+            { term: 'Fall 2027', courses: [{ code: 'CS 481', credits: 3, requirement: 'Computer Science Electives', reason: 'AI.' }, { code: null, label: 'IPRO', credits: 3, requirement: 'Interprofessional Projects (IPRO)', reason: 'Second IPRO.' }] },
+            { term: 'Summer 2027', courses: [{ code: 'CS 487', credits: 3 }] },
+          ],
+          tips: ['Start early.'],
+          assumptions: [],
+        }) }], stop_reason: 'end_turn' }));
+      }
       if (!lastRequest.body.stream) {
         // transcript reading (not streamed)
         res.writeHead(200, { 'content-type': 'application/json' });
@@ -179,4 +194,39 @@ test('forecast and program data are served', async () => {
   assert.equal(p.programs[0].id, 'bs-cs');
   assert.equal((await fetch(`${base}/vendor/pdfjs/pdf.min.mjs`)).headers.get('content-type'), 'text/javascript; charset=utf-8');
   assert.equal((await fetch(`${base}/samples/sample-transcript.txt`)).status, 200);
+});
+
+test('recommended plan: advisor plan is checked; bad input is refused', async () => {
+  const { parseTranscriptText } = await import('../public/js/core/transcript.js');
+  const { readFileSync } = await import('node:fs');
+  const courses = parseTranscriptText(readFileSync(new URL('../public/samples/sample-transcript.txt', import.meta.url), 'utf8')).courses;
+  const post = (body) => fetch(`${base}/api/plan`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
+
+  assert.equal((await post({ context: {} })).status, 400);
+  assert.equal((await fetch(`${base}/api/plan`)).status, 405);
+
+  const res = await post({ context: { transcript: courses, maxCredits: 15 }, messages: [{ role: 'user', content: 'I love AI.' }, { role: 'assistant', content: 'Great!' }] });
+  assert.equal(res.status, 200);
+  const plan = await res.json();
+  assert.equal(plan.source, 'claude');
+  // the request carried the plan task, the student's context, and the conversation
+  const sent = lastRequest.body;
+  assert.match(sent.system[2].text, /PLAN TASK/);
+  assert.match(sent.system[2].text, /DEGREE PROGRESS/);
+  assert.match(sent.messages[0].content, /Student: I love AI\./);
+  assert.deepEqual(sent.system[1].cache_control, { type: 'ephemeral' });
+  // unknown term dropped and noted
+  assert.deepEqual(plan.terms.map((t) => t.label), ['Spring 2027', 'Fall 2027']);
+  assert.ok(plan.assumptions.some((a) => /Summer 2027/.test(a)));
+  // the checks
+  const issue = (code) => plan.terms.flatMap((t) => t.items).find((i) => i.code === code).issues.map((x) => x.message).join(' ');
+  assert.match(issue('CS 481'), /Not on the forecast for Fall 2027/);
+  assert.match(issue('CS 485'), /Prerequisite not done first/);
+  assert.equal(plan.check.ok, false);
+  assert.ok(plan.check.issues.some((x) => /Not covered by the plan: Computer Science Requirements/.test(x.message)));
+
+  // rules mode skips Claude
+  const rules = await (await post({ context: { transcript: courses }, mode: 'rules' })).json();
+  assert.equal(rules.source, 'rules');
+  assert.equal(rules.check.ok, true);
 });

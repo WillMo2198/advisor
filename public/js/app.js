@@ -39,6 +39,8 @@ const state = {
   tab: store.get('tab', 'schedule'),
   graphSelected: null,
   transcript: loadTranscript(),
+  // recommended plan: which one to show, and the advisor's latest plan
+  plan: { view: store.get('planView', 'advisor'), ai: store.get('aiPlan', null)?.plan || null, aiFingerprint: store.get('aiPlan', null)?.fingerprint || '', busy: false, error: '' },
   programs: [],
   health: null,
 };
@@ -330,16 +332,51 @@ function renderCompletedChips() {
   }
 }
 
+/** Everything the server needs to know about this student for chat and plans. */
+function chatContext() {
+  return {
+    query: state.query,
+    savedCrns: state.saved,
+    completed: state.completed,
+    transcript: state.transcript?.courses || [],
+    programId: state.transcript?.programId || '',
+    maxCredits: state.transcript?.maxCredits || 15,
+    plan: shownPlanSummary(),
+    planSource: lastDegree?.source || 'rules',
+    focus: state.focus.length ? state.focus : state.results.slice(0, 3).map((r) => r.course.code),
+  };
+}
+
 // ---------- degree ----------
 function setTranscript(t) {
+  const isNew = t && (!state.transcript || t.source !== state.transcript.source);
   state.transcript = t && t.courses?.length ? t : null;
+  if (isNew || !state.transcript) $('.upload-card')?.classList.remove('replacing');
   store.set('transcript', state.transcript);
   renderCompletedChips();
   if (state.filters.eligible) runSearch(); else { renderResults(); renderGraphTab(); }
   renderDegreeTab();
 }
 let lastDegree = null;
+/** What the plan depends on. When it changes, the advisor's plan is out of date. */
+function planFingerprint() {
+  const t = state.transcript;
+  const raw = JSON.stringify([
+    t?.programId || '', t?.maxCredits || 15,
+    (t?.courses || []).map((c) => `${c.code}|${c.grade}|${c.status}`).sort(),
+    [...plannedCourses()].sort(),
+  ]);
+  let h = 0;
+  for (let i = 0; i < raw.length; i++) h = (h * 31 + raw.charCodeAt(i)) >>> 0;
+  return h.toString(36);
+}
 function renderDegreeTab() {
+  const card = $('.upload-card');
+  const hasT = !!state.transcript;
+  card.classList.toggle('compact', hasT && !card.classList.contains('replacing'));
+  $('#degree-intro').hidden = hasT && !card.classList.contains('replacing');
+  const sum = $('#upload-summary-text');
+  if (sum) sum.textContent = hasT ? `${state.transcript.source || 'Your transcript'} · ${state.transcript.courses.length} course rows` : '';
   if (state.tab !== 'degree') return;
   lastDegree = renderDegree($('#degree-body'), {
     index: state.index,
@@ -347,11 +384,57 @@ function renderDegreeTab() {
     transcript: state.transcript,
     savedCourses: plannedCourses(),
     known,
+    hasClaude: state.health?.mode === 'claude',
+    plan: { ...state.plan, aiStale: !!state.plan.ai && state.plan.aiFingerprint !== planFingerprint() },
   });
+}
+/** The plan on screen, short, for the chat advisor. */
+function shownPlanSummary() {
+  const shown = lastDegree?.shown;
+  if (!shown) return [];
+  return shown.terms.filter((t) => t.items.length).map((t) => ({
+    term: t.label,
+    items: t.items.map((i) => i.code || `[${i.label || i.requirement}]`),
+  }));
 }
 function askAboutPlan() {
   setTab('chat');
-  chat.ask('Look at my degree progress and the draft semester plan. Is it a good plan for next semester? Suggest changes, and tell me which electives fit me best.');
+  chat.ask('Look at my degree progress and the recommended plan on the Degree tab. Is it a good plan? Suggest changes, and tell me which electives fit me best.');
+}
+async function buildPlan() {
+  if (state.plan.busy || !state.transcript) return;
+  state.plan.busy = true;
+  state.plan.error = '';
+  renderDegreeTab();
+  const fingerprint = planFingerprint();
+  try {
+    const res = await fetch('/api/plan', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ context: { ...chatContext(), plan: [] }, messages: chat.messages() }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || `Server error ${res.status}`);
+    if (data.source === 'claude') {
+      state.plan.ai = data;
+      state.plan.aiFingerprint = fingerprint;
+      state.plan.view = 'advisor';
+      store.set('aiPlan', { plan: data, fingerprint, at: Date.now() });
+      store.set('planView', 'advisor');
+    } else {
+      state.plan.error = data.error || 'The advisor is not available. Showing the app’s plan.';
+    }
+  } catch (err) {
+    state.plan.error = err.message || 'Could not make the plan.';
+  } finally {
+    state.plan.busy = false;
+    renderDegreeTab();
+  }
+}
+function setPlanView(view) {
+  state.plan.view = view === 'rules' ? 'rules' : 'advisor';
+  store.set('planView', state.plan.view);
+  renderDegreeTab();
 }
 
 // ---------- tabs ----------
@@ -369,8 +452,9 @@ function setTab(tab) {
   $('#view-chat').hidden = tab !== 'chat';
   $('#view-graph').hidden = tab !== 'graph';
   $('#view-degree').hidden = tab !== 'degree';
+  document.querySelector('.app').classList.toggle('wide-right', tab === 'degree');
   $('#chat-fab').classList.toggle('hide', tab === 'chat');
-  if (tab === 'schedule') scheduleLayout?.place();
+  if (tab === 'schedule') requestAnimationFrame(() => scheduleLayout?.place());
   if (tab === 'graph') renderGraphTab();
   if (tab === 'degree') renderDegreeTab();
 }
@@ -628,7 +712,7 @@ async function start() {
   }
   state.index = buildIndex(catalog, sections, forecast);
   state.programs = programs.programs || [];
-  fetch('/api/health').then((r) => r.json()).then((h) => { state.health = h; }).catch(() => {});
+  fetch('/api/health').then((r) => r.json()).then((h) => { state.health = h; renderDegreeTab(); }).catch(() => {});
   const idx = state.index;
 
   // drop saved CRNs that no longer exist (for example after importing new data)
@@ -659,15 +743,7 @@ async function start() {
       clear: $('#chat-clear'), mode: $('#mode-badge'),
     },
     known,
-    getContext: () => ({
-      query: state.query,
-      savedCrns: state.saved,
-      completed: state.completed,
-      transcript: state.transcript?.courses || [],
-      programId: state.transcript?.programId || '',
-      maxCredits: state.transcript?.maxCredits || 15,
-      focus: state.focus.length ? state.focus : state.results.slice(0, 3).map((r) => r.course.code),
-    }),
+    getContext: () => chatContext(),
     onCodeClick: (code) => setQuery(code),
   });
 
@@ -682,8 +758,18 @@ async function start() {
     hasClaude: () => state.health?.mode === 'claude',
     onCode: (code) => setQuery(code),
     askPlan: askAboutPlan,
+    buildPlan,
+    setPlanView,
     catalogTitles: new Map(idx.list.map((c) => [c.code, c.title])),
   });
+  $('#replace-transcript').addEventListener('click', () => {
+    const card = $('.upload-card');
+    card.classList.add('replacing');
+    card.classList.remove('compact');
+    $('#degree-intro').hidden = false;
+    $('#drop').focus();
+  });
+  $('#clear-transcript-2').addEventListener('click', () => $('#clear-transcript').click());
   renderScheduleTab();
   setTab(state.tab);
 

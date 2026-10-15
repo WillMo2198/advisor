@@ -239,7 +239,66 @@ export function planSemesters(audit, program, index, { done = new Set(), grades 
     return { ...it, reason };
   });
 
+  addReasons(plan, pending, index);
   return { terms: plan, later, items: pending };
+}
+
+/** Short "why" text for each placed course, in plain words. */
+function addReasons(plan, pending, index) {
+  const forecast = index.forecast;
+  const needs = new Map(); // code -> later needed courses that list it as a prerequisite
+  for (const it of pending) {
+    if (!it.code) continue;
+    for (const leaf of courseLeaves(index.get(it.code)?.prereq)) {
+      if (!needs.has(leaf.code)) needs.set(leaf.code, []);
+      if (!needs.get(leaf.code).includes(it.code)) needs.get(leaf.code).push(it.code);
+    }
+  }
+  const rare = (code) => {
+    const keys = forecast?.courses?.[code];
+    if (!keys || keys.length > 2 || !keys.length) return '';
+    const labels = keys.map((k) => forecast.terms.find((t) => t.key === k)?.label || k);
+    return keys.length === 1 ? `Only offered ${labels[0]} in the forecast.` : `Only offered ${labels.join(' and ')} in the forecast.`;
+  };
+  for (const term of plan) {
+    for (const it of term.items) {
+      const opens = it.code ? (needs.get(it.code) || []).filter((c) => c !== it.code) : [];
+      const parts = [];
+      if (it.kind === 'saved') parts.push('You saved a section for this term.');
+      else if (it.kind === 'required') parts.push(`Required for ${it.groupName}.`);
+      else if (it.kind === 'choice') parts.push(`Fills the ${it.groupName}.${it.why ? ` ${it.why}.` : ''}`);
+      else if (it.kind === 'elective') parts.push('Suggested CS elective. Swap in any CS 300+ course you like.');
+      else if (it.hint) parts.push(it.hint);
+      if (opens.length) parts.push(`Needed before ${opens.join(', ')}.`);
+      if (it.code) { const r = rare(it.code); if (r) parts.push(r); }
+      it.reason = parts.join(' ');
+      it.requirement = it.groupName || (it.kind === 'saved' ? 'Saved section' : '');
+    }
+  }
+}
+
+/** Plain summary of a rule-based plan, in the same shape the advisor's plan uses. */
+export function describePlan(plan, audit, { maxCredits = 15 } = {}) {
+  const used = plan.terms.filter((t) => t.items.length);
+  const last = used[used.length - 1];
+  const graduation = !plan.later.length && last ? last.label : '';
+  const left = audit.totals.remaining + audit.totals.planned;
+  let summary;
+  if (!used.length && !plan.later.length) summary = 'Everything is done or in progress.';
+  else if (graduation) summary = `You have about ${left} credits left. At up to ${maxCredits} credits a term, this plan finishes in ${graduation}.`;
+  else summary = `You have about ${left} credits left. Some courses do not fit in the forecast terms (see "Not placed yet").`;
+  return {
+    source: 'rules',
+    summary,
+    graduation,
+    tips: [],
+    assumptions: ['Electives are examples. Swap in courses you like that fill the same requirement.', 'Non-CS courses are assumed to run every term.'],
+    terms: plan.terms.map((t) => ({ key: t.key, label: t.label, credits: t.credits, items: t.items.map((it) => ({
+      code: it.code || null, label: it.label || '', title: it.title || '', credits: it.credits, kind: it.kind,
+      requirement: it.requirement || '', reason: it.reason || '', warning: it.warning || '',
+    })) })),
+    later: plan.later.map((it) => ({ code: it.code || null, label: it.label || '', title: it.title || '', credits: it.credits, kind: it.kind, requirement: it.groupName || '', reason: it.reason })),
+  };
 }
 
 /** The forecast term that matches the app's schedule semester (for example "S27" for "Spring 2027"), or ''. */

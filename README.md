@@ -7,6 +7,7 @@ A course advisor for Illinois Tech. One search box, a prerequisite graph, a week
 - **Course Graph** tab: the prerequisite chain for the courses you searched, plus what they unlock. Solid = prerequisite, green = can be taken in the same term, dashed = one of several options. Click a node for details.
 - **Chat** tab: ask advising questions. The server sends Claude the full course data and your context (completed courses, saved sections, conflicts, and prerequisite checks it already ran).
 - **Degree** tab: upload your unofficial transcript (PDF, saved web page, text, or a screenshot). The app lists every requirement for the B.S. in Computer Science as done, in progress, or still needed, then builds a **semester-by-semester plan** using prerequisites and the CS department's tentative schedule of future courses (Spring 2027 – Fall 2028). Edit any row it read wrong. Ask the chat advisor to review the plan.
+- **Recommended plan** (Degree tab): press **Build my plan with the advisor**. Claude writes a term-by-term plan from everything the app knows about the student: transcript and grades, courses in progress, saved sections, the forecast, and what they said in chat (interests, workload, goals). Each course gets a one-line reason. The app then **checks the plan** (prerequisites in order, forecast terms, credit limit, repeats, and whether it covers every requirement) and flags any problem on the course itself. Without an API key, or if Claude fails, the app's own rule-based plan is shown, with reasons too.
 - **Future terms** on every CS course card, from that same forecast.
 - **Completed courses** (in Filters): turns on “You can take this / Missing: …” checks everywhere, and the “Only courses I can take now” filter.
 - **Dark mode**: the moon/sun button. It follows your system setting until you pick one.
@@ -100,6 +101,7 @@ lib/claude.js             Claude Messages API streaming client (no SDK)
 lib/context.js            builds COURSE DATA and STUDENT CONTEXT
 lib/offline.js            answers when no API key is set
 lib/transcript-ai.js      reads scanned or image transcripts with Claude
+lib/plan-ai.js            the advisor's recommended plan (Claude), with a rule-based fallback
 public/index.html         the page
 public/css/styles.css     light + dark themes
 public/js/app.js          search, results, filters, tabs
@@ -111,7 +113,8 @@ public/js/core/           shared with the server and tests:
   graph.js                prerequisite graph + layered layout
   transcript.js           transcript text / PDF parser
   audit.js                degree audit (matches courses to requirements)
-  planner.js              semester-by-semester plan
+  planner.js              semester-by-semester plan (rule-based) with reasons
+  plan-check.js           checks any plan: prerequisites, forecast, credits, coverage
   forecast.js             future-offerings CSV parser
 public/js/ui/             schedule, graph, chat, and degree views
 public/vendor/pdfjs/      pdf.js browser build (for reading transcript PDFs)

@@ -2,7 +2,8 @@
 
 import { parseTranscriptText, linesFromPdfItems, gradeStatus, cleanRecords, bestAttempts, REPEATABLE } from '../core/transcript.js';
 import { auditDegree } from '../core/audit.js';
-import { planSemesters, planInputs } from '../core/planner.js';
+import { planSemesters, planInputs, describePlan } from '../core/planner.js';
+import { checkPlan } from '../core/plan-check.js';
 import { normalizeCode } from '../core/prereq.js';
 import { esc } from './util.js';
 
@@ -61,6 +62,14 @@ function imageMediaType(file) {
 
 // ---------- rendering ----------
 
+const KIND = {
+  saved: { tag: 'Saved section', cls: 'k-saved' },
+  required: { tag: 'Required', cls: 'k-req' },
+  choice: { tag: '', cls: 'k-choice' },
+  elective: { tag: 'CS elective', cls: 'k-elec' },
+  placeholder: { tag: '', cls: 'k-open' },
+};
+
 function pill(status) {
   return `<span class="req-pill ${status}">${STATUS_TEXT[status] || status}</span>`;
 }
@@ -78,37 +87,49 @@ function linkify(text, known) {
   return esc(text).replace(/\b([A-Z]{2,4}) (\d{3})\b/g, (m) => (known(m) ? `<button type="button" class="code-link" data-code="${m}">${m}</button>` : m));
 }
 
-function planItem(it, known, note = '') {
-  const tags = {
-    required: '<span class="tag req">Required</span>',
-    choice: `<span class="tag">${esc(it.groupName)}</span>`,
-    elective: '<span class="tag">Suggested CS elective</span>',
-    placeholder: `<span class="tag ph">${esc(it.groupName)}</span>`,
-    saved: '<span class="tag saved">Saved section</span>',
-  };
+/** One course row in a term card. */
+function planRow(it, known) {
+  const k = KIND[it.kind] || KIND.choice;
+  const tag = k.tag || it.requirement || '';
   const name = it.code
-    ? `${known(it.code) ? `<button type="button" class="code-link" data-code="${esc(it.code)}">${esc(it.code)}</button>` : `<strong>${esc(it.code)}</strong>`} <span class="plan-title">${esc(it.title || '')}</span>`
-    : `<strong>${esc(it.label)}</strong>`;
-  const sub = it.kind === 'choice' && it.alternatives?.length ? `<div class="plan-sub">${esc(it.why ? `${it.why}. ` : '')}Other choices: ${esc(it.alternatives.join(', '))}</div>`
-    : it.kind === 'placeholder' && it.hint ? `<div class="plan-sub">${esc(it.hint)}</div>`
-      : it.kind === 'elective' ? '<div class="plan-sub">Swap for any CS 300+ course you like.</div>' : '';
-  const extra = note ? `<div class="plan-sub warn">${esc(note)}</div>` : '';
-  return `<li class="plan-item ${it.kind}"><div class="plan-main">${name}${sub}${extra}</div><div class="plan-side">${tags[it.kind] || ''}<span class="plan-cr">${esc(it.credits)} cr</span></div></li>`;
+    ? `${known(it.code) ? `<button type="button" class="code-link pr-code" data-code="${esc(it.code)}">${esc(it.code)}</button>` : `<span class="pr-code">${esc(it.code)}</span>`}<span class="pr-title">${esc(it.title || '')}</span>`
+    : `<span class="pr-code open">${esc(it.label || it.requirement || 'Elective')}</span>`;
+  const issues = [...(it.issues || []), ...(it.warning ? [{ level: 'warn', message: it.warning }] : [])];
+  return `<li class="pr ${k.cls}">
+      <div class="pr-top">
+        <div class="pr-name">${name}</div>
+        <span class="pr-cr">${esc(it.credits)} cr</span>
+      </div>
+      ${tag || it.reason ? `<div class="pr-sub">${tag ? `<span class="pr-tag">${esc(tag)}</span>` : ''}${it.reason ? `<span class="pr-why">${linkify(it.reason, known)}</span>` : ''}</div>` : ''}
+      ${issues.map((x) => `<div class="pr-issue ${x.level}">${x.level === 'error' ? '⚠' : '•'} ${esc(x.message)}</div>`).join('')}
+    </li>`;
+}
+
+function termCard(term, i, firstIdx, known) {
+  return `<section class="term${i === firstIdx ? ' next' : ''}">
+      <header class="term-head">
+        <h3>${i === firstIdx ? '<span class="next-badge">Next</span>' : ''}${esc(term.label)}</h3>
+        <span class="term-cr">${term.credits} credits</span>
+      </header>
+      ${term.note ? `<p class="term-note">${esc(term.note)}</p>` : ''}
+      <ul class="term-list">${term.items.map((it) => planRow(it, known)).join('')}</ul>
+    </section>`;
 }
 
 /**
  * Render the whole Degree tab body.
- * ctx: { index, programs, transcript, savedCourses, known, health }
- * Returns { audit, plan } (or null when there is no transcript).
+ * ctx: { index, programs, transcript, savedCourses, known, plan: { view, ai, aiStale, busy, error }, hasClaude }
+ * Returns { audit, ruleView, shown } (or null when there is no transcript).
  */
 export function renderDegree(el, ctx) {
   const { index, programs, transcript, known } = ctx;
-  const tableWasOpen = !!el.querySelector('details.t-card[open]');
   const program = programs.find((p) => p.id === transcript?.programId) || programs[0];
   if (!transcript?.courses?.length || !program) {
     el.innerHTML = '';
     return null;
   }
+  const tableWasOpen = !!el.querySelector('details.t-card[open]');
+  const reqsWereOpen = !!el.querySelector('details.all-reqs[open]');
   const best = bestAttempts(transcript.courses);
   const completed = new Set(best.filter((r) => r.status === 'completed').map((r) => r.code));
   const inProgress = new Set(best.filter((r) => r.status === 'in-progress').map((r) => r.code));
@@ -116,80 +137,124 @@ export function renderDegree(el, ctx) {
   const planned = [...ctx.savedCourses].filter((c) => !completed.has(c) && !inProgress.has(c));
   const audit = auditDegree(program, transcript.courses, { index, planned });
   const maxCredits = transcript.maxCredits || 15;
-  const plan = planSemesters(audit, program, index, {
-    ...planInputs(index, { completed, inProgress, saved: planned }), grades, maxCredits,
-  });
+  const inputs = planInputs(index, { completed, inProgress, saved: planned });
+  const rule = planSemesters(audit, program, index, { ...inputs, grades, maxCredits });
+  const ruleView = describePlan(rule, audit, { maxCredits });
+
+  // which plan to show: the advisor's (if made and chosen) or the app's
+  const p = ctx.plan || {};
+  const useAi = p.view === 'advisor' && p.ai;
+  const shown = useAi ? JSON.parse(JSON.stringify(p.ai)) : ruleView;
+  const check = checkPlan(shown, { index, program, records: transcript.courses, done: inputs.done, grades, maxCredits });
   const t = audit.totals;
   const pct = (n) => `${Math.max(0, Math.min(100, (n / t.required) * 100)).toFixed(1)}%`;
+  const usedTerms = shown.terms.filter((x) => x.items.length);
+  const firstIdx = shown.terms.findIndex((x) => x.items.length);
+  const graduation = shown.graduation || (!shown.later?.length && usedTerms.length ? usedTerms[usedTerms.length - 1].label : '');
 
-  // ----- summary -----
-  let html = `<div class="card degree-summary">
-      <div class="card-head">
-        <h2 class="card-title">${esc(program.name)}</h2>
-        <label class="small muted">Program
-          <select id="program-select">${programs.map((p) => `<option value="${esc(p.id)}"${p.id === program.id ? ' selected' : ''}>${esc(p.name)} (${esc(p.catalogYear)})</option>`).join('')}</select>
-        </label>
+  // ----- 1. summary -----
+  const headline = !usedTerms.length && !shown.later?.length
+    ? 'Every requirement is done or in progress 🎓'
+    : graduation ? `On track to finish in <strong>${esc(graduation)}</strong>` : `<strong>${t.remaining}</strong> credits to go`;
+  let html = `<div class="card degree-hero">
+      <div class="hero-top">
+        <div>
+          <p class="eyebrow-sm">${esc(program.name)} · ${esc(program.catalogYear)} catalog</p>
+          <h2 class="hero-line">${headline}</h2>
+        </div>
+        ${programs.length > 1 ? `<select id="program-select" aria-label="Degree program">${programs.map((x) => `<option value="${esc(x.id)}"${x.id === program.id ? ' selected' : ''}>${esc(x.name)}</option>`).join('')}</select>` : ''}
       </div>
-      <div class="big-stats">
-        <div><span class="big">${t.done}</span><span class="muted small">credits done</span></div>
-        <div><span class="big">${t.inProgress + t.planned}</span><span class="muted small">in progress${t.planned ? ' / saved' : ''}</span></div>
-        <div><span class="big">${t.remaining}</span><span class="muted small">still needed</span></div>
-        <div><span class="big">${t.required}</span><span class="muted small">to graduate</span></div>
-      </div>
-      <div class="progress" role="img" aria-label="${t.done} credits done, ${t.inProgress} in progress, ${t.planned} planned, out of ${t.required}">
+      <div class="progress" role="img" aria-label="${t.done} credits done, ${t.inProgress} in progress, ${t.planned} saved, ${t.remaining} to go, out of ${t.required}">
         <span class="p-done" style="width:${pct(t.done)}"></span><span class="p-ip" style="width:${pct(t.inProgress)}"></span><span class="p-pl" style="width:${pct(t.planned)}"></span>
       </div>
-      <p class="small muted">From ${esc(transcript.source || 'your transcript')} · ${best.length} course${best.length === 1 ? '' : 's'} read${t.earned > t.done ? ` · ${t.earned} credits earned in all` : ''}</p>
+      <ul class="legend-row">
+        <li><i class="dot done"></i><strong>${t.done}</strong> done</li>
+        <li><i class="dot ip"></i><strong>${t.inProgress}</strong> in progress</li>
+        ${t.planned ? `<li><i class="dot pl"></i><strong>${t.planned}</strong> saved for ${esc(index.semester)}</li>` : ''}
+        <li><i class="dot togo"></i><strong>${t.remaining}</strong> to go</li>
+        <li class="muted">of ${t.required} credits</li>
+      </ul>
     </div>`;
 
-  // ----- requirements -----
-  html += `<div class="card"><div class="card-head"><h2 class="card-title">Requirements</h2><span class="small muted">${audit.groups.filter((g) => g.status === 'done').length} of ${audit.groups.length} done</span></div><ul class="req-list">`;
+  // ----- 2. recommended plan -----
+  const errors = check.issues.filter((x) => x.level === 'error').length;
+  const warns = check.issues.filter((x) => x.level === 'warn').length;
+  const checkLine = errors
+    ? `<span class="chk bad">⚠ ${errors} problem${errors === 1 ? '' : 's'} found</span>`
+    : warns ? `<span class="chk warn">Checked · ${warns} note${warns === 1 ? '' : 's'}</span>` : '<span class="chk ok">✓ Checked: prerequisites, forecast, and credits all fit</span>';
+  const source = useAi
+    ? `<span class="src ai">Made by the advisor${p.ai.model ? ` · ${esc(p.ai.model)}` : ''}</span>`
+    : '<span class="src">Built by the app’s rules</span>';
+  let actions = '';
+  if (ctx.hasClaude) {
+    actions += p.busy
+      ? '<button type="button" class="btn primary" disabled><span class="spin"></span> The advisor is building your plan…</button>'
+      : `<button type="button" class="btn primary" data-build-plan>${p.ai ? 'Update the advisor’s plan' : '✨ Build my plan with the advisor'}</button>`;
+    if (p.ai && !p.busy) actions += `<button type="button" class="btn" data-plan-view="${useAi ? 'rules' : 'advisor'}">${useAi ? 'Show the app’s plan' : 'Show the advisor’s plan'}</button>`;
+  }
+  actions += '<button type="button" class="btn" data-ask-plan>Ask about this plan</button>';
+  const nextCodes = firstIdx >= 0 ? shown.terms[firstIdx].items.filter((i) => i.code).map((i) => i.code) : [];
+  if (nextCodes.length) actions += `<button type="button" class="btn" data-plan-search="${esc(nextCodes.join(', '))}">Find ${esc(shown.terms[firstIdx].label)} sections</button>`;
+
+  html += `<div class="card plan-card">
+      <div class="plan-head">
+        <div>
+          <h2 class="card-title">Recommended plan</h2>
+          <div class="plan-meta">${source}${checkLine}</div>
+        </div>
+        <label class="small muted plan-max">Max credits / term
+          <select id="max-credits">${[12, 13, 15, 16, 18].map((n) => `<option value="${n}"${n === maxCredits ? ' selected' : ''}>${n}</option>`).join('')}</select>
+        </label>
+      </div>
+      ${p.error ? `<p class="plan-alert">${esc(p.error)}</p>` : ''}
+      ${useAi && p.aiStale ? '<p class="plan-alert">Your courses or saved sections changed since the advisor made this plan. Update it to include the changes.</p>' : ''}
+      ${!ctx.hasClaude ? '<p class="small muted">Add a Claude API key to the server to get a plan written for you by the advisor. This one comes from the app’s rules.</p>' : !p.ai && !p.busy ? '<p class="small muted">The advisor can write a plan around your transcript, saved sections, and what you told it in chat (interests, workload, goals).</p>' : ''}
+      <div class="plan-actions">${actions}</div>
+      ${shown.summary ? `<p class="plan-summary">${linkify(shown.summary, known)}</p>` : ''}`;
+  if (usedTerms.length) {
+    html += `<div class="timeline">${shown.terms.map((term, i) => (term.items.length ? termCard(term, i, firstIdx, known) : '')).join('')}</div>`;
+  }
+  if (shown.later?.length) {
+    html += `<section class="term later"><header class="term-head"><h3>Not placed yet</h3></header><ul class="term-list">${shown.later.map((it) => planRow({ ...it, issues: [{ level: 'warn', message: it.reason }], reason: '' }, known)).join('')}</ul></section>`;
+  }
+  const general = check.issues.filter((x) => !x.code && x.term == null);
+  const termWide = check.issues.filter((x) => !x.code && x.term != null);
+  if (general.length || termWide.length) {
+    html += `<ul class="plan-issues">${[...termWide, ...general].map((x) => `<li class="${x.level}">${esc(x.message)}</li>`).join('')}</ul>`;
+  }
+  if (shown.tips?.length || shown.assumptions?.length) {
+    html += '<div class="plan-notes">';
+    if (shown.tips?.length) html += `<div><h4>Tips</h4><ul>${shown.tips.map((x) => `<li>${linkify(x, known)}</li>`).join('')}</ul></div>`;
+    if (shown.assumptions?.length) html += `<div><h4>Assumptions</h4><ul>${shown.assumptions.map((x) => `<li>${linkify(x, known)}</li>`).join('')}</ul></div>`;
+    html += '</div>';
+  }
+  html += '</div>';
+
+  // ----- 3. what's left -----
+  const left = audit.groups.filter((g) => g.status === 'remaining');
+  const doneGroups = audit.groups.filter((g) => g.status !== 'remaining');
+  html += `<div class="card left-card">
+      <div class="card-head"><h2 class="card-title">What’s left</h2><span class="small muted">${doneGroups.length} of ${audit.groups.length} requirement groups covered</span></div>
+      ${left.length ? `<ul class="left-list">${left.map((g) => `<li>
+          <div class="left-head"><span class="left-name">${esc(g.name)}</span><span class="left-cr">${g.creditsLeft || '—'} cr left</span></div>
+          <ul>${g.remaining.map((r) => `<li>${linkify(r, known)}</li>`).join('')}</ul>
+        </li>`).join('')}</ul>` : '<p>Nothing left. Every group is done, in progress, or covered by saved sections.</p>'}
+      ${doneGroups.length ? `<div class="done-row">${doneGroups.map((g) => `<span class="done-chip ${g.status}">${g.status === 'done' ? '✓' : '◐'} ${esc(g.name)}</span>`).join('')}</div>` : ''}
+      <details class="all-reqs"${reqsWereOpen ? ' open' : ''}><summary>See every requirement and the courses that count</summary><ul class="req-list">`;
   for (const g of audit.groups) {
     const have = g.done + g.inProgress + g.planned;
     html += `<li class="req">
         <div class="req-head"><span class="req-name">${esc(g.name)}</span>${pill(g.status)}<span class="req-cr">${Math.min(have, g.credits)}/${g.credits} cr</span></div>
         <div class="req-bar"><span class="p-done" style="width:${Math.min(100, (g.done / g.credits) * 100)}%"></span><span class="p-ip" style="width:${Math.min(100, (g.inProgress / g.credits) * 100)}%"></span><span class="p-pl" style="width:${Math.min(100, (g.planned / g.credits) * 100)}%"></span></div>
         ${g.courses.length ? `<div class="req-chips">${g.courses.map((c) => courseChip(c, known)).join('')}</div>` : ''}
-        ${g.remaining.length ? `<ul class="req-left">${g.remaining.map((r) => `<li>${linkify(r, known)}</li>`).join('')}</ul>` : ''}
-        ${g.note && g.status !== 'done' ? `<p class="req-note">${esc(g.note)}</p>` : ''}
+        ${g.note ? `<p class="req-note">${esc(g.note)}</p>` : ''}
       </li>`;
   }
   html += '</ul>';
-  if (audit.extra.length) {
-    html += `<p class="small muted">Extra credit beyond the degree: ${audit.extra.map((e) => esc(e.code)).join(', ')}</p>`;
-  }
-  html += '</div>';
+  if (audit.extra.length) html += `<p class="small muted">Extra credit beyond the degree: ${audit.extra.map((e) => esc(e.code)).join(', ')}</p>`;
+  html += '</details></div>';
 
-  // ----- plan -----
-  const termsWithItems = plan.terms.filter((term) => term.items.length);
-  html += `<div class="card plan-card">
-      <div class="card-head">
-        <h2 class="card-title">Semester plan</h2>
-        <label class="small muted">Max credits per term
-          <select id="max-credits">${[12, 13, 15, 16, 18].map((n) => `<option value="${n}"${n === maxCredits ? ' selected' : ''}>${n}</option>`).join('')}</select>
-        </label>
-      </div>`;
-  if (!termsWithItems.length && !plan.later.length) {
-    html += '<p class="plan-done">Everything is done or in progress. 🎓 Check with your advisor about applying to graduate.</p>';
-  } else {
-    html += `<p class="small muted">Built from your remaining requirements, prerequisites, and the CS department’s <strong>tentative</strong> schedule of future courses. Required courses come first; electives and Core Curriculum slots are flexible.</p>`;
-    plan.terms.forEach((term, i) => {
-      if (!term.items.length) return;
-      html += `<section class="plan-term">
-          <h3>${i === plan.terms.findIndex((x) => x.items.length) ? '<span class="next-badge">Next</span>' : ''}${esc(term.label)} <span class="muted small">· ${term.credits} credits</span></h3>
-          <ul>${term.items.map((it) => planItem(it, known, it.warning || '')).join('')}</ul>
-        </section>`;
-    });
-    if (plan.later.length) {
-      html += `<section class="plan-term later"><h3>Not placed yet</h3><ul>${plan.later.map((it) => planItem(it, known, it.reason)).join('')}</ul></section>`;
-    }
-    const last = [...plan.terms].reverse().find((term) => term.items.length);
-    if (last && !plan.later.length) html += `<p class="plan-done">On this plan you finish in <strong>${esc(last.label)}</strong>.</p>`;
-    html += '<div class="course-actions"><button type="button" class="btn" data-ask-plan>Ask the advisor about this plan</button></div>';
-  }
-  html += '</div>';
-
-  // ----- transcript courses (editable) -----
+  // ----- 4. transcript courses (editable) -----
   const rows = transcript.courses.map((r, i) => `<tr class="${r.status === 'not-counted' || r.repeatExcluded ? 'muted-row' : ''}">
       <td><strong>${esc(r.code)}</strong></td>
       <td class="t-title">${esc(r.title)}</td>
@@ -215,7 +280,7 @@ export function renderDegree(el, ctx) {
       <p class="hint">Leave the grade empty for a course you are taking now. Grades like W, F, and I do not count.</p>
     </details>`;
 
-  // ----- notes -----
+  // ----- 5. notes -----
   html += `<div class="card notes-card"><p class="small muted"><strong>Check with your advisor.</strong> This is a planning aid, not an official degree audit.</p><ul class="small muted">
       ${program.notes.map((n) => `<li>${esc(n)}</li>`).join('')}
       <li>Future offerings come from the CS department’s tentative schedule (${esc(index.forecast?.terms?.map((x) => x.label).join(', ') || 'none loaded')}). Non-CS courses are assumed to run every term.</li>
@@ -223,7 +288,7 @@ export function renderDegree(el, ctx) {
     </ul></div>`;
 
   el.innerHTML = html;
-  return { audit, plan, program };
+  return { audit, ruleView, shown, check, source: useAi ? 'claude' : 'rules' };
 }
 
 // ---------- wiring ----------
@@ -371,6 +436,11 @@ export function wireDegree(els, hooks) {
       return;
     }
     if (e.target.closest('[data-ask-plan]')) { hooks.askPlan(); return; }
+    if (e.target.closest('[data-build-plan]')) { hooks.buildPlan(); return; }
+    const pv = e.target.closest('[data-plan-view]');
+    if (pv) { hooks.setPlanView(pv.dataset.planView); return; }
+    const ps = e.target.closest('[data-plan-search]');
+    if (ps) { hooks.onCode(ps.dataset.planSearch); return; }
     const chip = e.target.closest('.req-chip[data-code]');
     if (chip) hooks.onCode(chip.dataset.code);
   });

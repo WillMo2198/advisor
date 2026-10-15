@@ -254,3 +254,36 @@ test('Spring 2027 is the schedule term: saved sections fill that term of the pla
   assert.ok(s27.credits <= 15);
   assert.ok(!plan.terms.slice(1).some((t) => t.items.some((i) => i.code === 'CS 440')));
 });
+
+test('plan check: the rule-based plan passes, broken plans are caught', async () => {
+  const { checkPlan, normalizePlan, groupForRequirement } = await import('../public/js/core/plan-check.js');
+  const { describePlan } = await import('../public/js/core/planner.js');
+  const audit = auditDegree(program, sample.courses, { index });
+  const best = bestAttempts(sample.courses);
+  const done = new Set(best.filter((r) => r.status !== 'not-counted').map((r) => r.code));
+  const grades = new Map(best.map((r) => [r.code, r.grade]));
+  const rule = describePlan(planSemesters(audit, program, index, { done, grades }), audit);
+  assert.equal(rule.graduation, 'Spring 2028');
+  assert.ok(rule.terms[0].items.every((i) => i.reason));
+  const ok = checkPlan(rule, { index, program, records: sample.courses, done, grades });
+  assert.deepEqual(ok.issues, []);
+
+  const { terms } = normalizePlan({ terms: [
+    { term: 'Spring 2027', courses: [{ code: 'cs331', credits: 3 }, { code: 'CS 443', credits: 3 }, { code: 'CS 440' }] },
+    { term: 'F27', courses: [{ code: 'CS 440' }, { code: null, label: 'Free elective', credits: 20 }] },
+  ] }, { index, program, audit });
+  assert.equal(terms[1].label, 'Fall 2027');
+  assert.equal(terms[1].items[1].credits, 3); // 20 credits is not sane, so the default is used
+  const bad = checkPlan({ terms }, { index, program, records: sample.courses, done, grades, maxCredits: 6 });
+  const msgs = bad.issues.map((x) => `${x.code || ''} ${x.message}`).join('\n');
+  assert.match(msgs, /CS 331 CS 331 is already done/);
+  assert.match(msgs, /CS 443 Not on the forecast for Spring 2027 \(planned for Fall 2028\)/);
+  assert.match(msgs, /CS 440 CS 440 is in the plan twice/);
+  assert.match(msgs, /Spring 2027 has 9 credits, over your limit of 6/);
+  assert.equal(bad.ok, false);
+
+  assert.equal(groupForRequirement('Humanities and Social Sciences', program), 'hss');
+  assert.equal(groupForRequirement('IPRO', program), 'ipro');
+  assert.equal(groupForRequirement('Computer Science Electives', program), 'cs-electives');
+  assert.equal(groupForRequirement('Free elective', program), 'free');
+});

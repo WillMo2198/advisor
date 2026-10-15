@@ -175,5 +175,12 @@ export function createChat({ els, known, getContext, onCodeClick }) {
   });
 
   render();
-  return { ask, render, get busy() { return busy; }, get mode() { return mode; } };
+  return {
+    ask,
+    render,
+    /** The conversation so far (no error bubbles), for the plan builder. */
+    messages: () => messages.filter((m) => !m.error && !m.pending && m.content).map(({ role, content }) => ({ role, content })),
+    get busy() { return busy; },
+    get mode() { return mode; },
+  };
 }
