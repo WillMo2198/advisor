@@ -63,6 +63,7 @@ export function normalizePlan(raw, { index, program, audit, saved = [] }) {
         kind,
         requirement,
         reason: String(ri.reason || '').slice(0, 240),
+        options: !code && Array.isArray(ri.options) ? ri.options.map((o) => normalizeCode(o)).filter((o) => o && index?.has?.(o)).slice(0, 20) : [],
       });
     }
     const existing = out.find((t) => t.key === term.key);

@@ -43,11 +43,14 @@ export function neededItems(audit, program, index, { exclude = new Set(), electi
         if (slot.options.length > 1 && slot.missing.length === slot.chosen.length && slot.options.every((o) => o.length === 1)) {
           const codes = slot.options.map((o) => o[0]).filter((code) => !taken.has(code));
           const shown = codes.filter((code) => index.has(code));
-          const pickFrom = shown.length ? shown : codes;
-          const runs = (code) => index.forecast?.courses?.[code]?.length ?? 0;
-          const code = [...pickFrom].sort((a, b) => runs(b) - runs(a))[0];
-          if (code) {
-            add({ code, title: titleFor(code, index, program), credits: creditsFor(code, index, program), kind: 'choice', group: g.id, groupName: g.name, alternatives: shown.filter((c) => c !== code) });
+          const list = shown.length ? shown : codes;
+          const needed = list.find((c) => wantedLeaves.has(c));
+          if (needed) {
+            // another required course needs this one first, so plan it
+            add({ code: needed, title: titleFor(needed, index, program), credits: creditsFor(needed, index, program), kind: 'choice', group: g.id, groupName: g.name, alternatives: list.filter((c) => c !== needed), why: wantedFor.get(needed)?.length ? `Also opens ${wantedFor.get(needed).join(', ')}` : '' });
+          } else if (list.length) {
+            // do not pick a course for the student: list every option
+            add({ code: null, label: g.name, hint: `One of ${list.join(', ')}`, credits: creditsFor(list[0], index, program), kind: 'placeholder', group: g.id, groupName: g.name, examples: list });
           }
           continue;
         }
@@ -64,6 +67,16 @@ export function neededItems(audit, program, index, { exclude = new Set(), electi
         const options = from.codes.filter((c) => !taken.has(c));
         const known = options.filter((c) => index.has(c));
         const wanted = options.filter((c) => wantedLeaves.has(c));
+        if (options.length > 1 && !options.some((c) => wantedLeaves.has(c))) {
+          // several courses can fill it: list them all instead of picking one
+          const list = known.length ? known : options;
+          const each = creditsFor(list[0], index, program);
+          let n = def.count ? def.count - g.courses.length : Math.ceil(left / each);
+          while (n-- > 0 && list.length) {
+            add({ code: null, label: g.name, hint: `One of ${list.join(', ')}`, credits: each, kind: 'placeholder', group: g.id, groupName: g.name, examples: list });
+          }
+          left = 0;
+        }
         while (left > 0 && options.length) {
           const code = known.length ? known.shift() : (wanted.length ? wanted.shift() : options[0]);
           options.splice(options.indexOf(code), 1);
