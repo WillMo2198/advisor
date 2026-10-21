@@ -162,7 +162,7 @@ function auditHss(group, pool) {
 
   // a transfer HUM elective (for example HUM 200) fills the 100-level slot when there is no HUM 1xx course
   let hum100 = free().filter((p) => subject(p.code) === 'HUM' && level(p.code) === 100).sort(byStatus).slice(0, 1);
-  if (!hum100.length) hum100 = free().filter((p) => subject(p.code) === 'HUM' && p.transfer).sort(byStatus).slice(0, 1);
+  if (!hum100.length) hum100 = free().filter((p) => subject(p.code) === 'HUM' && (p.transfer || p.grade === 'TR')).sort(byStatus).slice(0, 1);
   take(hum100);
   parts.push({ id: 'hum100', label: 'One HUM 100-level course', need: 1, have: hum100 });
 

@@ -83,3 +83,12 @@ Still needed: 1 Class in CS 512`;
   const audit = auditDegree(ai, r.courses, { index, planned: [] });
   assert.equal(audit.groups.find((g) => g.id === 'ai-breadth-course').status, 'done');
 });
+
+test('a transfer HUM elective fills the 100-level slot, so only a 200+ humanities course is left', () => {
+  const ai = programs.find((p) => p.id === 'bs-artificial-intelligence');
+  const rec = (code, grade, status = 'completed') => ({ code, title: '', credits: 3, grade, term: 'Fall 2024', status, transfer: grade === 'TR' });
+  const audit = auditDegree(ai, [rec('HUM 200', 'TR'), rec('HUM 380', 'A'), rec('ECON 211', 'B'), rec('ECON 311', 'B'), rec('SOC 303', 'A'), rec('COM 421', 'TR')], { index, planned: [] });
+  const hss = audit.groups.find((g) => g.type === 'hss');
+  assert.ok(!hss.remaining.some((r) => /100-level/.test(r)));
+  assert.ok(hss.remaining.some((r) => /Two \(H\)/.test(r)));
+});
