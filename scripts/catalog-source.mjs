@@ -4,6 +4,8 @@
 // `prereq` is the same rule stored as a tree: AND / OR nodes with course and text leaves.
 // Run `npm run build:data` after you edit this file.
 
+import { hssCourses, hssDepartments } from './hss-source.mjs';
+
 const c = (code, opts = {}) => ({ type: 'course', code, ...opts });
 const any = (...children) => ({ type: 'or', children });
 const all = (...children) => ({ type: 'and', children });
@@ -14,6 +16,7 @@ const CONCURRENT_NOTE = 'An asterisk (*) designates a course which may be taken 
 export const departments = {
   CS: 'Computer Science',
   MATH: 'Mathematics',
+  ...hssDepartments,
 };
 
 export const courses = [
@@ -372,4 +375,7 @@ export const courses = [
     satisfies: '', prereqText: 'MATH 251 or Graduate standing',
     prereq: any(c('MATH 251'), t('Graduate standing')),
   },
+
+  // ---------- Humanities and Social Sciences (see hss-source.mjs) ----------
+  ...hssCourses,
 ];

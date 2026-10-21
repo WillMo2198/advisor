@@ -1,8 +1,18 @@
 {
-  "source": "Illinois Tech undergraduate catalog, catalog.iit.edu/courses/cs and /courses/math (read October 2026). Descriptions are short paraphrases.",
+  "source": "Illinois Tech undergraduate catalog, catalog.iit.edu/courses (CS, MATH, and the Humanities and Social Sciences subjects), read October 2026. Descriptions are short paraphrases.",
   "departments": {
     "CS": "Computer Science",
-    "MATH": "Mathematics"
+    "MATH": "Mathematics",
+    "HUM": "Humanities",
+    "HIST": "History",
+    "PHIL": "Philosophy",
+    "LIT": "Literature",
+    "AAH": "Art and Architecture History",
+    "PSYC": "Psychology",
+    "PS": "Political Science",
+    "ECON": "Economics",
+    "SOC": "Sociology",
+    "SSCI": "Social Sciences"
   },
   "courses": [
     {
@@ -1232,6 +1242,4050 @@
             "text": "Graduate standing"
           }
         ]
+      }
+    },
+    {
+      "code": "HUM 100",
+      "title": "Reading Methods for the Humanities",
+      "credits": "3",
+      "description": "Critical reading of scholarly and literary sources for student-chosen research topics. Covers library resources and bibliographic methods. Topics vary by instructor, and off-campus visits may be required.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "Satisfaction of IIT's Basic Writing Proficiency Requirement",
+      "prereq": {
+        "type": "text",
+        "text": "Basic Writing Proficiency Requirement"
+      }
+    },
+    {
+      "code": "HUM 102",
+      "title": "Industrial Culture",
+      "credits": "3",
+      "description": "How modern industrial society developed, and how science and technology shaped culture, using history, literature, and philosophy.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "IIT Communication Placement score of 102, COM 111, COM 101, or qualifying ACT, SAT, or writing test scores",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "COM 111"
+          },
+          {
+            "type": "course",
+            "code": "COM 101"
+          },
+          {
+            "type": "text",
+            "text": "IIT Communication Placement score of 102, or qualifying ACT, SAT, or writing test scores"
+          }
+        ]
+      }
+    },
+    {
+      "code": "HUM 103",
+      "title": "Decoding & Designing Texts with Data",
+      "credits": "3",
+      "description": "How engineering, design, and technology relate to ethics, public media, and writing. Covers reading data-driven texts, basic data visualization, and arguing from data to professional and public audiences.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "Satisfaction of IIT's Basic Writing Proficiency Requirement",
+      "prereq": {
+        "type": "text",
+        "text": "Basic Writing Proficiency Requirement"
+      }
+    },
+    {
+      "code": "HUM 104",
+      "title": "Age of Darwin",
+      "credits": "3",
+      "description": "Introduces the humanities by tracing cultural change linked to Darwin's theory of evolution, with readings from literature, philosophy, and science.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "COM 101, COM 111, IIT Communication Placement score of 102, or qualifying ACT, SAT, or writing test scores",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "COM 101"
+          },
+          {
+            "type": "course",
+            "code": "COM 111"
+          },
+          {
+            "type": "text",
+            "text": "IIT Communication Placement score of 102, or qualifying ACT, SAT, or writing test scores"
+          }
+        ]
+      }
+    },
+    {
+      "code": "HUM 106",
+      "title": "Life Stories",
+      "credits": "3",
+      "description": "Interdisciplinary study of mostly American autobiographies as a genre, and of the historical and philosophical forces behind the writers' lives. Syllabi vary and may feature figures such as Franklin, Angelou, and Malcolm X.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "COM 101, COM 111, IIT Communication Placement score of 102, or qualifying ACT, SAT, or writing test scores",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "COM 101"
+          },
+          {
+            "type": "course",
+            "code": "COM 111"
+          },
+          {
+            "type": "text",
+            "text": "IIT Communication Placement score of 102, or qualifying ACT, SAT, or writing test scores"
+          }
+        ]
+      }
+    },
+    {
+      "code": "HUM 108",
+      "title": "Digital Culture",
+      "credits": "3",
+      "description": "Major topics in digital culture, including the technical and cultural history of the internet, with academic writing and humanities research methods.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "Satisfaction of IIT's Basic Writing Proficiency Requirement",
+      "prereq": {
+        "type": "text",
+        "text": "Basic Writing Proficiency Requirement"
+      }
+    },
+    {
+      "code": "HUM 180",
+      "title": "Topics in Humanities",
+      "credits": "3",
+      "description": "First-time or one-time offerings of topics equal to HUM 202, 204, 206, and 208. Introduces the humanities at IIT with intensive writing instruction.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "Satisfaction of IIT's Basic Writing Proficiency Requirement",
+      "prereq": {
+        "type": "text",
+        "text": "Basic Writing Proficiency Requirement"
+      }
+    },
+    {
+      "code": "HUM 202",
+      "title": "From Industrial Culture to Artificial Intelligence",
+      "credits": "3",
+      "description": "Extends the study of industrial society and its cultural effects from the late eighteenth century to today, using interdisciplinary readings. Writing-intensive.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "HUM 204",
+      "title": "Age of Darwin",
+      "credits": "3",
+      "description": "Cultural change tied to Darwin's evolutionary theory, through literature, philosophy, and science. Writing-intensive.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "COM 101, COM 111, or IIT Communication Placement score of 102",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "COM 101"
+          },
+          {
+            "type": "course",
+            "code": "COM 111"
+          },
+          {
+            "type": "text",
+            "text": "IIT Communication Placement score of 102"
+          }
+        ]
+      }
+    },
+    {
+      "code": "HUM 206",
+      "title": "Life Stories",
+      "credits": "3",
+      "description": "Interdisciplinary study of biographies and autobiographies as a genre, and of the historical and philosophical contexts of their subjects' lives. Writing-intensive.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "COM 101, COM 111, or IIT Communication Placement score of 102",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "COM 101"
+          },
+          {
+            "type": "course",
+            "code": "COM 111"
+          },
+          {
+            "type": "text",
+            "text": "IIT Communication Placement score of 102"
+          }
+        ]
+      }
+    },
+    {
+      "code": "HUM 380",
+      "title": "Seminar in Humanities",
+      "credits": "3",
+      "description": "A current or long-standing humanities topic that does not fit standard categories.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "HUM 395",
+      "title": "Practical Experience in Humanities",
+      "credits": "3",
+      "description": "Pairs humanities coursework with supervised work in the public or private sector, such as a teaching role or research assistantship. Required for humanities majors. Double majors may submit a five-page report on an equal experience in their other major.",
+      "satisfies": "",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "HUM 491",
+      "title": "Independent Reading/Research",
+      "credits": "Variable",
+      "description": "Independent reading or research under faculty direction.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "HUM 495",
+      "title": "Foundational Research Methods",
+      "credits": "3",
+      "description": "Research methods and current scholarship for advanced humanities students. Students run self-designed research projects and aim to write a draft article for a humanities journal.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "HIST 101",
+      "title": "World Civilizations to 1500",
+      "credits": "3",
+      "description": "Major civilizations from prehistory to 1500 across Eurasia, Africa, and the Americas: river civilizations, trade, states and empires, and major religions.",
+      "satisfies": "Humanities (H)",
+      "prereqText": "Satisfaction of IIT's Basic Writing Proficiency Requirement",
+      "prereq": {
+        "type": "text",
+        "text": "Basic Writing Proficiency Requirement"
+      }
+    },
+    {
+      "code": "HIST 103",
+      "title": "World Civilizations Since 1500",
+      "credits": "3",
+      "description": "The making of the modern world through global geopolitical, social, and economic ties, from colonization and the Columbian Exchange to world wars, decolonization, and the 21st century.",
+      "satisfies": "Humanities (H)",
+      "prereqText": "Satisfaction of IIT's Basic Writing Proficiency Requirement",
+      "prereq": {
+        "type": "text",
+        "text": "Basic Writing Proficiency Requirement"
+      }
+    },
+    {
+      "code": "HIST 104",
+      "title": "Western Civilization to 1500",
+      "credits": "3",
+      "description": "Western history to 1500, from early states in Mesopotamia, Greece, and Rome through medieval Europe, the Crusades, the Black Death, and the Renaissance.",
+      "satisfies": "Humanities (H)",
+      "prereqText": "Satisfaction of IIT's Basic Writing Proficiency Requirement",
+      "prereq": {
+        "type": "text",
+        "text": "Basic Writing Proficiency Requirement"
+      }
+    },
+    {
+      "code": "HIST 105",
+      "title": "Western Civilization Since 1500",
+      "credits": "3",
+      "description": "Western history from 1500: the Reformation, the Scientific Revolution, the Enlightenment, revolutions, nationalism, imperialism, the world wars, the Cold War, and decolonization.",
+      "satisfies": "Humanities (H)",
+      "prereqText": "Satisfaction of IIT's Basic Writing Proficiency Requirement",
+      "prereq": {
+        "type": "text",
+        "text": "Basic Writing Proficiency Requirement"
+      }
+    },
+    {
+      "code": "HIST 106",
+      "title": "History of the United States to 1877",
+      "credits": "3",
+      "description": "U.S. history to 1877: colonization, the Revolution, the Constitution, the early republic, slavery, the Civil War, and Reconstruction.",
+      "satisfies": "Humanities (H)",
+      "prereqText": "Satisfaction of IIT's Basic Writing Proficiency Requirement",
+      "prereq": {
+        "type": "text",
+        "text": "Basic Writing Proficiency Requirement"
+      }
+    },
+    {
+      "code": "HIST 107",
+      "title": "History of the United States Since 1877",
+      "credits": "3",
+      "description": "How the U.S. gained economic and military power and used it at home and abroad, from the Gilded Age through the world wars, Civil Rights, and the early 2000s.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "HIST 252",
+      "title": "History of Chicago",
+      "credits": "3",
+      "description": "Urban institutions in historical context, with Chicago as a case study: political machines, reform movements, planning agencies, ethnic neighborhoods, and organized crime.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "HIST 253",
+      "title": "Prohibition Era in Chicago, 1920-1933",
+      "credits": "3",
+      "description": "The people, places, institutions, politics, and culture of Chicago during federal Prohibition, and the factors that shaped the city's experience.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "HIST 254",
+      "title": "Chicago LGBTQ History",
+      "credits": "3",
+      "description": "How LGBTQ narratives, cultures, and organizations developed in Chicago, within local, national, and international history.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "HIST 271",
+      "title": "A History of Artificial Intelligence from Turing to the Present",
+      "credits": "3",
+      "description": "AI from the mid-20th century to today: technical developments, the philosophy behind AI, and its cultural, economic, and environmental effects.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "HIST 273",
+      "title": "History of Video Games",
+      "credits": "Variable",
+      "description": "The technical and cultural history of video games, with scholarly writing and humanities research methods.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "HIST 280",
+      "title": "Topics in History",
+      "credits": "3",
+      "description": "A history topic or period of lasting interest, announced by the instructor when scheduled (for example the Middle Ages, the Ancient Mediterranean, or a history of China).",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 180 or HUM 102-108",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 103"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          }
+        ]
+      }
+    },
+    {
+      "code": "HIST 380",
+      "title": "Seminar in History",
+      "credits": "3",
+      "description": "A topic of current or lasting historical interest, announced by the instructor when scheduled.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "HIST 491",
+      "title": "Independent Reading and Research",
+      "credits": "Variable",
+      "description": "Independent reading and research for advanced students. Needs department consent.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PHIL 204",
+      "title": "Judgment and Decision-Making",
+      "credits": "3",
+      "description": "Good reasoning, the psychology and philosophy of judgment errors and biases, their effects on people and societies, and ways to improve judgment.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PHIL 206",
+      "title": "Rationality and Science Policy",
+      "credits": "3",
+      "description": "Evidence-based look at science policy problems such as group polarization, conspiracy theories, and deference to experts, and the reasoning skills citizens and officials need.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PHIL 208",
+      "title": "Philosophy and Psychology of Language",
+      "credits": "3",
+      "description": "Evidence on the nature and origins of language from philosophical and psychological angles: animal communication, reference, meaning, and the biology of language.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PHIL 211",
+      "title": "Influential Thinkers",
+      "credits": "3",
+      "description": "In-depth study of one outstanding philosopher, chosen by the instructor.",
+      "satisfies": "",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PHIL 235",
+      "title": "Introduction to Philosophy",
+      "credits": "3",
+      "description": "Philosophical questions about the mind and its assumptions across philosophy, psychology, neuroscience, and AI, and the relation between minds, bodies, and machines.",
+      "satisfies": "Ethics (E)",
+      "prereqText": "Satisfaction of IIT's Basic Writing Proficiency Requirement",
+      "prereq": {
+        "type": "text",
+        "text": "Basic Writing Proficiency Requirement"
+      }
+    },
+    {
+      "code": "PHIL 257",
+      "title": "Philosophy of Medicine",
+      "credits": "3",
+      "description": "Health, disease, and illness, and related philosophical and policy issues: clinical trial evidence, bias in care, AI in medicine, disability, and mental illness.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 200-299 (may be taken concurrently)",
+      "prereq": {
+        "type": "text",
+        "text": "Any HUM 200-299 course (may be taken at the same time)"
+      }
+    },
+    {
+      "code": "PHIL 260",
+      "title": "Ethics",
+      "credits": "3",
+      "description": "Fundamental issues in moral philosophy.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PHIL 272",
+      "title": "Ethics of Technology and Communication",
+      "credits": "3",
+      "description": "Ethical questions about technology and communication: algorithmic bias, privacy and surveillance, consent and manipulation, and digital environmental impact, using case studies.",
+      "satisfies": "Communications (C), Ethics (E), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PHIL 280",
+      "title": "Topics in Philosophy",
+      "credits": "3",
+      "description": "A current philosophical topic announced by the instructor when scheduled.",
+      "satisfies": "",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PHIL 281",
+      "title": "Artificial Intelligence, Philosophy and Ethics",
+      "credits": "3",
+      "description": "Ethical arguments and principles in AI and robotics: algorithmic bias, machine sentience, self-driving car decision rules, and the moral and legal status of robots.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PHIL 282",
+      "title": "Bioethics",
+      "credits": "3",
+      "description": "Ethical and social issues in life sciences and biomedicine, such as gene editing, stem cells, neurotechnology, human enhancement, and climate change, with an introduction to ethical theory.",
+      "satisfies": "Communications (C), Ethics (E), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PHIL 285",
+      "title": "Trustworthy AI",
+      "credits": "3",
+      "description": "Ethical aspects of AI, focused on trustworthy AI principles such as autonomy, harm prevention, fairness, explainability, privacy, and accountability, judged through use cases.",
+      "satisfies": "Communications (C), Ethics (E), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PHIL 330",
+      "title": "Philosophy of Data Science",
+      "credits": "3",
+      "description": "Philosophical questions about data, such as what data is and how it works as evidence, plus ethical issues like privacy, algorithmic bias, and computing's environmental impact.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PHIL 331",
+      "title": "Political Philosophy of Artificial Intelligence",
+      "credits": "3",
+      "description": "Applies social contract theories to AI: algorithmic nudging and bias, expertise and chatbots, online platform politics, and digital surveillance.",
+      "satisfies": "Communications (C), Ethics (E), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course (may be taken concurrently)",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100",
+            "concurrent": true
+          },
+          {
+            "type": "course",
+            "code": "HUM 102",
+            "concurrent": true
+          },
+          {
+            "type": "course",
+            "code": "HUM 104",
+            "concurrent": true
+          },
+          {
+            "type": "course",
+            "code": "HUM 106",
+            "concurrent": true
+          },
+          {
+            "type": "course",
+            "code": "HUM 108",
+            "concurrent": true
+          },
+          {
+            "type": "course",
+            "code": "HUM 180",
+            "concurrent": true
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course (may be taken at the same time)"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PHIL 342",
+      "title": "Philosophy of Mind",
+      "credits": "3",
+      "description": "The concept of mind as distinct from body, and what it means for psychology, AI, and neuroscience.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PHIL 380",
+      "title": "Seminar in Philosophy",
+      "credits": "3",
+      "description": "A current philosophical topic announced by the instructor when scheduled.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PHIL 491",
+      "title": "Independent Study",
+      "credits": "Variable",
+      "description": "Supervised individual research for advanced students. Needs instructor permission.",
+      "satisfies": "Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "LIT 207",
+      "title": "Graphic Novel",
+      "credits": "3",
+      "description": "How comics moved beyond superhero stories after the 1970s to take on philosophical themes. Works by major and outside creators, plus comics theory. Not for credit to students who took LIT 380 Graphic Novel.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "LIT 211",
+      "title": "Influential Authors",
+      "credits": "3",
+      "description": "The work of one influential author, chosen by the instructor. Examples include Tolkien, Garcia Marquez, and N. K. Jemisin.",
+      "satisfies": "",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "LIT 280",
+      "title": "Topics in Literature",
+      "credits": "3",
+      "description": "A current or lasting literary topic set by the instructor. Examples include fantasy history, Victorian literature, and Realism.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 180 or HUM 100-110",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 103"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          }
+        ]
+      }
+    },
+    {
+      "code": "LIT 380",
+      "title": "Seminar in Literature",
+      "credits": "3",
+      "description": "A literary topic of current or lasting interest, announced by the instructor when scheduled.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "LIT 411",
+      "title": "Workshop in Creative Writing",
+      "credits": "3",
+      "description": "Writing fiction, poetry, or drama from a writer's view. Analyzes modern works and workshops student manuscripts.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "LIT 491",
+      "title": "Independent Reading and Research",
+      "credits": "Variable",
+      "description": "Advanced independent study. Needs department consent.",
+      "satisfies": "Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "AAH 119",
+      "title": "History of World Architecture I",
+      "credits": "3",
+      "description": "Architecture worldwide from antiquity through the medieval period, focused on specific cultures and architects alongside broader theories and strategies.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "Satisfaction of IIT's Basic Writing Proficiency Requirement",
+      "prereq": {
+        "type": "text",
+        "text": "Basic Writing Proficiency Requirement"
+      }
+    },
+    {
+      "code": "AAH 120",
+      "title": "History of World Architecture II",
+      "credits": "Variable",
+      "description": "Architecture worldwide from the Renaissance to the present, focused on specific cultures and architects alongside broader theories and strategies.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "Satisfaction of IIT's Basic Writing Proficiency Requirement",
+      "prereq": {
+        "type": "text",
+        "text": "Basic Writing Proficiency Requirement"
+      }
+    },
+    {
+      "code": "AAH 201",
+      "title": "Art Appreciation: Thinking, Talking, and Writing about Art",
+      "credits": "3",
+      "description": "Skills for describing, analyzing, and arguing about painting, sculpture, printmaking, and architecture. Covers art-historical methods, race and identity in interpretation, and how art is exhibited, using Chicago-area institutions.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "Satisfaction of IIT's Basic Writing Proficiency Requirement",
+      "prereq": {
+        "type": "text",
+        "text": "Basic Writing Proficiency Requirement"
+      }
+    },
+    {
+      "code": "AAH 380",
+      "title": "Topics in Art and Architecture History",
+      "credits": "3",
+      "description": "A current or long-standing topic in art or architectural history, announced by the instructor when scheduled.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "AAH 491",
+      "title": "Independent Reading and Research",
+      "credits": "Variable",
+      "description": "Independent reading and research for advanced students. Needs instructor permission.",
+      "satisfies": "Humanities (H)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 100",
+      "title": "Introduction to the Profession",
+      "credits": "3",
+      "description": "Overview of psychology concepts, academic career planning, information literacy, communication, and professional skills.",
+      "satisfies": "Communications (C)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PSYC 102",
+      "title": "Introduction to Recovery Support",
+      "credits": "2",
+      "description": "Foundations of recovery philosophy, empowerment, listening skills, service planning, advocacy, and mentorship.",
+      "satisfies": "",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PSYC 103",
+      "title": "Ethical and Professional Issues in Recovery Support",
+      "credits": "2",
+      "description": "Historical, philosophical, ethical, and legal issues in recovery support, with ethical decision-making and multicultural competence.",
+      "satisfies": "Ethics (E)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PSYC 104",
+      "title": "Evidence-Based Practices in Recovery Support",
+      "credits": "2",
+      "description": "Evidence-based practices in mental health and substance use treatment, such as motivational interviewing and supported employment.",
+      "satisfies": "",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PSYC 105",
+      "title": "Special Topics and Populations in Recovery Support",
+      "credits": "2",
+      "description": "Running peer groups and meeting the needs of special populations and topics like spirituality, sexuality, and telehealth.",
+      "satisfies": "",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PSYC 106",
+      "title": "Recovery Support Internship",
+      "credits": "1",
+      "description": "Supervised community internship of at least 300 clock hours, with weekly individual and group supervision.",
+      "satisfies": "",
+      "prereqText": "PSYC 102, 103, 104, and 105",
+      "prereq": {
+        "type": "and",
+        "children": [
+          {
+            "type": "course",
+            "code": "PSYC 102"
+          },
+          {
+            "type": "course",
+            "code": "PSYC 103"
+          },
+          {
+            "type": "course",
+            "code": "PSYC 104"
+          },
+          {
+            "type": "course",
+            "code": "PSYC 105"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 121",
+      "title": "Introduction to Psychology",
+      "credits": "3",
+      "description": "Survey of psychological science, research methods, major subfields, and psychological theory applied to mass media.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PSYC 150",
+      "title": "Introduction to Leadership: Concepts and Practices",
+      "credits": "3",
+      "description": "Historical and current leadership theories, applied to practical leadership experiences.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PSYC 199",
+      "title": "Topics in Psychological Science",
+      "credits": "3",
+      "description": "Entry-level course using accessible sources to introduce major topics in current psychology. Used for transfer credit.",
+      "satisfies": "",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PSYC 203",
+      "title": "Undergraduate Statistics for the Behavioral Sciences",
+      "credits": "4",
+      "description": "Statistics for behavioral science: descriptive statistics, ANOVA, regression, correlation, and meta-analysis.",
+      "satisfies": "",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PSYC 204",
+      "title": "Research Methods in Behavioral Science",
+      "credits": "4",
+      "description": "Experimental, survey, and field methods: ethics, research design, data collection and analysis, and report writing.",
+      "satisfies": "Communications (C), Natural Science (N)",
+      "prereqText": "(PSYC 221 or PSYC 222) and PSYC 203",
+      "prereq": {
+        "type": "and",
+        "children": [
+          {
+            "type": "or",
+            "children": [
+              {
+                "type": "course",
+                "code": "PSYC 221"
+              },
+              {
+                "type": "course",
+                "code": "PSYC 222"
+              }
+            ]
+          },
+          {
+            "type": "course",
+            "code": "PSYC 203"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 210",
+      "title": "Social Psychology",
+      "credits": "3",
+      "description": "How social conditions shape behavior and experience: social issues, human relations, prejudice, and leadership.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PSYC 211",
+      "title": "Industrial Psychology",
+      "credits": "3",
+      "description": "Practical psychology applied to business and industry: work attitudes, selection, morale, safety, turnover, and training.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PSYC 212",
+      "title": "Introduction to Psychopathology",
+      "credits": "3",
+      "description": "Cognitive, emotional, and behavioral disorders, with focus on diagnosis, causes, treatment, and research views.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PSYC 238",
+      "title": "Professional Skills",
+      "credits": "3",
+      "description": "Applied skills in oral communication, conflict management, and interpersonal dynamics at work.",
+      "satisfies": "",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PSYC 312",
+      "title": "Human Motivation and Emotion",
+      "credits": "3",
+      "description": "Major historical and current motivation theories, and their use in health care, sports, management, education, and gaming.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "PSYC 221",
+      "prereq": {
+        "type": "course",
+        "code": "PSYC 221"
+      }
+    },
+    {
+      "code": "PSYC 320",
+      "title": "Applied Correlation and Regression",
+      "credits": "3",
+      "description": "Applying correlation and regression to research on human behavior, with practical issues, analysis, and reporting of results.",
+      "satisfies": "",
+      "prereqText": "PSYC 203",
+      "prereq": {
+        "type": "course",
+        "code": "PSYC 203"
+      }
+    },
+    {
+      "code": "PSYC 330",
+      "title": "Health Psychology",
+      "credits": "3",
+      "description": "Psychological principles in health promotion, illness prevention, and treatment, including stress, coping, and specific diseases.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "PSYC 221",
+      "prereq": {
+        "type": "course",
+        "code": "PSYC 221"
+      }
+    },
+    {
+      "code": "PSYC 340",
+      "title": "Psychology of Gender",
+      "credits": "3",
+      "description": "Psychological research on gender: stereotypes, socialization, sexuality, work, violence, and links with other identities.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "PSYC 221 with min. grade of C",
+      "prereq": {
+        "type": "course",
+        "code": "PSYC 221",
+        "minGrade": "C"
+      }
+    },
+    {
+      "code": "PSYC 345",
+      "title": "Human Sexuality",
+      "credits": "3",
+      "description": "Sexual health and diversity: sexual response, gender identity, LGBT health, reproductive rights, and sexual communication.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PSYC 350",
+      "title": "Prejudice and Stigma",
+      "credits": "3",
+      "description": "A social psychology view of how identities are stigmatized, the costs of prejudice, and research on reducing it.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "PSYC 221",
+      "prereq": {
+        "type": "course",
+        "code": "PSYC 221"
+      }
+    },
+    {
+      "code": "PSYC 352",
+      "title": "Personality Theory",
+      "credits": "3",
+      "description": "Overview of the main approaches to personality psychology.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PSYC 355",
+      "title": "Cross-Cultural Psychology",
+      "credits": "3",
+      "description": "Cultural influences on psychological phenomena, including cross-cultural communication, workplace diversity, and national traits.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "PSYC 221",
+      "prereq": {
+        "type": "course",
+        "code": "PSYC 221"
+      }
+    },
+    {
+      "code": "PSYC 360",
+      "title": "Clinical Psychology: Assessment and Treatment",
+      "credits": "3",
+      "description": "Psychological testing, psychotherapy, and the work and trends of clinical psychologists.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "PSYC 303*, An asterisk (*) designates a course which may be taken concurrently.",
+      "prereq": {
+        "type": "course",
+        "code": "PSYC 303",
+        "concurrent": true
+      }
+    },
+    {
+      "code": "PSYC 362",
+      "title": "Human-Computer Interaction and Web Design",
+      "credits": "3",
+      "description": "User-centered design methods such as usability testing and prototyping, applied to usable websites. Co-listed as ITMD 362.",
+      "satisfies": "",
+      "prereqText": "ITMD 361",
+      "prereq": {
+        "type": "course",
+        "code": "ITMD 361"
+      }
+    },
+    {
+      "code": "PSYC 363",
+      "title": "Introduction to Sports Psychology",
+      "credits": "3",
+      "description": "Psychological theories of sport and exercise: motivation, coaching, team dynamics, and performance strategies.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PSYC 370",
+      "title": "Health and Safety at Work",
+      "credits": "3",
+      "description": "Occupational health psychology: how work organization affects employee health, stress, and well-being.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PSYC 380",
+      "title": "Topics in Psychology",
+      "credits": "3",
+      "description": "A current psychology topic, announced by the instructor when scheduled.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PSYC 381",
+      "title": "Topics in Psychology",
+      "credits": "3",
+      "description": "A current psychology topic, announced by the instructor when scheduled.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "PSYC 221 or PSYC 301 or PSYC 303 or PSYC 310",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "PSYC 221"
+          },
+          {
+            "type": "course",
+            "code": "PSYC 301"
+          },
+          {
+            "type": "course",
+            "code": "PSYC 303"
+          },
+          {
+            "type": "course",
+            "code": "PSYC 310"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 409",
+      "title": "Psychological Testing",
+      "credits": "3",
+      "description": "Test development, testing techniques, and test use in education, organizations, and clinics, including scale construction.",
+      "satisfies": "",
+      "prereqText": "PSYC 203 or PSYC 221 or PSYC 301, or Graduate standing",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "PSYC 203"
+          },
+          {
+            "type": "course",
+            "code": "PSYC 221"
+          },
+          {
+            "type": "course",
+            "code": "PSYC 301"
+          },
+          {
+            "type": "text",
+            "text": "Graduate standing"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 410",
+      "title": "Introduction to Rehabilitation and Mental Health Counseling",
+      "credits": "3",
+      "description": "Historical, ethical, and legal foundations of rehabilitation and mental health counseling, including professional roles and service delivery.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "PSYC 221 or Graduate standing",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "PSYC 221"
+          },
+          {
+            "type": "text",
+            "text": "Graduate standing"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 411",
+      "title": "Medical Aspects of Disabling Conditions",
+      "credits": "3",
+      "description": "Human organ systems and medical terms, with disabling conditions and their job and rehabilitation effects. First of two courses.",
+      "satisfies": "Natural Science (N)",
+      "prereqText": "PSYC 221 or Graduate standing",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "PSYC 221"
+          },
+          {
+            "type": "text",
+            "text": "Graduate standing"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 412",
+      "title": "Multicultural and Psychosocial Issues in Rehabilitation and Mental Health Counseling",
+      "credits": "3",
+      "description": "Diversity issues in counseling, including culture, disability, gender, aging, and social justice, plus the psychosocial effects of disability.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "PSYC 221 or Graduate standing",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "PSYC 221"
+          },
+          {
+            "type": "text",
+            "text": "Graduate standing"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 414",
+      "title": "Neural and Biological Bases of Behavior",
+      "credits": "3",
+      "description": "The biology of behavior, with emphasis on neuroanatomy and neurophysiology of the sensory and central nervous systems.",
+      "satisfies": "Natural Science (N)",
+      "prereqText": "PSYC 221 or Graduate standing",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "PSYC 221"
+          },
+          {
+            "type": "text",
+            "text": "Graduate standing"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 423",
+      "title": "Learning Theory",
+      "credits": "3",
+      "description": "Theories of learning: functionalist, associationist, cognitive, social, and neurophysiological views.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "PSYC 221 or Graduate standing",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "PSYC 221"
+          },
+          {
+            "type": "text",
+            "text": "Graduate standing"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 426",
+      "title": "Cognitive Science",
+      "credits": "3",
+      "description": "How the mind works, drawing on psychology, computer science, linguistics, neuroscience, and economics.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "PSYC 221 or Graduate standing",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "PSYC 221"
+          },
+          {
+            "type": "text",
+            "text": "Graduate standing"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 435",
+      "title": "Child Development",
+      "credits": "3",
+      "description": "Biological and behavioral change in development, including developmental milestones and mechanisms of change.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "PSYC 221 or Graduate standing",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "PSYC 221"
+          },
+          {
+            "type": "text",
+            "text": "Graduate standing"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 436",
+      "title": "Adult Development",
+      "credits": "3",
+      "description": "Changes in thinking, social life, physical function, and emotion across adulthood.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "(PSYC 221 and PSYC 303) or PSYC 301 or PSYC 310, or Graduate standing",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "and",
+            "children": [
+              {
+                "type": "course",
+                "code": "PSYC 221"
+              },
+              {
+                "type": "course",
+                "code": "PSYC 303"
+              }
+            ]
+          },
+          {
+            "type": "course",
+            "code": "PSYC 301"
+          },
+          {
+            "type": "course",
+            "code": "PSYC 310"
+          },
+          {
+            "type": "text",
+            "text": "Graduate standing"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 449",
+      "title": "Practicum in Rehabilitation Services",
+      "credits": "3",
+      "description": "Seminar and supervised fieldwork in a rehabilitation setting: service delivery, interviewing, and caseload management.",
+      "satisfies": "",
+      "prereqText": "SOC 480, PSYC 412 (may be taken concurrently), PSYC 411, and PSYC 410",
+      "prereq": {
+        "type": "and",
+        "children": [
+          {
+            "type": "course",
+            "code": "SOC 480"
+          },
+          {
+            "type": "course",
+            "code": "PSYC 412",
+            "concurrent": true
+          },
+          {
+            "type": "course",
+            "code": "PSYC 411"
+          },
+          {
+            "type": "course",
+            "code": "PSYC 410"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 450",
+      "title": "Diversity, Equity and Inclusion at Work",
+      "credits": "3",
+      "description": "The science and practice of DEI in organizations, with a project to assess a workplace issue and design an intervention.",
+      "satisfies": "",
+      "prereqText": "PSYC 301 or PSYC 310, or Graduate standing",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "PSYC 301"
+          },
+          {
+            "type": "course",
+            "code": "PSYC 310"
+          },
+          {
+            "type": "text",
+            "text": "Graduate standing"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 455",
+      "title": "Development and Evaluation of Training in Organizations",
+      "credits": "3",
+      "description": "A systems view of organizational training: needs assessment, program design, transfer, and evaluation.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "PSYC 221 or PSYC 301, or Graduate standing",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "PSYC 221"
+          },
+          {
+            "type": "course",
+            "code": "PSYC 301"
+          },
+          {
+            "type": "text",
+            "text": "Graduate standing"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 456",
+      "title": "Engineering Psychology",
+      "credits": "3",
+      "description": "Human abilities in relation to designing transportation, workplace, and other systems, including human-machine interaction and safety.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "PSYC 221 or Graduate standing",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "PSYC 221"
+          },
+          {
+            "type": "text",
+            "text": "Graduate standing"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 460",
+      "title": "Child and Adolescent Disorders",
+      "credits": "3",
+      "description": "Major disorders of infancy, childhood, and adolescence, using a developmental psychopathology approach.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "PSYC 303",
+      "prereq": {
+        "type": "course",
+        "code": "PSYC 303"
+      }
+    },
+    {
+      "code": "PSYC 462",
+      "title": "Behavior Design & User Testing",
+      "credits": "3",
+      "description": "Applying behavioral science to technology design, with early consumer testing and lean testing methods.",
+      "satisfies": "",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PSYC 465",
+      "title": "Behavior Change Principles and Practice",
+      "credits": "3",
+      "description": "Theories and techniques for behavior change, including stages of change, motivational interviewing, and contingency management.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "PSYC 303",
+      "prereq": {
+        "type": "course",
+        "code": "PSYC 303"
+      }
+    },
+    {
+      "code": "PSYC 481",
+      "title": "Groups and Leadership at Work",
+      "credits": "3",
+      "description": "A systems model of groups, group development stages, and leadership approaches, with activities on team member and leader roles.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "(PSYC 221 and PSYC 301), or Graduate standing",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "and",
+            "children": [
+              {
+                "type": "course",
+                "code": "PSYC 221"
+              },
+              {
+                "type": "course",
+                "code": "PSYC 301"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "Graduate standing"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 482",
+      "title": "Undergraduate Research Seminar I",
+      "credits": "3",
+      "description": "Applied psychology research: review of current issues and work in faculty research programs.",
+      "satisfies": "",
+      "prereqText": "(PSYC 221 and PSYC 204), or Graduate standing",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "and",
+            "children": [
+              {
+                "type": "course",
+                "code": "PSYC 221"
+              },
+              {
+                "type": "course",
+                "code": "PSYC 204"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "Graduate standing"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 483",
+      "title": "Undergraduate Research Seminar II",
+      "credits": "3",
+      "description": "Continues applied psychology research: review of current issues and work in faculty research programs.",
+      "satisfies": "",
+      "prereqText": "(PSYC 221, PSYC 222, and PSYC 204), or Graduate standing",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "and",
+            "children": [
+              {
+                "type": "course",
+                "code": "PSYC 221"
+              },
+              {
+                "type": "course",
+                "code": "PSYC 222"
+              },
+              {
+                "type": "course",
+                "code": "PSYC 204"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "Graduate standing"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 485",
+      "title": "Senior Capstone Project I",
+      "credits": "3",
+      "description": "Independent capstone project, which may include research, a literature review, data analysis, or an internship, guided by an advisor.",
+      "satisfies": "",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PSYC 486",
+      "title": "Senior Capstone Project II",
+      "credits": "3",
+      "description": "Continues the independent capstone project, with set deliverables such as a thesis or poster.",
+      "satisfies": "",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PSYC 487",
+      "title": "Integrative Psychology Seminar I",
+      "credits": "3",
+      "description": "Synthesis of issues and areas in psychology.",
+      "satisfies": "",
+      "prereqText": "PSYC 203 or Graduate standing; requires 21 credit hours in psychology",
+      "prereq": {
+        "type": "and",
+        "children": [
+          {
+            "type": "or",
+            "children": [
+              {
+                "type": "course",
+                "code": "PSYC 203"
+              },
+              {
+                "type": "text",
+                "text": "Graduate standing"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "21 credit hours in psychology"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 488",
+      "title": "Integrative Psychology Seminar II",
+      "credits": "3",
+      "description": "Brings together key and current research and ideas on major issues in psychology.",
+      "satisfies": "",
+      "prereqText": "Requires 24 credit hours in psychology",
+      "prereq": {
+        "type": "text",
+        "text": "24 credit hours in psychology"
+      }
+    },
+    {
+      "code": "PSYC 489",
+      "title": "Undergraduate Psychology Seminar",
+      "credits": "3",
+      "description": "Reports and discussion of current problems and issues in psychology.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "(PSYC 221 and PSYC 204), or Graduate standing",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "and",
+            "children": [
+              {
+                "type": "course",
+                "code": "PSYC 221"
+              },
+              {
+                "type": "course",
+                "code": "PSYC 204"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "Graduate standing"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PSYC 497",
+      "title": "Special Problems",
+      "credits": "Variable",
+      "description": "Independent study that gathers and analyzes data on a significant problem. About 3 hours per week per credit.",
+      "satisfies": "",
+      "prereqText": "Instructor permission required",
+      "prereq": {
+        "type": "text",
+        "text": "Instructor permission required"
+      }
+    },
+    {
+      "code": "PSYC 498",
+      "title": "Advanced Research",
+      "credits": "3",
+      "description": "Advanced research for BSMP students.",
+      "satisfies": "",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PS 114",
+      "title": "State and Local Government",
+      "credits": "3",
+      "description": "How federal, state, regional, and local governments relate: federalism theory, constitutional basis, courts, administration, and current debates.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PS 130",
+      "title": "International Relations",
+      "credits": "3",
+      "description": "Major theories for understanding global issues such as war, peace, security, human rights, political economy, development, and international organizations.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PS 132",
+      "title": "Democracy, Dictatorship, and Development",
+      "credits": "3",
+      "description": "Comparative political analysis, applied to instability, conflict, and transitions to stable democracy.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PS 142",
+      "title": "American Foreign Policy",
+      "credits": "3",
+      "description": "How U.S. foreign policy is made, why it matters at home and abroad, and how its goals and carrying-out can be critiqued.",
+      "satisfies": "",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PS 180",
+      "title": "American Government",
+      "credits": "3",
+      "description": "U.S. politics: how parties and interest groups link to institutions like the presidency and Congress, and how political culture shapes policy.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PS 185",
+      "title": "Special Topics in Political Science",
+      "credits": "3",
+      "description": "Introductory course on a current topic announced by the instructor. Repeatable if the topic changes.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PS 213",
+      "title": "Comparative Public Policy",
+      "credits": "3",
+      "description": "Why policies on welfare, health, education, and immigration differ across countries: culture, economics, institutions, and social organization.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PS 217",
+      "title": "Chicago Politics",
+      "credits": "3",
+      "description": "Chicago's government past and present, with focus on the Democratic machine, its opponents, and the roles of class, ethnicity, race, and ideology.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PS 229",
+      "title": "Environmental Politics and Policy",
+      "credits": "3",
+      "description": "How environmental policy is made and carried out from local to global levels, including conflicts over climate change, pollution, and conservation.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PS 233",
+      "title": "Politics of Science and Technology",
+      "credits": "3",
+      "description": "Links among science, technology, and politics, including scientific advice to government and the social effects of technological change.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PS 238",
+      "title": "Energy Policy",
+      "credits": "3",
+      "description": "Fossil fuel dependence and government efforts to conserve energy and develop alternatives, weighing economic, political, and environmental effects.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PS 251",
+      "title": "Public Administration",
+      "credits": "3",
+      "description": "Administrative organization, decision-making, and structures, and the roles of government executives, fiscal procedures, and personnel management.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PS 254",
+      "title": "Urban Policy",
+      "credits": "3",
+      "description": "Urban challenges such as economic change, fiscal strain, and marginalized groups, and how politicians and citizens respond. Also listed as SOC 354.",
+      "satisfies": "",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PS 260",
+      "title": "Global Political Economy",
+      "credits": "3",
+      "description": "Economic, political, and cultural sides of globalization and international development.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PS 272",
+      "title": "Government and Politics in Africa",
+      "credits": "3",
+      "description": "Current African politics in historical, economic, and cultural context, using country cases and regional issues.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PS 274",
+      "title": "East Asian Political Economy",
+      "credits": "3",
+      "description": "Current East Asian politics in historical, economic, and cultural context, using country cases and regional issues.",
+      "satisfies": "",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PS 284",
+      "title": "Topics in Political Science",
+      "credits": "3",
+      "description": "A current political science topic set by the instructor when scheduled.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "PS 288",
+      "title": "International Law and Organizations",
+      "credits": "3",
+      "description": "Global governance through political science and legal lenses, comparing frameworks such as those of the U.S., ICC, WTO, EU, and NAFTA.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PS 491",
+      "title": "Undergraduate Research in Political Science",
+      "credits": "3",
+      "description": "Students choose a topic with a faculty member and finish an original, independent research project.",
+      "satisfies": "Communications (C)",
+      "prereqText": "PS 300-399 and PS 190-299",
+      "prereq": {
+        "type": "and",
+        "children": [
+          {
+            "type": "text",
+            "text": "Any PS 300-399 course"
+          },
+          {
+            "type": "text",
+            "text": "Any PS 190-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "PS 497",
+      "title": "Directed Readings in Political Science",
+      "credits": "Variable",
+      "description": "Independent reading and analysis on specific problems, supervised by a political science faculty member. Up to 3 credits.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "PS 300-399 and PS 190-299",
+      "prereq": {
+        "type": "and",
+        "children": [
+          {
+            "type": "text",
+            "text": "Any PS 300-399 course"
+          },
+          {
+            "type": "text",
+            "text": "Any PS 190-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "ECON 151",
+      "title": "Microeconomics",
+      "credits": "3",
+      "description": "Models of firm and consumer behavior: supply and demand, market structures, efficiency, public goods, externalities, and game theory.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "ECON 152",
+      "title": "Macroeconomics",
+      "credits": "3",
+      "description": "The AD-AS model, national income, growth, money, banking, and international economics, with focus on inflation, unemployment, and monetary and fiscal policy.",
+      "satisfies": "Ethics (E), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "ECON 211",
+      "title": "Introduction to Economics",
+      "credits": "3",
+      "description": "Output, employment, and inflation, plus debates over fiscal and monetary policy, budget deficits, exchange rates, and trade deficits. Not open to business or economics majors or minors.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "ECON 251",
+      "title": "Introduction to Econometrics",
+      "credits": "3",
+      "description": "Regression analysis theory and use, including panel data, instrumental variables, experiments, misspecification, nonlinear models, and big data.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "BUS 221 or PSYC 203",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "BUS 221"
+          },
+          {
+            "type": "course",
+            "code": "PSYC 203"
+          }
+        ]
+      }
+    },
+    {
+      "code": "ECON 311",
+      "title": "Intermediate Microeconomics",
+      "credits": "3",
+      "description": "Calculus-based models of price setting, consumer and producer theory, competitive and monopolistic markets, general equilibrium, and game theory.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "ECON 211 or ECON 151",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "ECON 211"
+          },
+          {
+            "type": "course",
+            "code": "ECON 151"
+          }
+        ]
+      }
+    },
+    {
+      "code": "ECON 312",
+      "title": "Intermediate Macroeconomics",
+      "credits": "3",
+      "description": "Aggregate economic measurement and open-economy equilibrium, short- and long-run views of business cycles, growth, unemployment, and money, and policy options.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "BUS 221 or (PSYC 203 and ECON 152) or ECON 211",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "BUS 221"
+          },
+          {
+            "type": "and",
+            "children": [
+              {
+                "type": "course",
+                "code": "PSYC 203"
+              },
+              {
+                "type": "course",
+                "code": "ECON 152"
+              }
+            ]
+          },
+          {
+            "type": "course",
+            "code": "ECON 211"
+          }
+        ]
+      }
+    },
+    {
+      "code": "ECON 382",
+      "title": "Business Economics",
+      "credits": "3",
+      "description": "Microeconomic analysis and industrial organization, market conditions and forces, and why governments step into and regulate markets.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "ECON 151 or ECON 211",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "ECON 151"
+          },
+          {
+            "type": "course",
+            "code": "ECON 211"
+          }
+        ]
+      }
+    },
+    {
+      "code": "ECON 383",
+      "title": "Sports Economics",
+      "credits": "3",
+      "description": "Budgeting and financing for teams, leagues, and venues, plus topics like esports, social media, and diversity, equity, and inclusion, with guest speakers and projects.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "ECON 391",
+      "title": "Upper-Level Social Science",
+      "credits": "3",
+      "description": "An upper-level social science course. The catalog gives no further description.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "ECON 392",
+      "title": "Upper-Level Social Science",
+      "credits": "3",
+      "description": "An upper-level social science course. The catalog gives no further description.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "ECON 423",
+      "title": "Economics of Capital Investments",
+      "credits": "3",
+      "description": "Values capital projects in the public and private sectors with NPV, equivalent uniform benefit/cost, and IRR, with taxes, inflation, risk, and capital rationing. Business students may use it in place of BUS 351 with advisor approval.",
+      "satisfies": "Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SOC 108",
+      "title": "Social Psychology and Society",
+      "credits": "3",
+      "description": "Everyday judgments and their harmful social effects: the Fundamental Attribution Error, group influence, persuasion, brainwashing, helping behavior, and prejudice. Formerly SOC 308.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SOC 111",
+      "title": "Introduction to the Sociology of Space",
+      "credits": "3",
+      "description": "How space and spatial layouts shape people, social interaction, and community, up to city planning. Introduces basic sociological concepts and methods. Required for SOC 311.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SOC 180",
+      "title": "Introduction to Sociology",
+      "credits": "3",
+      "description": "How society is structured and works, how individual behavior is analyzed, with emphasis on social problems.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SOC 185",
+      "title": "Introductory Special Topics in Sociology",
+      "credits": "3",
+      "description": "A currently relevant topic at an introductory level, announced by the instructor when scheduled. Repeatable if the topic differs.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SOC 201",
+      "title": "The Social Dimension of Science",
+      "credits": "3",
+      "description": "How social and psychological factors affect scientists' reasoning and behavior, set against the traditional view of science. Covers hype, resistance to discovery, controversy, competition, error, and fraud.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "SOC 202",
+      "title": "Science and Belief",
+      "credits": "3",
+      "description": "Compares Western science with other belief systems, religion, and pseudo-science, and looks at cultural and ideological influences on scientific knowledge and public trust.",
+      "satisfies": "",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "SOC 205",
+      "title": "Social Communication",
+      "credits": "3",
+      "description": "Verbal and nonverbal communication in personal, professional, and public life, and how to resolve misunderstandings. Covers interpersonal and group interaction, teamwork, leadership, and intercultural communication.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "SOC 206",
+      "title": "Science in Society",
+      "credits": "3",
+      "description": "Science as an institution, its knowledge, and its practitioners in society, focused on how science shapes and is shaped by political, economic, and cultural contexts.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SOC 213",
+      "title": "Social Use of Space",
+      "credits": "3",
+      "description": "How people experience space and how spatial arrangements affect behavior. Compares planners' and users' ideas and argues for including users in spatial design.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SOC 248",
+      "title": "Deviant Behavior and Conformity",
+      "credits": "3",
+      "description": "How deviant behavior is defined, develops, and is controlled. Covers societal reactions and the patterns of deviance such as addiction, suicide, crime, and alcoholism.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "SOC 262",
+      "title": "Technology and Social Change",
+      "credits": "3",
+      "description": "Social effects of new and cutting-edge technologies, with short- and long-term results seen through moral, ethical, socioeconomic, and educational views. Same as PS 362.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "SOC 286",
+      "title": "Topics in Sociology",
+      "credits": "3",
+      "description": "A current sociology topic announced by the instructor when scheduled.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "HUM 100, 102, 104, 106, 108, or 180, or any HUM 200-299 course",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "HUM 100"
+          },
+          {
+            "type": "course",
+            "code": "HUM 102"
+          },
+          {
+            "type": "course",
+            "code": "HUM 104"
+          },
+          {
+            "type": "course",
+            "code": "HUM 106"
+          },
+          {
+            "type": "course",
+            "code": "HUM 108"
+          },
+          {
+            "type": "course",
+            "code": "HUM 180"
+          },
+          {
+            "type": "text",
+            "text": "Any HUM 200-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "SOC 312",
+      "title": "Medical Sociology",
+      "credits": "3",
+      "description": "Sociological views of medicine, health, and illness: how social, economic, and political forces shape health ideas and medical science, including healthcare politics, inequality, medical technology, and the experience of illness.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SOC 491",
+      "title": "Undergraduate Research in Sociology",
+      "credits": "Variable",
+      "description": "Students pick a topic with a sociology faculty member, do research, and finish an original independent project.",
+      "satisfies": "Communications (C)",
+      "prereqText": "SOC 300-399 and SOC 190-299",
+      "prereq": {
+        "type": "and",
+        "children": [
+          {
+            "type": "text",
+            "text": "Any SOC 300-399 course"
+          },
+          {
+            "type": "text",
+            "text": "Any SOC 190-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "SOC 497",
+      "title": "Directed Readings",
+      "credits": "Variable",
+      "description": "Independent reading or analysis on specific problems, supervised by a sociology faculty member. Up to 3 credits.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "SOC 300-399 and SOC 190-299",
+      "prereq": {
+        "type": "and",
+        "children": [
+          {
+            "type": "text",
+            "text": "Any SOC 300-399 course"
+          },
+          {
+            "type": "text",
+            "text": "Any SOC 190-299 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "SSCI 100",
+      "title": "Introduction to the Profession",
+      "credits": "3",
+      "description": "Social science careers and the skills professionals use in the field.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SSCI 104",
+      "title": "States, Markets, and Society",
+      "credits": "3",
+      "description": "How governments, societies, and the global economy relate, including industrial change, technology, and welfare.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SSCI 106",
+      "title": "Introduction to Public Policy",
+      "credits": "3",
+      "description": "Policy processes, mainly in the U.S. with some cross-country comparison, models, and policy-area analysis.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SSCI 120",
+      "title": "Global Chicago",
+      "credits": "3",
+      "description": "How Chicago became a global city and what that did to government, business, education, nonprofits, and immigrants, with field trips.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SSCI 184",
+      "title": "Special Topics",
+      "credits": "3",
+      "description": "Introductory course on a current topic. Repeatable if the topic differs.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SSCI 185",
+      "title": "Introductory Special Topics in Social Sciences",
+      "credits": "3",
+      "description": "Introductory special topics course on a current social science subject, announced at scheduling.",
+      "satisfies": "",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SSCI 209",
+      "title": "Social Science Research Methods",
+      "credits": "3",
+      "description": "Explanation in social science and qualitative and quantitative methods, including research design, measurement, surveys, and sampling.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SSCI 210",
+      "title": "Social and Political Thought",
+      "credits": "3",
+      "description": "Major social and political theories on individuals and society, conflict, harmony, equality, and the state.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SSCI 218",
+      "title": "Global Health",
+      "credits": "3",
+      "description": "Multidisciplinary overview of global health history, determinants, major diseases, governance, and health inequality.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "Any HUM 200-299 course",
+      "prereq": {
+        "type": "text",
+        "text": "Any HUM 200-299 course"
+      }
+    },
+    {
+      "code": "SSCI 221",
+      "title": "Social Inequality",
+      "credits": "3",
+      "description": "Social, economic, and political inequality in the U.S. and other societies, its causes, and its results.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SSCI 223",
+      "title": "Problems of Multi-Ethnic, Multi-Religious States",
+      "credits": "3",
+      "description": "Political challenges, including conflict and fragmentation, in diverse societies in developed and developing countries.",
+      "satisfies": "",
+      "prereqText": "Any HUM 200-299 course",
+      "prereq": {
+        "type": "text",
+        "text": "Any HUM 200-299 course"
+      }
+    },
+    {
+      "code": "SSCI 225",
+      "title": "Introduction to Geographic Information Systems",
+      "credits": "3",
+      "description": "Geographic data management, data models, basic spatial analysis, and GIS uses, through hands-on exercises.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SSCI 242",
+      "title": "Criminal Justice Policy",
+      "credits": "3",
+      "description": "U.S. crime control policy, how social science informs it, and how inequality has shaped it.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SSCI 245",
+      "title": "AI and Public Policy",
+      "credits": "3",
+      "description": "AI uses, regulation, and social results, through theory and case studies.",
+      "satisfies": "Ethics (E)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SSCI 254",
+      "title": "Urban Policy",
+      "credits": "3",
+      "description": "City challenges such as fiscal stress, immigration, and marginalized groups, and how officials respond with policy.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "Any HUM 200-299 course",
+      "prereq": {
+        "type": "text",
+        "text": "Any HUM 200-299 course"
+      }
+    },
+    {
+      "code": "SSCI 255",
+      "title": "Regional Economic Development",
+      "credits": "3",
+      "description": "Why regions differ economically and how they respond to policy and economic change, using models and metrics.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SSCI 257",
+      "title": "Race and Public Policy",
+      "credits": "3",
+      "description": "How racial inequality has shaped U.S. policy and the justice system in areas such as housing, education, and employment.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SSCI 276",
+      "title": "Global Migration",
+      "credits": "3",
+      "description": "Migration history and current conditions across regions, including admission policies and immigrant integration.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "Any HUM 200-299 course",
+      "prereq": {
+        "type": "text",
+        "text": "Any HUM 200-299 course"
+      }
+    },
+    {
+      "code": "SSCI 278",
+      "title": "Innovation Policy",
+      "credits": "3",
+      "description": "Government efforts to promote innovation, including R&D roles, green R&D, patents, and international collaboration.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "Instructor permission required",
+      "prereq": {
+        "type": "text",
+        "text": "Instructor permission required"
+      }
+    },
+    {
+      "code": "SSCI 280",
+      "title": "International Development",
+      "credits": "3",
+      "description": "Multidisciplinary development theories, stakeholders, and issues like aid, sustainability, and migration, with policy evaluation.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "Any HUM 200-299 course",
+      "prereq": {
+        "type": "text",
+        "text": "Any HUM 200-299 course"
+      }
+    },
+    {
+      "code": "SSCI 281",
+      "title": "Computational Social Science",
+      "credits": "3",
+      "description": "Computational and agent-based models of inequality, conflict, and segregation. Students extend a model for research.",
+      "satisfies": "",
+      "prereqText": "Any HUM 200-299 course",
+      "prereq": {
+        "type": "text",
+        "text": "Any HUM 200-299 course"
+      }
+    },
+    {
+      "code": "SSCI 286",
+      "title": "Qualitative Social Science Research Methods",
+      "credits": "3",
+      "description": "Qualitative methods such as interviews, ethnography, and grounded theory, with applied workshops.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "Any HUM 200-299 course",
+      "prereq": {
+        "type": "text",
+        "text": "Any HUM 200-299 course"
+      }
+    },
+    {
+      "code": "SSCI 287",
+      "title": "Fieldwork Methods",
+      "credits": "3",
+      "description": "Work on a real-world project in the field.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SSCI 288",
+      "title": "Methods of Economic Impact Analysis",
+      "credits": "3",
+      "description": "Input-output and social accounting methods to measure how environmental and social policy affects economies.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "Any HUM 200-299 course",
+      "prereq": {
+        "type": "text",
+        "text": "Any HUM 200-299 course"
+      }
+    },
+    {
+      "code": "SSCI 289",
+      "title": "Urban Planning Analysis",
+      "credits": "3",
+      "description": "Methods for gathering and judging empirical data to assess urban planning responses.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "Any HUM 200-299 course",
+      "prereq": {
+        "type": "text",
+        "text": "Any HUM 200-299 course"
+      }
+    },
+    {
+      "code": "SSCI 325",
+      "title": "Intermediate Geographic Information Systems",
+      "credits": "3",
+      "description": "GIS spatial modeling skills, including raster and vector models, map algebra, surface, and network analysis.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "SSCI 225 or DS 151-261 or CS 104-201 or PSYC 203",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "course",
+            "code": "SSCI 225"
+          },
+          {
+            "type": "text",
+            "text": "Any DS 151-261 course"
+          },
+          {
+            "type": "text",
+            "text": "Any CS 104-201 course"
+          },
+          {
+            "type": "course",
+            "code": "PSYC 203"
+          }
+        ]
+      }
+    },
+    {
+      "code": "SSCI 385",
+      "title": "Special Topics",
+      "credits": "3",
+      "description": "An interdisciplinary current social science topic. Repeatable if the topic differs.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "Any HUM 200-299 course",
+      "prereq": {
+        "type": "text",
+        "text": "Any HUM 200-299 course"
+      }
+    },
+    {
+      "code": "SSCI 480",
+      "title": "Introduction to Survey Methodology",
+      "credits": "3",
+      "description": "Survey research design principles, including forming research questions and testable hypotheses.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SSCI 486",
+      "title": "Program Evaluation",
+      "credits": "3",
+      "description": "Applied methods that public and nonprofit managers use to judge how well services are delivered.",
+      "satisfies": "Communications (C), Humanities (H)",
+      "prereqText": "SSCI 300-399 or PS 300-399 or SOC 300-399",
+      "prereq": {
+        "type": "or",
+        "children": [
+          {
+            "type": "text",
+            "text": "Any SSCI 300-399 course"
+          },
+          {
+            "type": "text",
+            "text": "Any PS 300-399 course"
+          },
+          {
+            "type": "text",
+            "text": "Any SOC 300-399 course"
+          }
+        ]
+      }
+    },
+    {
+      "code": "SSCI 491",
+      "title": "Directed UG Research",
+      "credits": "3",
+      "description": "Independent research project on the spatial spread of economic activity, with an instructor-approved topic.",
+      "satisfies": "Communications (C)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SSCI 492",
+      "title": "Social Sciences Colloquium",
+      "credits": "1",
+      "description": "Talks by invited scientists on social science research, to support academic and professional preparation.",
+      "satisfies": "Communications (C), Social Sciences (S)",
+      "prereqText": "",
+      "prereq": null
+    },
+    {
+      "code": "SSCI 493",
+      "title": "Public Service Internship",
+      "credits": "3",
+      "description": "A 120-hour internship at an approved organization that links classroom theory to practice.",
+      "satisfies": "",
+      "prereqText": "Instructor permission required",
+      "prereq": {
+        "type": "text",
+        "text": "Instructor permission required"
       }
     }
   ]

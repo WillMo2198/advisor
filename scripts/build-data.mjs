@@ -86,7 +86,7 @@ if (errors.length) {
 }
 
 const catalog = {
-  source: 'Illinois Tech undergraduate catalog, catalog.iit.edu/courses/cs and /courses/math (read October 2026). Descriptions are short paraphrases.',
+  source: 'Illinois Tech undergraduate catalog, catalog.iit.edu/courses (CS, MATH, and the Humanities and Social Sciences subjects), read October 2026. Descriptions are short paraphrases.',
   departments,
   courses,
 };
