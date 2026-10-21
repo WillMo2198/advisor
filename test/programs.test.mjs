@@ -92,3 +92,13 @@ test('a transfer HUM elective fills the 100-level slot, so only a 200+ humanitie
   assert.ok(!hss.remaining.some((r) => /100-level/.test(r)));
   assert.ok(hss.remaining.some((r) => /Two \(H\)/.test(r)));
 });
+
+test('a 0-credit lab row does not hide the 4-credit course (PHYS 123)', () => {
+  const ai = programs.find((p) => p.id === 'bs-artificial-intelligence');
+  const rec = (code, credits, term = 'Spring 2025') => ({ code, title: '', credits, grade: 'C', term, status: 'completed', transfer: false });
+  for (const order of [[rec('PHYS 123', 0), rec('PHYS 123', 4)], [rec('PHYS 123', 4), rec('PHYS 123', 0)]]) {
+    const audit = auditDegree(ai, [...order, rec('PHYS 221', 4, 'Summer 2026')], { index, planned: [] });
+    const sci = audit.groups.find((g) => g.id === 'science-requirements');
+    assert.equal(sci.status, 'done');
+  }
+});

@@ -243,7 +243,8 @@ export function bestAttempts(records) {
   const best = new Map();
   for (const rec of records) {
     const prev = best.get(rec.code);
-    const score = (rec.repeatExcluded ? 0 : 10) + (rank[rec.status] || 0) * 100 + points(rec.grade);
+    // on a tie the row with more credits wins (a lab line can show 0 credits next to the 4-credit course)
+    const score = (rec.repeatExcluded ? 0 : 10) + (rank[rec.status] || 0) * 100 + points(rec.grade) + Math.min(Number(rec.credits) || 0, 12) / 100;
     if (!prev || score > prev.score) best.set(rec.code, { rec, score });
   }
   // repeatable courses: every attempt that counts is kept
