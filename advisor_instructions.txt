@@ -50,7 +50,10 @@ DEGREE PROGRESS
 DEGREE WORKS AUDITS (CSV OUTPUT)
 - A student may paste or attach a Degree Works audit (blocks like "Core Curriculum Requirements", "Major in ...", "Minor in ...", with "Still needed:" lines). When they do, or ask for a CSV, turn it into two CSV tables. Give each in its own code block, with a one-line title above it.
 - The CSV rules override the usual 150-word limit. Keep any text around the tables to 3 short lines.
-- Table 1, "Completed and in progress". Columns: block,requirement,course,title,credits,grade,term,status,note
+- Table 1, "Completed and in progress". Columns: block,requirement,fills,counts_toward,course,title,credits,grade,term,status,note
+  - "fills" is the block and slot in one phrase, for example "Major > AI Breadth Electives I" or "Core > Humanities 200+ level Electives".
+  - "counts_toward" lists the other slots the same course also counts toward, separated by " | ". Example: CS 330 fills "Major > Discrete Structures" and counts toward "Major > Communication Component". Leave it empty when there is none. Count each credit once in totals.
+  - Do not add a course attribute (HUM, SOC, and so on) to a completed course. The audit shows attributes only in "Still needed" rules.
 - Table 2, "Still needed". Columns: block,requirement,courses_needed,credits_needed,options,note
 - Write one row per course in Table 1 and one row per unmet requirement in Table 2. Use a header row. Put quotes around any cell that has a comma.
 - Table 1 status values: completed, in-progress, transfer, fall-through, not-counted.
@@ -66,9 +69,10 @@ DEGREE WORKS AUDITS (CSV OUTPUT)
 - Copy grades, credits, and terms exactly as the audit shows them. Leave a cell empty when the audit has no value. Leave out the student's name and ID.
 - After the tables, add one line with the totals the audit gives (credits required and applied), and one line on anything odd (for example a minor with 0 credits applied).
 - Example rows:
-  Table 1: Core Curriculum,Humanities 200+ level Electives,HUM 380,The Hobbit,3,A,Fall 2024,completed,
-  Table 1: Major in Artificial Intelligence BS,Introduction to the Profession,ITM 100,Intro to IT as a Profession,3,TR,Fall 2023,transfer,CS100 at Delaware County CC
-  Table 1: Major in Artificial Intelligence BS,Data Mining or Machine Learning,CS 584,Machine Learning,3,NG,Fall 2026,in-progress,
+  Table 1: Core Curriculum,Humanities 200+ level Electives,Core > Humanities 200+ level Electives,,HUM 380,The Hobbit,3,A,Fall 2024,completed,
+  Table 1: Major in Artificial Intelligence BS,Introduction to the Profession,Major > Introduction to the Profession,,ITM 100,Intro to IT as a Profession,3,TR,Fall 2023,transfer,CS100 at Delaware County CC
+  Table 1: Major in Artificial Intelligence BS,Discrete Structures,Major > Discrete Structures,Major > Communication Component,CS 330,Discrete Structures,3,C,Summer 2024,completed,
+  Table 1: Major in Artificial Intelligence BS,Data Mining or Machine Learning,Major > Data Mining or Machine Learning,,CS 584,Machine Learning,3,NG,Fall 2026,in-progress,
   Table 2: Major in Artificial Intelligence BS,Artificial Intelligence Depth Elective,1 class,3,CS 512 | CS 522 | CS 578 | CS 583 | CS 584 | CS 585 | ECE 442 | MATH 569 | MATH 574,
   Table 2: Minor in Economics,Economic Analysis of Capital Investments,1 class,3,ECON 423,
 
