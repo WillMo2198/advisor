@@ -39,6 +39,18 @@ export function neededItems(audit, program, index, { exclude = new Set(), electi
     if (g.type === 'all') {
       for (const slot of g.slots) {
         if (slot.status !== 'remaining') continue;
+        // a choice between courses: plan one, and list the rest as options
+        if (slot.options.length > 1 && slot.missing.length === slot.chosen.length && slot.options.every((o) => o.length === 1)) {
+          const codes = slot.options.map((o) => o[0]).filter((code) => !taken.has(code));
+          const shown = codes.filter((code) => index.has(code));
+          const pickFrom = shown.length ? shown : codes;
+          const runs = (code) => index.forecast?.courses?.[code]?.length ?? 0;
+          const code = [...pickFrom].sort((a, b) => runs(b) - runs(a))[0];
+          if (code) {
+            add({ code, title: titleFor(code, index, program), credits: creditsFor(code, index, program), kind: 'choice', group: g.id, groupName: g.name, alternatives: shown.filter((c) => c !== code) });
+          }
+          continue;
+        }
         for (const code of slot.missing) {
           if (taken.has(code)) continue;
           add({ code, title: titleFor(code, index, program), credits: creditsFor(code, index, program), kind: 'required', group: g.id, groupName: g.name });
@@ -57,10 +69,10 @@ export function neededItems(audit, program, index, { exclude = new Set(), electi
           options.splice(options.indexOf(code), 1);
           if (index.has(code) || wantedLeaves.has(code)) {
             const why = !index.has(code) && wantedFor.get(code)?.length ? `Also opens ${wantedFor.get(code).join(', ')}` : '';
-            add({ code, title: titleFor(code, index, program), credits: creditsFor(code, index, program), kind: 'choice', group: g.id, groupName: g.name, alternatives: from.codes.filter((c) => c !== code), why });
+            add({ code, title: titleFor(code, index, program), credits: creditsFor(code, index, program), kind: 'choice', group: g.id, groupName: g.name, alternatives: from.codes.filter((c) => c !== code && index.has(c)), why });
             left -= def.count ? 1 : creditsFor(code, index, program);
           } else {
-            add({ code: null, label: `${g.name}`, hint: `One of ${from.codes.join(', ')}`, credits: def.credits, kind: 'placeholder', group: g.id, groupName: g.name, examples: from.codes });
+            add({ code: null, label: `${g.name}`, hint: `One of ${from.codes.join(', ')}`, credits: def.credits, kind: 'placeholder', group: g.id, groupName: g.name, examples: from.codes.filter((c) => index.has(c)) });
             left = 0;
           }
         }
@@ -296,6 +308,7 @@ export function describePlan(plan, audit, { maxCredits = 15 } = {}) {
     terms: plan.terms.map((t) => ({ key: t.key, label: t.label, credits: t.credits, items: t.items.map((it) => ({
       code: it.code || null, label: it.label || '', title: it.title || '', credits: it.credits, kind: it.kind,
       requirement: it.requirement || '', reason: it.reason || '', warning: it.warning || '',
+      options: it.alternatives || it.examples || [],
     })) })),
     later: plan.later.map((it) => ({ code: it.code || null, label: it.label || '', title: it.title || '', credits: it.credits, kind: it.kind, requirement: it.groupName || '', reason: it.reason })),
   };

@@ -377,5 +377,65 @@ export const courses = [
   },
 
   // ---------- Humanities and Social Sciences (see hss-source.mjs) ----------
+  {
+    code: 'CS 512', title: 'Computer Vision', credits: '3',
+    description: 'Core computer vision topics and how deep neural networks are applied to them.',
+    satisfies: '', prereqText: 'CS 430',
+    prereq: c('CS 430'),
+  },
+  {
+    code: 'CS 522', title: 'Advanced Data Mining', credits: '3',
+    description: 'Advanced algorithms, such as support vector machines, through a large project.',
+    satisfies: '', prereqText: 'CS 422 with min. grade of C',
+    prereq: c('CS 422', { minGrade: 'C' }),
+  },
+  {
+    code: 'CS 577', title: 'Deep Learning', credits: '3',
+    description: 'The math, algorithms, and GPU tools behind deep neural networks, with uses in vision, audio, and language.',
+    satisfies: '', prereqText: 'CS 430',
+    prereq: c('CS 430'),
+  },
+  {
+    code: 'CS 578', title: 'Reinforcement Learning', credits: '3',
+    description: 'Learning decision-making policies through interaction: bandits, Markov decision processes, and core learning methods.',
+    satisfies: '', prereqText: 'CS 480 with min. grade of C or MATH 474 with min. grade of C or MATH 475',
+    prereq: any(c('CS 480', { minGrade: 'C' }), c('MATH 474', { minGrade: 'C' }), c('MATH 475')),
+  },
+  {
+    code: 'CS 581', title: 'Advanced Artificial Intelligence', credits: '3',
+    description: 'Advanced AI topics, from search and probabilistic reasoning to deep learning, reinforcement learning, and AI ethics.',
+    satisfies: '', prereqText: 'CS 480 with min. grade of C',
+    prereq: c('CS 480', { minGrade: 'C' }),
+  },
+  {
+    code: 'CS 583', title: 'Probabilistic Graphical Models', credits: '3',
+    description: 'Models for reasoning under uncertainty: representation, learning, and inference across several fields.',
+    satisfies: '', prereqText: '',
+    prereq: null,
+  },
+  {
+    code: 'CS 584', title: 'Machine Learning', credits: '3',
+    description: 'Core machine learning ideas, algorithms, and evaluation, including regression, kernel methods, and neural networks.',
+    satisfies: '', prereqText: 'CS 430 with min. grade of C',
+    prereq: c('CS 430', { minGrade: 'C' }),
+  },
+  {
+    code: 'CS 585', title: 'Natural Language Processing', credits: '3',
+    description: 'Computational methods for human language, including parsing, text generation, and discourse.',
+    satisfies: '', prereqText: 'CS 430 with min. grade of C',
+    prereq: c('CS 430', { minGrade: 'C' }),
+  },
+  {
+    code: 'MATH 569', title: 'Statistical Learning', credits: '3',
+    description: 'Modern methods for learning from data: regression, classification, kernel methods, and support vector machines.',
+    satisfies: '', prereqText: '(MATH 474 with min. grade of C or MATH 475 with min. grade of C or Graduate standing) and (MATH 350 with min. grade of C or Graduate standing)',
+    prereq: all(any(c('MATH 474', { minGrade: 'C' }), c('MATH 475', { minGrade: 'C' }), t('Graduate standing')), any(c('MATH 350', { minGrade: 'C' }), t('Graduate standing'))),
+  },
+  {
+    code: 'MATH 574', title: 'Bayesian Computational Statistics', credits: '3',
+    description: 'Bayesian inference theory and data analysis: priors, posteriors, estimation, testing, and computational methods in statistical software.',
+    satisfies: '', prereqText: '',
+    prereq: null,
+  },
   ...hssCourses,
 ];

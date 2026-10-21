@@ -855,3 +855,5 @@ button.req-chip { cursor: pointer; }
 
 .apply-pick { display: flex; flex-direction: column; gap: 4px; margin-top: 8px; }
 .apply-pick select { border: 1px solid var(--input-border); border-radius: 8px; padding: 6px 8px; background: var(--card); color: var(--text); max-width: 100%; }
+
+.pr-options { margin-top: 4px; display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; font-size: 13px; }

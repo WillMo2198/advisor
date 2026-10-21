@@ -199,11 +199,14 @@ function auditFree(group, pool) {
 }
 
 /** Text for what is still needed in a group. */
-function remainingText(group, result, creditsLeft) {
+function remainingText(group, result, creditsLeft, index) {
+  // only list courses the app has a page for; if none are known, list them all
+  const known = (code) => !index || index.has(code);
   if (group.type === 'all') {
     return result.slots.filter((s) => s.status === 'remaining').map((s) => {
       if (s.options.length > 1 && s.missing.length === s.chosen.length) {
-        return s.options.map((o) => o.join(' and ')).join(', or ');
+        const shown = s.options.filter((o) => o.every(known));
+        return (shown.length ? shown : s.options).map((o) => o.join(' and ')).join(', or ');
       }
       return s.missing.join(' and ');
     });
@@ -216,8 +219,9 @@ function remainingText(group, result, creditsLeft) {
   if (creditsLeft <= 0 && (!group.count || result.used.length >= group.count)) return [];
   if (group.type === 'free') return [`${creditsLeft} more credit${creditsLeft === 1 ? '' : 's'} of any course`];
   const from = group.from || {};
-  if (group.count) return [`${group.count - result.used.length} course from: ${from.codes.join(', ')}`];
-  const where = from.codes ? from.codes.join(', ') : `${from.subjects.join(', ')}${from.minLevel ? ` at the ${from.minLevel} level or above` : ''}`;
+  if (group.count) return [`${group.count - result.used.length} course from: ${(from.codes.some(known) ? from.codes.filter(known) : from.codes).join(', ')}`];
+  const listed = from.codes ? (from.codes.some(known) ? from.codes.filter(known) : from.codes) : null;
+  const where = listed ? listed.join(', ') : `${from.subjects.join(', ')}${from.minLevel ? ` at the ${from.minLevel} level or above` : ''}`;
   return [`${creditsLeft} more credit${creditsLeft === 1 ? '' : 's'} from ${where}`];
 }
 
@@ -277,7 +281,7 @@ export function auditDegree(program, records, { index, planned = [] } = {}) {
       status,
       creditsLeft,
       courses: result.used.map((p) => ({ code: p.code, credits: p.credits, status: p.status, grade: p.grade, title: titleFor(p.code, index, program) })),
-      remaining: status === 'done' || status === 'in-progress' || status === 'planned' ? [] : remainingText(group, result, creditsLeft),
+      remaining: status === 'done' || status === 'in-progress' || status === 'planned' ? [] : remainingText(group, result, creditsLeft, index),
       slots: result.slots || null,
       parts: result.parts ? result.parts.map((p) => ({ id: p.id, label: p.label, need: p.need, have: p.have.map((h) => h.code), problem: p.problem || '' })) : null,
     };

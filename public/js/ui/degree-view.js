@@ -101,6 +101,7 @@ function planRow(it, known) {
         <div class="pr-name">${name}</div>
         <span class="pr-cr">${esc(it.credits)} cr</span>
       </div>
+      ${it.options?.length ? `<div class="pr-options"><span class="small muted">${it.code ? 'Other options' : 'Options'}:</span> ${it.options.filter((c) => known(c)).map((c) => `<button type="button" class="code-link" data-code="${esc(c)}">${esc(c)}</button>`).join(' ')}</div>` : ''}
       ${tag || it.reason ? `<div class="pr-sub">${tag ? `<span class="pr-tag">${esc(tag)}</span>` : ''}${it.reason ? `<span class="pr-why">${linkify(it.reason, known)}</span>` : ''}</div>` : ''}
       ${issues.map((x) => `<div class="pr-issue ${x.level}">${x.level === 'error' ? '⚠' : '•'} ${esc(x.message)}</div>`).join('')}
     </li>`;
