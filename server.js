@@ -37,7 +37,7 @@ const config = {
   apiKey: (process.env.ANTHROPIC_API_KEY || '').trim(),
   model: process.env.ANTHROPIC_MODEL || 'claude-sonnet-5-5',
   baseUrl: process.env.ANTHROPIC_BASE_URL || 'https://api.anthropic.com',
-  maxTokens: Math.min(Math.max(Number(process.env.MAX_TOKENS) || 1024, 128), 8192),
+  maxTokens: Math.min(Math.max(Number(process.env.MAX_TOKENS) || 2048, 128), 8192),
   instructionsFile: process.env.ADVISOR_INSTRUCTIONS || join(ROOT, 'advisor_instructions.txt'),
   rateLimit: Number(process.env.CHAT_RATE_LIMIT) || 30, // chat requests per IP per 5 minutes
 };
