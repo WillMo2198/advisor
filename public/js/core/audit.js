@@ -34,7 +34,7 @@ export function buildPool(records, { index, program, planned = [] } = {}) {
     if (rec.status !== 'completed' && rec.status !== 'in-progress') continue;
     const credits = creditsFor(rec.code, index, program, rec.credits);
     if (rec.status === 'completed' && rec.credits === 0) continue;
-    pool.push({ code: rec.code, credits, status: rec.status, grade: rec.grade || '', used: null });
+    pool.push({ code: rec.code, credits, status: rec.status, grade: rec.grade || '', used: null, transfer: !!rec.transfer, appliesTo: rec.appliesTo || '' });
   }
   for (const code of planned) {
     if (pool.some((p) => p.code === code && p.status !== 'completed') || (pool.some((p) => p.code === code) && !REPEATABLE.has(code))) continue;
@@ -59,11 +59,33 @@ function groupStatus(required, done, ip, planned) {
 }
 
 function matches(code, from) {
+  if (from.alsoCodes?.includes(code)) return true;
   if (from.exclude?.includes(code)) return false;
   if (from.codes) return from.codes.includes(code);
   if (from.subjects && !from.subjects.includes(subject(code))) return false;
   if (from.minLevel && level(code) < from.minLevel) return false;
   return true;
+}
+
+
+// ----- adviser exceptions ("Apply PHIL 381 here") -----
+const LABEL_STOP = new Set(['elective', 'electives', 'course', 'courses', 'requirement', 'requirements', 'and', 'the', 'of', 'for', 'or', 'i', 'ii', 'a', 'an', 'in']);
+const labelWords = (text) => String(text || '').toLowerCase().replace(/artificial intelligence/g, 'ai').replace(/[^a-z0-9 ]+/g, ' ')
+  .split(/\s+/).filter((w) => w && !LABEL_STOP.has(w));
+
+/** The group a Degree Works requirement label points to (or null). */
+export function groupForLabel(label, program) {
+  const want = new Set(labelWords(label));
+  if (!want.size) return null;
+  let best = null;
+  let tie = false;
+  for (const g of program.groups) {
+    const words = new Set(labelWords(g.name));
+    const score = [...want].filter((w) => words.has(w)).length / Math.max(1, want.size, words.size);
+    if (score <= 0) continue;
+    if (!best || score > best.score) { best = { g, score }; tie = false; } else if (score === best.score) tie = true;
+  }
+  return best && !tie && best.score >= 0.5 ? best.g : null;
 }
 
 // ---------- group handlers ----------
@@ -138,7 +160,10 @@ function auditHss(group, pool) {
   const take = (list) => { list.forEach((p) => { p.used = group.id; }); return list; };
   const parts = [];
 
-  const hum100 = take(free().filter((p) => subject(p.code) === 'HUM' && level(p.code) === 100).sort(byStatus).slice(0, 1));
+  // a transfer HUM elective (for example HUM 200) fills the 100-level slot when there is no HUM 1xx course
+  let hum100 = free().filter((p) => subject(p.code) === 'HUM' && level(p.code) === 100).sort(byStatus).slice(0, 1);
+  if (!hum100.length) hum100 = free().filter((p) => subject(p.code) === 'HUM' && p.transfer).sort(byStatus).slice(0, 1);
+  take(hum100);
   parts.push({ id: 'hum100', label: 'One HUM 100-level course', need: 1, have: hum100 });
 
   const h200 = take(free().filter((p) => H.has(subject(p.code)) && level(p.code) >= 200).sort(byStatus).slice(0, 2));
@@ -202,12 +227,27 @@ function remainingText(group, result, creditsLeft) {
  */
 export function auditDegree(program, records, { index, planned = [] } = {}) {
   const pool = buildPool(records, { index, program, planned });
-  const groups = program.groups.map((group) => {
+  // a course the adviser applied to a requirement counts there, even if the catalog list does not name it
+  const forcedBy = new Map();
+  for (const p of pool) {
+    if (!p.appliesTo) continue;
+    const g = groupForLabel(p.appliesTo, program) || (/^minor requirement$/i.test(p.appliesTo) ? program.groups.find((x) => /minor/i.test(x.name)) : null);
+    if (g) { p.force = g.id; (forcedBy.get(g.id) || forcedBy.set(g.id, []).get(g.id)).push(p.code); }
+  }
+  const groups = program.groups.map((group0) => {
     let result;
-    if (group.type === 'all') result = auditAll(group, pool);
-    else if (group.type === 'pick') result = auditPick(group, pool);
-    else if (group.type === 'hss') result = auditHss(group, pool);
-    else result = auditFree(group, pool);
+    const forced = forcedBy.get(group0.id) || [];
+    let group = group0;
+    if (forced.length) {
+      if (group0.type === 'all') group = { ...group0, slots: group0.slots.map((o) => (o.length > 1 ? [...o, ...forced.map((c) => [c])] : o)) };
+      else if (group0.type === 'pick') group = { ...group0, from: { ...(group0.from || {}), alsoCodes: forced } };
+    }
+    // courses that were applied to another group are not available here
+    const view = pool.filter((p) => !p.force || p.force === group.id);
+    if (group.type === 'all') result = auditAll(group, view);
+    else if (group.type === 'pick') result = auditPick(group, view);
+    else if (group.type === 'hss') result = auditHss(group, view);
+    else result = auditFree(group, view);
 
     const done = sumBy(result.used, 'completed');
     const ip = sumBy(result.used, 'in-progress');

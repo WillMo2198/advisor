@@ -3,6 +3,7 @@
 PROGRAM|Bachelor of Science in Artificial Intelligence|127|/undergraduate/colleges/computing/computer-science/bs-artificial-intelligence
 G|Artificial Intelligence Requirements|36|required|Fixed core CS courses; alternatives for several rows.
 C|CS 100|Introduction to the Profession|2
+O|CS 100,ITM 100
 C|CS 115|Object-Oriented Programming I|2
 C|CS 116|Object-Oriented Programming II|2
 O|CS 115+CS 116,CS 201
@@ -50,8 +51,9 @@ C|MATH 474|Probability and Statistics|3
 O|MATH 474,MATH 475
 C|MATH 476|Statistics|3
 O|MATH 476,MATH 481,MATH 483,MATH 486
-G|Science Requirements|11|choose|One 8-credit science sequence plus 3 credits of science electives.
+G|Science Requirements|8|choose|One 8-credit science sequence: biology, chemistry, or physics.
 O|BIOL 107+BIOL 109+BIOL 115+BIOL 117,CHEM 122+CHEM 123+CHEM 126+CHEM 140,PHYS 123+PHYS 221
+G|Science Elective|3|science|A science course in a different field from the sequence above.
 G|Humanities and Social Sciences Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
 G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
 PROGRAM|Bachelor of Science in Computer Information Systems|121|/undergraduate/colleges/computing/computer-science/bs-computer-information-systems/

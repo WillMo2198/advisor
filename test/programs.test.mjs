@@ -56,3 +56,30 @@ test('detection falls back to courses, with lower confidence', () => {
   assert.ok(['bs-cs', 'bs-computer-information-systems'].includes(found.programId));
   assert.equal(detectProgram([], programs, {}), null);
 });
+
+test('a Degree Works audit is read with grades, in-progress rows, and adviser exceptions', async () => {
+  const { parseTranscriptText: parse } = await import('../public/js/core/transcript.js');
+  const dw = `Ellucian Degree Works
+Major in Artificial Intelligence BS INCOMPLETE
+Course Title Grade Credits Term
+Data Mining or Machine Learning CS 584 Machine Learning NG (3) Fall 2026
+Object-Oriented Programming I, II CS 115 Object-Oriented Programming I TR 1.5 Spring 2024
+Satisfied by: CS104 - INTRO TO JAVA - Delaware County Communty Coll
+Artificial Intelligence Breadth Electives I PHIL 381 AI Ethics A 3 Spring 2025
+Exception by: Smith, Gabrielle R On: 11/07/2024 Apply Here: Apply PHIL 381 here.
+Calculus II MATH 152 Calculus II C 5 Spring 2024
+Insufficient Credits applied: 0 Classes applied: 1
+CS 425 Database Organization D 0 Fall 2024 (R)
+Still needed: 1 Class in CS 512`;
+  const r = parse(dw);
+  const by = (c) => r.courses.find((x) => x.code === c);
+  assert.equal(by('CS 584').status, 'in-progress');
+  assert.equal(by('CS 115').status, 'completed');
+  assert.equal(by('CS 115').transfer, true);
+  assert.equal(by('CS 425').status, 'not-counted');
+  assert.equal(r.courses.some((x) => x.code === 'CS 104'), false);
+  assert.match(by('PHIL 381').appliesTo, /Breadth/);
+  const ai = programs.find((p) => p.id === 'bs-artificial-intelligence');
+  const audit = auditDegree(ai, r.courses, { index, planned: [] });
+  assert.equal(audit.groups.find((g) => g.id === 'ai-breadth-course').status, 'done');
+});

@@ -148,7 +148,11 @@ function slotsFor(group) {
   if (optionSets.some((set) => set.some((o) => !o))) return null; // free-text option: cannot be checked
   const coverKey = (opt) => opt.join('+');
   const covered = new Map(); // course key -> index of option set
-  optionSets.forEach((set, i) => set.forEach((opt) => covered.set(coverKey(opt), i)));
+  optionSets.forEach((set, i) => set.forEach((opt) => {
+    covered.set(coverKey(opt), i);
+    // a C line for one part of a combined option ("CS 115" in "CS 115+CS 116") belongs to that option's slot
+    if (opt.length > 1) opt.forEach((code) => { if (!covered.has(code)) covered.set(code, i); });
+  }));
   const emitted = new Set();
   const slots = [];
   const emitSet = (i) => { if (!emitted.has(i)) { emitted.add(i); slots.push(optionSets[i]); } };
@@ -210,6 +214,7 @@ function buildGroup(program, group, index, usedIds) {
   const codes = allCodes(group);
 
   if (group.kind === 'hss') return hssGroup(group, id, credits);
+  if (group.kind === 'science') return { id, name: group.name, credits, type: 'pick', note: `${note} The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.`.trim(), from: { subjects: N_SUBJECTS } };
   if (group.kind === 'free') return { id, name: group.name, credits, type: 'free', note };
 
   if (group.kind === 'required' || group.kind === 'choose') {
@@ -229,6 +234,10 @@ function buildGroup(program, group, index, usedIds) {
     return { id, name: group.name, credits, type: 'pick', note, from: codes.length ? { codes } : {} };
   }
 
+  // a minor is chosen by the student, so no course counts unless the audit says it does
+  if (/^minor (requirement|electives)$/i.test(group.name)) {
+    return { id, name: group.name, credits, type: 'pick', note: `${note} Your minor is not tracked. These credits stay open until the minor's courses are added.`.trim(), from: { codes: [] } };
+  }
   // elective
   return { id, name: group.name, credits, type: 'pick', note, from: codes.length ? { codes } : {} };
 }

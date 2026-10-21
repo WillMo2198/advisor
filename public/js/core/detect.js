@@ -21,6 +21,12 @@ const HEADER_RX = /(?:major(?:\s+and\s+department)?|program|degree|curriculum|fi
 export function headerMajors(text) {
   const head = String(text || '').split('\n').slice(0, 60).join('\n');
   const found = [];
+  // Degree Works: "Major Artificial Intelligence Minor Economics Program Bachelor of Science - Artificial Intelligence College ..."
+  const flat = head.replace(/\s+/g, ' ');
+  const dwMajor = /\bMajor ([A-Z][A-Za-z&,' -]{2,80}?) (?:Minor|Program|Concentration|College)\b/.exec(flat);
+  if (dwMajor) found.push(dwMajor[1].trim());
+  const dwProgram = /\bProgram Bachelor of (?:Science|Arts)(?: in)? - ([A-Z][A-Za-z&,' -]{2,80}?) College\b/.exec(flat);
+  if (dwProgram) found.push(dwProgram[1].trim());
   for (const m of head.matchAll(HEADER_RX)) {
     // "Computer Science, Computer Science" -> both parts; drop generic words
     for (const part of m[1].split(/[,;|]|\s{3,}/)) {

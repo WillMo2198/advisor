@@ -5819,8 +5819,10 @@
       ],
       "credits": {
         "CS 100": 2,
+        "ITM 100": 3,
         "CS 115": 2,
         "CS 116": 2,
+        "CS 201": 3,
         "CS 330": 3,
         "CS 331": 3,
         "CS 340": 3,
@@ -5836,7 +5838,6 @@
         "CS 585": 3,
         "CS 485": 3,
         "CS 487": 3,
-        "CS 201": 3,
         "CS 512": 3,
         "CS 522": 3,
         "CS 577": 3,
@@ -5898,16 +5899,18 @@
             [
               [
                 "CS 100"
+              ],
+              [
+                "ITM 100"
               ]
             ],
             [
               [
-                "CS 115"
-              ]
-            ],
-            [
-              [
+                "CS 115",
                 "CS 116"
+              ],
+              [
+                "CS 201"
               ]
             ],
             [
@@ -5973,15 +5976,6 @@
             [
               [
                 "CS 487"
-              ]
-            ],
-            [
-              [
-                "CS 115",
-                "CS 116"
-              ],
-              [
-                "CS 201"
               ]
             ]
           ]
@@ -6110,9 +6104,9 @@
         {
           "id": "science-requirements",
           "name": "Science Requirements",
-          "credits": 11,
+          "credits": 8,
           "type": "all",
-          "note": "One 8-credit science sequence plus 3 credits of science electives.",
+          "note": "One 8-credit science sequence: biology, chemistry, or physics.",
           "slots": [
             [
               [
@@ -6166,8 +6160,29 @@
           "name": "Minor Requirement",
           "credits": 15,
           "type": "pick",
-          "note": "Fifteen credits in an area outside of computer science.",
-          "from": {}
+          "note": "Fifteen credits in an area outside of computer science. Your minor is not tracked. These credits stay open until the minor's courses are added.",
+          "from": {
+            "codes": []
+          }
+        },
+        {
+          "id": "science-elective",
+          "name": "Science Elective",
+          "credits": 3,
+          "type": "pick",
+          "note": "A science course in a different field from the sequence above. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
+          "from": {
+            "subjects": [
+              "BIOL",
+              "CHEM",
+              "PHYS",
+              "MS",
+              "FDSN",
+              "ENVE",
+              "ASTR",
+              "GEOL"
+            ]
+          }
         },
         {
           "id": "interprofessional-projects-ipro",
@@ -6441,8 +6456,10 @@
           "name": "Minor Electives",
           "credits": 15,
           "type": "pick",
-          "note": "Fifteen credits.",
-          "from": {}
+          "note": "Fifteen credits. Your minor is not tracked. These credits stay open until the minor's courses are added.",
+          "from": {
+            "codes": []
+          }
         },
         {
           "id": "humanities-and-social-sciences-requirements",
@@ -7122,8 +7139,10 @@
           "name": "Minor Requirement",
           "credits": 15,
           "type": "pick",
-          "note": "Five related courses from an area outside applied mathematics.",
-          "from": {}
+          "note": "Five related courses from an area outside applied mathematics. Your minor is not tracked. These credits stay open until the minor's courses are added.",
+          "from": {
+            "codes": []
+          }
         },
         {
           "id": "science-electives",
@@ -7355,8 +7374,10 @@
           "name": "Minor Requirement",
           "credits": 15,
           "type": "pick",
-          "note": "Five related courses from outside applied mathematics.",
-          "from": {}
+          "note": "Five related courses from outside applied mathematics. Your minor is not tracked. These credits stay open until the minor's courses are added.",
+          "from": {
+            "codes": []
+          }
         },
         {
           "id": "natural-science-and-engineering-requirements",

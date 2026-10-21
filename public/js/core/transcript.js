@@ -55,6 +55,65 @@ function cleanTitle(t) {
     .trim();
 }
 
+
+// ----- Degree Works audits -----
+// A Degree Works audit lists each course inside the requirement it fills:
+//   "Calculus II MATH 152 Calculus II C 5 Spring 2024"   (the requirement name comes first)
+//   "CS 584 Machine Learning NG (3) Fall 2026"            (NG and (credits) = in progress)
+// "Satisfied by: ..." lines name outside courses and are skipped. The same course can appear in
+// several blocks, so rows are merged by course and term.
+const DW_START = /([A-Z]{2,5}) (\d{3}[A-Z]?) /g;
+const DW_TAIL = /^(.+?) (TR|NG|IP|[A-F][+-]?|P|S|W|WF|I|AU|CR|NC|U) \(?(\d{1,2}(?:\.\d{1,3})?)\)? (Fall|Spring|Summer|Winter) (\d{4})(?: \(R\))?$/;
+
+export function looksLikeDegreeWorks(text) {
+  return /degree\s*works|still needed:|satisfied by:/i.test(String(text || '').slice(0, 200000));
+}
+
+export function parseDegreeWorks(text) {
+  const lines = textToLines(text);
+  const found = new Map();
+  const exceptions = [];
+  let lastLabel = '';
+  let inMinor = false;
+  let mode = '';
+  for (const line of lines) {
+    if (/^Insufficient\b.*Credits applied/i.test(line)) { mode = 'insufficient'; continue; }
+    if (/Credits applied:/i.test(line) && !/^Credits required/i.test(line)) { mode = ''; continue; }
+    if (/^Satisfied by:/i.test(line)) continue;
+    const ex = /Exception by:.*Apply ([A-Z]{2,5}) (\d{3}[A-Z]?) here/.exec(line);
+    if (ex) { exceptions.push({ code: normalizeCode(`${ex[1]} ${ex[2]}`), label: lastLabel }); continue; }
+    const blockHead = /^(Minor in .+?|Major in .+?|Core Curriculum.*?)(?:\s+(?:INCOMPLETE|IN-PROGRESS|COMPLETE))\b/.exec(line);
+    if (blockHead) { inMinor = /^Minor in/i.test(blockHead[1]); lastLabel = ''; continue; }
+    let row = null;
+    DW_START.lastIndex = 0;
+    for (let m; (m = DW_START.exec(line));) {
+      if (NOT_SUBJECTS.has(m[1])) continue;
+      const rest = line.slice(m.index + m[0].length);
+      const t = DW_TAIL.exec(rest);
+      if (t) { const prefix = line.slice(0, m.index).trim(); if (prefix && !/^Satisfied by/i.test(prefix)) lastLabel = prefix; row = { code: normalizeCode(`${m[1]} ${m[2]}`), title: cleanTitle(t[1]), grade: t[2], credits: Number(t[3]), term: `${t[4]} ${t[5]}`, repeated: /\(R\)$/.test(line) }; break; }
+      DW_START.lastIndex = m.index + 1;
+    }
+    if (!row || !row.code) continue;
+    const grade = row.grade.toUpperCase();
+    let status = grade === 'NG' ? 'in-progress' : gradeStatus(grade, '');
+    if (mode === 'insufficient' && status === 'completed') status = 'not-counted';
+    const rec = {
+      code: row.code, title: row.title, credits: row.credits, grade: grade === 'NG' ? '' : grade,
+      term: row.term, status, transfer: ['TR', 'T', 'AP', 'CR'].includes(grade), repeatExcluded: row.repeated && status === 'not-counted',
+    };
+    if (inMinor && rec.status !== 'not-counted') rec.appliesTo = 'Minor Requirement';
+    const key = `${rec.code}|${rec.term}`;
+    const prev = found.get(key);
+    // keep the row with more credits (a lab-only line can show 0 credits) and prefer real outcomes
+    if (!prev || (rec.credits || 0) > (prev.credits || 0) || (prev.status === 'in-progress' && rec.status !== 'in-progress')) found.set(key, rec);
+  }
+  const courses = [...found.values()];
+  // courses an adviser moved into a requirement ("Apply PHIL 381 here")
+  for (const e of exceptions) for (const c of courses) if (c.code === e.code && e.label) c.appliesTo = e.label.slice(0, 80);
+  const warnings = courses.length ? ['Read as a Degree Works audit. Courses that count in two requirements are listed once.'] : [];
+  return { courses, warnings };
+}
+
 /**
  * Parse transcript text.
  *   catalogTitles: optional Map code -> title. Used to fix rows where a title ends in "I"
@@ -62,6 +121,10 @@ function cleanTitle(t) {
  * Returns { courses: [{ code, title, credits, grade, term, status, transfer, repeatExcluded }], warnings }.
  */
 export function parseTranscriptText(text, { catalogTitles } = {}) {
+  if (looksLikeDegreeWorks(text)) {
+    const dw = parseDegreeWorks(text);
+    if (dw.courses.length >= 3) return dw;
+  }
   const lines = textToLines(text);
   const courses = [];
   const warnings = [];
@@ -208,6 +271,7 @@ export function cleanRecords(list, max = 150) {
       status,
       transfer: !!raw.transfer,
       repeatExcluded: !!raw.repeatExcluded,
+      ...(typeof raw.appliesTo === 'string' && raw.appliesTo.trim() ? { appliesTo: raw.appliesTo.trim().slice(0, 80) } : {}),
     });
   }
   return out;
