@@ -141,7 +141,7 @@ test('chat rejects bad input', async () => {
   assert.equal(empty.status, 400);
   const notJson = await fetch(`${base}/api/chat`, { method: 'POST', body: 'nope' });
   assert.equal(notJson.status, 400);
-  const big = await fetch(`${base}/api/chat`, { method: 'POST', body: 'x'.repeat(70 * 1024) }).catch(() => ({ status: 413 }));
+  const big = await fetch(`${base}/api/chat`, { method: 'POST', body: 'x'.repeat(600 * 1024) }).catch(() => ({ status: 413 }));
   assert.equal(big.status, 413);
   const get = await fetch(`${base}/api/chat`);
   assert.equal(get.status, 405);

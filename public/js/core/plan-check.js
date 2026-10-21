@@ -81,7 +81,7 @@ export function normalizePlan(raw, { index, program, audit, saved = [] }) {
  *   records: transcript records (for the coverage audit)
  * Returns { issues: [{ term, code, level, message }], ok } and adds item.issues to each item.
  */
-export function checkPlan(plan, { index, program, records = [], done = new Set(), grades = new Map(), maxCredits = 15 }) {
+export function checkPlan(plan, { index, program, records = [], done = new Set(), grades = new Map(), maxCredits = 15, waivers = [] }) {
   const issues = [];
   const forecast = index.forecast;
   const finished = new Set(done);
@@ -123,7 +123,7 @@ export function checkPlan(plan, { index, program, records = [], done = new Set()
 
   // coverage: what is still missing after this plan?
   const planned = plan.terms.flatMap((t) => t.items.filter((i) => i.code).map((i) => i.code));
-  const after = auditDegree(program, records, { index, planned });
+  const after = auditDegree(program, records, { index, planned, waivers });
   const placeholderCredits = new Map();
   for (const t of plan.terms) {
     for (const i of t.items) {

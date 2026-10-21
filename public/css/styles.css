@@ -857,3 +857,13 @@ button.req-chip { cursor: pointer; }
 .apply-pick select { border: 1px solid var(--input-border); border-radius: 8px; padding: 6px 8px; background: var(--card); color: var(--text); max-width: 100%; }
 
 .pr-options { margin-top: 4px; display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; font-size: 13px; }
+
+/* changes from chat */
+.proposal { margin-top: 10px; padding: 10px 12px; border: 1px solid var(--card-border); border-radius: 10px; background: var(--card); }
+.proposal h4 { margin: 0 0 6px; font-size: 14px; }
+.proposal ul { margin: 0 0 8px; padding-left: 18px; }
+.proposal li.bad { color: var(--muted); }
+.proposal .prob { color: #b3261e; font-size: 12.5px; }
+.changes-card .change-list { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 6px; }
+.changes-card .change-list li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 10px; border: 1px solid var(--card-border); border-radius: 8px; }
+.changes-hint { margin: 0 4px; }

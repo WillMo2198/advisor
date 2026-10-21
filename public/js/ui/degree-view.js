@@ -1,6 +1,7 @@
 // Degree tab: transcript upload, degree audit, and semester plan.
 
 import { detectProgram } from '../core/detect.js';
+import { waiversOf, describeChange, undoChange } from '../core/changes.js';
 import { parseTranscriptText, linesFromPdfItems, gradeStatus, cleanRecords, bestAttempts, REPEATABLE } from '../core/transcript.js';
 import { auditDegree } from '../core/audit.js';
 import { planSemesters, planInputs, describePlan } from '../core/planner.js';
@@ -185,7 +186,8 @@ export function renderDegree(el, ctx) {
   const inProgress = new Set(best.filter((r) => r.status === 'in-progress').map((r) => r.code));
   const grades = new Map(best.filter((r) => r.grade).map((r) => [r.code, r.grade]));
   const planned = [...ctx.savedCourses].filter((c) => !completed.has(c) && !inProgress.has(c));
-  const audit = auditDegree(program, transcript.courses, { index, planned });
+  const waivers = waiversOf(transcript);
+  const audit = auditDegree(program, transcript.courses, { index, planned, waivers });
   const maxCredits = transcript.maxCredits || 15;
   const inputs = planInputs(index, { completed, inProgress, saved: planned });
   const rule = planSemesters(audit, program, index, { ...inputs, grades, maxCredits });
@@ -195,7 +197,7 @@ export function renderDegree(el, ctx) {
   const p = ctx.plan || {};
   const useAi = p.view === 'advisor' && p.ai;
   const shown = useAi ? JSON.parse(JSON.stringify(p.ai)) : ruleView;
-  const check = checkPlan(shown, { index, program, records: transcript.courses, done: inputs.done, grades, maxCredits });
+  const check = checkPlan(shown, { index, program, records: transcript.courses, done: inputs.done, grades, maxCredits, waivers });
   const t = audit.totals;
   const pct = (n) => `${Math.max(0, Math.min(100, (n / t.required) * 100)).toFixed(1)}%`;
   const usedTerms = shown.terms.filter((x) => x.items.length);
@@ -280,6 +282,17 @@ export function renderDegree(el, ctx) {
   }
   html += '</div>';
 
+  // ----- 2b. changes from the chat or the student -----
+  if (transcript.changes?.length) {
+    html += `<div class="card changes-card">
+        <div class="card-head"><h2 class="card-title">Changes you applied</h2><span class="small muted">From adviser emails and chat</span></div>
+        <ul class="change-list">${transcript.changes.map((c) => `<li><span>${esc(describeChange(c))}</span><button type="button" class="link-btn" data-undo-change="${esc(c.id)}">Undo</button></li>`).join('')}</ul>
+        <p class="small muted">Paste an email or explain an exception in the Chat tab, and the advisor will suggest more changes here.</p>
+      </div>`;
+  } else {
+    html += '<p class="small muted changes-hint">Something missing from your audit? Paste the adviser’s email in the Chat tab. The advisor can add it here.</p>';
+  }
+
   // ----- 3. what's left -----
   const left = audit.groups.filter((g) => g.status === 'remaining');
   // lets the student apply a course by hand, like an adviser exception in Degree Works
@@ -303,6 +316,7 @@ export function renderDegree(el, ctx) {
         <div class="req-head"><span class="req-name">${esc(g.name)}</span>${pill(g.status)}<span class="req-cr">${Math.min(have, g.credits)}/${g.credits} cr</span></div>
         <div class="req-bar"><span class="p-done" style="width:${Math.min(100, (g.done / g.credits) * 100)}%"></span><span class="p-ip" style="width:${Math.min(100, (g.inProgress / g.credits) * 100)}%"></span><span class="p-pl" style="width:${Math.min(100, (g.planned / g.credits) * 100)}%"></span></div>
         ${g.courses.length ? `<div class="req-chips">${g.courses.map((c) => courseChip(c, known)).join('')}</div>` : ''}
+        ${g.waived ? `<p class="req-note"><strong>Marked as met:</strong> ${esc(g.waived)}</p>` : ''}
         ${g.note ? `<p class="req-note">${esc(g.note)}</p>` : ''}
       </li>`;
   }
@@ -380,13 +394,21 @@ export function wireDegree(els, hooks) {
     } else if (!found && !chosenByUser) {
       detected = undefined;
     }
+    // keep the changes the student already applied (adviser exceptions, waivers, notes, added courses)
+    const changes = prev?.changes || [];
+    let merged = courses;
+    for (const c of changes) {
+      if (c.kind === 'apply') merged = merged.map((r) => (r.code === c.code ? { ...r, appliesTo: c.group } : r));
+      else if (c.kind === 'add-course' && !merged.some((r) => r.code === c.record.code)) merged = [...merged, { ...c.record }];
+    }
     hooks.setTranscript({
-      courses,
+      courses: merged,
       source,
       warnings,
       programId,
       detected,
       chosenByUser,
+      changes,
       maxCredits: prev?.maxCredits || 15,
     });
   };
@@ -509,6 +531,8 @@ export function wireDegree(els, hooks) {
   });
   els.body.addEventListener('click', (e) => {
     const t = hooks.getTranscript();
+    const undo = e.target.closest('[data-undo-change]');
+    if (undo && t) { hooks.setTranscript(undoChange(t, undo.dataset.undoChange)); return; }
     const setProg = e.target.closest('[data-set-program]');
     if (setProg && t) { hooks.setTranscript({ ...t, programId: setProg.dataset.setProgram, chosenByUser: true, detected: undefined }); return; }
     const del = e.target.closest('[data-del]');

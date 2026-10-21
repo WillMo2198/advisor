@@ -9,6 +9,7 @@ import { renderGraph, renderDetail, wireGraphHover } from './ui/graph-view.js';
 import { createChat } from './ui/chat.js';
 import { renderDegree, wireDegree } from './ui/degree-view.js';
 import { bestAttempts, cleanRecords } from './core/transcript.js';
+import { resolveProposal, applyChange, changesForServer } from './core/changes.js';
 
 // ---------- state ----------
 const DEFAULT_OPTIONS = {
@@ -339,6 +340,7 @@ function chatContext() {
     savedCrns: state.saved,
     completed: state.completed,
     transcript: state.transcript?.courses || [],
+    changes: changesForServer(state.transcript),
     programId: state.transcript?.programId || '',
     maxCredits: state.transcript?.maxCredits || 15,
     plan: shownPlanSummary(),
@@ -362,7 +364,7 @@ let lastDegree = null;
 function planFingerprint() {
   const t = state.transcript;
   const raw = JSON.stringify([
-    t?.programId || '', t?.maxCredits || 15,
+    t?.programId || '', t?.maxCredits || 15, (t?.changes || []).map((c) => c.id),
     (t?.courses || []).map((c) => `${c.code}|${c.grade}|${c.status}`).sort(),
     [...plannedCourses()].sort(),
   ]);
@@ -745,6 +747,19 @@ async function start() {
     known,
     getContext: () => chatContext(),
     onCodeClick: (code) => setQuery(code),
+    resolveProposals: (list) => {
+      const t = state.transcript;
+      if (!t) return list.map(() => ({ ok: false, label: 'Change', problem: 'Upload your transcript or Degree Works audit on the Degree tab first.' }));
+      const program = state.programs.find((p) => p.id === t.programId) || state.programs[0];
+      return list.map((p) => resolveProposal(p, program, state.index));
+    },
+    applyProposals: (changes) => {
+      let t = state.transcript;
+      if (!t) return;
+      for (const c of changes) t = applyChange(t, c);
+      setTranscript(t);
+    },
+    openDegree: () => setTab('degree'),
   });
 
   wire();

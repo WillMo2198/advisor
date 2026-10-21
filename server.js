@@ -152,7 +152,7 @@ export function cleanMessages(raw) {
   const out = [];
   for (const m of raw.slice(-30)) {
     if (!m || (m.role !== 'user' && m.role !== 'assistant') || typeof m.content !== 'string') continue;
-    const content = m.content.trim().slice(0, 4000);
+    const content = m.content.trim().slice(0, 12000);
     if (!content) continue;
     const last = out[out.length - 1];
     if (last && last.role === m.role) last.content += `\n\n${content}`;
@@ -170,7 +170,7 @@ async function handleChat(req, res) {
 
   let body;
   try {
-    body = JSON.parse(await readBody(req));
+    body = JSON.parse(await readBody(req, 512 * 1024));
   } catch (err) {
     return sendJson(res, err.status || 400, { error: err.status === 413 ? err.message : 'Send JSON: { "messages": [...] }.' });
   }

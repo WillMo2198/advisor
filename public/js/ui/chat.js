@@ -1,6 +1,7 @@
 // Chat tab: talks to /api/chat (server-sent events) and renders answers.
 
 import { esc, renderMarkdown, store } from './util.js';
+import { parseProposals } from '../core/changes.js';
 
 const BOT_ICON = '<span class="bot-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M2 13v2M22 13v2"/></svg></span>';
 const GREETING = 'Hi there! 👋 I’m your course advisor. How can I help you today?';
@@ -11,7 +12,7 @@ const SUGGESTIONS = [
   'Does my schedule have any time conflicts?',
 ];
 
-export function createChat({ els, known, getContext, onCodeClick }) {
+export function createChat({ els, known, getContext, onCodeClick, resolveProposals, applyProposals, openDegree }) {
   let messages = store.get('chat', []);
   if (!Array.isArray(messages)) messages = [];
   messages = messages.filter((m) => m && (m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string').slice(-40);
@@ -21,19 +22,32 @@ export function createChat({ els, known, getContext, onCodeClick }) {
 
   const save = () => store.set('chat', messages.filter((m) => !m.error).slice(-40));
 
-  function bubble(m) {
+  function bubble(m, i) {
     if (m.role === 'user') return `<div class="msg user"><div class="bubble">${esc(m.content)}</div></div>`;
-    const body = m.pending && !m.content
+    const { text, proposals } = parseProposals(m.content);
+    const body = m.pending && !text
       ? '<span class="typing" aria-label="Thinking"><i></i><i></i><i></i></span>'
-      : renderMarkdown(m.content, known);
+      : renderMarkdown(text, known);
+    const card = proposals.length && !m.pending && !m.error ? proposalCard(m, i, proposals) : '';
     const retry = m.error ? '<button type="button" class="btn retry" data-retry>Try again</button>' : '';
-    return `<div class="msg bot${m.error ? ' error' : ''}">${BOT_ICON}<div class="bubble">${body}${retry}</div></div>`;
+    return `<div class="msg bot${m.error ? ' error' : ''}">${BOT_ICON}<div class="bubble">${body}${card}${retry}</div></div>`;
+  }
+
+  /** The "Changes to your degree plan" card under an answer. */
+  function proposalCard(m, i, proposals) {
+    const items = resolveProposals ? resolveProposals(proposals) : [];
+    const good = items.filter((x) => x.ok);
+    const list = items.map((x) => `<li class="${x.ok ? '' : 'bad'}">${esc(x.label)}${x.why ? ` <span class="muted">· ${esc(x.why)}</span>` : ''}${x.ok ? '' : ` <span class="prob">${esc(x.problem)}</span>`}</li>`).join('');
+    const action = m.applied
+      ? '<p class="small">✓ Applied. <button type="button" class="link-btn" data-open-degree>See it on the Degree tab</button></p>'
+      : good.length ? `<button type="button" class="btn primary" data-apply-proposals="${i}">Apply ${good.length} change${good.length === 1 ? '' : 's'} to my degree plan</button>` : '';
+    return `<div class="proposal"><h4>Changes to your degree plan</h4><ul>${list}</ul>${action}<p class="small muted">Nothing changes until you press Apply. You can undo each change on the Degree tab.</p></div>`;
   }
 
   function render() {
     const atBottom = els.log.scrollHeight - els.log.scrollTop - els.log.clientHeight < 60;
     let html = bubble({ role: 'assistant', content: GREETING });
-    html += messages.map(bubble).join('');
+    html += messages.map((m, i) => bubble(m, i)).join('');
     if (!messages.length) {
       html += `<div class="suggestions">${SUGGESTIONS.map((s) => `<button type="button" data-suggest="${esc(s)}">${esc(s)}</button>`).join('')}</div>`;
     }
@@ -52,7 +66,7 @@ export function createChat({ els, known, getContext, onCodeClick }) {
   async function ask(text) {
     const question = String(text || '').trim();
     if (!question || busy) return;
-    messages.push({ role: 'user', content: question.slice(0, 4000) });
+    messages.push({ role: 'user', content: question.slice(0, 12000) });
     const reply = { role: 'assistant', content: '', pending: true };
     messages.push(reply);
     busy = true;
@@ -147,6 +161,19 @@ export function createChat({ els, known, getContext, onCodeClick }) {
   };
   els.input.addEventListener('input', autosize);
   els.log.addEventListener('click', (e) => {
+    const apply = e.target.closest('[data-apply-proposals]');
+    if (apply) {
+      const m = messages[Number(apply.dataset.applyProposals)];
+      if (m && !m.applied && applyProposals) {
+        const items = resolveProposals(parseProposals(m.content).proposals);
+        applyProposals(items.filter((x) => x.ok).map((x) => x.change));
+        m.applied = true;
+        save();
+        render();
+      }
+      return;
+    }
+    if (e.target.closest('[data-open-degree]')) return openDegree?.();
     const s = e.target.closest('[data-suggest]');
     if (s) return ask(s.dataset.suggest);
     const code = e.target.closest('.code-link');

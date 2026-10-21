@@ -102,3 +102,52 @@ test('a 0-credit lab row does not hide the 4-credit course (PHYS 123)', () => {
     assert.equal(sci.status, 'done');
   }
 });
+
+test('chat changes: parse, check, apply, undo, and waive', async () => {
+  const { parseProposals, resolveProposal, applyChange, undoChange, waiversOf } = await import('../public/js/core/changes.js');
+  const ai = programs.find((p) => p.id === 'bs-artificial-intelligence');
+  const block = '[{"type":"apply","course":"phil381","requirement":"AI Breadth Course","why":"exception"},{"type":"waive","requirement":"Minor Requirement"},{"type":"add-course","course":"PHYS 221","grade":"TR","term":"Summer 2026"},{"type":"apply","course":"CS 1","requirement":"Nope"}]';
+  const answer = `I found two approvals.\n\n\`\`\`degree-changes\n${block}\n\`\`\``;
+  const parsed = parseProposals(answer);
+  assert.equal(parsed.text, 'I found two approvals.');
+  assert.equal(parsed.proposals.length, 4);
+  // partial streaming text hides the block and finds nothing yet
+  const partial = parseProposals('Working on it.\n\n```degree-changes\n[{"type":"app');
+  assert.equal(partial.text, 'Working on it.');
+  assert.equal(partial.proposals.length, 0);
+
+  const items = parsed.proposals.map((p) => resolveProposal(p, ai, index));
+  assert.deepEqual(items.map((x) => x.ok), [true, true, true, false]);
+  assert.equal(items[0].change.group, 'AI Breadth Course');
+  assert.equal(items[1].change.group, 'Minor Requirement');
+
+  // apply: PHIL 381 counts toward breadth, the minor is waived, PHYS 221 is added
+  let t = { courses: [{ code: 'PHIL 381', title: 'AI Ethics', credits: 3, grade: 'A', term: 'Spring 2025', status: 'completed', transfer: false }], programId: ai.id };
+  for (const x of items.filter((y) => y.ok)) t = applyChange(t, x.change);
+  assert.equal(t.changes.length, 3);
+  assert.ok(t.courses.some((c) => c.code === 'PHYS 221' && c.transfer));
+  const audit = auditDegree(ai, t.courses, { index, waivers: waiversOf(t) });
+  assert.equal(audit.groups.find((g) => g.id === 'ai-breadth-course').status, 'done');
+  const minor = audit.groups.find((g) => /minor/i.test(g.name));
+  assert.equal(minor.status, 'done');
+  assert.ok(minor.waived !== undefined);
+
+  // undo puts everything back
+  for (const c of [...t.changes]) t = undoChange(t, c.id);
+  assert.equal(t.changes.length, 0);
+  assert.equal(t.courses.length, 1);
+  assert.equal(t.courses[0].appliesTo, undefined);
+});
+
+test('the server reads changes from the chat context', async () => {
+  const { readClientContext, studentContextBlock } = await import('../lib/context.js');
+  const ctx = readClientContext({
+    transcript: sample.courses, programId: 'bs-cs',
+    changes: [{ kind: 'waive', group: 'Free Electives', reason: 'dean approved' }, { kind: 'bogus' }, { kind: 'note', text: 'hello' }],
+  }, index);
+  assert.equal(ctx.changes.length, 2);
+  assert.deepEqual(ctx.waivers, [{ group: 'Free Electives', reason: 'dean approved' }]);
+  const block = studentContextBlock(index, 'what is left?', ctx, programs);
+  assert.match(block, /Changes the student applied/);
+  assert.match(block, /Free Electives is marked as met \(dean approved\)/);
+});

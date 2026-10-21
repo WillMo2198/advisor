@@ -229,7 +229,13 @@ function remainingText(group, result, creditsLeft, index) {
  * Run the audit.
  * Returns { program, groups: [...], totals, extra (courses that did not fit), notCounted }.
  */
-export function auditDegree(program, records, { index, planned = [] } = {}) {
+export function auditDegree(program, records, { index, planned = [], waivers = [] } = {}) {
+  // requirements the student marked as met (adviser waiver or substitution)
+  const waived = new Map();
+  for (const w of waivers) {
+    const g = program.groups.find((x) => x.name.toLowerCase() === String(w.group || '').toLowerCase()) || groupForLabel(w.group, program);
+    if (g) waived.set(g.id, w.reason || 'Marked as met');
+  }
   const pool = buildPool(records, { index, program, planned });
   // a course the adviser applied to a requirement counts there, even if the catalog list does not name it
   const forcedBy = new Map();
@@ -271,6 +277,14 @@ export function auditDegree(program, records, { index, planned = [] } = {}) {
       if (n < group.count) status = 'remaining';
     }
     const creditsLeft = Math.max(0, group.credits - done - ip - pl);
+    if (waived.has(group.id)) {
+      return {
+        id: group.id, name: group.name, type: group.type, note: group.note || '', credits: group.credits,
+        done: group.credits, inProgress: 0, planned: 0, status: 'done', creditsLeft: 0,
+        courses: result.used.map((p) => ({ code: p.code, credits: p.credits, status: p.status, grade: p.grade, title: titleFor(p.code, index, program) })),
+        remaining: [], waived: waived.get(group.id), slots: result.slots || null, parts: null,
+      };
+    }
     return {
       id: group.id,
       name: group.name,
