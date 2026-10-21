@@ -1,3 +1,5 @@
+import { loadExtraPrograms } from './programs-extra.mjs';
+
 // Degree requirements used by the Degree tab.
 // B.S. in Computer Science: catalog.iit.edu/undergraduate/colleges/computing/computer-science/bs/
 // Humanities and Social Sciences rules: catalog.iit.edu/undergraduate/undergraduate-education/core-curriculum/
@@ -12,10 +14,11 @@
 // Transcripts do not show course attributes such as (H), (S), (N), or (C), so
 // `hSubjects`, `sSubjects`, and the science elective subjects are best guesses by subject.
 
-export const programs = [
+const csPrograms = [
   {
     id: 'bs-cs',
     name: 'B.S. in Computer Science',
+    college: 'College of Computing',
     catalogYear: '2025–2026',
     totalCredits: 121,
     source: 'https://catalog.iit.edu/undergraduate/colleges/computing/computer-science/bs/',
@@ -93,3 +96,6 @@ export const programs = [
     ],
   },
 ];
+
+// All other undergraduate programs are built from data/source/programs/*.txt.
+export const programs = [...csPrograms, ...loadExtraPrograms(csPrograms.map((p) => p.id))];

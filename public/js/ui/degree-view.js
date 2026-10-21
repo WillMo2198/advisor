@@ -1,5 +1,6 @@
 // Degree tab: transcript upload, degree audit, and semester plan.
 
+import { detectProgram } from '../core/detect.js';
 import { parseTranscriptText, linesFromPdfItems, gradeStatus, cleanRecords, bestAttempts, REPEATABLE } from '../core/transcript.js';
 import { auditDegree } from '../core/audit.js';
 import { planSemesters, planInputs, describePlan } from '../core/planner.js';
@@ -116,6 +117,54 @@ function termCard(term, i, firstIdx, known) {
     </section>`;
 }
 
+/** Grouped list of programs, by college. */
+function programOptions(programs, selectedId) {
+  const groups = new Map();
+  for (const p of programs) {
+    const key = p.college || 'Programs';
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(p);
+  }
+  return [...groups].map(([college, list]) => `<optgroup label="${esc(college)}">${list
+    .slice().sort((a, b) => a.name.localeCompare(b.name))
+    .map((x) => `<option value="${esc(x.id)}"${x.id === selectedId ? ' selected' : ''}>${esc(x.name)}</option>`).join('')}</optgroup>`).join('');
+}
+
+/** The "we found your program" banner, with a way to change it. */
+function programBanner(programs, program, transcript) {
+  const d = transcript.detected;
+  const alts = (d?.alternatives || []).map((a) => programs.find((p) => p.id === a.id)).filter((p) => p && p.id !== program.id);
+  let tone = 'info';
+  let title = `Your program: <strong>${esc(program.name)}</strong>`;
+  let text = transcript.chosenByUser ? 'You chose this program.' : 'Pick your program so the plan fits you.';
+  if (d && !transcript.chosenByUser) {
+    if (d.confidence === 'high') { tone = 'ok'; title = `We found your program: <strong>${esc(program.name)}</strong>`; text = d.reason; }
+    else { tone = 'warn'; title = `We think your program is <strong>${esc(program.name)}</strong>`; text = `${d.reason} Please check it.`; }
+  }
+  return `<div class="program-banner ${tone}">
+      <div class="pb-text"><p class="pb-title">${title}</p><p class="small muted">${esc(text)}</p></div>
+      <label class="pb-pick small muted">Not right? Change program
+        <select id="program-select" aria-label="Degree program">${programOptions(programs, program.id)}</select>
+      </label>
+      ${alts.length ? `<div class="pb-alts small muted">Other likely matches: ${alts.map((p) => `<button type="button" class="link-btn" data-set-program="${esc(p.id)}">${esc(p.name)}</button>`).join(' · ')}</div>` : ''}
+    </div>`;
+}
+
+/** Optional specializations and concentrations: how many of their courses the student has. */
+function tracksCard(program, completed, inProgress) {
+  if (!program.tracks?.length) return '';
+  const rows = program.tracks.map((t) => {
+    const total = t.codes.length;
+    const done = t.codes.filter((c) => completed.has(c)).length;
+    const ip = t.codes.filter((c) => inProgress.has(c)).length;
+    const bar = total ? `<span class="mini-bar" role="img" aria-label="${done} of ${total} courses done"><i style="width:${(done / total * 100).toFixed(0)}%"></i></span>` : '';
+    return `<li><div><strong>${esc(t.name)}</strong> <span class="muted small">${esc(t.kind)}</span>${t.note ? `<p class="small muted">${esc(t.note)}</p>` : ''}</div>${total ? `<div class="track-count small">${bar}<span>${done}${ip ? ` + ${ip} in progress` : ''} of ${total} listed courses</span></div>` : ''}</li>`;
+  }).join('');
+  return `<details class="card tracks-card"><summary><h2 class="card-title">Specializations and concentrations <span class="muted small">optional</span></h2></summary>
+      <p class="small muted">These are extra paths inside your program. They are not part of the credit total above.</p>
+      <ul class="track-list">${rows}</ul></details>`;
+}
+
 /**
  * Render the whole Degree tab body.
  * ctx: { index, programs, transcript, savedCourses, known, plan: { view, ai, aiStale, busy, error }, hasClaude }
@@ -162,8 +211,8 @@ export function renderDegree(el, ctx) {
           <p class="eyebrow-sm">${esc(program.name)} · ${esc(program.catalogYear)} catalog</p>
           <h2 class="hero-line">${headline}</h2>
         </div>
-        ${programs.length > 1 ? `<select id="program-select" aria-label="Degree program">${programs.map((x) => `<option value="${esc(x.id)}"${x.id === program.id ? ' selected' : ''}>${esc(x.name)}</option>`).join('')}</select>` : ''}
       </div>
+      ${programs.length > 1 ? programBanner(programs, program, transcript) : ''}
       <div class="progress" role="img" aria-label="${t.done} credits done, ${t.inProgress} in progress, ${t.planned} saved, ${t.remaining} to go, out of ${t.required}">
         <span class="p-done" style="width:${pct(t.done)}"></span><span class="p-ip" style="width:${pct(t.inProgress)}"></span><span class="p-pl" style="width:${pct(t.planned)}"></span>
       </div>
@@ -280,6 +329,9 @@ export function renderDegree(el, ctx) {
       <p class="hint">Leave the grade empty for a course you are taking now. Grades like W, F, and I do not count.</p>
     </details>`;
 
+  // ----- 4b. specializations -----
+  html += tracksCard(program, completed, inProgress);
+
   // ----- 5. notes -----
   html += `<div class="card notes-card"><p class="small muted"><strong>Check with your advisor.</strong> This is a planning aid, not an official degree audit.</p><ul class="small muted">
       ${program.notes.map((n) => `<li>${esc(n)}</li>`).join('')}
@@ -305,13 +357,29 @@ export function wireDegree(els, hooks) {
     els.status.innerHTML = html;
   };
 
-  const apply = (courses, source, warnings = []) => {
+  // Pick the program from the transcript. A choice the student made by hand is kept.
+  const apply = (courses, source, warnings = [], { headerText = '', majors = [] } = {}) => {
     const prev = hooks.getTranscript();
+    const programs = hooks.getPrograms?.() || [];
+    let programId = prev?.programId;
+    let detected = prev?.detected;
+    let chosenByUser = prev?.chosenByUser;
+    const found = detectProgram(courses, programs, { headerText, majors });
+    // a program the student picked by hand stays unless the new transcript names a program for sure
+    if (found && !(chosenByUser && found.confidence !== 'high')) {
+      programId = found.programId;
+      detected = { confidence: found.confidence, reason: found.reason, alternatives: found.alternatives };
+      chosenByUser = false;
+    } else if (!found && !chosenByUser) {
+      detected = undefined;
+    }
     hooks.setTranscript({
       courses,
       source,
       warnings,
-      programId: prev?.programId,
+      programId,
+      detected,
+      chosenByUser,
       maxCredits: prev?.maxCredits || 15,
     });
   };
@@ -323,7 +391,7 @@ export function wireDegree(els, hooks) {
   async function handleText(text, source) {
     const { courses, warnings } = parseTranscriptText(text, { catalogTitles: hooks.catalogTitles });
     if (courses.length >= 3) {
-      apply(courses, source, warnings);
+      apply(courses, source, warnings, { headerText: text });
       status(`Read <strong>${courses.length}</strong> course rows from ${esc(source)}. Check the list below if anything looks wrong.${hooks.hasClaude() ? ' <button type="button" class="link-btn" data-read-claude>Read again with Claude</button>' : ''}`, 'ok');
     } else {
       status(`Only found ${courses.length} course row${courses.length === 1 ? '' : 's'} in ${esc(source)}. It may be a scanned or unusual file.${claudeButton()}`, 'warn');
@@ -373,7 +441,7 @@ export function wireDegree(els, hooks) {
       if (!res.ok) throw new Error(data.error || `Server error ${res.status}`);
       const courses = cleanRecords(data.courses);
       if (!courses.length) { status('Claude did not find any courses in that file.', 'warn'); return; }
-      apply(courses, `${lastInput.file?.name || 'pasted text'} (read by Claude)`, data.warnings || []);
+      apply(courses, `${lastInput.file?.name || 'pasted text'} (read by Claude)`, data.warnings || [], { headerText: lastInput.text || '', majors: data.majors || [] });
       status(`Claude read <strong>${courses.length}</strong> course rows. Check the list below.`, 'ok');
     } catch (err) {
       status(esc(err.message || 'Claude could not read the transcript.'), 'warn');
@@ -410,7 +478,7 @@ export function wireDegree(els, hooks) {
   els.body.addEventListener('change', (e) => {
     const t = hooks.getTranscript();
     if (!t) return;
-    if (e.target.id === 'program-select') { hooks.setTranscript({ ...t, programId: e.target.value }); return; }
+    if (e.target.id === 'program-select') { hooks.setTranscript({ ...t, programId: e.target.value, chosenByUser: true, detected: undefined }); return; }
     if (e.target.id === 'max-credits') { hooks.setTranscript({ ...t, maxCredits: Number(e.target.value) }); return; }
     const input = e.target.closest('[data-edit]');
     if (!input) return;
@@ -428,6 +496,8 @@ export function wireDegree(els, hooks) {
   });
   els.body.addEventListener('click', (e) => {
     const t = hooks.getTranscript();
+    const setProg = e.target.closest('[data-set-program]');
+    if (setProg && t) { hooks.setTranscript({ ...t, programId: setProg.dataset.setProgram, chosenByUser: true, detected: undefined }); return; }
     const del = e.target.closest('[data-del]');
     if (del && t) {
       const courses = t.courses.slice();

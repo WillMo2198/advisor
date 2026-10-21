@@ -1,0 +1,391 @@
+# Undergraduate degree requirements, College of Computing. Read from catalog.iit.edu (2025-2026), October 2026.
+# Format: see engineering.txt. The B.S. in Computer Science is in scripts/programs-source.mjs.
+PROGRAM|Bachelor of Science in Artificial Intelligence|127|/undergraduate/colleges/computing/computer-science/bs-artificial-intelligence
+G|Artificial Intelligence Requirements|36|required|Fixed core CS courses; alternatives for several rows.
+C|CS 100|Introduction to the Profession|2
+C|CS 115|Object-Oriented Programming I|2
+C|CS 116|Object-Oriented Programming II|2
+O|CS 115+CS 116,CS 201
+C|CS 330|Discrete Structures|3
+C|CS 331|Data Structures and Algorithms|3
+C|CS 340|Programming Paradigms and Patterns|3
+O|CS 340,CS 440,CS 445
+C|CS 422|Data Mining|3
+O|CS 422,CS 484,CS 584
+C|CS 425|Database Organization|3
+C|CS 430|Introduction to Algorithms|3
+C|CS 480|Introduction to Artificial Intelligence|3
+C|CS 481|Artificial Intelligence Language Understanding|3
+O|CS 481,CS 585
+C|CS 485|Computers and Society|3
+C|CS 487|Software Engineering I|3
+G|AI Depth Course|3|choose|One AI depth course.
+O|CS 512,CS 522,CS 577,CS 578,CS 581,CS 583,CS 584,CS 585,MATH 569,MATH 574
+G|AI Breadth Course|3|choose|One AI breadth course.
+O|COM 121,PHIL 281,PHIL 282,PHYS 407,PSYC 423,PSYC 426
+G|Artificial Intelligence Technical Electives|9|elective|Nine credits from listed technical electives or any CS 500-level course.
+C|CS 350|Computer Organization and Assembly Language Programming|3
+C|CS 351|Systems Programming|3
+C|CS 422|Data Mining|3
+C|CS 429|Information Retrieval|3
+C|CS 451|Introduction to Parallel and Distributed Computing|3
+C|CS 458|Introduction to Information Security|3
+C|DS 451|Data Science Life Cycle|3
+C|DS 480|Data Science Projects|3
+C|MATH 252|Introduction to Differential Equations|4
+C|MATH 350|Introduction to Computational Mathematics|3
+C|MATH 400|Real Analysis|3
+C|MATH 402|Complex Analysis|3
+C|MATH 481|Introduction to Stochastic Processes|3
+C|MATH 483|Design and Analysis of Experiments|3
+C|MATH 484|Regression|3
+C|MATH 487|Mathematical Modeling II|3
+G|Minor Requirement|15|elective|Fifteen credits in an area outside of computer science.
+G|Mathematics Requirements|23|required|Calculus and linear algebra, plus one probability and one statistics option.
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+C|MATH 251|Multivariate and Vector Calculus|4
+C|MATH 332|Linear Algebra: Theory and Applications|3
+C|MATH 474|Probability and Statistics|3
+O|MATH 474,MATH 475
+C|MATH 476|Statistics|3
+O|MATH 476,MATH 481,MATH 483,MATH 486
+G|Science Requirements|11|choose|One 8-credit science sequence plus 3 credits of science electives.
+O|BIOL 107+BIOL 109+BIOL 115+BIOL 117,CHEM 122+CHEM 123+CHEM 126+CHEM 140,PHYS 123+PHYS 221
+G|Humanities and Social Sciences Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+PROGRAM|Bachelor of Science in Computer Information Systems|121|/undergraduate/colleges/computing/computer-science/bs-computer-information-systems/
+G|Computer Science Requirements|18|required|All listed CS core courses.
+C|CS 100|Introduction to the Profession|2
+C|CS 115|Object-Oriented Programming I|2
+C|CS 116|Object-Oriented Programming II|2
+C|CS 330|Discrete Structures|3
+C|CS 331|Data Structures and Algorithms|3
+C|CS 350|Computer Organization and Assembly Language Programming|3
+C|CS 351|Systems Programming|3
+G|Computer Science Technical Electives|15|elective|Fifteen credits of courses marked (T) in the catalog.
+G|Computer Science Electives|6|elective|Six credits of CS 300-level or higher, not CS 401 or CS 402.
+G|Mathematics Requirement|5|required|MATH 151 is required.
+C|MATH 151|Calculus I|5
+G|Mathematics Elective|3|elective|Three credits of mathematics.
+G|Science Requirements|11|required|One biology course, Chemistry I with lab, and General Physics I.
+O|BIOL 105,BIOL 114
+O|CHEM 122+CHEM 123
+C|PHYS 123|General Physics I: Mechanics|4
+G|Psychology Requirements|6|required|PSYC 121 and PSYC 211.
+C|PSYC 121|Introduction to Psychology|3
+C|PSYC 211|Industrial Psychology|3
+G|Political Science Requirement|3|elective|Any 200-level political science course.
+G|Humanities and Social Sciences Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Minor Electives|15|elective|Fifteen credits.
+G|Free Electives|12|free|Twelve credits.
+G|Artificial Intelligence Specialization|0|track|CS 480 plus three of CS 422, 429, 481, 484, 512, 577, 579, 581, 584, 585, CSP 571.
+C|CS 480|Introduction to Artificial Intelligence|3
+G|Data Science Specialization|0|track|BUS 371, CS 422 or 584, CS 451, and MATH 481 or 483.
+C|BUS 371|Marketing Fundamentals|3
+C|CS 451|Introduction to Parallel and Distributed Computing|3
+G|Distributed and Cloud Computing Specialization|0|track|CSP 442, CS 451, CS 455, and CS 553.
+C|CSP 442|Mobile Applications Development|3
+C|CS 451|Introduction to Parallel and Distributed Computing|3
+C|CS 455|Data Communications|3
+C|CS 553|Cloud Computing|3
+G|Information and Knowledge Management Systems Specialization|0|track|CS 425 and CS 482 plus two electives.
+C|CS 425|Database Organization|3
+C|CS 482|Information and Knowledge Management Systems|3
+G|Information Security Specialization|0|track|CS 425, CS 458, CS 455, and CS 549 or CS 558.
+C|CS 425|Database Organization|3
+C|CS 458|Introduction to Information Security|3
+C|CS 455|Data Communications|3
+PROGRAM|Bachelor of Science in Data Science|120|/undergraduate/colleges/computing/applied-mathematics/bs-data-science/
+G|Data Science Requirements|24|required|Fixed DS courses plus alternatives.
+C|DS 100|Introduction to the Profession|3
+C|DS 151|Introduction to Data Science|3
+C|DS 261|Data Ethics and Responsible AI|3
+O|DS 451,CSP 571
+O|MATH 474,MATH 476
+O|MATH 484,CS 484
+O|MATH 252+MATH 350,DS 251+DS 351
+G|Applied Mathematics Requirements|17|required|Calculus, multivariate calculus, and linear algebra.
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+C|MATH 251|Multivariate and Vector Calculus|4
+C|MATH 332|Linear Algebra: Theory and Applications|3
+G|Computer Science Requirements|13|required|One programming sequence plus fixed CS courses.
+O|CS 115+CS 116,CS 201
+O|CS 330,MATH 230
+C|CS 331|Data Structures and Algorithms|3
+C|CS 425|Database Organization|3
+G|Data Science Communication|3|choose|One communication course.
+O|COM 320,COM 321,COM 328,COM 523,INTM 301,ITM 300
+G|Ethics and Society|3|choose|One ethics or society course.
+O|ITMM 485,PHIL 330,PHIL 331,PHIL 272,PHIL 281,PHIL 282,SOC 262,SSCI 245
+G|Data Science Technical Depth|9|elective|Three courses from the technical depth list.
+C|CS 422|Data Mining|3
+C|CS 429|Information Retrieval|3
+C|CS 430|Introduction to Algorithms|3
+C|CS 451|Introduction to Parallel and Distributed Computing|3
+C|CS 481|Artificial Intelligence Language Understanding|3
+C|CS 482|Information and Knowledge Management Systems|3
+C|CS 484|Introduction to Machine Learning|3
+C|CS 522|Advanced Data Mining|3
+C|CS 577|Deep Learning|3
+C|CS 584|Machine Learning|3
+C|CSP 554|Big Data Technologies|3
+C|MATH 435|Linear Optimization|3
+C|MATH 439|Network Modeling and Statistics|3
+C|MATH 446|Introduction to Time Series|3
+C|MATH 475|Probability|3
+C|MATH 476|Statistics|3
+C|MATH 477|Computational Linear Algebra for Science and Engineering|3
+C|MATH 484|Regression|3
+G|Data Science Electives|9|elective|Nine credits from listed courses or any other technical depth course.
+C|CS 350|Computer Organization and Assembly Language Programming|3
+C|CS 458|Introduction to Information Security|3
+C|CS 480|Introduction to Artificial Intelligence|3
+C|CS 487|Software Engineering I|3
+C|CS 512|Computer Vision|3
+C|CS 520|Data Integration, Warehousing, and Provenance|3
+C|CS 525|Advanced Database Organization|3
+C|CS 553|Cloud Computing|3
+C|CS 578|Reinforcement Learning|3
+C|CS 583|Probabilistic Graphical Models|3
+C|CS 585|Natural Language Processing|3
+C|DS 472|Data Science Practicum|3
+C|DS 480|Data Science Projects|3
+C|ECE 308|Signals and Systems|3
+C|ECE 449|Object-Oriented Programming and Machine Learning|3
+C|ECE 481|Image Processing|3
+C|ITMD 361|Fundamentals of Web Development|3
+C|ITMD 441|Web Application Foundations|3
+C|ITMS 416|Foundations of Secure AI Systems|3
+C|MATH 380|Mathematical Modeling with Data|3
+C|MATH 453|Combinatorics|3
+C|MATH 454|Graph Theory and Applications|3
+C|MATH 481|Introduction to Stochastic Processes|3
+C|MATH 483|Design and Analysis of Experiments|3
+C|SSCI 225|Introduction to Geographic Information Systems|3
+C|SSCI 288|Methods of Economic Impact Analysis|3
+C|SSCI 480|Introduction to Survey Methodology|3
+C|STAT 225|Introductory Statistics|3
+G|Science Requirement and Electives|7|hss|Illinois Tech Core Curriculum, section D (7-10 credits).
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C (some may double-count).
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Free Electives|4|free|Four to twenty credits, depending on double-counting.
+PROGRAM|Bachelor of Science in Applied Mathematics|120|/undergraduate/colleges/computing/applied-mathematics/bs/
+G|Applied Mathematics Requirements|36|required|All listed courses are required.
+C|MATH 100|Introduction to the Profession|3
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+C|MATH 230|Introduction to Discrete Math|3
+C|MATH 251|Multivariate and Vector Calculus|4
+C|MATH 252|Introduction to Differential Equations|4
+C|MATH 332|Linear Algebra: Theory and Applications|3
+C|MATH 350|Introduction to Computational Mathematics|3
+C|MATH 380|Mathematical Modeling with Data|3
+C|MATH 400|Real Analysis|3
+G|Applied Mathematics Core Choice|3|choose|One upper-level math course.
+O|MATH 410,MATH 430,MATH 431,MATH 454,MATH 475
+G|Applied Mathematics Electives|18|elective|Eighteen credits chosen with an adviser.
+G|Minor Requirement|15|elective|Five related courses from an area outside applied mathematics.
+G|Computer Science Requirements|4|choose|One computer science sequence (4-6 credits).
+O|CS 115+CS 116,CS 104+CS 201,CS 105+CS 201
+G|Science Requirement|4|required|A physics course is required.
+C|PHYS 123|General Physics I: Mechanics|4
+G|Science Electives|6|elective|Six credits of science electives.
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Free Electives|2|free|Two to four credits, by computer science sequence.
+G|Specialization in Applied Analysis|0|track|MATH 461, 488, 489 count toward electives.
+C|MATH 461|Fourier Series and Boundary-Value Problems|3
+C|MATH 488|Data-Driven Dynamical Systems|3
+C|MATH 489|Partial Differential Equations|3
+G|Specialization in Computational Mathematics|0|track|MATH 476, 477, 478 and MATH 435 or 461.
+C|MATH 476|Statistics|3
+C|MATH 477|Computational Linear Algebra for Science and Engineering|3
+C|MATH 478|Numerical Methods for Differential Equations|3
+G|Specialization in Discrete Applied Mathematics|0|track|MATH 430, 435, 453, 454.
+C|MATH 430|Applied Algebra|3
+C|MATH 435|Linear Optimization|3
+C|MATH 453|Combinatorics|3
+C|MATH 454|Graph Theory and Applications|3
+G|Specialization in Mathematical Finance|0|track|Needs a business or entrepreneurship minor.
+C|MATH 475|Probability|3
+C|MATH 476|Statistics|3
+C|MATH 478|Numerical Methods for Differential Equations|3
+C|MATH 481|Introduction to Stochastic Processes|3
+C|MATH 485|Introduction to Mathematical Finance|3
+G|Specialization in Stochastics|0|track|MATH 475 plus listed electives.
+C|MATH 475|Probability|3
+C|MATH 476|Statistics|3
+C|MATH 481|Introduction to Stochastic Processes|3
+C|MATH 485|Introduction to Mathematical Finance|3
+C|MATH 488|Data-Driven Dynamical Systems|3
+PROGRAM|Bachelor of Science in Statistics|120|/undergraduate/colleges/computing/applied-mathematics/bs-statistics/
+G|Applied Mathematics Requirements|26|required|Fixed list of applied mathematics courses.
+O|MATH 100,DS 100
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+C|MATH 230|Introduction to Discrete Math|3
+C|MATH 251|Multivariate and Vector Calculus|4
+C|MATH 332|Linear Algebra: Theory and Applications|3
+C|MATH 350|Introduction to Computational Mathematics|3
+C|MATH 435|Linear Optimization|3
+G|Statistics Requirements|15|required|Fixed list of statistics courses.
+C|STAT 225|Introductory Statistics|3
+C|MATH 446|Introduction to Time Series|3
+C|MATH 475|Probability|3
+C|MATH 476|Statistics|3
+C|MATH 484|Regression|3
+G|Applied Mathematics Electives|15|elective|Fifteen credits from the list or approved AMAT electives.
+C|MATH 252|Introduction to Differential Equations|4
+C|MATH 380|Mathematical Modeling with Data|3
+C|MATH 400|Real Analysis|3
+C|MATH 481|Introduction to Stochastic Processes|3
+C|MATH 483|Design and Analysis of Experiments|3
+C|CS 422|Data Mining|3
+G|Minor Requirement|15|elective|Five related courses from outside applied mathematics.
+G|Computer Science Requirements|7|choose|One CS sequence (4-6 credits) plus CS 331.
+O|CS 115+CS 116,CS 104+CS 201,CS 105+CS 201
+C|CS 331|Data Structures and Algorithms|3
+G|Natural Science and Engineering Requirements|10|hss|Illinois Tech Core Curriculum, section D.
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Free Electives|0|free|Up to two credits.
+PROGRAM|Bachelor of Science in Applied Cybersecurity and Information Technology|121|/undergraduate/colleges/computing/information-technology-management/bs-applied-cybersecurity-information-technology/
+G|Information Technology Core Requirements|36|required|All listed IT core courses.
+C|ITM 301|Introduction to Contemporary Operating Systems and Hardware I|3
+C|ITM 303|Introduction to Contemporary Operating Systems and Hardware II|3
+C|ITM 311|Introduction to Software Development|3
+C|ITM 313|Introduction to Open Source Application Development|3
+C|ITMD 321|Data Modeling and Applications|3
+C|ITMD 361|Fundamentals of Web Development|3
+C|ITMD 362|Human-Computer Interaction and Web Design|3
+C|ITMD 411|Intermediate Software Development|3
+C|ITMM 471|Project Management for Information Technology and Management|3
+C|ITMO 340|Introduction to Data Networks and the Internet|3
+C|ITMO 356|Introduction to Open Source Operating Systems|3
+C|ITMT 330|Introduction to Information Systems and the IT Profession|3
+G|Cybersecurity Core Requirements|27|required|All listed cybersecurity courses.
+C|ITMM 485|Legal and Ethical Issues in Information Technology|3
+C|ITMS 418|Coding Security|3
+C|ITMS 438|Cyber Forensics|3
+C|ITMS 443|Vulnerability Analysis and Control|3
+C|ITMS 448|Cyber Security Technologies|3
+C|ITMS 458|Operating System Security|3
+C|ITMS 478|Cyber Security Management|3
+C|ITMS 483|Digital Evidence|3
+C|ITMT 430|System Integration|3
+G|Mathematics Requirements|9|required|MATH 192, MATH 180 or 230, and one statistics course.
+C|MATH 192|Linear Mathematics|3
+O|MATH 180,MATH 230
+O|STAT 225,BUS 221,PSYC 203
+G|Natural Science Requirements|10|hss|Illinois Tech Core Curriculum, section D; PHYS 200 is recommended.
+G|Humanities and Social Sciences Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C; PSYC 211 is recommended.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Free Electives|12|free|Twelve credits.
+PROGRAM|Bachelor of Science in Cybersecurity with Artificial Intelligence|121|/undergraduate/colleges/computing/information-technology-management/bs-cybersecurity-artificial-intelligence/
+G|Information Technology Core Requirements|36|required|All listed IT core courses.
+C|ITM 301|Introduction to Contemporary Operating Systems and Hardware I|3
+C|ITM 303|Introduction to Contemporary Operating Systems and Hardware II|3
+C|ITM 311|Introduction to Software Development|3
+C|ITM 313|Introduction to Open Source Application Development|3
+C|ITMD 321|Data Modeling and Applications|3
+C|ITMD 361|Fundamentals of Web Development|3
+C|ITMD 362|Human-Computer Interaction and Web Design|3
+C|ITMD 411|Intermediate Software Development|3
+C|ITMM 471|Project Management for Information Technology and Management|3
+C|ITMO 340|Introduction to Data Networks and the Internet|3
+C|ITMO 356|Introduction to Open Source Operating Systems|3
+C|ITMT 330|Introduction to Information Systems and the IT Profession|3
+G|Cybersecurity Core Requirements|33|required|All listed cybersecurity courses.
+C|ITMM 485|Legal and Ethical Issues in Information Technology|3
+C|ITMS 416|Foundations of Secure AI Systems|3
+C|ITMS 418|Coding Security|3
+C|ITMS 443|Vulnerability Analysis and Control|3
+C|ITMS 448|Cyber Security Technologies|3
+C|ITMS 458|Operating System Security|3
+C|ITMS 460|Secure AI Systems Engineering and Defense|3
+C|ITMS 483|Digital Evidence|3
+C|ITMT 430|System Integration|3
+C|ITMS 484|Governance, Risk, and Compliance|3
+C|DS 151|Introduction to Data Science|3
+G|Mathematics Requirements|9|required|One discrete math course, MATH 192, and one statistics course.
+O|MATH 180,MATH 230
+C|MATH 192|Linear Mathematics|3
+O|STAT 225,BUS 221,PSYC 203
+G|Natural Science and Engineering Requirements|10|hss|Illinois Tech Core Curriculum, section D; PHYS 200 is recommended.
+G|Humanities and Social Sciences Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C; PSYC 211 is recommended.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Free Electives|6|free|Six credits.
+PROGRAM|Bachelor of Information Technology|120|/undergraduate/colleges/computing/information-technology-management/bachelor-information-technology/
+G|Mathematics Requirements: Discrete Mathematics and Statistics|6|choose|Discrete mathematics and statistics.
+G|Natural Science and Engineering Requirements|10|hss|Illinois Tech Core Curriculum, section D.
+G|Lower-Level Humanities and Social Sciences Requirements|9|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Free or Technical Electives|29|free|Twenty-nine credits of approved courses.
+G|Humanities Electives|6|hss|Two 300/400-level humanities courses.
+G|Social Sciences Electives|6|hss|300/400-level social or behavioral science electives; PSYC 211 is recommended.
+G|Interprofessional Projects|6|hss|Two IPRO courses, Core Curriculum section E.
+G|Cloud Computing Requirements|48|required|Sixteen listed IT courses, 3 credits each.
+C|ITM 301|Introduction to Contemporary Operating Systems and Hardware I|3
+C|ITM 313|Introduction to Open Source Application Development|3
+C|ITMD 321|Data Modeling and Applications|3
+C|ITMD 361|Fundamentals of Web Development|3
+C|ITMD 413|Open Source Programming|3
+C|ITMM 471|Project Management for Information Technology and Management|3
+C|ITMO 340|Introduction to Data Networks and the Internet|3
+C|ITMO 356|Introduction to Open Source Operating Systems|3
+C|ITMO 444|Cloud Computing Technologies|3
+C|ITMO 454|Operating System Virtualization|3
+C|ITMO 463|Cloud: Software as a Service|3
+C|ITMO 464|Cloud: Platform as a Service|3
+C|ITMO 465|Cloud: Infrastructure as a Service|3
+C|ITMS 448|Cyber Security Technologies|3
+C|ITMS 464|Cloud Computing Security|3
+C|ITMT 430|System Integration|3
+PROGRAM|Bachelor of Information Technology and Management|121|/undergraduate/colleges/computing/information-technology-management/bachelor-information-technology-management/
+G|ITM Requirements|42|required|All listed ITM courses; ITM 313 or ITM 312 fills one slot.
+C|ITM 301|Introduction to Contemporary Operating Systems and Hardware I|3
+C|ITM 303|Introduction to Contemporary Operating Systems and Hardware II|3
+C|ITM 311|Introduction to Software Development|3
+O|ITM 313,ITM 312
+C|ITMD 321|Data Modeling and Applications|3
+C|ITMD 361|Fundamentals of Web Development|3
+C|ITMD 362|Human-Computer Interaction and Web Design|3
+C|ITMD 411|Intermediate Software Development|3
+C|ITMM 471|Project Management for Information Technology and Management|3
+C|ITMO 340|Introduction to Data Networks and the Internet|3
+C|ITMO 356|Introduction to Open Source Operating Systems|3
+C|ITMS 448|Cyber Security Technologies|3
+C|ITMT 330|Introduction to Information Systems and the IT Profession|3
+C|ITMT 430|System Integration|3
+G|ITM Electives|18|elective|Eighteen credits from ITM, ITMD, ITMM, ITMO, ITMS, ITMT, and TECH.
+G|Mathematics Requirements|9|required|MATH 180 or 230, MATH 192, and one statistics course.
+O|MATH 180,MATH 230
+C|MATH 192|Linear Mathematics|3
+O|BUS 221,PSYC 203,STAT 225,MATH 425
+G|Natural Science and Engineering Requirements|10|hss|Illinois Tech Core Curriculum, section D; EG 225 is recommended.
+G|Humanities and Social Sciences Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C; PSYC 301 is recommended.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Minor, Technical, or Free Electives|15|free|Fifteen credits; minor courses cannot also count as major electives.
+G|Data Management Specialization|0|track|ITMD 422, ITMS 428, plus two more courses.
+C|ITMD 422|Advanced Database Management|3
+C|ITMS 428|Database Security|3
+G|IT Entrepreneurship and Management Specialization|0|track|ITMM 470, 481, 482, plus one elective.
+C|ITMM 470|Fundamentals of Management for Technology Professionals|3
+C|ITMM 481|Information Technology Entrepreneurship|3
+C|ITMM 482|Business Innovation|3
+G|Networking and Communications Specialization|0|track|ITMO 441 and 446, plus two options.
+C|ITMO 441|Network Administration and Operations|3
+C|ITMO 446|Telecommunications Over Data Networks|3
+G|Software Development Specialization|0|track|ITMD 415 and 441, plus two options.
+C|ITMD 415|Advanced Software Development|3
+C|ITMD 441|Web Application Foundations|3
+G|System Administration Specialization|0|track|ITMO 441, plus options.
+C|ITMO 441|Network Administration and Operations|3
+G|Systems Security Specialization|0|track|ITMS 428 and 478, plus options.
+C|ITMS 428|Database Security|3
+C|ITMS 478|Cyber Security Management|3
+G|Web Design and Application Development Specialization|0|track|ITMD 441 and 442, plus two options.
+C|ITMD 441|Web Application Foundations|3
+C|ITMD 442|Full-Stack Web Development|3

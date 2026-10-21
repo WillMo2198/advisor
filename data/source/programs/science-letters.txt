@@ -1,0 +1,390 @@
+# Undergraduate degree requirements, College of Science and Letters. Read from catalog.iit.edu (2025-2026), October 2026.
+# Format: see engineering.txt.
+PROGRAM|Bachelor of Science in Physics|120|/undergraduate/colleges/science-letters/physics/bs/
+G|Physics Requirements|50|required|Fixed list of physics core courses.
+C|PHYS 100|Intro to the Profession|2
+C|PHYS 123|General Physics I: Mechanics|4
+C|PHYS 221|General Physics II: Electricity and Magnetism|4
+C|PHYS 223|General Physics III|4
+C|PHYS 240|Computational Science|3
+C|PHYS 300|Instrumentation Laboratory|4
+C|PHYS 301|Mathematical Methods of Physics|3
+C|PHYS 304|Thermodynamics and Statistical Physics|3
+C|PHYS 308|Classical Mechanics I|3
+C|PHYS 309|Classical Mechanics II|3
+C|PHYS 405|Fundamentals of Quantum Theory I|3
+C|PHYS 406|Fundamentals of Quantum Theory II|3
+C|PHYS 413|Electromagnetism I|3
+C|PHYS 414|Electromagnetism II|3
+C|PHYS 427|Advanced Physics Laboratory I|3
+C|PHYS 485|Physics Colloquium (two semesters)|2
+G|Physics Electives|6|elective|Six credits of PHYS 300-level or higher courses.
+G|Mathematics Requirements|18|required|Calculus and differential equations.
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+C|MATH 251|Multivariate and Vector Calculus|4
+C|MATH 252|Introduction to Differential Equations|4
+G|Chemistry Requirements|4|required|Chemistry I with its laboratory.
+O|CHEM 122+CHEM 123
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Free Electives|15|free|Any electives.
+PROGRAM|Bachelor of Science in Astrophysics|120|/undergraduate/colleges/science-letters/physics/bs-astrophysics/
+G|Physics Requirements|34|required|Fixed physics courses.
+C|PHYS 100|Intro to the Profession|2
+C|PHYS 123|General Physics I: Mechanics|4
+C|PHYS 221|General Physics II: Electricity and Magnetism|4
+C|PHYS 223|General Physics III|4
+C|PHYS 240|Computational Science|3
+C|PHYS 301|Mathematical Methods of Physics|3
+C|PHYS 304|Thermodynamics and Statistical Physics|3
+C|PHYS 308|Classical Mechanics I|3
+C|PHYS 405|Fundamentals of Quantum Theory I|3
+C|PHYS 413|Electromagnetism I|3
+C|PHYS 485|Physics Colloquium (two semesters)|2
+G|Physics Instrumentation|3|choose|Three credits from PHYS 300.
+O|PHYS 300
+G|Astrophysics Requirements|10|required|Fixed astrophysics courses.
+C|PHYS 150|Introductory Special Topics in Astrophysics|3
+C|PHYS 360|Introduction to Astrophysics|3
+C|PHYS 361|Observational Astrophysics|4
+G|Astrophysics Electives|9|choose|Nine credits from the rotation-offered courses.
+O|PHYS 403,PHYS 425,PHYS 460,PHYS 461
+G|Mathematics Requirements|18|required|Calculus and differential equations.
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+C|MATH 251|Multivariate and Vector Calculus|4
+C|MATH 252|Introduction to Differential Equations|4
+G|Chemistry Requirements|4|required|Chemistry I with its laboratory.
+O|CHEM 122+CHEM 123
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Free Electives|15|free|Any electives.
+PROGRAM|Bachelor of Science in Engineering Physics|123|/undergraduate/colleges/science-letters/physics/bs-engineering-physics/
+G|Physics Requirements|41|required|Fixed list of physics courses.
+C|PHYS 100|Intro to the Profession|2
+C|PHYS 123|General Physics I: Mechanics|4
+C|PHYS 221|General Physics II: Electricity and Magnetism|4
+C|PHYS 223|General Physics III|4
+C|PHYS 240|Computational Science|3
+C|PHYS 300|Instrumentation Laboratory|4
+C|PHYS 301|Mathematical Methods of Physics|3
+C|PHYS 304|Thermodynamics and Statistical Physics|3
+C|PHYS 308|Classical Mechanics I|3
+C|PHYS 405|Fundamentals of Quantum Theory I|3
+C|PHYS 413|Electromagnetism I|3
+C|PHYS 427|Advanced Physics Laboratory I|3
+C|PHYS 485|Physics Colloquium (two semesters)|2
+G|Engineering Core Requirements|18|required|Six engineering core courses.
+C|MS 201|Materials Science|3
+C|MMAE 202|Mechanics of Solids|3
+C|MMAE 232|Design for Innovation|3
+C|MMAE 313|Fluid Mechanics|3
+C|ECE 308|Signals and Systems|3
+C|ECE 438|Control Systems|3
+G|Mathematics Requirements|18|required|Calculus and differential equations.
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+C|MATH 251|Multivariate and Vector Calculus|4
+C|MATH 252|Introduction to Differential Equations|4
+G|Engineering Electives|9|elective|Nine credits from the approved engineering list.
+C|BME 309|Biomedical Imaging|3
+C|BME 422|Mathematical Methods for Biomedical Engineers|3
+C|BME 433|Biomedical Engineering Applications of Statistics|3
+C|BME 438|Neuroimaging|3
+C|CAE 286|Theory and Concept of Structural Mechanics|3
+C|CAE 287|Mechanics of Structural Materials|3
+C|CAE 312|Engineering Systems Analysis|3
+C|CAE 419|Introduction to Transportation Engineering and Design|3
+C|CAE 470|Construction Methods and Cost Estimating|3
+C|ECE 403|Communication Systems|3
+C|ECE 408|Digital Communications|3
+C|ECE 437|Digital Signal Processing I|3
+C|MMAE 302|Advanced Mechanics of Solids|3
+C|MMAE 320|Thermodynamics|3
+C|MMAE 323|Heat and Mass Transfer|3
+C|MMAE 485|Manufacturing Processes|3
+G|Technical Electives|6|elective|Six credits of engineering or 400-level physics, approved by an adviser.
+G|Chemistry Requirement|4|required|Chemistry I with its laboratory.
+O|CHEM 122+CHEM 123
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+PROGRAM|Bachelor of Science in Biology|120|/undergraduate/colleges/science-letters/biology/bs-biology/
+G|Biology Requirements|31|required|All listed biology core courses.
+C|BIOL 100|Introduction to the Profession|2
+C|BIOL 107|General Biology Lectures|3
+C|BIOL 109|General Biology Laboratory|1
+C|BIOL 115|Human Biology|3
+C|BIOL 117|Human Biology Laboratory|1
+C|BIOL 210|Microbiology|3
+C|BIOL 214|Genetics|3
+C|BIOL 225|Microbiology Laboratory|2
+C|BIOL 301|Introductory Biochemistry|3
+C|BIOL 402|Metabolic Biochemistry|3
+C|BIOL 445|Cell Biology|3
+C|BIOL 451|Biological Literature|2
+C|BIOL 495|Biology Colloquium (two semesters)|2
+G|Senior Biology Laboratory Requirements|6|choose|Two of the three senior biology laboratory courses.
+O|BIOL 404,BIOL 431,BIOL 446
+G|Technical Electives|12|elective|Twelve credits of technical electives.
+G|Mathematics Requirements|8|required|Calculus I and statistical methods.
+C|MATH 151|Calculus I|5
+C|MATH 425|Statistical Methods|3
+G|Chemistry Requirements|15|required|General, organic, and principles of chemistry with labs.
+O|CHEM 122+CHEM 123
+O|CHEM 126+CHEM 140
+O|CHEM 235+CHEM 236
+C|CHEM 239|Organic Chemistry II|3
+G|Physics Requirements|8|choose|One of two physics sequences.
+O|PHYS 113+PHYS 211,PHYS 123+PHYS 221
+G|Computer Science Requirement|2|choose|CS 105 or CS 110.
+O|CS 105,CS 110
+G|Interprofessional Projects|6|hss|Illinois Tech Core Curriculum, section E.
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Free Elective|11|free|Eleven credits of free electives.
+PROGRAM|Bachelor of Science in Biochemistry|120-121|/undergraduate/colleges/science-letters/biology/bs-biochemistry/
+G|Biochemistry Requirements|18|required|All listed biochemistry courses; CHEM 438 or PHYS 410.
+C|BIOL 301|Introductory Biochemistry|3
+C|BIOL 402|Metabolic Biochemistry|3
+C|BIOL 404|Biochemistry Laboratory|3
+C|BIOL 412|Structural and Mechanistic Biochemistry|3
+O|CHEM 438,PHYS 410
+C|CHEM 456|Computational Biochemistry and Drug Design|3
+G|Biology Requirements|15|required|General, human, genetics, cell biology, and colloquium courses.
+C|BIOL 107|General Biology Lectures|3
+C|BIOL 109|General Biology Laboratory|1
+C|BIOL 115|Human Biology|3
+C|BIOL 117|Human Biology Laboratory|1
+C|BIOL 214|Genetics|3
+C|BIOL 445|Cell Biology|3
+C|BIOL 495|Biology Colloquium|1
+G|Chemistry Requirements|17|required|General, organic, and colloquium chemistry courses with labs.
+O|CHEM 122+CHEM 123
+O|CHEM 126+CHEM 140
+O|CHEM 235+CHEM 236
+C|CHEM 239|Organic Chemistry II|3
+C|CHEM 240|Organic Chemistry Laboratory|1
+C|CHEM 485|Chemistry Colloquium|1
+G|Biology or Chemistry Classes|4|choose|An introduction course and a literature or seminar course.
+O|BIOL 100,CHEM 100
+O|BIOL 451,CHEM 451
+G|Upper Division Laboratory|3|choose|Three credits of approved 300+ laboratory courses.
+O|BIOL 431,BIOL 446,CHEM 321,CHEM 416,CHEM 434,CHEM 461,CHEM 463,CHEM 476,PHYS 300,BIOL 491,CHEM 491,FDSN 494
+G|Technical Electives|13|elective|At least 6 credits must be upper-division (300+).
+C|BIOL 210|Microbiology|3
+C|BIOL 225|Microbiology Laboratory|2
+C|CHEM 247|Analytical Chemistry|4
+C|FDSN 201|Nutrition and Wellness|3
+C|MATH 230|Introduction to Discrete Math|3
+C|MATH 251|Multivariate and Vector Calculus|4
+C|MATH 252|Introduction to Differential Equations|4
+C|BME 418|Reaction Kinetics for BME|3
+C|CS 330|Discrete Structures|3
+C|CS 331|Data Structures and Algorithms|3
+C|CS 422|Data Mining|3
+C|CS 484|Introduction to Machine Learning|3
+C|PHYS 410|Molecular Biophysics|3
+G|Physics Requirements|8|required|General Physics I and II, or III in place of II.
+C|PHYS 123|General Physics I: Mechanics|4
+O|PHYS 221,PHYS 223
+G|Mathematics Requirements|10|required|Calculus I and II.
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+G|Statistics Requirement|3|choose|One listed statistics course.
+O|STAT 225,BUS 221,PSYC 203,MATH 425,BME 433,CHEM 513
+G|Computer Science Requirement|2|choose|One CS core course.
+O|CS 105,CS 110
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Pre-Health Specialization|0|track|Three listed courses, at most one lower-division.
+C|BIOL 210|Microbiology|3
+C|BIOL 240|Neurobiology|3
+C|FDSN 201|Nutrition and Wellness|3
+C|BIOL 327|Introduction to Immunology|3
+C|BIOL 410|Medical Microbiology|3
+C|BIOL 470|Systems and Behavioral Neuroscience|3
+C|BIOL 475|Health and Disease in Modern Society|3
+C|FDSN 300|Nutrition Through the Life Cycle|3
+C|FDSN 401|Nutrition, Metabolism, and Health|3
+C|PSYC 414|Neural and Biological Bases of Behavior|3
+G|Chemistry Specialization|0|track|Structured for ACS certification.
+C|CHEM 247|Analytical Chemistry|3
+C|CHEM 321|Instrumental Analysis|3
+C|CHEM 415|Inorganic Chemistry|3
+C|CHEM 434|Spectroscopic Methods in Identification and Analysis|4
+G|Computation Specialization|0|track|Programming, data, and discrete math or calculus courses.
+C|CS 116|Object-Oriented Programming II|2
+C|CS 331|Data Structures and Algorithms|3
+C|CS 422|Data Mining|3
+C|CS 484|Introduction to Machine Learning|3
+C|CS 330|Discrete Structures|3
+C|MATH 230|Introduction to Discrete Math|3
+G|Biophysics Specialization|0|track|Physics courses, with PHYS 224 or PHYS 223.
+C|PHYS 224|General Physics III for Engineers|3
+C|PHYS 223|General Physics III|3
+C|PHYS 304|Thermodynamics and Statistical Physics|3
+C|PHYS 410|Molecular Biophysics|3
+PROGRAM|Bachelor of Science in Chemistry|120|/undergraduate/colleges/science-letters/chemistry/bs/
+G|Chemistry Requirements|45|required|Core chemistry, including one of CHEM 452, STAT 225, or DS 151.
+C|CHEM 100|Introduction to the Profession|2
+O|CHEM 122+CHEM 123
+O|CHEM 126+CHEM 140
+O|CHEM 235+CHEM 236
+C|CHEM 239|Organic Chemistry II|3
+C|CHEM 240|Organic Chemistry Laboratory|1
+C|CHEM 247|Analytical Chemistry|4
+C|CHEM 321|Instrumental Analysis|4
+C|CHEM 343|Physical Chemistry I|3
+C|CHEM 344|Physical Chemistry II|4
+C|CHEM 415|Inorganic Chemistry|3
+C|CHEM 416|Advanced Chemistry Laboratory|3
+C|CHEM 451|Undergraduate Seminar|2
+O|CHEM 452,STAT 225,DS 151
+C|CHEM 485|Chemistry Colloquium|1
+G|Chemistry Electives|6|elective|Two CHEM electives at the 400 or 500 level.
+G|Biology Requirements|6|required|BIOL 301 plus BIOL 107 or BIOL 115.
+O|BIOL 107,BIOL 115
+C|BIOL 301|Introductory Biochemistry|3
+G|Mathematics Requirements|14|required|Calculus I and II plus MATH 251 or MATH 252.
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+O|MATH 251,MATH 252
+G|Physics Requirements|8|required|General Physics I and II.
+C|PHYS 123|General Physics I: Mechanics|4
+C|PHYS 221|General Physics II: Electricity and Magnetism|4
+G|Computer Science Requirement|2|choose|CS 105 or CS 110.
+O|CS 105,CS 110
+G|Humanities and Social Sciences Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Free Electives|12|free|Twelve credits of free electives.
+G|Environmental Chemistry Concentration|0|track|Replaces base chemistry electives.
+C|CHEM 463|Analytical Method Development Laboratory|3
+C|CHEM 472|Environmental Chemistry|3
+C|CHEM 473|Environmental Analytical Chemistry|3
+G|Forensic Chemistry Concentration|0|track|Replaces base chemistry electives.
+C|CHEM 463|Analytical Method Development Laboratory|3
+C|CHEM 475|Forensic Chemistry|3
+C|CHEM 476|Forensic Chemistry Laboratory|3
+G|Medicinal Chemistry Concentration|0|track|Replaces base chemistry electives.
+C|CHEM 456|Computational Biochemistry and Drug Design|3
+C|CHEM 463|Analytical Method Development Laboratory|3
+C|CHEM 467|Medicinal Chemistry|3
+PROGRAM|Bachelor of Science in Psychology|120|/undergraduate/colleges/science-letters/psychology/bs-psychology
+G|Psychological Science Requirements|19|required|Core psychology courses; PSYC 320 or PSYC 409 is accepted.
+C|PSYC 100|Introduction to the Profession|3
+C|PSYC 204|Research Methods in Behavioral Science|4
+C|PSYC 121|Introduction to Psychology|3
+C|PSYC 211|Industrial Psychology|3
+C|PSYC 210|Social Psychology|3
+O|PSYC 320,PSYC 409
+G|Upper-Level Psychological Science Electives|12|choose|Four of the seven listed upper-level courses.
+O|PSYC 312,PSYC 414,PSYC 423,PSYC 426,PSYC 435,PSYC 436,PSYC 485
+G|Psychology Electives|15|elective|Fifteen credits of 300/400-level psychology courses not in the core.
+G|Mathematics Requirements|4|required|PSYC 203.
+C|PSYC 203|Undergraduate Statistics for the Behavioral Sciences|4
+G|Mathematics Course|3|elective|Any MATH course at MATH 122 level or above.
+G|Computer Science Requirement|2|choose|CS 105 or CS 110.
+O|CS 105,CS 110
+G|Natural Sciences Requirements|10|hss|Illinois Tech Core Curriculum, section D.
+G|Humanities and Social Sciences Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Free Electives|28|free|Twenty-eight to twenty-nine credits.
+G|Clinical/Behavioral Health Psychology Specialization|0|track|PSYC 212 and 330 plus three listed courses.
+C|PSYC 212|Introduction to Psychopathology|3
+C|PSYC 330|Health Psychology|3
+C|PSYC 360|Clinical Psychology: Assessment and Treatment|3
+C|PSYC 435|Child Development|3
+C|PSYC 436|Adult Development|3
+C|PSYC 460|Child and Adolescent Disorders|3
+C|PSYC 465|Behavior Change Principles and Practice|3
+G|Culture and Diversity Specialization|0|track|Five listed courses totaling 15 credits.
+C|PSYC 350|Prejudice and Stigma|3
+C|PSYC 355|Cross-Cultural Psychology|3
+C|PSYC 411|Medical Aspects of Disabling Conditions|3
+C|PSYC 412|Multicultural and Psychosocial Issues in Rehabilitation and Mental Health Counseling|3
+C|SSCI 120|Global Chicago|3
+C|SSCI 221|Social Inequality|3
+C|SSCI 223|Problems of Multi-Ethnic, Multi-Religious States|3
+G|Industrial/Organizational Psychology Specialization|0|track|PSYC 211 plus four listed courses.
+C|PSYC 211|Industrial Psychology|3
+C|PSYC 320|Applied Correlation and Regression|3
+C|PSYC 355|Cross-Cultural Psychology|3
+C|PSYC 409|Psychological Testing|3
+C|PSYC 455|Development and Evaluation of Training in Organizations|3
+C|PSYC 481|Groups and Leadership at Work|3
+G|Rehabilitation Specialization|0|track|All five listed courses.
+C|PSYC 410|Introduction to Rehabilitation and Mental Health Counseling|3
+C|PSYC 411|Medical Aspects of Disabling Conditions|3
+C|PSYC 412|Multicultural and Psychosocial Issues in Rehabilitation and Mental Health Counseling|3
+G|Digital Psychology Specialization|0|track|Listed courses totaling at least 12 credits.
+C|PSYC 380|Topics in Psychology|3
+C|PSYC 409|Psychological Testing|3
+C|PSYC 423|Learning Theory|3
+C|PSYC 426|Cognitive Science|3
+C|PSYC 485|Senior Capstone Project I|3
+C|PSYC 462|Behavior Design & User Testing|3
+C|PSYC 362|Human-Computer Interaction and Web Design|3
+C|SSCI 278|Innovation Policy|3
+C|SSCI 281|Computational Social Science|3
+C|SOC 262|Technology and Social Change|3
+G|Advanced Research Methods and Statistics Specialization|0|track|PSYC 203 and 204 cannot count.
+C|PSYC 320|Applied Correlation and Regression|3
+C|PSYC 409|Psychological Testing|3
+C|PSYC 462|Behavior Design & User Testing|3
+C|SSCI 209|Social Science Research Methods|3
+C|SSCI 225|Introduction to Geographic Information Systems|3
+C|SSCI 325|Intermediate Geographic Information Systems|3
+C|SSCI 281|Computational Social Science|3
+C|SSCI 286|Qualitative Social Science Research Methods|3
+C|SSCI 480|Introduction to Survey Methodology|3
+C|SSCI 486|Program Evaluation|3
+C|DS 151|Introduction to Data Science|3
+C|DS 261|Data Ethics and Responsible AI|3
+C|MATH 425|Statistical Methods|3
+PROGRAM|Bachelor of Science in Public Policy|121|/undergraduate/colleges/science-letters/social-sciences/bs-public-policy/
+G|Public Policy Requirements|15|required|Fixed core plus one capstone option.
+C|SSCI 106|Introduction to Public Policy|3
+C|SSCI 100|Introduction to the Profession|3
+C|SSCI 209|Social Science Research Methods|3
+C|PS 313||3
+O|SSCI 493,SSCI 486,SSCI 491,PS 497,SOC 497
+G|Public Policy Electives|18|elective|Six other PS, SSCI, or SOC courses.
+G|Mathematics Requirements|6|elective|Two courses at MATH 119 level or above, including PSYC 203 or BUS 221.
+G|Natural Sciences Requirements|10|hss|Illinois Tech Core Curriculum, section D.
+G|Computer Science Requirement|2|choose|CS 105 or CS 110.
+O|CS 105,CS 110
+G|Humanities and Social Sciences Requirements|9|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Interprofessional Projects|6|hss|Illinois Tech Core Curriculum, section E.
+G|Free Electives|55|free|Fifty-five credits; may be applied to a minor.
+PROGRAM|Bachelor of Science in Humanities|120|/undergraduate/colleges/science-letters/humanities/bs-humanities/
+G|Illinois Tech Core Curriculum|47|hss|Writing, math, CS, humanities and social sciences, natural science or engineering, and IPRO.
+G|The Major|12|required|HUM 101, 395, 490, 495; HUM 395 is waived for double majors.
+C|HUM 101|Reading Methods|3
+C|HUM 395|Practical Experience in Humanities|3
+C|HUM 495|Foundational Research Methods|3
+C|HUM 490|Humanities Capstone|3
+G|Humanities Electives|18|elective|Eighteen credits of humanities electives.
+G|Minor, Second Major, or Free Electives|43|free|A minor, second major, or free electives.
+PROGRAM|Bachelor of Science in Game Design and Experiential Media|118-120|/undergraduate/colleges/science-letters/humanities/bs-game-design-experiential-media/
+G|Course Requirement|31|required|Core courses in game design, software, web, and capstone.
+C|GEM 100|Game Design and Experiential Media Intro to the Professions|3
+C|GEM 276|Game Design I|3
+C|GEM 277|Interactive Storytelling|3
+C|GEM 210|Game Design II|3
+C|HIST 273|History of Video Games|3
+C|ITM 311|Introduction to Software Development|3
+C|ITMO 356|Introduction to Open Source Operating Systems|3
+C|ITMD 361|Fundamentals of Web Development|3
+C|ITMD 362|Human-Computer Interaction and Web Design|3
+C|GEM 400|Game Design and Experiential Media Capstone I|3
+C|GEM 401|Game Design and Experiential Media Capstone II|3
+G|Ethics Requirement|3|choose|One philosophy or ethics course.
+O|GEM 271,PHIL 330,PHIL 272,PHIL 281
+G|Graphics Requirement|6|choose|Two listed arts and graphics courses.
+O|GEM 278,GEM 250,GEM 251
+G|Technical Electives|18|choose|Six listed courses.
+O|COM 321,COM 324,COM 425,DS 151,GEM 380,IDX 560,ITMD 455,ITMT 492,ITMD 413,ITMD 441
+G|STEM Module|16|elective|5-6 credits of mathematics and 10-11 credits of natural science or engineering.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Free Electives|17|free|Seventeen credits of free electives.

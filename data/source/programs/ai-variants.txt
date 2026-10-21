@@ -1,0 +1,188 @@
+# "with Artificial Intelligence" degree variants. Read from catalog.iit.edu (2025-2026), October 2026.
+# Format: see engineering.txt. Each variant adds the Certificate in AI Fluency and Certificate in AI Management.
+PROGRAM|Bachelor of Arts in Architectural Studies with Artificial Intelligence|120-121|/undergraduate/colleges/architecture/ba-architectural-studies-artificial-intelligence/
+G|Architecture Requirements|33|required|Eight fixed architecture courses.
+C|ARCH 100|Introduction to Architecture|3
+C|ARCH 107|Design Communication I: Introduction|3
+C|ARCH 108|Design Communication II: Advanced|3
+C|ARCH 113|Architecture Studio I: Elements|6
+C|ARCH 114|Architecture Studio II: Unit|6
+C|ARCH 201|Architecture Studio III: House|6
+C|ARCH 215|Site Design, Planning, and Ecology|3
+C|ARCH 413|Architectural Practice|3
+G|Building Science and Structural Requirements|6|required|Two structural and material courses.
+C|ARCH 230|Systems: Structural Analysis|3
+C|ARCH 334|Material: Metal|3
+G|Art and Architectural History Requirements|9|required|History and contemporary architecture.
+C|AAH 119|History of World Architecture I|3
+C|AAH 120|History of World Architecture II|3
+C|ARCH 321|Contemporary Architecture|3
+G|Architecture and Urbanism Requirements|3|required|The urbanism course.
+C|AURB 465|Urbanism|3
+G|Architecture Electives|15|elective|Fifteen credits of architecture electives.
+G|Certificate in AI Fluency|9|required|Three AI foundation courses.
+C|CS 180|Artificial Intelligence Foundations|3
+C|COM 200|AI, Data, and Communications|3
+C|MATH 123|AI for Computational Mathematics and Coding|3
+G|Certificate in AI Management|9|required|BUS 432 plus one data literacy and one ethics choice.
+O|DS 151,BUS 102
+C|BUS 432|Artificial Intelligence in Business|3
+O|PHIL 281,DS 261,PHIL 272,PHIL 380
+G|Mathematics Requirements|5|choose|Calculus I, or Geometry for Architects with calculus or statistics.
+O|MATH 151,MATH 119+MATH 122,MATH 119+STAT 225
+G|Physics Requirement|4|required|The physics course.
+C|PHYS 200|Introduction to Energy, Waves, Materials, and Forces|4
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+PROGRAM|Bachelor of Science in Astrophysics with Artificial Intelligence|120|/undergraduate/colleges/science-letters/physics/bs-astrophysics-artificial-intelligence/
+G|Physics Requirements|34|required|Fixed physics core.
+C|PHYS 100|Intro to the Profession|2
+C|PHYS 123|General Physics I: Mechanics|4
+C|PHYS 221|General Physics II: Electricity and Magnetism|4
+C|PHYS 223|General Physics III|4
+C|PHYS 240|Computational Science|3
+C|PHYS 301|Mathematical Methods of Physics|3
+C|PHYS 304|Thermodynamics and Statistical Physics|3
+C|PHYS 308|Classical Mechanics I|3
+C|PHYS 405|Fundamentals of Quantum Theory I|3
+C|PHYS 413|Electromagnetism I|3
+C|PHYS 485|Physics Colloquium (two semesters)|2
+G|Physics Instrumentation|3|choose|Three credits from PHYS 300.
+O|PHYS 300
+G|Astrophysics Requirements|10|required|Fixed astrophysics courses.
+C|PHYS 150|Introductory Special Topics in Astrophysics|3
+C|PHYS 360|Introduction to Astrophysics|3
+C|PHYS 361|Observational Astrophysics|4
+G|Astrophysics Electives|9|choose|Nine credits from listed electives.
+O|PHYS 403,PHYS 425,PHYS 460,PHYS 461
+G|Mathematics Requirements|18|required|Calculus and differential equations.
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+C|MATH 251|Multivariate and Vector Calculus|4
+C|MATH 252|Introduction to Differential Equations|4
+G|Chemistry Requirements|4|required|Chemistry I with its laboratory.
+O|CHEM 122+CHEM 123
+G|Certificate in AI Fluency|9|required|Three AI and computing courses.
+C|MATH 123|AI for Computational Mathematics and Coding|3
+C|COM 200|AI, Data, and Communications|3
+C|CS 180|Artificial Intelligence Foundations|3
+G|Certificate in AI Management|9|required|BUS 432 plus one option from each group.
+C|BUS 432|Artificial Intelligence in Business|3
+O|DS 151,BUS 102
+O|PHIL 281,DS 261,PHIL 272,PHIL 330
+G|Humanities and Social Science Requirements|15|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Free Electives|3|free|Three credits of any coursework.
+PROGRAM|Bachelor of Science in Biochemistry with Artificial Intelligence|120-121|/undergraduate/colleges/science-letters/biology/bs-biochemistry-artificial-intelligence/
+G|Biochemistry Requirements|18|required|Fixed biochemistry list; CHEM 438 or PHYS 410.
+C|BIOL 301|Introductory Biochemistry|3
+C|BIOL 402|Metabolic Biochemistry|3
+C|BIOL 404|Biochemistry Laboratory|3
+C|BIOL 412|Structural and Mechanistic Biochemistry|3
+O|CHEM 438,PHYS 410
+C|CHEM 456|Computational Biochemistry and Drug Design|3
+G|Biology Requirements|15|required|General biology, human biology, genetics, and cell biology.
+C|BIOL 107|General Biology Lectures|3
+C|BIOL 109|General Biology Laboratory|1
+C|BIOL 115|Human Biology|3
+C|BIOL 117|Human Biology Laboratory|1
+C|BIOL 214|Genetics|3
+C|BIOL 445|Cell Biology|3
+C|BIOL 495|Biology Colloquium|1
+G|Chemistry Requirements|17|required|Chemistry sequence, organic lab, and colloquium.
+O|CHEM 122+CHEM 123
+O|CHEM 126+CHEM 140
+O|CHEM 235+CHEM 236
+C|CHEM 239|Organic Chemistry II|3
+C|CHEM 240|Organic Chemistry Laboratory|1
+C|CHEM 485|Chemistry Colloquium|1
+G|Biology or Chemistry Classes|4|choose|One introduction course and one literature or seminar course.
+O|BIOL 100,CHEM 100
+O|BIOL 451,CHEM 451
+G|Certificate in AI Fluency|9|required|Three AI fluency courses.
+C|MATH 123|AI for Computational Mathematics and Coding|3
+C|COM 200|AI, Data, and Communications|3
+C|CS 180|Artificial Intelligence Foundations|3
+G|Certificate in AI Management|9|required|BUS 432, one data course, and one ethics course.
+O|DS 151,BUS 102
+O|PHIL 281,PHIL 331,PHIL 272,DS 261
+C|BUS 432|Artificial Intelligence in Business|3
+G|Upper Division Laboratory|3|choose|Three credits of approved 300+ labs.
+O|BIOL 431,BIOL 446,CHEM 321,CHEM 416,CHEM 434,CHEM 461,CHEM 463,CHEM 476,PHYS 300,BIOL 491,CHEM 491,FDSN 494
+G|Technical Electives|3|elective|Any 300+ BIOL, CHEM, or FDSN course, or a listed option.
+G|Physics Requirements|8|required|General Physics I, then II or III.
+C|PHYS 123|General Physics I: Mechanics|4
+O|PHYS 221,PHYS 223
+G|Mathematics Requirements|10|required|Calculus I and II.
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+G|Statistics Requirement|3|choose|One listed statistics course.
+O|STAT 225,BUS 221,PSYC 203,MATH 425,BME 433,CHEM 513
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Humanities and Social Science Requirements|15|hss|Illinois Tech Core Curriculum, sections B and C.
+PROGRAM|Bachelor of Science in Physics with Artificial Intelligence|120|/undergraduate/colleges/science-letters/bs-physics-artificial-intelligence/
+G|Physics Requirements|50|required|All listed physics courses.
+C|PHYS 100|Intro to the Profession|2
+C|PHYS 123|General Physics I: Mechanics|4
+C|PHYS 221|General Physics II: Electricity and Magnetism|4
+C|PHYS 223|General Physics III|4
+C|PHYS 240|Computational Science|3
+C|PHYS 300|Instrumentation Laboratory|4
+C|PHYS 301|Mathematical Methods of Physics|3
+C|PHYS 304|Thermodynamics and Statistical Physics|3
+C|PHYS 308|Classical Mechanics I|3
+C|PHYS 309|Classical Mechanics II|3
+C|PHYS 405|Fundamentals of Quantum Theory I|3
+C|PHYS 406|Fundamentals of Quantum Theory II|3
+C|PHYS 413|Electromagnetism I|3
+C|PHYS 414|Electromagnetism II|3
+C|PHYS 427|Advanced Physics Laboratory I|3
+C|PHYS 485|Physics Colloquium (two semesters)|2
+G|Physics Electives|6|elective|Six credits of PHYS 300-level or higher.
+G|Certificate in AI Fluency|9|required|All AI Fluency courses.
+C|MATH 123|AI for Computational Mathematics and Coding|3
+C|COM 200|AI, Data, and Communications|3
+C|CS 180|Artificial Intelligence Foundations|3
+G|Certificate in AI Management|9|required|BUS 432 plus one option from each group.
+C|BUS 432|Artificial Intelligence in Business|3
+O|DS 151,BUS 102
+O|PHIL 281,DS 261,PHIL 272,PHIL 330
+G|Mathematics Requirements|18|required|Calculus and differential equations.
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+C|MATH 251|Multivariate and Vector Calculus|4
+C|MATH 252|Introduction to Differential Equations|4
+G|Chemistry Requirements|4|required|Chemistry I with its laboratory.
+O|CHEM 122+CHEM 123
+G|Humanities and Social Science Requirements|15|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Free Electives|3|free|Three credits of any electives.
+PROGRAM|Bachelor of Science in Game Design and Experiential Media with Artificial Intelligence|118-120|/undergraduate/colleges/science-letters/humanities/bs-game-design-experiential-media-artificial-intelligence/
+G|Course Requirement|31|required|Core courses for the degree.
+C|GEM 100|Game Design and Experiential Media Intro to the Professions|3
+C|GEM 276|Game Design I|3
+C|GEM 277|Interactive Storytelling|3
+C|HIST 273|History of Video Games|3
+C|GEM 210|Game Design II|3
+C|ITM 311|Introduction to Software Development|3
+C|ITMO 356|Introduction to Open Source Operating Systems|3
+C|ITMD 361|Fundamentals of Web Development|3
+C|ITMD 362|Human-Computer Interaction and Web Design|3
+C|GEM 400|Game Design and Experiential Media Capstone I|3
+C|GEM 401|Game Design and Experiential Media Capstone II|3
+G|Graphics Requirement|6|choose|Two courses.
+O|GEM 278,GEM 250,GEM 251
+G|Technical Electives|6|choose|Two courses; AI courses fill most.
+O|COM 321,COM 324,COM 425,DS 151,GEM 380,IDX 560,ITMD 455,ITMT 492,ITMD 413,ITMD 441
+G|Certificate in AI Fluency|9|required|All three courses.
+C|MATH 123|AI for Computational Mathematics and Coding|3
+C|COM 200|AI, Data, and Communications|3
+C|CS 180|Artificial Intelligence Foundations|3
+G|Certificate in AI Management|9|required|BUS 432 plus a data choice and an ethics choice.
+O|DS 151,BUS 102
+C|BUS 432|Artificial Intelligence in Business|3
+O|PHIL 281,PHIL 330,PHIL 331
+G|STEM Module|13|elective|3 credits of mathematics and 10 of natural science or engineering.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Humanities and Social Science Requirements|9|hss|Nine credits of social and behavioral sciences (S); 6 at 300+, two disciplines.
+G|Free Electives|29|free|Open electives to reach the total.

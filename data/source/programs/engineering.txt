@@ -1,0 +1,433 @@
+# Undergraduate degree requirements, College of Engineering. Read from catalog.iit.edu (2025-2026), October 2026.
+# Line format (one program after another):
+#   PROGRAM|name|total credits as printed|catalog path
+#   G|section name|section credits as printed|kind|short rule        kind: required, choose, elective, hss, free, track (optional specialization, not in the total)
+#   C|CODE|Title|credits                                            a course listed in that section
+#   O|A,B,C                                                         alternatives: commas separate options, + joins courses taken together
+PROGRAM|Bachelor of Science in Mechanical Engineering|126|/undergraduate/colleges/engineering/mmae/mechanical-engineering/
+G|Mechanical Engineering Requirements|47|required|Fixed core; MMAE 432 or MMAE 433 for design.
+C|MMAE 100|Introduction to the Profession|3
+C|MMAE 202|Mechanics of Solids|3
+C|MMAE 232|Design for Innovation|3
+C|MMAE 302|Advanced Mechanics of Solids|3
+C|MMAE 305|Dynamics|3
+C|MMAE 313|Fluid Mechanics|3
+C|MMAE 319|Mechanical Laboratory I|4
+C|MMAE 320|Thermodynamics|3
+C|MMAE 323|Heat and Mass Transfer|3
+C|MMAE 332|Design of Machine Elements|3
+C|MMAE 350|Computational Mechanics|3
+C|MMAE 419|Mechanical Laboratory II|4
+C|MMAE 432|Design of Mechanical Systems|3
+O|MMAE 432,MMAE 433
+C|MMAE 443|Systems Analysis and Control|3
+C|MMAE 485|Manufacturing Processes|3
+G|Materials Science Requirement|3|required|Complete the listed course.
+C|MS 201|Materials Science|3
+G|Mathematics Requirements|18|required|Fixed mathematics courses.
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+C|MATH 251|Multivariate and Vector Calculus|4
+C|MATH 252|Introduction to Differential Equations|4
+G|Physics Requirements|8|required|Fixed physics courses.
+C|PHYS 123|General Physics I: Mechanics|4
+C|PHYS 221|General Physics II: Electricity and Magnetism|4
+G|Chemistry Requirement|3|required|Complete the listed course.
+C|CHEM 122|Principles of Chemistry I|3
+G|Computer Science Requirement|2|required|Complete the listed course.
+C|CS 104|Introduction to Computer Programming for Engineers|2
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Technical Elective|12|elective|A 300+ course in engineering, math, chemistry, physics, or computer science, approved by an adviser.
+G|Free Electives|6|free|Any coursework.
+PROGRAM|Bachelor of Science in Electrical Engineering|130-133|/undergraduate/colleges/engineering/ece/bs-electrical-engineering/
+G|Electrical Engineering Requirements|32|required|Required core ECE courses.
+C|ECE 100|Introduction to the Profession I|3
+C|ECE 211|Circuit Analysis I|3
+C|ECE 213|Circuit Analysis II|4
+C|ECE 218|Digital Systems|4
+C|ECE 242|Digital Computers and Computing|3
+C|ECE 307|Electrodynamics|4
+C|ECE 308|Signals and Systems|3
+C|ECE 311|Engineering Electronics|4
+C|ECE 319|Fundamentals of Power Engineering|4
+G|Professional ECE Electives|17-20|elective|400-level ECE (P) courses; two with labs and one Major Design (M) course.
+G|Mathematics Requirements|24|required|Required mathematics courses.
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+C|MATH 251|Multivariate and Vector Calculus|4
+C|MATH 252|Introduction to Differential Equations|4
+C|MATH 333|Matrix Algebra and Complex Variables|3
+C|MATH 374|Probability and Statistics for Electrical and Computer Engineers|3
+G|Physics Requirements|8|required|Required physics courses.
+C|PHYS 123|General Physics I: Mechanics|4
+C|PHYS 221|General Physics II: Electricity and Magnetism|4
+G|Chemistry Requirement|3|required|Required chemistry course.
+C|CHEM 122|Principles of Chemistry I|3
+G|Computer Science Requirements|4|required|Required computer science courses.
+C|CS 115|Object-Oriented Programming I|2
+C|CS 116|Object-Oriented Programming II|2
+G|Career Electives|12|elective|Advisor-approved engineering, science, math, CS, business, or law course.
+G|Free Elective|3|free|Advisor-approved course from any field.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Humanities and Social Sciences Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+PROGRAM|Bachelor of Science in Computer Engineering|131-135|/undergraduate/colleges/engineering/ece/bs-computer-engineering/
+G|Electrical Engineering Requirements|28|required|Required ECE courses.
+C|ECE 100|Introduction to the Profession I|3
+C|ECE 211|Circuit Analysis I|3
+C|ECE 213|Circuit Analysis II|4
+C|ECE 218|Digital Systems|4
+C|ECE 242|Digital Computers and Computing|3
+C|ECE 311|Engineering Electronics|4
+C|ECE 441|Smart and Connected Embedded System Design|4
+C|ECE 485|Computer Organization and Design|3
+G|Computer Science Major Requirements|12|required|Required CS courses.
+C|CS 115|Object-Oriented Programming I|2
+C|CS 116|Object-Oriented Programming II|2
+C|CS 330|Discrete Structures|3
+C|CS 331|Data Structures and Algorithms|3
+C|CS 351|Systems Programming|3
+C|CS 450|Operating Systems|3
+G|Junior Computer Engineering Elective|3|choose|Choose one.
+O|ECE 307,ECE 308,ECE 319
+G|Professional ECE Electives|6|elective|Any ECE 4xx (P) course or CS 4xx except CS 485.
+G|Computer Systems/Software Elective|3|choose|Choose one.
+O|ECE 407,ECE 408,ECE 443,ECE 449,CS 425,CS 487
+G|Hardware-Design Elective|4|choose|Choose one.
+O|ECE 429,ECE 446
+G|Mathematics Requirements|24|required|Required mathematics courses.
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+C|MATH 251|Multivariate and Vector Calculus|4
+C|MATH 252|Introduction to Differential Equations|4
+C|MATH 374|Probability and Statistics for Electrical and Computer Engineers|3
+C|MATH 333|Matrix Algebra and Complex Variables|3
+O|MATH 333,MATH 350
+G|Physics Requirements|8|required|Required physics courses.
+C|PHYS 123|General Physics I: Mechanics|4
+C|PHYS 221|General Physics II: Electricity and Magnetism|4
+G|Chemistry Requirement|3|required|Required chemistry course.
+C|CHEM 122|Principles of Chemistry I|3
+G|Career Elective|9|elective|Advisor-approved engineering, science, math, CS, business, or law course.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Humanities and Social Sciences Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+PROGRAM|Bachelor of Science in Computer and Cybersecurity Engineering|133-134|/undergraduate/colleges/engineering/ece/bs-computer-cybersecurity-engineering/
+G|Computer and Cyber Security Engineering Requirements|47|required|Complete all listed ECE and ITMS courses.
+C|ECE 100|Introduction to the Profession I|3
+C|ECE 211|Circuit Analysis I|3
+C|ECE 213|Circuit Analysis II|4
+C|ECE 218|Digital Systems|4
+C|ECE 222|Introduction to Cybersecurity Engineering|3
+C|ECE 242|Digital Computers and Computing|3
+C|ECE 308|Signals and Systems|3
+C|ECE 311|Engineering Electronics|4
+C|ECE 407|Introduction to Computer Networks with Laboratory|4
+C|ECE 441|Smart and Connected Embedded System Design|4
+C|ECE 443|Introduction to Computer Cyber Security|3
+C|ECE 444|Computer Network Security|3
+C|ECE 485|Computer Organization and Design|3
+C|ITMS 478|Cyber Security Management|3
+G|Computer Science Major Requirements|16|required|Complete all listed CS courses.
+C|CS 115|Object-Oriented Programming I|2
+C|CS 116|Object-Oriented Programming II|2
+C|CS 330|Discrete Structures|3
+C|CS 331|Data Structures and Algorithms|3
+C|CS 351|Systems Programming|3
+C|CS 450|Operating Systems|3
+G|Cybersecurity Math Elective|3|choose|Choose one.
+O|MATH 333,MATH 350,MATH 410,MATH 454
+G|Cybersecurity Software Engineering Elective|3|choose|Choose one.
+O|ECE 448,ECE 449,ECE 473,ECE 474
+G|Cybersecurity Technical Elective|3|choose|Choose one; an ECE 497 project must cover a cybersecurity topic.
+O|ECE 497,ECE 586,ITMS 428,ITMS 446
+G|Cybersecurity Law Elective|2-3|choose|Two to three credits from listed law courses.
+O|LAW 252,LAW 285,LAW 295,LAW 379,LAW 478
+G|Mathematics Requirements|21|required|Complete all listed mathematics courses.
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+C|MATH 251|Multivariate and Vector Calculus|4
+C|MATH 252|Introduction to Differential Equations|4
+C|MATH 374|Probability and Statistics for Electrical and Computer Engineers|3
+G|Physics Requirements|8|required|Complete both listed physics courses.
+C|PHYS 123|General Physics I: Mechanics|4
+C|PHYS 221|General Physics II: Electricity and Magnetism|4
+G|Chemistry Requirement|3|required|Complete the listed chemistry course.
+C|CHEM 122|Principles of Chemistry I|3
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Humanities and Social Sciences Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+PROGRAM|Bachelor of Science in Civil Engineering|130|/undergraduate/colleges/engineering/caee/civil-engineering/
+G|Civil Engineering Requirements|47|required|Fixed core CAE and ENVE courses.
+C|CAE 100|Introduction to Engineering Drawing and Design|2
+C|CAE 101|Introduction to AutoCAD Drawing and Design|2
+C|CAE 105|Surveying|2
+C|CAE 110|Professional Practice I|1
+C|CAE 111|Professional Practice II|1
+C|CAE 302|Fluid Mechanics|3
+C|CAE 303|Steel Structures I|3
+C|CAE 304|Structural Analysis I|3
+C|CAE 307|Concrete Structures I|3
+C|CAE 312|Engineering Systems Analysis|3
+C|CAE 315|Materials of Construction|3
+C|CAE 323|Introduction to Geotechnical Engineering|3
+C|CAE 419|Introduction to Transportation Engineering and Design|3
+C|CAE 431|Steel Structures II|3
+C|CAE 432|Concrete Structures II|3
+C|CAE 457|Geotechnical Foundation Design|3
+C|CAE 470|Construction Methods and Cost Estimating|3
+C|CAE 496|Fundamentals of Engineering Preparation 1|0
+C|ENVE 401|Introduction to Water Resources Engineering|3
+G|CAE Technical Electives|9|elective|400-level or above CAE, ENVE, or EMGT courses; only one EMGT.
+G|CAE Additional Science Requirement|3|choose|Choose one.
+O|ENVE 201,CAE 221,BIOL 105,PHYS 360
+G|Mathematics Requirements|18|required|Fixed mathematics courses.
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+C|MATH 251|Multivariate and Vector Calculus|4
+C|MATH 252|Introduction to Differential Equations|4
+G|Physics Requirements|8|required|Fixed physics courses.
+C|PHYS 123|General Physics I: Mechanics|4
+C|PHYS 221|General Physics II: Electricity and Magnetism|4
+G|Capstone Design Requirement|3|required|Complete the capstone course.
+C|CAE 495|Capstone Senior Design|3
+G|Chemistry Requirement|4|required|Chemistry I with its laboratory.
+O|CHEM 122+CHEM 123
+G|Computer Science Requirement|2|choose|One programming course.
+O|CS 104,CS 105
+G|Engineering Course Requirements|9|required|Fixed engineering courses.
+C|CAE 286|Theory and Concept of Structural Mechanics|3
+C|CAE 287|Mechanics of Structural Materials|3
+C|MMAE 305|Dynamics|3
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+PROGRAM|Bachelor of Science in Architectural Engineering|130|/undergraduate/colleges/engineering/caee/architectural-engineering/
+G|Architectural Engineering Requirements|50|required|Fixed core AE courses; alternatives where noted.
+C|CAE 100|Introduction to Engineering Drawing and Design|2
+C|CAE 101|Introduction to AutoCAD Drawing and Design|2
+C|CAE 105|Surveying|2
+C|CAE 110|Professional Practice I|1
+C|CAE 111|Professional Practice II|1
+O|CAE 208,MMAE 320
+O|CAE 302,CAE 209,MMAE 313
+C|CAE 303|Steel Structures I|3
+C|CAE 304|Structural Analysis I|3
+C|CAE 307|Concrete Structures I|3
+C|CAE 315|Materials of Construction|3
+C|CAE 331|Building Science|3
+C|CAE 383|Electrical and Electronic Circuits|3
+C|CAE 461|Plumbing and Fire Protection Design|3
+C|CAE 464|HVAC Systems Design|3
+O|CAE 466,CAE 323
+C|CAE 468|Architectural Design|3
+C|CAE 470|Construction Methods and Cost Estimating|3
+C|CAE 471|Construction Planning and Scheduling|3
+C|CAE 496|Fundamentals of Engineering Preparation|0
+G|Capstone Design Requirement|3|required|Complete the capstone course.
+C|CAE 495|Capstone Senior Design|3
+G|CAE Technical Electives|9|elective|Nine credits of 400-level+ CAE, ENVE, or EMGT; one EMGT at most.
+G|Mathematics Requirements|21|required|Fixed mathematics courses.
+C|CAE 312|Engineering Systems Analysis|3
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+C|MATH 251|Multivariate and Vector Calculus|4
+C|MATH 252|Introduction to Differential Equations|4
+G|Physics Requirements|8|required|Fixed physics courses.
+C|PHYS 123|General Physics I: Mechanics|4
+C|PHYS 221|General Physics II: Electricity and Magnetism|4
+G|Chemistry Requirement|4|required|Chemistry I with its laboratory.
+O|CHEM 122+CHEM 123
+G|Computer Science Requirement|2|choose|One programming course.
+O|CS 104,CS 105
+G|Engineering Course Requirements|6|required|Fixed engineering mechanics courses.
+C|CAE 286|Theory and Concept of Structural Mechanics|3
+C|CAE 287|Mechanics of Structural Materials|3
+G|Humanities Requirements|3|choose|One history of world architecture course.
+O|AAH 119,AAH 120
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Humanities and Social Sciences Requirements|18|hss|Illinois Tech Core Curriculum, sections B and C.
+PROGRAM|Bachelor of Science in Chemical Engineering|132-133|/undergraduate/colleges/engineering/chbe/bs-chemical-engineering/
+G|Chemical Engineering Requirements|47|required|Fixed core CHE courses.
+C|CHE 100|Introduction to the Profession I|2
+C|CHE 101|Introduction to the Profession II|2
+C|CHE 202|Material Energy Balances|3
+C|CHE 239|Mathematical and Computational Methods|3
+C|CHE 301|Fluid Mechanics|3
+C|CHE 302|Heat and Mass Transfer Operations|3
+C|CHE 311|Foundations of Biological Science for Engineering|3
+C|CHE 317|Chemical and Biological Engineering Laboratory I|2
+C|CHE 351|Thermodynamics I|3
+C|CHE 406|Transport Phenomena|3
+C|CHE 418|Chemical and Biological Engineering Laboratory II|2
+C|CHE 423|Chemical Reaction Engineering|3
+C|CHE 433|Process Modeling and System Theory|3
+C|CHE 435|Process Control|3
+C|CHE 451|Thermodynamics II|3
+C|CHE 494|Process Design I|3
+C|CHE 496|Process Design II|3
+G|Mathematics Requirements|18|required|Fixed mathematics courses.
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+C|MATH 251|Multivariate and Vector Calculus|4
+C|MATH 252|Introduction to Differential Equations|4
+G|Physics Requirements|8|required|Fixed physics courses.
+C|PHYS 123|General Physics I: Mechanics|4
+C|PHYS 221|General Physics II: Electricity and Magnetism|4
+G|Chemistry Requirements|18|required|Fixed chemistry courses.
+O|CHEM 126+CHEM 140
+O|CHEM 235+CHEM 236
+C|CHEM 239|Organic Chemistry II|3
+C|CHEM 343|Physical Chemistry I|3
+C|CHEM 344|Physical Chemistry II|4
+G|Computer Science Requirement|2|choose|One programming course.
+O|CS 104,CS 105
+G|Electrical and Computer Engineering Requirement|3-4|choose|One course.
+O|ECE 211,ECE 218
+G|Technical Electives|9|elective|Nine credits; one must be CHE 426 or a CHE 400+ engineering science elective.
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+PROGRAM|Bachelor of Science in Biomedical Engineering|128-130|/undergraduate/colleges/engineering/bme/bs-biomedical-engineering
+G|Biomedical Engineering Core Requirements|28|required|Fixed BME core.
+C|BME 100|Introduction to the Profession|2
+C|CS 104|Introduction to Computer Programming for Engineers|2
+C|ECE 211|Circuit Analysis I|3
+C|ECE 308|Signals and Systems|3
+C|BME 310|Biomaterials|3
+C|BME 315|Instrumentation and Measurement Laboratory|2
+C|BME 405|Physiology Laboratory|2
+C|BME 419|Introduction to Design Concepts in Biomedical Engineering|2
+C|BME 420|Design Concepts in Biomedical Engineering|3
+C|BME 422|Mathematical Methods for Biomedical Engineers|3
+C|BME 433|Biomedical Engineering Applications of Statistics|3
+C|BME 453|Quantitative Physiology|3
+G|Mathematics Requirements|18|required|Fixed mathematics courses.
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+C|MATH 251|Multivariate and Vector Calculus|4
+C|MATH 252|Introduction to Differential Equations|4
+G|Physics Requirements|8|required|Fixed physics courses.
+C|PHYS 123|General Physics I: Mechanics|4
+C|PHYS 221|General Physics II: Electricity and Magnetism|4
+G|Chemistry Requirements|8|required|Fixed chemistry courses.
+C|CHEM 122|Principles of Chemistry I|4
+C|CHEM 126|Principles of Chemistry II Without Laboratory|4
+G|Biology Requirements|4|required|Fixed biology courses.
+C|BIOL 115|Human Biology|3
+C|BIOL 117|Human Biology Laboratory|1
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Humanities and Social Science Requirements|18|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Neural Engineering Concentration|35|track|Concentration track; pick one of three tracks.
+C|ECE 213|Circuit Analysis II|4
+C|ECE 218|Digital Systems|4
+C|BME 309|Biomedical Imaging|3
+C|BME 325|Bioelectronics Laboratory|1
+C|BME 438|Neuroimaging|3
+C|BME 443|Biomedical Instrumentation and Electronics|3
+C|BME 445|Quantitative Neural Function|3
+C|CHEM 239|Organic Chemistry II|3
+G|Medical Imaging Concentration|33|track|Concentration track; pick one of three tracks.
+C|CS 201|Accelerated Introduction to Computer Science|4
+C|ECE 213|Circuit Analysis II|4
+C|ECE 437|Digital Signal Processing I|3
+C|ECE 481|Image Processing|3
+C|BME 309|Biomedical Imaging|3
+C|BME 325|Bioelectronics Laboratory|1
+C|BME 438|Neuroimaging|3
+C|BME 445|Quantitative Neural Function|3
+C|CHEM 239|Organic Chemistry II|3
+G|Cell and Tissue Engineering Concentration|34|track|Concentration track; pick one of three tracks.
+C|MMAE 202|Mechanics of Solids|3
+C|CHE 202|Material Energy Balances|3
+C|BIOL 403|Biochemistry|4
+C|BME 301|Bio-Fluid Mechanics|3
+C|BME 335|Thermodynamics of Living Systems|3
+C|BME 418|Reaction Kinetics for BME|3
+C|BME 424|Quantitative Aspects of Cell and Tissue Engineering|3
+C|BME 482|Mass Transport for Biomedical Engineers|3
+PROGRAM|Bachelor of Science in Aerospace Engineering|126|/undergraduate/colleges/engineering/mmae/aerospace-engineering/
+G|Aerospace Engineering Requirements|56|required|Fixed core MMAE courses.
+C|MMAE 100|Introduction to the Profession|3
+C|MMAE 202|Mechanics of Solids|3
+C|MMAE 304|Mechanics of Aerostructures|3
+C|MMAE 305|Dynamics|3
+C|MMAE 311|Compressible Flow|3
+C|MMAE 312|Aerodynamics of Aerospace Vehicles|3
+C|MMAE 313|Fluid Mechanics|3
+C|MMAE 315|Aerospace Laboratory I|4
+C|MMAE 320|Thermodynamics|3
+C|MMAE 350|Computational Mechanics|3
+C|MMAE 352|Aerospace Propulsion|3
+C|MMAE 372|Aerospace Materials Lab|3
+C|MMAE 410|Aircraft Flight Mechanics|3
+C|MMAE 411|Spacecraft Dynamics|3
+C|MMAE 412|Spacecraft Design I|3
+C|MMAE 414|Aircraft Design I|3
+C|MMAE 415|Aerospace Laboratory II|4
+C|MMAE 443|Systems Analysis and Control|3
+G|Materials Science Requirement|3|required|Complete the listed course.
+C|MS 201|Materials Science|3
+G|Mathematics Requirements|18|required|Fixed mathematics courses.
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+C|MATH 251|Multivariate and Vector Calculus|4
+C|MATH 252|Introduction to Differential Equations|4
+G|Physics Requirements|8|required|Fixed physics courses.
+C|PHYS 123|General Physics I: Mechanics|4
+C|PHYS 221|General Physics II: Electricity and Magnetism|4
+G|Chemistry Requirement|3|required|Complete the listed course.
+C|CHEM 122|Principles of Chemistry I|3
+G|Computer Science Requirement|2|required|Complete the listed course.
+C|CS 104|Introduction to Computer Programming for Engineers|2
+G|Interprofessional Project (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Humanities and Social Sciences Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Technical Electives|3|elective|Any 300+ engineering, math, chemistry, physics, or CS course.
+G|Free Electives|6|free|Any coursework.
+PROGRAM|Bachelor of Science in Engineering Management|127-128|/undergraduate/colleges/engineering/caee/engineering-management/
+G|Mathematics/Computer Science Requirements|20|required|Complete all listed math and computer science courses.
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+C|MATH 251|Multivariate and Vector Calculus|4
+C|MATH 252|Introduction to Differential Equations|4
+C|CS 104|Introduction to Computer Programming for Engineers|2
+O|CS 104,CS 105
+G|Physics Requirements|8|required|Complete both physics courses.
+C|PHYS 123|General Physics I: Mechanics|4
+C|PHYS 221|General Physics II: Electricity and Magnetism|4
+G|Chemistry Requirement|3-4|choose|Three to four credits of chemistry.
+G|Introduction to the Profession|2|choose|One Introduction to the Profession course.
+G|Core Engineering Specialization|28|elective|At least 28 credits in one engineering specialization; department rules vary.
+G|Core Entrepreneurship Requirements|12|required|Four fixed business courses.
+C|BUS 211|Financial Accounting|3
+C|BUS 212|Managerial Accounting|3
+C|BUS 301|Organizational Behavior|3
+C|BUS 371|Marketing Fundamentals|3
+G|Entrepreneurship Electives|12|choose|Four listed courses.
+C|BUS 305|Operation and Supply Chain Analytics|3
+C|BUS 361|Topics in Entrepreneurship|3
+C|COM 321|Technical Communication|3
+C|COM 328|Verbal and Visual Communication|3
+C|ECON 423|Economics of Capital Investments|3
+C|EMGT 363|Creativity, Inventions, and Entrepreneurship for Engineers and Scientists|3
+C|EMGT 406|Entrepreneurship and Intellectual Property Management|3
+C|EMGT 470|Project Management|3
+C|INTM 404|Marketing, Sales and E-Commerce|3
+C|INTM 477|Entrepreneurship in Industry|3
+G|Core Engineering or Entrepreneurship Technical Electives|9|elective|Nine credits of technical electives.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Humanities and Social Sciences Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Free Electives|6|free|Six credits of free electives.
+PROGRAM|Bachelor of Industrial Technology and Management|126|/undergraduate/colleges/engineering/industrial-technology-management/bitm/
+G|Admission Transfer Requirements|60|free|Transfer credits in math, natural science, computing, humanities, social sciences, and technical coursework.
+G|Industrial Technology Requirements|30|required|Complete all ten INTM core courses.
+C|INTM 301|Communications for the Workplace|3
+C|INTM 315|Industrial Enterprises|3
+C|INTM 322|Industrial Project Management|3
+C|INTM 403|Management and Leadership|3
+C|INTM 404|Marketing, Sales and E-Commerce|3
+C|INTM 408|Cost Management|3
+C|INTM 410|Operations Management|3
+C|INTM 425|Human Resource Management|3
+C|INTM 434|Digital Transformation|3
+C|INTM 459|Issues in Industrial Sustainability|3
+G|INTM Electives (Technical and/or Specialization)|18|elective|Eighteen credits of INTM technical or specialization electives.
+G|Humanities Electives|6|hss|Two 200-level or higher humanities courses.
+G|Social Sciences Electives|6|hss|Two 200-level or higher social sciences courses.
+G|Interprofessional Projects (IPRO)|6|hss|Two IPRO courses, Core Curriculum section E.

@@ -833,3 +833,22 @@ button.req-chip { cursor: pointer; }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
+
+/* program banner and specializations */
+.program-banner { display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; align-items: center; margin: 0 0 16px; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--card-border); background: var(--card); }
+.program-banner.ok { border-color: #2e8b57; background: color-mix(in srgb, #2e8b57 9%, var(--card)); }
+.program-banner.warn { border-color: #c98a00; background: color-mix(in srgb, #c98a00 10%, var(--card)); }
+.program-banner p { margin: 0; }
+.pb-title { font-size: 15.5px; }
+.pb-pick { display: flex; flex-direction: column; gap: 4px; }
+.pb-pick select { border: 1px solid var(--input-border); border-radius: 8px; padding: 6px 8px; background: var(--card); color: var(--text); max-width: 320px; }
+.pb-alts { grid-column: 1 / -1; }
+.tracks-card summary { cursor: pointer; list-style: none; }
+.tracks-card summary::-webkit-details-marker { display: none; }
+.track-list { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 10px; }
+.track-list li { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 10px 12px; border: 1px solid var(--input-border); border-radius: 8px; }
+.track-list p { margin: 2px 0 0; }
+.track-count { display: flex; align-items: center; gap: 8px; }
+.mini-bar { display: inline-block; width: 90px; height: 8px; border-radius: 4px; background: color-mix(in srgb, var(--muted) 25%, transparent); overflow: hidden; }
+.mini-bar i { display: block; height: 100%; background: #2e8b57; }
+@media (max-width: 640px) { .program-banner { grid-template-columns: 1fr; } .pb-pick select { max-width: 100%; } }

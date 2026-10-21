@@ -755,6 +755,7 @@ async function start() {
   }, {
     getTranscript: () => state.transcript,
     setTranscript,
+    getPrograms: () => state.programs,
     hasClaude: () => state.health?.mode === 'claude',
     onCode: (code) => setQuery(code),
     askPlan: askAboutPlan,

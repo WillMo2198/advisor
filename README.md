@@ -48,7 +48,7 @@ Each request sends three system blocks:
 | File | What it is |
 |---|---|
 | `data/catalog.json` | 52 real courses (all CS undergrad + bridge courses, and the MATH courses CS needs) from catalog.iit.edu, read October 2026. Each has `prereqText` (catalog wording) and `prereq` (the same rule as a tree). |
-| `data/programs.json` | Degree requirements. Built from `scripts/programs-source.mjs`. Today: B.S. in Computer Science, 2025–2026 catalog (121 credits). |
+| `data/programs.json` | Degree requirements. Built from `scripts/programs-source.mjs`. 50 undergraduate programs, 2025–2026 catalog: the B.S. in Computer Science (`scripts/programs-source.mjs`) plus every other program from `data/source/programs/*.txt` (`scripts/programs-extra.mjs`). |
 | `data/forecast.json` | The CS department's *Tentative Schedule of Future Computer Science Courses*, built from `data/source/future-cs-offerings.csv`. |
 | `data/sections.json` | **Sample** Spring 2027 sections, only for CS courses the forecast lists for Spring 2027. CRNs, times, rooms, seats, and instructor names are made up. Same shape as pop.ai's export. |
 
@@ -69,9 +69,15 @@ To change course data, edit `scripts/catalog-source.mjs` or `scripts/sections-so
 
 Replace `data/source/future-cs-offerings.csv` with the new sheet (first column the course, then one column per term like `S29`, `F29`, with `Y` where it runs) and run `npm run build:data`.
 
-### Add another degree program
+### Add or fix a degree program
 
-Add an entry to `scripts/programs-source.mjs` (group types: `all`, `pick`, `hss`, `free` are explained at the top of that file) and run `npm run build:data`. The build checks that the groups add up to the total credits.
+Edit the matching file in `data/source/programs/` (the line format is at the top of `engineering.txt`) and run `npm run build:data`. The build prints warnings when a section's courses do not add up to its credits, and it checks that the groups add up to the total. The Computer Science program stays hand-written in `scripts/programs-source.mjs` (group types `all`, `pick`, `hss`, `free` are explained there).
+
+The other programs were read from catalog.iit.edu pages and some were simplified (for example, specializations are optional and not counted in the total). Check them against the catalog before you rely on them.
+
+### Program detection
+
+When a student uploads a transcript, `public/js/core/detect.js` picks the program. It reads the major in the header first ("Major and Department: …"). If the header has none, it matches the courses. "Read with Claude" also returns the major it sees in the header. The student can change the program on the Degree tab, and that choice is kept.
 
 ### Use real sections from pop.ai
 

@@ -1,0 +1,101 @@
+# Undergraduate degree requirements, College of Architecture. Read from catalog.iit.edu (2025-2026), October 2026.
+# Format: see engineering.txt.
+PROGRAM|Bachelor of Arts in Architectural Studies|120-121|/undergraduate/colleges/architecture/ba-architectural-studies/
+G|Architecture Requirements|33|required|All listed core architecture studio, communication, and practice courses.
+C|ARCH 100|Introduction to Architecture|3
+C|ARCH 107|Design Communication I: Introduction|3
+C|ARCH 108|Design Communication II: Advanced|3
+C|ARCH 113|Architecture Studio I: Elements|6
+C|ARCH 114|Architecture Studio II: Unit|6
+C|ARCH 201|Architecture Studio III: House|6
+C|ARCH 215|Site Design, Planning, and Ecology|3
+C|ARCH 413|Architectural Practice|3
+G|Building Science and Structural Requirements|6|required|Both listed structures and materials courses.
+C|ARCH 230|Systems: Structural Analysis|3
+C|ARCH 334|Material: Metal|3
+G|Art and Architectural History Requirements|9|required|Both world architecture history courses and contemporary architecture.
+C|AAH 119|History of World Architecture I|3
+C|AAH 120|History of World Architecture II|3
+C|ARCH 321|Contemporary Architecture|3
+G|Architecture and Urbanism Requirements|3|required|The listed urbanism course.
+C|AURB 465|Urbanism|3
+G|Architecture Electives|15|elective|Fifteen credits of architecture electives.
+G|Free Electives|18|free|Eighteen credits; 12 must be 300+ level.
+G|Mathematics Requirements|5|choose|MATH 151, or MATH 119 with MATH 122 or STAT 225.
+O|MATH 151,MATH 119+MATH 122,MATH 119+STAT 225
+G|Physics Requirement|4|required|The listed physics course.
+C|PHYS 200|Introduction to Energy, Waves, Materials, and Forces|4
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+PROGRAM|Bachelor of Architecture|159-160|/undergraduate/colleges/architecture/barch/
+G|Architecture Requirements|75|required|Studio, technology, communication, and practice courses.
+C|ARCH 100|Introduction to Architecture|3
+C|ARCH 107|Design Communication I: Introduction|3
+C|ARCH 108|Design Communication II: Advanced|3
+C|ARCH 113|Architecture Studio I: Elements|6
+C|ARCH 114|Architecture Studio II: Unit|6
+C|ARCH 201|Architecture Studio III: House|6
+C|ARCH 202|Architecture Studio IV: Multiple|6
+C|ARCH 215|Site Design, Planning, and Ecology|3
+C|ARCH 305|Architecture Studio V: Hybrid|6
+C|ARCH 306|Architecture Studio VI: Hybrid|6
+C|ARCH 413|Architectural Practice|3
+C|ARCH 417|Architecture Studio VII: Synthesis|6
+C|ARCH 418|Architecture Studio VIII: Synthesis|6
+C|ARCH 419|Architecture Studio IX: Advanced|6
+C|ARCH 420|Architecture Studio X: Advanced|6
+G|Building Science and Structural Requirements|18|required|Fixed courses plus one Advanced Technology Elective.
+C|ARCH 230|Systems: Structural Analysis|3
+C|ARCH 334|Material: Metal|3
+C|ARCH 335|Material: Cementitious|3
+C|ARCH 403|Environment and Building Systems I|3
+C|ARCH 404|Environment and Building Systems II|3
+G|Art and Architectural History Requirements|9|required|Fixed history courses.
+C|AAH 119|History of World Architecture I|3
+C|AAH 120|History of World Architecture II|3
+C|ARCH 321|Contemporary Architecture|3
+G|Architectural History Elective|3|elective|Three credits of architectural history.
+G|Architecture and Urbanism Requirements|3|required|The listed urbanism course.
+C|AURB 465|Urbanism|3
+G|Architecture Electives|15|elective|Fifteen credits of architecture electives.
+G|Mathematics Requirements|5|choose|MATH 119 and MATH 122, or MATH 151 alone.
+O|MATH 119+MATH 122,MATH 151
+G|Physics Requirement|4|required|The listed physics course.
+C|PHYS 200|Introduction to Energy, Waves, Materials, and Forces|4
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+PROGRAM|Bachelor of Science in Construction Management and Architectural Technology|120-121|/undergraduate/colleges/architecture/bs-construction-management-architectural-technology/
+G|Introduction to the Profession Requirements|3|choose|ARCH 100, or CAE 110 and CAE 111 together.
+O|ARCH 100,CAE 110+CAE 111
+G|Architectural Requirements|30|required|All listed architecture courses.
+C|ARCH 107|Design Communication I: Introduction|3
+C|ARCH 108|Design Communication II: Advanced|3
+C|ARCH 113|Architecture Studio I: Elements|6
+C|ARCH 114|Architecture Studio II: Unit|6
+C|ARCH 230|Systems: Structural Analysis|3
+C|ARCH 413|Architectural Practice|3
+C|ARCH 486|Structures II: Building Design|3
+C|CAE 468|Architectural Design|3
+G|Construction Engineering and Management Requirements|27|required|All listed construction courses.
+C|CAE 100|Introduction to Engineering Drawing and Design|2
+C|CAE 101|Introduction to AutoCAD Drawing and Design|2
+C|CAE 105|Surveying|2
+C|CAE 470|Construction Methods and Cost Estimating|3
+C|CAE 471|Construction Planning and Scheduling|3
+C|CAE 472|Construction Site Operation|3
+C|CAE 473|Construction Contract Administration|3
+C|CAE 474|Introduction to Building Information Modeling|3
+C|CAE 495|Capstone Senior Design|3
+C|INTM 407|Construction Technology|3
+G|Business and Administration Requirements|6|required|BUS 210 and ECON 211.
+C|BUS 210|Accounting Principles|3
+C|ECON 211|Introduction to Economics|3
+G|Business and Administration Electives|6|choose|Six credits from the listed courses.
+O|BUS 221,BUS 341,BUS 371,BUS 382,ECON 423,EMGT 470,INTM 441,STAT 225
+G|Major Electives|12|elective|Twelve credits of major electives.
+G|Mathematics Requirements|5|choose|MATH 151, or MATH 119 with MATH 122 or STAT 225.
+O|MATH 151,MATH 119+MATH 122,MATH 119+STAT 225
+G|Physics Requirement|4|choose|PHYS 200 or PHYS 123.
+O|PHYS 200,PHYS 123
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.

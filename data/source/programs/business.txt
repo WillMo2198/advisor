@@ -1,0 +1,359 @@
+# Undergraduate degree requirements, Stuart School of Business. Read from catalog.iit.edu (2025-2026), October 2026.
+# Format: see engineering.txt.
+PROGRAM|Bachelor of Science in Business Administration|120-122|/undergraduate/colleges/business/bs-business-administration/
+G|Business Requirements|48|required|Business core; BUS 382 or ECON 382 for economics.
+C|BUS 100|Business in the 21st Century|3
+C|BUS 102|Business Analytics Fundamentals|3
+C|BUS 211|Financial Accounting|3
+C|BUS 212|Managerial Accounting|3
+C|BUS 221|Business Statistics|3
+C|BUS 301|Organizational Behavior|3
+C|BUS 305|Operation and Supply Chain Analytics|3
+C|BUS 311|Strategic Cost Management|3
+C|BUS 321|Analytics for Optimization|3
+C|BUS 341|Business Ethical and Legal Environment|3
+C|BUS 351|Financial Decision Making and Capital Budgeting|3
+C|BUS 371|Marketing Fundamentals|3
+O|BUS 382,ECON 382
+C|BUS 480|Strategic Management and Design Thinking|3
+C|ECON 151|Microeconomics|3
+C|ECON 152|Macroeconomics|3
+G|Specialization Courses|15|elective|At least 15 credits in one specialization (entrepreneurship) or any Illinois Tech minor.
+C|BUS 361|Topics in Entrepreneurship|3
+C|BUS 472|New Product Development|3
+C|BUS 473|Marketing Analytics|3
+C|BUS 475|Sales Management and Analytics|3
+C|INTM 322|Industrial Project Management|3
+C|INTM 415|Advanced Project Management|3
+G|Mathematics Requirements|5|choose|One listed mathematics course.
+O|MATH 151,MATH 148,MATH 191,MATH 192
+G|Natural Science and Engineering Requirements|10|hss|Illinois Tech Core Curriculum, section D.
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Computer Science Requirement|2|choose|CS 105 or CS 110.
+O|CS 105,CS 110
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Free Electives|13|free|Free electives (13-15 credits).
+PROGRAM|Bachelor of Science in Business Administration with Artificial Intelligence|120-122|/undergraduate/colleges/business/bs-business-administration-artificial-intelligence/
+G|Business Requirements|48|required|Business core; BUS 382 or ECON 382 for economics.
+C|BUS 100|Business in the 21st Century|3
+C|BUS 102|Business Analytics Fundamentals|3
+C|BUS 211|Financial Accounting|3
+C|BUS 212|Managerial Accounting|3
+C|BUS 221|Business Statistics|3
+C|BUS 301|Organizational Behavior|3
+C|BUS 305|Operation and Supply Chain Analytics|3
+C|BUS 311|Strategic Cost Management|3
+C|BUS 321|Analytics for Optimization|3
+C|BUS 341|Business Ethical and Legal Environment|3
+C|BUS 351|Financial Decision Making and Capital Budgeting|3
+C|BUS 371|Marketing Fundamentals|3
+O|BUS 382,ECON 382
+C|BUS 480|Strategic Management and Design Thinking|3
+C|ECON 151|Microeconomics|3
+C|ECON 152|Macroeconomics|3
+G|Artificial Intelligence Requirements|15|required|AI courses; DS 261, PHIL 380, or PHIL 281 fills the ethics slot.
+C|BUS 432|Artificial Intelligence in Business|3
+C|COM 200|AI, Data, and Communications|3
+C|CS 180|Artificial Intelligence Foundations|3
+O|DS 261,PHIL 380,PHIL 281
+C|MATH 123|AI for Computational Mathematics and Coding|3
+G|Mathematics Requirements|5|choose|One of MATH 151, 148, 191, or 192.
+O|MATH 151,MATH 148,MATH 191,MATH 192
+G|Natural Science and Engineering Requirements|10|hss|Illinois Tech Core Curriculum, section D.
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Computer Science Requirement|2|choose|CS 105 or CS 110.
+O|CS 105,CS 110
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Free Electives|13|free|Free electives (13-15 credits).
+PROGRAM|Bachelor of Science in Business Analytics|120|/undergraduate/colleges/business/bs-business-analytics/
+G|Core Business Requirements|48|required|Business core; BUS 351 or ECON 423.
+C|BUS 100|Business in the 21st Century|3
+C|BUS 102|Business Analytics Fundamentals|3
+C|ECON 151|Microeconomics|3
+C|ECON 152|Macroeconomics|3
+C|BUS 211|Financial Accounting|3
+C|BUS 212|Managerial Accounting|3
+C|BUS 221|Business Statistics|3
+C|BUS 301|Organizational Behavior|3
+C|BUS 305|Operation and Supply Chain Analytics|3
+C|BUS 311|Strategic Cost Management|3
+C|BUS 321|Analytics for Optimization|3
+C|BUS 341|Business Ethical and Legal Environment|3
+O|BUS 351,ECON 423
+C|BUS 371|Marketing Fundamentals|3
+O|BUS 382,ECON 382
+C|BUS 480|Strategic Management and Design Thinking|3
+G|Business Analytics Requirement|12|required|Four fixed analytics courses.
+C|ECON 251|Introduction to Econometrics|3
+C|BUS 473|Marketing Analytics|3
+C|BUS 475|Sales Management and Analytics|3
+C|BUS 484|Data Analytics and Visualization|3
+G|Business Analytics Elective|3|elective|One course related to business analytics.
+G|Mathematics Requirement|4|choose|One of MATH 148, 191, 192, or 151.
+O|MATH 148,MATH 191,MATH 192,MATH 151
+G|Natural Science and Engineering Requirements|10|hss|Illinois Tech Core Curriculum, section D.
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Computer Science Requirement|2|choose|CS 105 or CS 110.
+O|CS 105,CS 110
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Free Electives|14|free|Fourteen credits (15 if MATH 192 is chosen).
+PROGRAM|Bachelor of Science in Business and Cybersecurity|120|/undergraduate/colleges/business/bs-business-cybersecurity/
+G|Business Core Required Courses|36|required|Business core; BUS 351 or ECON 423.
+C|BUS 100|Business in the 21st Century|3
+C|BUS 211|Financial Accounting|3
+C|BUS 212|Managerial Accounting|3
+C|BUS 221|Business Statistics|3
+C|BUS 301|Organizational Behavior|3
+C|BUS 305|Operation and Supply Chain Analytics|3
+C|BUS 321|Analytics for Optimization|3
+O|BUS 351,ECON 423
+C|BUS 371|Marketing Fundamentals|3
+C|BUS 480|Strategic Management and Design Thinking|3
+C|ECON 151|Microeconomics|3
+C|ECON 152|Macroeconomics|3
+G|Information Technology and Cybersecurity Required Courses|36|required|IT and cybersecurity courses.
+C|ITM 301|Introduction to Contemporary Operating Systems and Hardware I|3
+C|ITM 313|Introduction to Open Source Application Development|3
+C|ITMD 321|Data Modeling and Applications|3
+C|ITMO 340|Introduction to Data Networks and the Internet|3
+C|ITMO 356|Introduction to Open Source Operating Systems|3
+C|ITMS 418|Coding Security|3
+C|ITMS 438|Cyber Forensics|3
+C|ITMS 443|Vulnerability Analysis and Control|3
+C|ITMS 448|Cyber Security Technologies|3
+C|ITMS 458|Operating System Security|3
+C|ITMS 478|Cyber Security Management|3
+C|ITMS 483|Digital Evidence|3
+G|Mathematics Requirement|7|required|MATH 180 plus one of MATH 148, 151, 191, or 192.
+C|MATH 180|Fundamentals of Discrete Mathematics|3
+O|MATH 148,MATH 151,MATH 191,MATH 192
+G|Natural Science and Engineering Requirements|10|hss|Illinois Tech Core Curriculum, section D.
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Free Electives|4|free|Four credits of open electives.
+PROGRAM|Bachelor of Science in Business and Engineering|120|/undergraduate/colleges/business/bs-business-engineering/
+G|Business Core Requirements|36|required|All twelve business core courses.
+C|BUS 100|Business in the 21st Century|3
+C|ECON 151|Microeconomics|3
+C|ECON 152|Macroeconomics|3
+C|BUS 211|Financial Accounting|3
+C|BUS 212|Managerial Accounting|3
+C|BUS 221|Business Statistics|3
+C|BUS 301|Organizational Behavior|3
+C|BUS 305|Operation and Supply Chain Analytics|3
+C|BUS 321|Analytics for Optimization|3
+C|BUS 351|Financial Decision Making and Capital Budgeting|3
+C|BUS 371|Marketing Fundamentals|3
+C|BUS 480|Strategic Management and Design Thinking|3
+G|Engineering Required Courses|9|required|Three listed engineering courses.
+C|MMAE 202|Mechanics of Solids|3
+C|MMAE 232|Design for Innovation|3
+C|CAE 287|Mechanics of Structural Materials|3
+G|Engineering Electives|15|choose|Five electives, subject to prerequisites.
+O|BME 200,ECE 211,CAE 221,CAE 302,CAE 303,CAE 304,CAE 315,MMAE 305,MMAE 320,ID 420,CAE 470,CAE 471,CAE 472,CAE 473,CAE 474,INTM 322,INTM 415
+G|Mathematics Requirement|10|required|Calculus I and II.
+C|MATH 151|Calculus I|5
+C|MATH 152|Calculus II|5
+G|Computer Science Requirement|2|required|The listed programming course.
+C|CS 104|Introduction to Computer Programming for Engineers|2
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Natural Science Requirements|11|required|Physics, chemistry, and materials courses.
+C|PHYS 123|General Physics I: Mechanics|4
+O|CHEM 122+CHEM 123
+C|MS 201|Materials Science|3
+G|Free Electives|10|free|Ten credits of free electives.
+PROGRAM|Bachelor of Science in Business and Information Technology|120|/undergraduate/colleges/business/bs-business-information-technology/
+G|Business Requirements|36|required|Business and economics courses.
+C|BUS 100|Business in the 21st Century|3
+C|BUS 211|Financial Accounting|3
+C|BUS 212|Managerial Accounting|3
+C|BUS 221|Business Statistics|3
+C|BUS 301|Organizational Behavior|3
+C|BUS 305|Operation and Supply Chain Analytics|3
+C|BUS 321|Analytics for Optimization|3
+C|BUS 351|Financial Decision Making and Capital Budgeting|3
+C|BUS 371|Marketing Fundamentals|3
+C|BUS 480|Strategic Management and Design Thinking|3
+C|ECON 151|Microeconomics|3
+C|ECON 152|Macroeconomics|3
+G|Information Technology Required Courses|36|required|Twelve IT courses.
+C|ITM 301|Introduction to Contemporary Operating Systems and Hardware I|3
+C|ITM 313|Introduction to Open Source Application Development|3
+C|ITMD 321|Data Modeling and Applications|3
+C|ITMD 361|Fundamentals of Web Development|3
+C|ITMD 362|Human-Computer Interaction and Web Design|3
+C|ITMD 413|Open Source Programming|3
+C|ITMO 340|Introduction to Data Networks and the Internet|3
+C|ITMO 356|Introduction to Open Source Operating Systems|3
+C|ITMM 471|Project Management for Information Technology and Management|3
+C|ITMT 330|Introduction to Information Systems and the IT Profession|3
+C|ITMT 430|System Integration|3
+C|ITMS 448|Cyber Security Technologies|3
+G|Mathematics Requirement|7|required|MATH 180 plus one of MATH 148, 151, 191, or 192.
+C|MATH 180|Fundamentals of Discrete Mathematics|3
+O|MATH 148,MATH 151,MATH 191,MATH 192
+G|Natural Science and Engineering Requirements|10|hss|Illinois Tech Core Curriculum, section D.
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Free Electives|4|free|Open electives to reach 120 credits. ITM 313 also meets the computer science requirement.
+PROGRAM|Bachelor of Science in Business and Psychology|120|/undergraduate/colleges/business/bs-business-psychology/
+G|Business Courses|36|required|All twelve business courses.
+C|BUS 100|Business in the 21st Century|3
+C|BUS 102|Business Analytics Fundamentals|3
+C|ECON 151|Microeconomics|3
+C|ECON 152|Macroeconomics|3
+C|BUS 211|Financial Accounting|3
+C|BUS 212|Managerial Accounting|3
+C|BUS 301|Organizational Behavior|3
+C|BUS 305|Operation and Supply Chain Analytics|3
+C|BUS 321|Analytics for Optimization|3
+C|BUS 351|Financial Decision Making and Capital Budgeting|3
+C|BUS 371|Marketing Fundamentals|3
+C|BUS 480|Strategic Management and Design Thinking|3
+G|Psychology Courses|19|required|Core psychology courses; PSYC 320 or 409.
+C|PSYC 121|Introduction to Psychology|3
+C|PSYC 204|Research Methods in Behavioral Science|4
+C|PSYC 210|Social Psychology|3
+C|PSYC 211|Industrial Psychology|3
+C|PSYC 212|Introduction to Psychopathology|3
+O|PSYC 320,PSYC 409
+G|Psychology Electives|9|elective|Three psychology electives.
+G|Mathematics Requirement|7|required|One listed math course plus PSYC 203.
+O|MATH 191,MATH 148,MATH 151,MATH 192
+C|PSYC 203|Undergraduate Statistics for the Behavioral Sciences|4
+G|Computer Science Requirement|2|choose|CS 105 or CS 110.
+O|CS 105,CS 110
+G|Natural Science Requirements|10|hss|Illinois Tech Core Curriculum, section D.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Free Electives|10|free|Ten credits of open electives.
+PROGRAM|Bachelor of Science in Finance|120|/undergraduate/colleges/business/bs-finance/
+G|Core Business Courses|48|required|All core business and economics courses.
+C|BUS 100|Business in the 21st Century|3
+C|BUS 102|Business Analytics Fundamentals|3
+C|BUS 211|Financial Accounting|3
+C|BUS 212|Managerial Accounting|3
+C|BUS 221|Business Statistics|3
+C|BUS 301|Organizational Behavior|3
+C|BUS 305|Operation and Supply Chain Analytics|3
+C|BUS 311|Strategic Cost Management|3
+C|BUS 321|Analytics for Optimization|3
+C|BUS 341|Business Ethical and Legal Environment|3
+C|BUS 351|Financial Decision Making and Capital Budgeting|3
+C|BUS 371|Marketing Fundamentals|3
+O|BUS 382,ECON 382
+C|BUS 480|Strategic Management and Design Thinking|3
+C|ECON 151|Microeconomics|3
+C|ECON 152|Macroeconomics|3
+G|Finance Courses|15|required|All listed finance courses.
+C|BUS 452|International Finance|3
+C|BUS 454|Investments|3
+C|BUS 455|Corporate Finance|3
+C|BUS 458|Financial Derivatives|3
+C|ECON 251|Introduction to Econometrics|3
+G|Mathematics Course|5|choose|MATH 151 or MATH 191.
+O|MATH 151,MATH 191
+G|Natural Science and Engineering Requirements|10|hss|Illinois Tech Core Curriculum, section D.
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Computer Science Requirement|2|choose|CS 105 or CS 110.
+O|CS 105,CS 110
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Free Electives|13|free|Thirteen credits of free electives.
+PROGRAM|Bachelor of Science in Financial Economics|120|/undergraduate/colleges/business/bs-financial-economics/
+G|Core Business Courses|48|required|All core business courses.
+C|BUS 100|Business in the 21st Century|3
+C|BUS 102|Business Analytics Fundamentals|3
+C|ECON 151|Microeconomics|3
+C|ECON 152|Macroeconomics|3
+C|BUS 211|Financial Accounting|3
+C|BUS 212|Managerial Accounting|3
+C|BUS 221|Business Statistics|3
+C|BUS 301|Organizational Behavior|3
+C|BUS 305|Operation and Supply Chain Analytics|3
+C|BUS 311|Strategic Cost Management|3
+C|BUS 321|Analytics for Optimization|3
+C|BUS 341|Business Ethical and Legal Environment|3
+C|BUS 351|Financial Decision Making and Capital Budgeting|3
+C|BUS 371|Marketing Fundamentals|3
+C|ECON 382|Business Economics|3
+C|BUS 480|Strategic Management and Design Thinking|3
+G|Financial Economics Courses|15|required|All listed financial economics courses.
+C|ECON 251|Introduction to Econometrics|3
+C|ECON 311|Intermediate Microeconomics|3
+C|ECON 312|Intermediate Macroeconomics|3
+C|BUS 454|Investments|3
+C|BUS 455|Corporate Finance|3
+G|Mathematics Requirement|5|choose|MATH 151 or MATH 191.
+O|MATH 151,MATH 191
+G|Natural Science and Engineering Requirements|10|hss|Illinois Tech Core Curriculum, section D.
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Computer Science Requirement|2|choose|CS 105 or CS 110.
+O|CS 105,CS 110
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Free Electives|13|free|Thirteen credits of electives.
+PROGRAM|Bachelor of Science in Game Production Management|120-121|/undergraduate/colleges/business/bs-game-production-management/
+G|Business Requirements|30|required|Business and economics courses.
+C|BUS 100|Business in the 21st Century|3
+C|BUS 102|Business Analytics Fundamentals|3
+C|BUS 211|Financial Accounting|3
+C|BUS 212|Managerial Accounting|3
+C|BUS 221|Business Statistics|3
+C|BUS 301|Organizational Behavior|3
+C|BUS 321|Analytics for Optimization|3
+C|BUS 351|Financial Decision Making and Capital Budgeting|3
+C|BUS 371|Marketing Fundamentals|3
+C|BUS 480|Strategic Management and Design Thinking|3
+G|Economics Requirements|6|required|Two economics courses.
+C|ECON 211|Introduction to Economics|3
+C|ECON 382|Business Economics|3
+G|Business Electives|3|choose|One listed course.
+O|BUS 305,BUS 311,BUS 341,BUS 361,BUS 472,BUS 473,BUS 475,BUS 476,BUS 484,ECON 383
+G|GEM Required Courses|21|required|All seven listed game design and media courses.
+C|GEM 100|Game Design and Experiential Media Intro to the Professions|3
+C|HUM 371||3
+C|HIST 373||3
+C|ITMD 361|Fundamentals of Web Development|3
+C|ITM 313|Introduction to Open Source Application Development|3
+C|HUM 400||3
+C|HUM 401||3
+G|GEM Electives|6|choose|Two listed courses.
+O|COM 424,HUM 372,HUM 374,ITMD 362
+G|Mathematics Requirement|4|choose|One listed mathematics course.
+O|MATH 148,MATH 151,MATH 191,MATH 192
+G|Natural Science Requirements|10|hss|Illinois Tech Core Curriculum, section D.
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Free Electives|13|free|Thirteen credits of free electives.
+PROGRAM|Bachelor of Science in Marketing Analytics|120|/undergraduate/colleges/business/bs-marketing-analytics/
+G|Core Business Courses|48|required|All 16 core business courses.
+C|BUS 100|Business in the 21st Century|3
+C|BUS 102|Business Analytics Fundamentals|3
+C|ECON 151|Microeconomics|3
+C|ECON 152|Macroeconomics|3
+C|BUS 211|Financial Accounting|3
+C|BUS 212|Managerial Accounting|3
+C|BUS 221|Business Statistics|3
+C|BUS 301|Organizational Behavior|3
+C|BUS 305|Operation and Supply Chain Analytics|3
+C|BUS 311|Strategic Cost Management|3
+C|BUS 321|Analytics for Optimization|3
+C|BUS 341|Business Ethical and Legal Environment|3
+C|BUS 351|Financial Decision Making and Capital Budgeting|3
+C|BUS 371|Marketing Fundamentals|3
+O|BUS 382,ECON 382
+C|BUS 480|Strategic Management and Design Thinking|3
+G|Marketing Analytics Courses|15|required|All five marketing analytics courses.
+C|BUS 471||3
+C|BUS 472|New Product Development|3
+C|BUS 473|Marketing Analytics|3
+C|BUS 475|Sales Management and Analytics|3
+C|BUS 476|Consumer Behavior|3
+G|Mathematics Requirement|4|choose|One of MATH 148, 192, or 151.
+O|MATH 148,MATH 192,MATH 151
+G|Natural Science and Engineering Requirements|10|hss|Illinois Tech Core Curriculum, section D.
+G|Humanities and Social Science Requirements|21|hss|Illinois Tech Core Curriculum, sections B and C.
+G|Computer Science Requirement|2|choose|CS 105 or CS 110.
+O|CS 105,CS 110
+G|Interprofessional Projects (IPRO)|6|hss|Illinois Tech Core Curriculum, section E.
+G|Free Electives|14|elective|Fourteen credits of open electives.
