@@ -852,3 +852,6 @@ button.req-chip { cursor: pointer; }
 .mini-bar { display: inline-block; width: 90px; height: 8px; border-radius: 4px; background: color-mix(in srgb, var(--muted) 25%, transparent); overflow: hidden; }
 .mini-bar i { display: block; height: 100%; background: #2e8b57; }
 @media (max-width: 640px) { .program-banner { grid-template-columns: 1fr; } .pb-pick select { max-width: 100%; } }
+
+.apply-pick { display: flex; flex-direction: column; gap: 4px; margin-top: 8px; }
+.apply-pick select { border: 1px solid var(--input-border); border-radius: 8px; padding: 6px 8px; background: var(--card); color: var(--text); max-width: 100%; }

@@ -281,12 +281,18 @@ export function renderDegree(el, ctx) {
 
   // ----- 3. what's left -----
   const left = audit.groups.filter((g) => g.status === 'remaining');
+  // lets the student apply a course by hand, like an adviser exception in Degree Works
+  const applyOptions = best.filter((r) => r.status === 'completed' || r.status === 'in-progress')
+    .sort((a, b) => a.code.localeCompare(b.code))
+    .map((r) => `<option value="${esc(r.code)}">${esc(r.code)}${r.title ? ` ${esc(r.title)}` : ''}</option>`).join('');
   const doneGroups = audit.groups.filter((g) => g.status !== 'remaining');
   html += `<div class="card left-card">
       <div class="card-head"><h2 class="card-title">What’s left</h2><span class="small muted">${doneGroups.length} of ${audit.groups.length} requirement groups covered</span></div>
       ${left.length ? `<ul class="left-list">${left.map((g) => `<li>
           <div class="left-head"><span class="left-name">${esc(g.name)}</span><span class="left-cr">${g.creditsLeft || '—'} cr left</span></div>
           <ul>${g.remaining.map((r) => `<li>${linkify(r, known)}</li>`).join('')}</ul>
+          ${(g.type === 'all' || g.type === 'pick') && applyOptions ? `<label class="small muted apply-pick">Did your adviser count a course here?
+            <select data-apply-group="${esc(g.name)}"><option value="">Pick the course…</option>${applyOptions}</select></label>` : ''}
         </li>`).join('')}</ul>` : '<p>Nothing left. Every group is done, in progress, or covered by saved sections.</p>'}
       ${doneGroups.length ? `<div class="done-row">${doneGroups.map((g) => `<span class="done-chip ${g.status}">${g.status === 'done' ? '✓' : '◐'} ${esc(g.name)}</span>`).join('')}</div>` : ''}
       <details class="all-reqs"${reqsWereOpen ? ' open' : ''}><summary>See every requirement and the courses that count</summary><ul class="req-list">`;
@@ -479,6 +485,12 @@ export function wireDegree(els, hooks) {
     const t = hooks.getTranscript();
     if (!t) return;
     if (e.target.id === 'program-select') { hooks.setTranscript({ ...t, programId: e.target.value, chosenByUser: true, detected: undefined }); return; }
+    if (e.target.dataset.applyGroup !== undefined) {
+      const code = e.target.value;
+      if (!code) return;
+      hooks.setTranscript({ ...t, courses: t.courses.map((c) => (c.code === code ? { ...c, appliesTo: e.target.dataset.applyGroup } : c)) });
+      return;
+    }
     if (e.target.id === 'max-credits') { hooks.setTranscript({ ...t, maxCredits: Number(e.target.value) }); return; }
     const input = e.target.closest('[data-edit]');
     if (!input) return;
