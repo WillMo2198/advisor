@@ -71,7 +71,7 @@ const byCode = (a, b) => {
  * x/y are node centers. A layer wider than `maxPerRow` wraps onto more rows,
  * so a course with many dependents still fits a narrow panel.
  */
-export function layoutGraph(graph, { nodeW = 96, nodeH = 34, gapX = 16, gapY = 78, rowGap = 26, pad = 24, maxPerRow = Infinity } = {}) {
+export function layoutGraph(graph, { nodeW = 84, nodeH = 26, gapX = 22, gapY = 56, rowGap = 22, pad = 24, maxPerRow = Infinity } = {}) {
   const perRow = Number.isFinite(maxPerRow) ? Math.max(1, Math.floor(maxPerRow)) : Number.MAX_SAFE_INTEGER;
   const codes = graph.nodes.map((n) => n.code);
   const parents = new Map(codes.map((c) => [c, []]));

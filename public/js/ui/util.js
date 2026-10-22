@@ -23,7 +23,7 @@ export const store = {
 
 /** Subject -> color family used by schedule blocks, saved items, and graph nodes. */
 const FAMILIES = ['blue', 'green', 'violet', 'amber', 'rose', 'teal'];
-const FIXED = { CS: 'blue', MATH: 'green' };
+const FIXED = { CS: 'lime', MATH: 'sky', ARCH: 'blue' };
 export function colorFamily(subject) {
   if (FIXED[subject]) return FIXED[subject];
   let h = 0;

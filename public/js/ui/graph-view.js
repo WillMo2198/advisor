@@ -2,7 +2,7 @@
 
 import { buildGraph, layoutGraph } from '../core/graph.js';
 import { treeToText, evaluate, missingParts } from '../core/prereq.js';
-import { esc, linkCodes } from './util.js';
+import { esc, linkCodes, colorFamily } from './util.js';
 
 const SVGNS = 'http://www.w3.org/2000/svg';
 
@@ -10,6 +10,7 @@ function subjectClass(node) {
   if (node.external) return 'other external';
   if (node.subject === 'CS') return 'cs';
   if (node.subject === 'MATH') return 'math';
+  if (node.subject === 'ARCH') return 'arch';
   return 'other';
 }
 
@@ -31,13 +32,13 @@ export function renderGraph({ index, focus, options, completed, planned, els, se
   }
 
   els.focus.innerHTML = `<span>Showing:</span>${graph.focus.map((c) => {
-    const cls = c.startsWith('CS ') ? 'c-blue' : c.startsWith('MATH ') ? 'c-green' : 'c-violet';
+    const cls = `c-${colorFamily(c.split(' ')[0])}`;
     return `<span class="focus-chip ${cls}">${esc(c)}</span>`;
   }).join('')}<span>· ${graph.nodes.length} course${graph.nodes.length === 1 ? '' : 's'}</span>`;
 
   const avail = Math.max(320, (els.scroll.clientWidth || els.scroll.parentElement?.clientWidth || 520) - 4);
   // Fit up to ~30% more nodes per row than the panel holds, then scale the drawing down to fit.
-  const fit = Math.max(3, Math.floor((avail - 48 + 16) / (96 + 16)));
+  const fit = Math.max(3, Math.floor((avail - 48 + 22) / (84 + 22)));
   const lay = layoutGraph(graph, { maxPerRow: Math.max(3, Math.floor(fit * 1.3)) });
   const scale = Math.min(1, avail / lay.width);
   const pos = new Map(lay.nodes.map((n) => [n.code, n]));

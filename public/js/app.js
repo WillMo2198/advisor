@@ -698,9 +698,9 @@ function renderExamples() {
     ['Departments', 'math'],
     ['Course titles', 'computer graphics'],
     ['Days of the week', 'mwf'],
-    ['Course descriptions', 'compiler'],
+    ['Course descriptions', 'compiler design'],
     ['Course abbreviations', 'cs 440'],
-    ['Combinations of the above', 'cs 331, math 251, math 474'],
+    ['Combinations of the above', 'hist comp mwf'],
   ];
   els.examples.innerHTML = examples.map(([label, ex], i) => `<li><button type="button" data-search="${esc(ex)}">
       <span class="ex-num">${String(i + 1).padStart(2, '0')}</span>
