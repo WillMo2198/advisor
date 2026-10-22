@@ -9,6 +9,7 @@ import { renderGraph, renderDetail, wireGraphHover } from './ui/graph-view.js';
 import { createChat } from './ui/chat.js';
 import { renderDegree, wireDegree } from './ui/degree-view.js';
 import { bestAttempts, cleanRecords } from './core/transcript.js';
+import { cleanCommitment, cleanCommitments, courseFits, sectionClashes, hoursFromInput, describeCommitment } from './core/commitments.js';
 import { resolveProposal, applyChange, changesForServer } from './core/changes.js';
 
 // ---------- state ----------
@@ -22,7 +23,7 @@ const DEFAULT_OPTIONS = {
   showLinks: true,
   collapseSections: true,
 };
-const DEFAULT_FILTERS = { subjects: [], levels: [], days: [], offered: false, open: false, eligible: false };
+const DEFAULT_FILTERS = { subjects: [], levels: [], days: [], offered: false, open: false, eligible: false, fits: false };
 
 const state = {
   index: null,
@@ -36,6 +37,7 @@ const state = {
   options: { ...DEFAULT_OPTIONS, ...store.get('options', {}) },
   filters: { ...DEFAULT_FILTERS, ...store.get('filters', {}) },
   saved: store.get('saved', []),
+  busy: cleanCommitments(store.get('busy', [])),
   completed: store.get('completed', []),
   tab: store.get('tab', 'schedule'),
   graphSelected: null,
@@ -158,6 +160,7 @@ function courseMatchesFilters(course) {
       && s.meetings.every((m) => !m.days || m.days === 'TBA' || [...m.days].every((d) => f.days.includes(d))));
     if (!ok) return false;
   }
+  if (f.fits && !courseFits(course, state.busy)) return false;
   if (f.eligible) {
     const done = completedSet();
     if (done.has(course.code)) return false;
@@ -169,7 +172,7 @@ function courseMatchesFilters(course) {
 }
 function activeFilterCount() {
   const f = state.filters;
-  return (f.subjects.length ? 1 : 0) + (f.levels.length ? 1 : 0) + (f.days.length ? 1 : 0) + (f.offered ? 1 : 0) + (f.open ? 1 : 0) + (f.eligible ? 1 : 0);
+  return (f.subjects.length ? 1 : 0) + (f.levels.length ? 1 : 0) + (f.days.length ? 1 : 0) + (f.offered ? 1 : 0) + (f.open ? 1 : 0) + (f.eligible ? 1 : 0) + (f.fits ? 1 : 0);
 }
 
 // ---------- search + results ----------
@@ -203,11 +206,13 @@ function sectionRow(s) {
     const who = m.instructors.length ? ` · ${m.instructors.join(', ')}` : '';
     return `${hl(when)} · ${hl(m.where || 'TBA')}${hl(who)}`;
   }).join('<br>');
+  const clash = sectionClashes(s, state.busy);
+  const clashNote = clash.length ? `<div class="busy-note">Clashes with ${[...new Set(clash.map((c) => esc(c.label)))].join(', ')}</div>` : '';
   const seats = s.available == null ? '' : `<span class="seats${s.available <= 0 ? ' full' : ''}">${s.available <= 0 ? 'Full' : `${s.available} open`}</span> · `;
   return `<div class="section-row">
       <div class="section-main">
         <div class="section-top">${hl(s.scheduleType || 'Section')}${s.bucket && s.bucket !== 'Class' ? ` (${hl(s.bucket)})` : ''} <span class="muted small">· CRN ${hl(s.crn)}</span></div>
-        <div class="section-sub">${seats}${meetings}</div>
+        <div class="section-sub">${seats}${meetings}</div>${clashNote}
       </div>
       <button type="button" class="add-btn${added ? ' added' : ''}" data-add="${esc(s.crn)}" aria-pressed="${added}">${added ? '✓ Added' : 'Add'}</button>
     </div>`;
@@ -338,6 +343,7 @@ function chatContext() {
   return {
     query: state.query,
     savedCrns: state.saved,
+    busy: state.busy,
     completed: state.completed,
     transcript: state.transcript?.courses || [],
     changes: changesForServer(state.transcript),
@@ -366,7 +372,7 @@ function planFingerprint() {
   const raw = JSON.stringify([
     t?.programId || '', t?.maxCredits || 15, (t?.changes || []).map((c) => c.id),
     (t?.courses || []).map((c) => `${c.code}|${c.grade}|${c.status}`).sort(),
-    [...plannedCourses()].sort(),
+    [...plannedCourses()].sort(), state.busy.map((c) => c.id),
   ]);
   let h = 0;
   for (let i = 0; i < raw.length; i++) h = (h * 31 + raw.charCodeAt(i)) >>> 0;
@@ -439,6 +445,48 @@ function setPlanView(view) {
   renderDegreeTab();
 }
 
+// ---------- time commitments ----------
+function saveBusy() {
+  store.set('busy', state.busy);
+  renderBusyList();
+  if (state.filters.fits) runSearch(); else renderResults();
+  renderScheduleTab();
+}
+function renderBusyList() {
+  const list = $('#busy-list');
+  if (!list) return;
+  $('#busy-summary').textContent = state.busy.length ? `${state.busy.length} listed` : '';
+  list.innerHTML = state.busy.length
+    ? state.busy.map((c) => `<div class="busy-item"><span>${esc(describeCommitment(c))}</span><button type="button" class="saved-remove" data-busy-remove="${esc(c.id)}" aria-label="Remove ${esc(c.label)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>`).join('')
+    : '<p class="saved-empty">Nothing listed yet.</p>';
+}
+function wireBusy() {
+  const form = $('#busy-form');
+  if (!form) return;
+  const error = $('#busy-error');
+  const fail = (msg) => { error.textContent = msg; error.hidden = !msg; };
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const days = $$('input[name="busy-day"]:checked', form).map((b) => b.value).join('');
+    const c = cleanCommitment({ label: $('#busy-label').value, days, start: hoursFromInput($('#busy-start').value), end: hoursFromInput($('#busy-end').value) });
+    if (!days) return fail('Pick at least one day.');
+    if (!c) return fail('The end time must be after the start time.');
+    if (state.busy.length >= 20) return fail('You can list up to 20 commitments.');
+    fail('');
+    state.busy.push(c);
+    $('#busy-label').value = '';
+    for (const b of $$('input[name="busy-day"]', form)) b.checked = false;
+    saveBusy();
+  });
+  $('#busy-list').addEventListener('click', (e) => {
+    const rm = e.target.closest('[data-busy-remove]');
+    if (!rm) return;
+    state.busy = state.busy.filter((c) => c.id !== rm.dataset.busyRemove);
+    saveBusy();
+  });
+  renderBusyList();
+}
+
 // ---------- tabs ----------
 let scheduleLayout = null;
 function setTab(tab) {
@@ -462,7 +510,7 @@ function setTab(tab) {
 }
 
 function renderScheduleTab() {
-  scheduleLayout = renderSchedule({ index: state.index, savedCrns: state.saved, els: els.schedule });
+  scheduleLayout = renderSchedule({ index: state.index, savedCrns: state.saved, busy: state.busy, els: els.schedule });
 }
 
 function graphFocus() {
@@ -537,7 +585,7 @@ function wire() {
   seg($('#f-subject'), subjects, 'subjects', (s) => s);
   seg($('#f-level'), levels, 'levels', (l) => `${l}s`);
   seg($('#f-days'), ['M', 'T', 'W', 'R', 'F'], 'days', (d) => d);
-  for (const [id, key] of [['f-offered', 'offered'], ['f-open', 'open'], ['f-eligible', 'eligible']]) {
+  for (const [id, key] of [['f-offered', 'offered'], ['f-open', 'open'], ['f-eligible', 'eligible'], ['f-fits', 'fits']]) {
     const box = $(`#${id}`);
     box.checked = !!state.filters[key];
     box.addEventListener('change', () => { state.filters[key] = box.checked; filtersChanged(); });
@@ -623,6 +671,7 @@ function wire() {
   });
   wireGraphHover(els.graph.scroll);
 
+  wireBusy();
   wireSchedule(els.schedule, {
     onRemove: (crn) => toggleSaved(crn),
     onOpenCourse: (code) => setQuery(code),
@@ -658,7 +707,7 @@ function filtersChanged() {
 function resetFilters() {
   state.filters = { ...DEFAULT_FILTERS, subjects: [], levels: [], days: [] };
   for (const b of $$('.seg button', els.filtersPanel)) b.setAttribute('aria-pressed', 'false');
-  for (const id of ['f-offered', 'f-open', 'f-eligible']) $(`#${id}`).checked = false;
+  for (const id of ['f-offered', 'f-open', 'f-eligible', 'f-fits']) $(`#${id}`).checked = false;
   filtersChanged();
 }
 

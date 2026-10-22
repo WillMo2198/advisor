@@ -3,6 +3,7 @@
 
 import { buildBlocks, gridBounds, findConflicts, DAY_LABELS, formatHour } from '../core/schedule.js';
 import { creditNumber } from '../core/catalog.js';
+import { commitmentBlocks, sectionClashes } from '../core/commitments.js';
 import { esc, colorFamily } from './util.js';
 
 const X_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>';
@@ -13,7 +14,7 @@ function meetingSummary(section) {
   return real.map((m) => `${m.days} ${m.time.replace(/\s*-\s*/, '–').replace(/ (AM|PM)/g, (x, ap) => ap.toLowerCase())}`).join(', ');
 }
 
-export function renderSchedule({ index, savedCrns, els, onRemove, onOpenCourse }) {
+export function renderSchedule({ index, savedCrns, busy = [], els, onRemove, onOpenCourse }) {
   const items = savedCrns
     .map((crn) => index.crnMap.get(crn))
     .filter(Boolean)
@@ -21,6 +22,7 @@ export function renderSchedule({ index, savedCrns, els, onRemove, onOpenCourse }
 
   const { blocks, unscheduled } = buildBlocks(items);
   const conflicts = findConflicts(blocks);
+  const busyBlocks = commitmentBlocks(busy);
   const conflictWith = new Map();
   for (const c of conflicts) {
     for (const [x, y] of [[c.a, c.b], [c.b, c.a]]) {
@@ -47,6 +49,8 @@ export function renderSchedule({ index, savedCrns, els, onRemove, onOpenCourse }
       const clashText = clash.length
         ? `<span class="conflict-note">Time conflict with ${clash.map((c) => `${esc(index.crnMap.get(c.other).course)} on ${DAY_LABELS[c.day][0]}${DAY_LABELS[c.day].slice(1).toLowerCase()} ${formatHour(c.start)}`).join(', ')}</span>`
         : '';
+      const busyHits = sectionClashes(s, busy);
+      const busyText = busyHits.length ? `<span class="conflict-note">Clashes with ${[...new Set(busyHits.map((h) => esc(h.label)))].join(', ')}</span>` : '';
       const seats = s.available == null ? '' : `<small>${s.available} seat${s.available === 1 ? '' : 's'} open · CRN ${esc(s.crn)}</small>`;
       return `<div class="saved-item c-${fam}" data-crn="${esc(s.crn)}">
           <div>
@@ -55,14 +59,14 @@ export function renderSchedule({ index, savedCrns, els, onRemove, onOpenCourse }
           </div>
           <div class="saved-time">${esc(meetingSummary(s))}${seats}</div>
           <button type="button" class="saved-remove" data-remove="${esc(s.crn)}" aria-label="Remove ${esc(s.course)} CRN ${esc(s.crn)}">${X_ICON}</button>
-          ${clashText}
+          ${clashText}${busyText}
         </div>`;
     }).join('');
   }
   els.foot.hidden = !index.sample;
 
   // ----- grid -----
-  const { start, end, days } = gridBounds(blocks);
+  const { start, end, days } = gridBounds([...blocks, ...busyBlocks]);
   const cols = days.length;
   const hours = [];
   for (let h = start; h < end; h++) hours.push(h);
@@ -88,7 +92,17 @@ export function renderSchedule({ index, savedCrns, els, onRemove, onOpenCourse }
     const bottom = lastBox.bottom - gridBox.top;
     const perHour = (bottom - top0) / (end - start);
     layer.style.cssText = 'left:0;top:0;right:0;bottom:0';
-    layer.innerHTML = blocks.map((b) => {
+    const busyHtml = busyBlocks.map((b) => {
+      const col = days.indexOf(b.day);
+      if (col < 0) return '';
+      const hb = heads[col].getBoundingClientRect();
+      const left = hb.left - gridBox.left + 2;
+      const top = top0 + (Math.max(b.start, start) - start) * perHour + 1;
+      const height = Math.max(14, (Math.min(b.end, end) - Math.max(b.start, start)) * perHour - 2);
+      const label = `${b.label}, ${DAY_LABELS[b.day]} ${formatHour(b.start)} to ${formatHour(b.end)}`;
+      return `<div class="busy-block" style="left:${left}px;top:${top}px;width:${hb.width - 4}px;height:${height}px" title="${esc(label)}" aria-label="${esc(label)}"><span>${esc(b.label)}</span></div>`;
+    }).join('');
+    layer.innerHTML = busyHtml + blocks.map((b) => {
       const col = days.indexOf(b.day);
       if (col < 0) return '';
       const hb = heads[col].getBoundingClientRect();

@@ -92,6 +92,7 @@
           <label><input type="checkbox" id="f-offered"> Offered this semester</label>
           <label><input type="checkbox" id="f-open"> Has open seats</label>
           <label><input type="checkbox" id="f-eligible"> Only courses I can take now</label>
+          <label><input type="checkbox" id="f-fits"> Has a section that fits my time commitments</label>
           <button type="button" class="link-btn" id="f-reset">Reset filters</button>
         </div>
       </section>
@@ -141,6 +142,31 @@
             <span class="muted small" id="saved-summary"></span>
           </div>
           <div id="saved-list"></div>
+        </div>
+
+        <div class="card busy-card">
+          <div class="card-head">
+            <h2 class="card-title">My Time Commitments</h2>
+            <span class="muted small" id="busy-summary"></span>
+          </div>
+          <p class="muted small">Work, commute, sports, family. Sections that clash with these are marked, and the chat advisor plans around them.</p>
+          <form class="busy-form" id="busy-form">
+            <label class="busy-field busy-label">Name<input type="text" id="busy-label" maxlength="40" placeholder="Work" autocomplete="off"></label>
+            <fieldset class="busy-days" aria-label="Days">
+              <label><input type="checkbox" name="busy-day" value="M">M</label>
+              <label><input type="checkbox" name="busy-day" value="T">T</label>
+              <label><input type="checkbox" name="busy-day" value="W">W</label>
+              <label><input type="checkbox" name="busy-day" value="R">Th</label>
+              <label><input type="checkbox" name="busy-day" value="F">F</label>
+              <label><input type="checkbox" name="busy-day" value="S">Sa</label>
+              <label><input type="checkbox" name="busy-day" value="U">Su</label>
+            </fieldset>
+            <label class="busy-field">From<input type="time" id="busy-start" value="15:00"></label>
+            <label class="busy-field">To<input type="time" id="busy-end" value="19:00"></label>
+            <button type="submit" class="add-btn" id="busy-add">Add</button>
+          </form>
+          <p class="busy-error" id="busy-error" role="alert" hidden></p>
+          <div id="busy-list"></div>
         </div>
 
         <h2 class="schedule-title" id="schedule-title">Spring 2027 Schedule</h2>
