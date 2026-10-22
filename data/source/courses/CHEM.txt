@@ -1,0 +1,40 @@
+CHEM 100|Introduction to the Profession|2||Overview of chemical sciences, scientific method, computing tools, green chemistry, and links to other professions.
+CHEM 122|Principles of Chemistry I|3||Foundations of chemistry: atoms, molecules, stoichiometry, thermochemistry, gases, solutions, bonding, and periodicity.
+CHEM 123|General Chemistry Laboratory|1|CHEM 122*|Laboratory component accompanying CHEM 122.
+CHEM 126|Principles of Chemistry II Without Laboratory|3|CHEM 123 and CHEM 122|Continued foundations: equilibria, acids and bases, kinetics, thermodynamics, electrochemistry, nuclear and basic organic chemistry.
+CHEM 140|Principles of Chemistry II Lab|1|CHEM 126|Lab covering equilibria, acids and bases, solubility, thermodynamics, electrochemistry, and selected element chemistry.
+CHEM 150|Introductory Special Topics in Astrochemistry|3||Chemical processes in the universe, including cosmic dust, gas, molecular clouds, planetary atmospheres, and molecular spectra.
+CHEM 235|Organic Chemistry I|3|CHEM 125 or CHEM 126|Structure and properties of organic compound classes, emphasizing stereochemistry and reaction mechanisms.
+CHEM 236|Organic Chemistry I-Lab|1|CHEM 235*|Synthetic and analytical organic techniques, including preparing representative compounds from natural sources.
+CHEM 239|Organic Chemistry II|3|CHEM 235 or CHEM 237|Structure and reactivity of more organic compound classes, with an introduction to common spectroscopic techniques.
+CHEM 240|Organic Chemistry Laboratory|1|CHEM 239*|Advanced organic preparation techniques and interpreting yield, melting and boiling points, IR, and NMR data.
+CHEM 247|Analytical Chemistry|4|CHEM 125|Quantitative analysis theory covering statistics, equilibria, volumetric methods, spectroscopy, electrochemistry, and separations.
+CHEM 248|Analytical Chemistry Laboratory|1|CHEM 247*|Lab experiments for CHEM 247: glassware calibration, wet chemistry, electrochemistry, spectroscopy, and chromatography.
+CHEM 321|Instrumental Analysis|4|CHEM 247|Modern instrument theory and use: atomic and molecular spectrometry, FTIR, NMR, HPLC, and gas chromatography.
+CHEM 343|Physical Chemistry I|3|(MATH 251 or MATH 252) and CHEM 125|Thermodynamic laws, ideal and real gas behavior, state functions, and prediction of phase and reaction equilibria.
+CHEM 344|Physical Chemistry II|4|(CHE 202 or CHEM 247) and ((CHEM 343 and MATH 251) or (MATH 252 and PHYS 221))|Quantum mechanics applied to atoms and molecules, spectroscopy, statistical mechanics, and kinetics, with laboratory work.
+CHEM 410|Science of Climate Change|3|CHEM 124 or PHYS 221|Scientific basis of climate change, including biofuels, carbon dioxide, polar ice, and solar power. Permission of instructor required.
+CHEM 415|Inorganic Chemistry|3|CHEM 239 or Graduate standing|Bonding, electronic, magnetic, and structural features of inorganic and organometallic compounds, using symmetry and group theory.
+CHEM 416|Advanced Chemistry Laboratory|3|(CHEM 240 and CHEM 415*) or Graduate standing|Synthesis and characterization of inorganic and organometallic compounds, air-sensitive techniques, and nanomaterials.
+CHEM 434|Spectroscopic Methods in Identification and Analysis|4|CHEM 247 and CHEM 240|Mass, vibrational, NMR, and electronic spectroscopy for identifying organic and inorganic compounds, with chromatographic lab work.
+CHEM 438|Physical Biochemistry|3|(BIOL 107 or BIOL 115) and (CHEM 237 or Graduate standing)|Thermodynamics and kinetics of biological macromolecules, covering binding equilibria, folding, enzyme catalysis, and transport.
+CHEM 450|Introduction to Research|3||Research experience in a faculty member's laboratory.
+CHEM 451|Undergraduate Seminar|2|CHEM 125|Chemical literature tools, scientific writing and presentation, critical evaluation, ethics, and career paths.
+CHEM 452|Cheminformatics|3|CHEM 343 and CHEM 237|Computational tools for searching, visualizing, and analyzing chemical and biochemical structures and data.
+CHEM 454|Computational Quantum Chemistry|3|(CS 105 and MATH 152 and CHEM 344) or Graduate standing|Project-based quantum chemistry methods, including Hartree-Fock, density functional methods, and reactivity prediction, with lab work.
+CHEM 455|Advanced Organic Chemistry|3|CHEM 239 or Graduate standing|Classical and modern organic chemistry: reaction mechanisms, theory, synthetic methodology, and total synthesis.
+CHEM 456|Computational Biochemistry and Drug Design|3|CHEM 237 or Graduate standing|Computational drug design methods, including docking, virtual screening, molecular dynamics, free energy, and QSAR.
+CHEM 460|Bioanalytical Chemistry|3|CHEM 237 and CHEM 343 and CHEM 247|Analytical and spectroscopic methods for characterizing and detecting biomolecules, drugs, and proteins.
+CHEM 461|Bioanalytical Chemistry Laboratory|3|CHEM 237 and CHEM 343 and CHEM 247|Hands-on biochemical, spectroscopic, and separation techniques for analyzing drugs, proteins, and DNA.
+CHEM 463|Analytical Method Development Laboratory|3|CHEM 237 and CHEM 343 and CHEM 247|Developing and validating analytical methods for chemicals, drugs, and biopharmaceuticals, with quality control practice.
+CHEM 467|Medicinal Chemistry|3|CHEM 343 and CHEM 239|Drug design, structure-activity relationships, drug action, pharmacokinetics, and the drug discovery process.
+CHEM 470|Introduction to Polymers|3|CHEM 239 or Graduate standing|Polymer synthesis, polymerization mechanisms, molecular weight control, and structure-property relationships.
+CHEM 472|Environmental Chemistry|3|(CHEM 125 or CHEM 126) and CHEM 247|Chemical principles applied to water, air, soil, climate, energy, and pollutants.
+CHEM 473|Environmental Analytical Chemistry|3|(CHEM 125 or CHEM 126) and CHEM 247|Analytical methods for trace contaminants and pollutants in environmental samples, including spectrometry and chromatography.
+CHEM 475|Forensic Chemistry|3|CHEM 237 and CHEM 343 and CHEM 247|Chemical, spectroscopic, and chromatographic methods for analyzing forensic evidence and controlled substances.
+CHEM 476|Forensic Chemistry Laboratory|3|CHEM 237 and CHEM 343 and CHEM 247|Hands-on forensic analysis of drugs and evidence using colorimetric, spectroscopic, chromatographic, and microscopic methods.
+CHEM 485|Chemistry Colloquium|1|CHEM 239|Lectures by prominent scientists on current chemistry research, supporting preparation for research careers.
+CHEM 487|Senior Thesis in Chemistry|4|CHEM 450|Original research under staff guidance, with literature review and a written report.
+CHEM 491|Undergraduate Research|Variable||Undergraduate research participation, usually during the junior or senior year.
+CHEM 495|Seminar in Special Topics|1|CHEM 125 or CHEM 126|Recent developments in specialized chemistry areas, with practice in written and oral communication.
+CHEM 497|Special Projects|Variable||Special projects for juniors and seniors.

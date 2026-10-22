@@ -1,0 +1,29 @@
+FDSN 100|Introduction to the Profession|2||Survey of food industry careers, Chicago's food ecosystem, field trips, and food regulations.
+FDSN 201|Nutrition and Wellness|3||Basic nutrition principles, diet-health links, and nutritional needs across the life cycle.
+FDSN 210|Introduction to Culinology|2||Blends culinary arts and food science, covering cooking, recipe development, and food safety.
+FDSN 300|Nutrition Through the Life Cycle|3|FDSN 201 or FDSN 401|Nutritional requirements and dietary issues at each life stage.
+FDSN 301|Exploring Food Science & Tech|3||Science disciplines used in food production, processing, safety, and packaging.
+FDSN 304|Food Biotechnology|3|BIOL 210|Food biotechnologies, including GMOs, microbial genomics, and pathogen detection.
+FDSN 310|Food Chemistry with Lab|3|CHEM 237|Chemical reactions in foods that affect quality, flavor, texture, nutrition, and safety.
+FDSN 311|Food Analysis and Properties|3||Instrumental measurement of food properties for specifications and labeling.
+FDSN 312|Food and Natural Products Toxicology|3|CHEM 237 and BIOL 107|Toxic agents in foods, their sources, modes of action, and analysis.
+FDSN 314|Sustainable Food Systems|3||Relationships among food, culture, economics, environment, labor, and policy.
+FDSN 316|Cultural Foods with Lab|3||Regional, cultural, religious, and social influences on food patterns.
+FDSN 318|Culinary Entrepreneurship|3||Food business entrepreneurship from recipe concept to market scaling.
+FDSN 320|Food Law, Labels, and Health Claims|3||Food and supplement laws, labeling rules, and health claims.
+FDSN 401|Nutrition, Metabolism, and Health|3||Metabolism of macronutrients and micronutrients and links to chronic disease.
+FDSN 402|Development, Delivery, and Dissemination|3||Writing and presenting scientific research, including literature reviews and proposals.
+FDSN 405|Food and Behavior|3||Factors influencing food choice and intake.
+FDSN 408|Food Product Development|3||Product development steps, formulation, costing, shelf life, and market launch.
+FDSN 410|Food Plant Operations|3||Processing line systems, unit operations, and plant layout.
+FDSN 411|Food Microbiology with Laboratory|1-3|BIOL 210|Microbial growth, spoilage, and pathogens in foods, with hands-on methods.
+FDSN 412|Preservation Processing|3||Food preservation methods, shelf life, and microbial control.
+FDSN 413|Food Fermentation (w/lab and plant field trips)|3||Fermentation processes and fermented food production.
+FDSN 414|Unit Operations in Food Processing|3||Food processing unit operations and their effect on safety and nutrition.
+FDSN 417|Management of Food Quality Control|3|FDSN 311*|Quality control lab management, statistical process control, and sampling.
+FDSN 418|Introduction to Food Design|3||Human-centered design thinking applied to food product concepts.
+FDSN 420|US Food Safety Regulatory Systems|3||Overview of US food safety regulation by FDA, USDA, EPA, CDC, and FSMA.
+FDSN 430|FDSN Capstone|3|FDSN 420 or (FDSN 405 and FDSN 401)|Team practicum in food safety planning or designing foods for nutrition claims.
+FDSN 435|Performance Management in Food Operations|3||Operational performance, lean principles, budgeting, and supply chain management.
+FDSN 480|Juice HACCP Short Course|1||Two-day FDA-recognized Juice HACCP training.
+FDSN 494|Special Projects|Variable||Advanced projects in food processing, packaging, microbiology, safety, chemistry, and nutrition.

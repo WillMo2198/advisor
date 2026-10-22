@@ -1,0 +1,3 @@
+EMGT 363|Creativity, Inventions, and Entrepreneurship for Engineers and Scientists|3||Teaches creativity, invention, and entrepreneurship methods for developing a patentable technology.
+EMGT 406|Entrepreneurship and Intellectual Property Management|3||Covers technology entrepreneurship, opportunity assessment, innovation, and intellectual property.
+EMGT 470|Project Management|3||Introduces planning, budgeting, scheduling, and control for engineering projects.

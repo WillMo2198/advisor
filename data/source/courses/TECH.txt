@@ -1,0 +1,2 @@
+TECH 465|Introduction to Social Commerce|3||Introduces social commerce, covering design and market readiness of business mobile applications.
+TECH 497|Special Projects|Variable||Independent study and cross-disciplinary projects in applied technology.

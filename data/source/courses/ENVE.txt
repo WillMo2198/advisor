@@ -1,0 +1,13 @@
+ENVE 201|Earth Environ Sci|3|CHEM 122 or CHEM 124|Introduces earth systems, geology, energy, water, air pollution, and climate change.
+ENVE 401|Introduction to Water Resources Engineering|3|CAE 302 or CAE 209 or MMAE 313 or CHE 301|Covers hydraulics, hydrology, stormwater, and water distribution design.
+ENVE 402|Introduction to Environmental Engineering and Sustainable Design|3|(CHEM 124 or (CHEM 123 and CHEM 122)) and MATH 152|Shows how environmental engineers apply science and design to air, water, and waste problems.
+ENVE 403|Occupational and Environmental Health and Safety|3||Introduces recognition and control of workplace and environmental safety hazards.
+ENVE 404|Water and Wastewater Engineering|3|ENVE 402 or CAE 402|Examines water treatment processes along with process design and operations.
+ENVE 422|Global Environmental Change and Sustainability Analysis|3|(CHEM 122 and CHEM 123) or CHEM 124|Explores global biogeochemical cycles and life cycle assessment.
+ENVE 423|Geoenvironmental Engineering|3|ENVE 201 or CAE 323|Addresses soil and groundwater contamination, waste management, and remediation.
+ENVE 444|Carbon Capture, Utilization, and Storage|3||Examines engineering principles for capturing, transporting, storing, and using carbon dioxide.
+ENVE 463|Introduction to Air Pollution Control|3|ENVE 402 or CAE 402|Covers air pollution sources, effects, emission control, and regulations.
+ENVE 476|Engineering Control of Industrial Hazards|3|ENVE 426*|Teaches design of control systems that mitigate occupational safety hazards.
+ENVE 485|Industrial Ecology|3||Studies cultural and ecological systems to support a more sustainable economy.
+ENVE 495|Environmental Capstone Design|3||Team client project integrating risk, sustainability, and life-cycle principles.
+ENVE 497|Special Project|Variable||Individual design project supervised by an instructor; consent required.

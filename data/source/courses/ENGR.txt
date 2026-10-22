@@ -1,0 +1,15 @@
+ENGR 100|Engineering Physics|3||Hands-on projects introduce secondary students to university-level engineering design.
+ENGR 101|Introduction to the Profession|3||Overview of the engineering profession, professionalism, and career paths at Illinois Tech.
+ENGR 102|ACE Mentor Design/Build Workshop|1||Summer workshop where students design solutions for community organizations.
+ENGR 111|Introduction to Engineering and Design|2||Covers basic engineering concepts, the design process, computing, and ethics.
+ENGR 112|Introduction to Robotics|2||Introduces robotics through team-based LEGO EV3 design challenges.
+ENGR 198|Research Immersion: Group|3||Faculty-mentored group research with a report and poster.
+ENGR 199|Engineering Research Immersion: Individual|3||Faculty-mentored individual research with a report and poster.
+ENGR 200|Entrepreneurship NOW! -- Introduction to the Entrepreneurial Mind Set|2||Builds teamwork, prototyping, and entrepreneurial thinking.
+ENGR 411|Fabrication Practices for Engineers|2||Teaches shop practices, measurement, and safety while fabricating parts.
+ENGR 494|Undergraduate Research Immersion: Team|3||Faculty-mentored team research, open by application.
+ENGR 495|Undergraduate Research Immersion: Individual|3||Individual faculty-mentored research, open by application.
+ENGR 496|Practical Engineering Training|3||Mentored training on real engineering projects.
+ENGR 497|Special Topics: Introduction to Research|3||Introduces research methods, data analysis, and proposal development.
+ENGR 498|Undergraduate Research Immersion: Team|3||Faculty-mentored team research experience.
+ENGR 499|Undergraduate Research Immersion: Individual|3||Individual faculty-mentored research experience.

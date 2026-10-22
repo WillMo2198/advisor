@@ -1,0 +1,23 @@
+ITMD 321|Data Modeling and Applications|3|ITM 311 or ITM 312 or ITM 313 or CS 116 or CS 201|Introduces data modeling and relational database design and administration.
+ITMD 361|Fundamentals of Web Development|3||Teaches building multi-page websites with HTML, CSS, and JavaScript.
+ITMD 362|Human-Computer Interaction and Web Design|3|ITMD 361|Covers user-centered design methods like usability testing and prototyping.
+ITMD 411|Intermediate Software Development|3|(ITM 311 or CS 116 or CS 201) and (ITM 312 or ITM 313 or CS 331)|Explores object-oriented topics like multithreading, collections, and stream I/O.
+ITMD 412|Advanced Structured and Systems Programming|3|ITM 312 or ITMD 411|Covers pointers, dynamic memory, file handling, and object-oriented programming.
+ITMD 413|Open Source Programming|3|ITM 313 or CS 331|Presents open-source languages and frameworks, with a project.
+ITMD 415|Advanced Software Development|3|ITMD 411|Develops web container applications with JDBC for enterprise systems.
+ITMD 419|Topics in Software Development|Variable||Covers a rotating software development topic.
+ITMD 422|Advanced Database Management|3|ITMD 321|Advances database programming, client-server development, and SQL usage.
+ITMD 441|Web Application Foundations|3|ITMD 361|Examines web protocols, architectures, and modern JavaScript.
+ITMD 442|Full-Stack Web Development|3|ITMD 441|Covers server-rendered HTML or JSON and back-end integration.
+ITMD 443|Front-End Web Development|3|ITMD 442|Focuses on browser-based development, Web APIs, and advanced CSS.
+ITMD 444|Back-End Development|3|ITMD 442 and ITMD 321|Surveys server-side data stores, languages, and frameworks.
+ITMD 445|Web Real-Time Communication|3|ITMD 441|Teaches WebRTC protocols and APIs for voice, video, and data.
+ITMD 446|Web Microservices and APIs|3||Covers accessing and parsing data from internet APIs and REST.
+ITMD 447|Web Systems Integration|3|ITMD 442|Student teams build an enterprise-grade website.
+ITMD 449|Topics in Web Development|Variable||Explores a rotating web development topic.
+ITMD 453|Enterprise Intelligent Device Applications|3|ITM 311 or CS 116 or CS 201|Develops applications for smart phones, sensors, drones, and robots.
+ITMD 454|Mass-Market Intelligent Device Applications|3|ITM 312|Builds smart device and robot applications using mass-market technologies.
+ITMD 455|Open-Source Intelligent Device Applications|3|ITM 311 or CS 116 or CS 201|Builds applications for emulated and real smart devices and robots.
+ITMD 460|Fundamentals of Multimedia|3||Introduces multimedia theory and applications.
+ITMD 466|Service-Oriented Architecture|3|ITMD 411 and ITMD 361|Covers web services in SOA and ESB patterns.
+ITMD 469|Topics in Application Development|Variable||Covers a rotating application development topic.

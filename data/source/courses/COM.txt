@@ -1,0 +1,36 @@
+COM 101|Writing in the University|3||Develops academic writing, reading, and discussion skills, with attention to audience and revision.
+COM 111|Writing in the University for Multilingual Speakers of English|3||Builds academic writing, reading, and discussion skills for multilingual students.
+COM 112|Chicago Voices|3|CAPS 052 Assessment score of 052|Builds advanced conversation and presentation skills through Chicago history and culture.
+COM 114|Telling Your Story: Advanced Language Skills for Academics and Work|3|COM 112 or CAPS 054 Assessment score of 054|Develops advanced speaking, interview, and technical writing skills.
+COM 121|Introduction to Linguistics|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Surveys the study of language, including sound, structure, meaning, and acquisition.
+COM 125|Language and Culture I|3||Introduces a rotating language and its culture; first of a two-semester sequence.
+COM 126|Language and Culture II|3||Continues the rotating language and culture sequence begun in COM 125.
+COM 200|AI, Data, and Communications|3|Satisfaction of IIT's Basic Writing Proficiency Requirement|Examines the ethical, rhetorical, and cultural effects of AI and large language models on writing.
+COM 201|Digital Writing|3|Satisfaction of IIT's Basic Writing Proficiency Requirement|Covers rhetorical theory and practice of digital writing and collaboration tools.
+COM 208|Structure of Modern English|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Analyzes English structure, including word formation, sentences, meaning, and discourse.
+COM 220|Rhetoric, Argumentation, and Persuasion|3|Satisfaction of IIT's Basic Writing Proficiency Requirement|Examines how culture and media shape persuasion, and how to argue responsibly.
+COM 225|Languages and Cultures III|3||Third-semester language and culture course.
+COM 226|Languages and Cultures IV|3||Fourth-semester language and culture course.
+COM 227|Media History and Theory|3|Satisfaction of IIT's Basic Writing Proficiency Requirement|Traces communication technologies from the printing press to digital media.
+COM 230|Information Literacy and Sense-Making|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Teaches sourcing, fact-checking, and integrating information into reports.
+COM 235|Ethics of Technology and Communication|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Explores ethical issues in communication technology, such as bias, privacy, and consent.
+COM 250|Intro to Public Speaking|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Introduces speech delivery, organization, argumentation, evidence, and visual aids.
+COM 280|Topics in Communication|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Investigates a current communication topic chosen by the instructor.
+COM 310|The Human Voice: Description, Analysis and Application|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Analyzes human and synthetic speech in technology-mediated settings.
+COM 315|Discourse Analysis|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Analyzes language beyond sentence boundaries, applied to politics, education, and law.
+COM 320|A.I.-Assisted Workflows|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Teaches directing AI tools for communication tasks while keeping human oversight.
+COM 321|Technical Communication|3|Satisfaction of IIT's Basic Writing Proficiency Requirement|Covers designing, writing, and revising technical reports, manuals, and proposals.
+COM 324|Document Design|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Teaches designing and evaluating print documents such as brochures and tables.
+COM 328|Verbal and Visual Communication|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Covers ethics and strategies of technical and professional presentations.
+COM 335|Intercultural Communication|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Introduces communication challenges across cultures.
+COM 337|Video Documentation|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Plans and produces digital video to document technical and business concepts.
+COM 338|Exhibit Desisgn|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Plans informative exhibits, considering space, multimedia, and viewer flow.
+COM 353|Media and Globalization|3||Examines how media technologies shape globalized identities, economies, and politics.
+COM 372|Mass Media and Society|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Surveys the history, structure, and influence of mass media.
+COM 380|Seminar in Communication|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Seminar on a current communication topic chosen by the instructor.
+COM 382|Social Media and Society|3|HUM 102 or HUM 104 or HUM 106 or HUM 200-299|Examines social media's effects on relationships, privacy, and politics.
+COM 383|Social Networks|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Covers network measures and structures, with tools for analyzing social network data.
+COM 425|Editing|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Teaches editing at all levels, focusing on science, technology, and business documents.
+COM 491|Independent Reading and Research|Variable|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299 or Graduate standing|Independent study on a selected topic, with department consent.
+COM 498|Communication and Emerging Media Capstone I|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|First half of a two-semester capstone for Communication and Emerging Media majors.
+COM 499|Communication and Emergent Media Capstone II|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Second half of the two-semester capstone.

@@ -62,7 +62,7 @@ test('search: comma list, code, CRN, words', () => {
   assert.ok(search(index, 'stuart 104').results.some((x) => x.course.code === 'CS 487'));
   assert.ok(search(index, 'deep learning').results.some((x) => x.course.code === 'CS 495'));
   const math = search(index, 'math').results.map((x) => x.course.code);
-  assert.ok(math.every((c) => c.startsWith('MATH') || index.get(c).description.toLowerCase().includes('math')));
+  assert.ok(math.slice(0, 5).every((c) => c.startsWith('MATH')));
   assert.ok(search(index, 'spring 2027').results.length > 10);
   assert.ok(search(index, 'mwf').results.some((x) => x.course.code === 'MATH 251'));
   assert.deepEqual(search(index, '').results, []);

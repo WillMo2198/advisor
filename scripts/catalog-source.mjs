@@ -5,6 +5,7 @@
 // Run `npm run build:data` after you edit this file.
 
 import { hssCourses, hssDepartments } from './hss-source.mjs';
+import { loadExtraCourses, extraDepartments } from './catalog-extra.mjs';
 
 const c = (code, opts = {}) => ({ type: 'course', code, ...opts });
 const any = (...children) => ({ type: 'or', children });
@@ -17,9 +18,10 @@ export const departments = {
   CS: 'Computer Science',
   MATH: 'Mathematics',
   ...hssDepartments,
+  ...extraDepartments,
 };
 
-export const courses = [
+const baseCourses = [
   // ---------- Computer Science ----------
   {
     code: 'CS 100', title: 'Introduction to the Profession', credits: '2',
@@ -439,3 +441,6 @@ export const courses = [
   },
   ...hssCourses,
 ];
+
+// Other subjects come from data/source/courses/*.txt. A course written above wins.
+export const courses = [...baseCourses, ...loadExtraCourses(new Set(baseCourses.map((c) => c.code)))];

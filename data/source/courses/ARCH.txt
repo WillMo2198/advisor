@@ -1,0 +1,66 @@
+ARCH 100|Introduction to Architecture|3||Surveys architecture's history, theory, profession, and design thinking, with a lab exploring Chicago's built environment.
+ARCH 107|Design Communication I: Introduction|3||Introduces analog and digital drawing techniques as tools for seeing, understanding, and communicating the built world.
+ARCH 108|Design Communication II: Advanced|3|ARCH 107|Builds digital and computational skills in 3D modeling and representation.
+ARCH 113|Architecture Studio I: Elements|6||Studio introducing architecture through elements like walls, doors, stairs, and rooms, linked to the human body.
+ARCH 114|Architecture Studio II: Unit|6|ARCH 107 and ARCH 113 and ARCH 108*|Studio synthesizing architectural elements into an integrated unit, introducing urban research.
+ARCH 201|Architecture Studio III: House|6|ARCH 113 and ARCH 108 and ARCH 114|Studio designing a city house, introducing programming, urban design, and construction assemblies.
+ARCH 202|Architecture Studio IV: Multiple|6|ARCH 113 and ARCH 201 and ARCH 114|Studio designing multi-unit urban housing, exploring scale, composition, and construction assemblies.
+ARCH 215|Site Design, Planning, and Ecology|3|ARCH 107 and ARCH 114 and ARCH 113 and ARCH 108|Examines site factors like topography, climate, water, and vegetation in the building-landscape relationship.
+ARCH 230|Systems: Structural Analysis|3|PHYS 200 or PHYS 123 or (PHYS 211 and PHYS 212)|Covers basic structural behavior, statics, free body diagrams, material properties, and load takedown.
+ARCH 305|Architecture Studio V: Hybrid|6|ARCH 201 and ARCH 230 and ARCH 202|Studio designing a hybrid-program project in the city, focusing on urban space and site.
+ARCH 306|Architecture Studio VI: Hybrid|6|ARCH 201 and ARCH 230 and ARCH 305 and ARCH 202|Studio designing an urban neighborhood project, introducing urban design and planning.
+ARCH 321|Contemporary Architecture|3|AAH 120 and AAH 119|Surveys current architectural practices, buildings, and theories.
+ARCH 331|Visual Training I|3||Explores form, proportion, rhythm, texture, color, and space through visual perception exercises.
+ARCH 334|Material: Metal|3|ARCH 230 and (PHYS 123 or PHYS 200)|Examines steel building design through material properties, structural members, systems, and connections.
+ARCH 335|Material: Cementitious|3|ARCH 230 and ARCH 334 and (PHYS 123 or PHYS 200)|Examines concrete building design through members, foundations, systems, and connections.
+ARCH 403|Environment and Building Systems I|3|ARCH 202 and ARCH 201|Introduces building science, passive heating, cooling, daylighting, and basic active systems.
+ARCH 404|Environment and Building Systems II|3|ARCH 403|Covers active building systems such as HVAC, electrical, plumbing, fire safety, and renewables.
+ARCH 413|Architectural Practice|3||Introduces how design practices are organized, managed, and regulated, including ethics and firm finance.
+ARCH 417|Architecture Studio VII: Synthesis|6|ARCH 230 and ARCH 404 and ARCH 306 and ARCH 334 and ARCH 335 and ARCH 403|Studio developing a comprehensive institutional building design integrating building systems and performance tools.
+ARCH 418|Architecture Studio VIII: Synthesis|6|ARCH 230 and ARCH 334 and ARCH 417 and ARCH 403 and ARCH 404 and ARCH 335|Studio continuing the institutional building project with a more complex program.
+ARCH 419|Architecture Studio IX: Advanced|6|ARCH 230 and ARCH 335 and ARCH 334 and ARCH 417 and ARCH 418 and ARCH 403 and ARCH 404|Advanced studio with visiting professors; open only to Architecture majors.
+ARCH 420|Architecture Studio X: Advanced|6|ARCH 230 and ARCH 334 and ARCH 335 and ARCH 417 and ARCH 418 and ARCH 403 and ARCH 404|Advanced studio with visiting professors; open only to Architecture majors.
+ARCH 421|Basics of Building Simulation in the Built Environment I|3|ARCH 335 or ARCH 514 with min. grade of C|Teaches energy and carbon analysis at building and urban scales using simulation software.
+ARCH 431|Visual Training I|3||Studio-based study of form, proportion, texture, color, and space.
+ARCH 432|Visual Training II|3||Continues studio-based study of form, proportion, texture, color, and space.
+ARCH 433|Introduction to Digital Fabrication|3|ARCH 108 or ARCH 508 with min. grade of C|Covers CAD/CAM modeling and fabrication with laser cutters, CNC mills, and 3D printers.
+ARCH 434|Advanced Building Information Modeling Strategies|3|ARCH 108 or ARCH 508|Explores machine learning and AI applied to building information modeling.
+ARCH 435|Digital Fabrication|3|ARCH 433|Covers design and prototyping of custom components using CAD/CAM and CNC fabrication.
+ARCH 436|Advanced Modeling|3|ARCH 108 or ARCH 508|Teaches 3D modeling of complex geometry, including parametric and generative methods.
+ARCH 437|BIM Revit|3|ARCH 108 or ARCH 508|Teaches fundamentals of Autodesk Revit, including design development tools.
+ARCH 438|Design Visualization|3|ARCH 108 or ARCH 508|Explores 3D rendering techniques for presenting architectural design.
+ARCH 440|Pure Form|3||Investigates ideal geometric forms and how material properties shape their production.
+ARCH 441|Collage Making|3|ARCH 107 or ARCH 506 with min. grade of C|Explores collage as a method for reworking imagery to examine architecture in culture.
+ARCH 445|The Prairie School|3||Surveys Midwestern Prairie School architecture and landscape design.
+ARCH 446|History of Landscape Architecture|3||Surveys landscape design history worldwide and its influence on present-day design.
+ARCH 448|Topics in Furniture Design/Build|3||Teaches traditional furniture building with hand and power tools.
+ARCH 449|Alternative Chairs|3||Explores chair design through ergonomics, structure, materials, and manufacturing.
+ARCH 454|Contemporary Chicago Architecture: Case Studies|3||Examines current Chicago architecture and urban projects.
+ARCH 456|Topics in Modernism|3||Seminar analyzing architectural works from 1900 to the present.
+ARCH 460|Integrated Building Delivery Practice/BIM|3||Explores how BIM reshapes project delivery and professional roles; for fifth-year students.
+ARCH 461|Entrepreneurship and Innovation in Architecture|3||Teaches small business management and leadership for architects; for fifth-year students.
+ARCH 462|Planning Law and Land Policy|3||Examines zoning, land use regulation, and policy; for fifth-year students.
+ARCH 463|Real Estate Development and Finance Fundamentals|3||Covers project financing, budgeting, and cash flow; for fifth-year students.
+ARCH 465|Construction and Project Management|3||Covers estimating, scheduling, quality control, and closeout for building projects.
+ARCH 466|Entrepreneurial Design: Sector Studies/Case Studies|3||Independent study of a specific project type or business niche; for fifth-year students.
+ARCH 467|Advanced Materials Workshop|3||Workshop applying architectural craft with materials for model and prototype construction.
+ARCH 468|Topics in Drawing From Travel|3||Develops field-drawing skills with freehand travel sketches.
+ARCH 470|Image City: Mediation of Space|3||Seminar on how media and information technologies shape urban space.
+ARCH 471|Architectural Freehand Rendering|3||Teaches freehand sketching and perspective across pencil, ink, pastel, and watercolor.
+ARCH 473|Conflict and Time|3|ARCH 108 or ARCH 508 with min. grade of C|Seminar comparing film and architecture.
+ARCH 475|Spatial Stories|3||Examines spatial narratives across fiction, film, and architecture.
+ARCH 478|Digital Photography|3||Builds photographic skills for architects, from camera use to publishing.
+ARCH 480|Materials and Construction|3||Overviews basic building materials and assemblies organized by MasterFormat.
+ARCH 482|Material: Fibrous|3|(ARCH 230 and ARCH 334 and ARCH 335) or (ARCH 485 and ARCH 486)|Experimental study of timber and fibrous materials, including cross-laminated timber.
+ARCH 483|Material: Transparent|3|(ARCH 230 and ARCH 334 and ARCH 335) or (ARCH 485 and ARCH 486)|Explores glass technology, wall systems, and all-glass structures.
+ARCH 485|Structures I: Structural Analysis -- The System|3||Introduces statics, free body diagrams, stress, strain, deflection, and load paths.
+ARCH 486|Structures II: Building Design|3|(ARCH 230 and ARCH 334 and ARCH 335) or ARCH 485|Studies lateral systems, diaphragms, moment frames, shear walls, and braced frames.
+ARCH 488|Long-Span and Special Structures|3||Introduces structural systems for long spans and special structures.
+ARCH 489|Structural Systems for Tall Buildings|3||Surveys tall building structural systems and load criteria.
+ARCH 490|Topics in Advanced Digital Design|Variable|ARCH 108 or ARCH 508|Elective topics in digital design, such as visualization, BIM, and digital fabrication.
+ARCH 491|Topics in Architecture History & Theory|Variable|(AAH 119 and AAH 120) or ARCH 501|Seminar electives on urbanism, sustainability, aesthetics, and technology history.
+ARCH 492|Topics in Design/Build|Variable||Design-build electives covering construction technology, structures, and fabrication.
+ARCH 493|Topics in Visual Studies|Variable||Electives on visual representation, perception, and aesthetic judgment.
+ARCH 494|Topics in Advanced Technology|3|ARCH 215 and ARCH 230 and ARCH 404 and ARCH 335 and ARCH 403 and ARCH 334|Research seminar on technologies shaping architectural practice.
+ARCH 497|Topics in Architecture|Variable||Investigations into current topics in architecture, landscape architecture, or urbanism.
+ARCH 499|Architecture Summer Studio: Advanced|6|ARCH 230 and ARCH 334 and ARCH 335 and ARCH 305 and ARCH 418 and ARCH 403 and ARCH 404 and ARCH 417 and ARCH 306|Intensive summer studio on complex urban design solutions.

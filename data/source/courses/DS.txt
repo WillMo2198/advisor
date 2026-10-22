@@ -1,0 +1,8 @@
+DS 100|Introduction to the Profession|3||Introduces data science as a profession, covering the life cycle, ethics, careers, and a final project.
+DS 151|Introduction to Data Science|3||Covers statistical inference, machine learning, and programming through hands-on analysis of real-world datasets.
+DS 251|Mathematical Foundations for Data Science I|3|MATH 251|Covers linear algebra and discrete math most relevant to data science.
+DS 261|Data Ethics and Responsible AI|3||Covers ethical risks, bias, privacy, and responsible AI use.
+DS 351|Mathematical Foundations for Data Science II|3|DS 251|Introduces optimization, differential equations, and numerical analysis tools for data science.
+DS 451|Data Science Life Cycle|3|(CS 331 or CS 401 or CSSP 401) and CS 425 and (MATH 474 or MATH 476*)|Students carry out the data science project life cycle through case studies.
+DS 472|Data Science Practicum|Variable|DS 451 or CSP 571|Small teams solve real-world data analysis problems, optionally via industry internship.
+DS 480|Data Science Projects|3|CS 422 or CS 484 or DS 451 or MATH 476 or MATH 484|Teams tackle a data-rich real-world problem, addressing ethics and privacy.

@@ -1,0 +1,16 @@
+ITMS 416|Foundations of Secure AI Systems|3|MATH 192 and (STAT 225 or BUS 251 or PSYC 203 or MATH 425) and (MATH 180 or MATH 230)|Covers mathematical, algorithmic, defensive, and offensive views of securing and attacking AI systems.
+ITMS 418|Coding Security|3|ITMD 411|Examines secure programming architecture, identity management, encryption, and common hacking techniques.
+ITMS 428|Database Security|3|ITMD 321|Covers data security, application security, encryption methods, and security architecture models.
+ITMS 438|Cyber Forensics|3|ITMO 356 and ITMS 448|Covers computer and network forensic investigation, evidence handling, and file system analysis.
+ITMS 443|Vulnerability Analysis and Control|3|ITMO 356 and ITMO 340|Hands-on ethical hacking and penetration testing, plus detection and prevention of attacks.
+ITMS 446|Active Cyber Defense|3|ITMO 340 or CS 542 with min. grade of C or CS 544 with min. grade of C or ECE 407 or ECE 408|Covers cybersecurity analyst duties: monitoring, detecting, and responding to incidents.
+ITMS 448|Cyber Security Technologies|3|ITMO 340|Covers attack mechanisms, vulnerabilities, countermeasures, network security protocols, and tools.
+ITMS 458|Operating System Security|3|ITMO 356|Covers operating system security architectures, secure configuration, firewalls, and anti-malware.
+ITMS 460|Secure AI Systems Engineering and Defense|3|ITMS 416 and DS 151|Focuses on engineering, evaluating, and defending secure AI systems in adversarial settings.
+ITMS 464|Cloud Computing Security|3|ITMO 444|Teaches securing cloud services and infrastructure, including DevSecOps and compliance.
+ITMS 465|Introduction to Quantum Cybersecurity|3||Introduces security challenges and protections for quantum and post-quantum systems.
+ITMS 475|Zero Trust Architecture: Design and Implementation|3|ITMS 448|Explores Zero Trust design using authentication, authorization, and encryption.
+ITMS 478|Cyber Security Management|3||Examines IT security management, access control, continuity planning, and legal issues.
+ITMS 479|Topics in Information Security|Variable||Covers a rotating information security topic.
+ITMS 483|Digital Evidence|3|ITMS 438|Covers digital evidence principles, chain of custody, and expert witness testimony.
+ITMS 484|Governance, Risk, and Compliance|3||Examines IT governance, risk, and compliance, including policies and certification.

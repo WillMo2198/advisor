@@ -1,0 +1,51 @@
+PHYS 100|Intro to the Profession|2||Overview of physical sciences, scientific method, computing tools, and links to other professions.
+PHYS 113|Fundamental Physics I|4||Algebra-based mechanics, energy, rotation, oscillations, fluids, and thermodynamics basics.
+PHYS 114|Fundamental Physics I Lecture|3||Lecture portion of PHYS 113.
+PHYS 115|Fundamental Physics I Laboratory|1|PHYS 113|Laboratory portion of PHYS 113.
+PHYS 120|Astronomy|3||Descriptive survey of observational astronomy, solar system, stars, galaxies, and cosmology.
+PHYS 123|General Physics I: Mechanics|4|MATH 151*|Calculus-based mechanics: motion, Newton's laws, energy, rotation, gravitation, and oscillations.
+PHYS 150|Introductory Special Topics in Astrophysics|3||Introductory look at one current astrophysics subtopic, emphasizing conceptual understanding and algebra-based problem solving.
+PHYS 151|Introductory Special Topics in Physics|3||Introductory course on a current physics subtopic, repeatable when the topic changes.
+PHYS 200|Introduction to Energy, Waves, Materials, and Forces|4||Conceptual and practical look at energy, waves, heat, light, sound, circuits, materials, fluids, and forces.
+PHYS 211|Fundamental Physics II|3|PHYS 113 or PHYS 114|Algebra-based electricity, magnetism, circuits, optics, relativity, and basic quantum and nuclear physics.
+PHYS 221|General Physics II: Electricity and Magnetism|4|(MATH 149 or MATH 151) and MATH 152* and PHYS 123|Electricity, magnetism, circuits, Maxwell's equations, and electromagnetic waves.
+PHYS 223|General Physics III|4|PHYS 123|Sound, fluids, thermodynamics, optics, special relativity, and quantization of light and energy.
+PHYS 224|General Physics III for Engineers|3|PHYS 123|Engineering-track coverage of sound, fluids, thermodynamics, optics, relativity, and atomic and nuclear physics.
+PHYS 225|General Physics III Lab only|1|PHYS 224|Laboratory component for PHYS 223.
+PHYS 240|Computational Science|3|PHYS 123|Computer-lab physics using numerical methods, random numbers, and Monte Carlo simulations.
+PHYS 297|Energy and Environmental Sustainability|3||Costs and benefits of energy sources, environmental impacts, renewable options, and energy policy.
+PHYS 300|Instrumentation Laboratory|4|PHYS 221|Basic electronics for research: circuit analysis, diodes, transistors, amplifiers, filters, and digital logic.
+PHYS 301|Mathematical Methods of Physics|3|MATH 252 and MATH 251|Math tools for physics: matrices, Fourier methods, special functions, PDEs, and complex variables.
+PHYS 304|Thermodynamics and Statistical Physics|3|PHYS 223 or PHYS 224|Statistical basis of thermodynamics, kinetic theory, statistical mechanics, and transport phenomena.
+PHYS 308|Classical Mechanics I|3|PHYS 123 and MATH 252|Newtonian dynamics, conservation laws, Kepler problem, and Lagrangian and Hamiltonian methods.
+PHYS 309|Classical Mechanics II|3|MATH 252 and (PHYS 223 or PHYS 224) and PHYS 308|Continuation of classical mechanics with Lagrangian and Hamiltonian formulations and small oscillations.
+PHYS 348|Modern Physics for Scientists and Engineers|3|PHYS 223|Introductory modern physics: Bohr atom, wave mechanics, molecular spectra, and nuclear and particle physics.
+PHYS 360|Introduction to Astrophysics|3|PHYS 221 or PHYS 223 or PHYS 224|Overview of astrophysics conventions and topics, including stars, galaxies, cosmology, and exoplanets.
+PHYS 361|Observational Astrophysics|4|PHYS 360|Lab-based multiwavelength observational astrophysics covering statistics, telescope design, and instrumentation.
+PHYS 403|Relativity|3|(PHYS 308 and MATH 251) or Graduate standing|Special and general relativity: Minkowski space, curvature, Einstein's equations, and Schwarzschild solution.
+PHYS 404|Subatomic Physics|3|(PHYS 223 or Graduate standing) and PHYS 224|Survey of nuclear and particle physics: symmetries, leptons, quarks, gauge bosons, and QCD.
+PHYS 405|Fundamentals of Quantum Theory I|3|(MATH 252 or Graduate standing) and (PHYS 224 or PHYS 223)|Modern physics review, one- and three-dimensional quantum mechanics, operators, uncertainty, and the hydrogen atom.
+PHYS 406|Fundamentals of Quantum Theory II|3|PHYS 405 or Graduate standing|Angular momentum, perturbation theory, identical particles, helium atom, and quantum scattering.
+PHYS 407|Introduction to Quantum Computing|3||Quantum physics basics, qubit systems, measurement, and quantum algorithms with hands-on online resources.
+PHYS 410|Molecular Biophysics|3|PHYS 123 or Graduate standing|Physics of biological molecules: energy, equilibrium, thermodynamics, enzyme kinetics, and ligand binding.
+PHYS 412|Modern Optics and Lasers|3|(CS 105 or Graduate standing) and (PHYS 223 or PHYS 224)|Geometrical and physical optics, interference, polarization, holography, and laser principles and applications.
+PHYS 413|Electromagnetism I|3|(PHYS 221 and MATH 252) or Graduate standing|Vector fields, electrostatics, magnetostatics, and calculating capacitance, resistance, and inductance.
+PHYS 414|Electromagnetism II|3|PHYS 413|Generation and propagation of electromagnetic radiation, antennas, waveguides, and material electromagnetic properties.
+PHYS 415|Solid State Electronics|3|PHYS 223 or Graduate standing or PHYS 224|Band theory and carrier transport, plus physics of diodes, transistors, LEDs, and semiconductor lasers.
+PHYS 418|Introduction to Lasers|3|PHYS 224 or Graduate standing or PHYS 223|Light properties, coherence, emission and absorption, laser action, and major laser types and uses.
+PHYS 420|Bio-Nanotechnology|3|PHYS 224 or Graduate standing or PHYS 223|Nanotechnology basics, nanomaterials, nanofabrication, and biomedical applications including nanotherapy.
+PHYS 425|High Energy Astrophysics|3|((MATH 252 and MATH 251) or Graduate standing) and (PHYS 224 or PHYS 223)|Extreme cosmic phenomena: black holes, neutron stars, jets, shocks, and high-energy emission mechanisms.
+PHYS 427|Advanced Physics Laboratory I|3|PHYS 224 or Graduate standing or PHYS 223|Experiments on quantum phenomena in atomic, molecular, and condensed matter physics, with data analysis.
+PHYS 428|Advanced Physics Laboratory II|3|PHYS 427 or Graduate standing|Project-based experiments on spectroscopy, condensed matter, and nuclear physics topics.
+PHYS 437|Solid State Physics|3|PHYS 405 or Graduate standing|Crystal structure, lattice vibrations, band theory, and electrical, thermal, optical, and magnetic solid properties.
+PHYS 440|Computational Physics|3|(PHYS 240 or Graduate standing) and (PHYS 223 or PHYS 224)|Numerical methods for root finding, interpolation, differential equations, quadrature, and spectral analysis.
+PHYS 452|Intro to the Space Environment|3||Earth's ionosphere, magnetosphere, plasma physics, solar activity effects, and space weather impacts.
+PHYS 460|Stellar Astrophysics|3|PHYS 360|Formation, structure, and evolution of stars, stellar remnants, and star-forming interstellar material.
+PHYS 461|Extragalactic Astrophysics|3|PHYS 360|Galaxy morphology and dynamics, plus cosmology, dark matter, dark energy, and the fate of the universe.
+PHYS 465|Electrical, Magnetic, and Optical Properties|3||Electronic structure of solids, ferroelectric and piezoelectric materials, magnetic devices, and optical properties.
+PHYS 485|Physics Colloquium|1|PHYS 223 or PHYS 224 or Graduate standing|Lectures by prominent scientists on current physics research and professional scientific presentations.
+PHYS 491|Undergraduate Research|Variable||Student participation in undergraduate research with advisor and chair approval, usually junior or senior year.
+PHYS 494|Research Project|Variable||Special R&D projects in X-ray optics, instrumentation, mechanical design, and thermal management.
+PHYS 497|Special Topics in Physics|Variable||Special topics in physics.
+PHYS 498|Research Honors Thesis Preparation|Variable||Research following a summer honors project, preparing for a thesis, guided by a student-organized review committee.
+PHYS 499|Research Honors Thesis|Variable||Lab research and thesis writing, with committee meetings and a thesis defense, after a summer project.

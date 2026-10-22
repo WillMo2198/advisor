@@ -1,0 +1,13 @@
+EG 225|Engineering Graphics for Non-Engineers|3||Basic drafting, lettering, sketching, multiview projection, dimensioning, and intro computer graphics.
+EG 305|Advanced Engineering Graphics and Design|3|CAE 101 or MMAE 232|Auxiliary views, sectioning, gears, cams, fasteners, drafting standards, and CAD.
+EG 306|Engineering Descriptive Geometry|3|CAE 101 or MMAE 232|Graphic solutions to point, line, and plane problems and surface developments.
+EG 325|Advanced Engineering Graphics for Non-Engineers|3|EG 225|Threads, fasteners, sectioning, detail and assembly drawings, and CAD.
+EG 329|Graphic Representation for Non-Engineers|3|EG 225|Computer-generated charts and graphics for technical and business reports.
+EG 405|Mechanical Design Graphics|3|EG 305|Mechanical design layouts, tolerancing, drafting standards, and CAD/CAM.
+EG 406|Technical and Pictorial Illustration|3|CAE 101 or MMAE 232|Pictorial projections, exploded assemblies, and rendering.
+EG 409|Computer-Generated Pictorial Projections|3|EG 406|Computer-generated multiview, perspective, and oblique representations.
+EG 419|Computer Graphics in Engineering|3|CAE 101 or MMAE 232|PC-based AutoCAD drafting and design of 2D and 3D components.
+EG 425|Computer Graphics for Non-Engineers|3|EG 325|Computer graphics principles for business fields.
+EG 429|Computer Graphics for Desktop Publishing|3|EG 329|Integrating computer graphics into desktop-published reports.
+EG 430|Introduction to Building Information Modeling|3||BIM fundamentals and Revit practice.
+EG 497|Special Problems|Variable||Special problems course requiring junior standing.

@@ -1,0 +1,4 @@
+IPRO 100|Introduction to the Interprofessional Project|3||Introduces students to the interprofessional project model.
+IPRO 397|Interprofessional (IPRO) Project Techniques in Creative Practice|3||Teaches problem definition, creative solution generation, and implementation as practical strategic skills.
+IPRO 497|Interprofessional (IPRO) Project|3||Students build teamwork, leadership, and project management skills on multidisciplinary teams.
+IPRO 499|Interprofessional (IPRO) Project Studio|3||A pilot studio model connecting IPRO sections under a shared sustainability theme.

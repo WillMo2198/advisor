@@ -1,0 +1,41 @@
+BME 100|Introduction to the Profession|2||Introduces biomedical engineering's scope, societal role, professionalism, and teamwork skills.
+BME 200|Biomedical Engineering Computer Applications|2|MATH 252* and CS 104|Applies programming to quantitative biomedical problems.
+BME 301|Bio-Fluid Mechanics|3|MATH 251 and BIOL 115|Covers fluid motion principles and applications to biofluids, devices, and rheology.
+BME 309|Biomedical Imaging|3|(BME 330* or ECE 308*) and PHYS 221|Introduces image science and imaging modalities, including X-ray, CT, and nuclear medicine.
+BME 310|Biomaterials|3|CHEM 125 and PHYS 123|Examines material structure, biological response, and selection of materials for biomedical use.
+BME 315|Instrumentation and Measurement Laboratory|2|ECE 211*|Lab exercises on instrumentation and data analysis for physiological variables.
+BME 320|Fluids Laboratory|1|BIOL 117 and BME 315|Lab experiments in thermodynamics, biofluid flow, and heat transfer.
+BME 325|Bioelectronics Laboratory|1|ECE 213* and BME 315|Hands-on design and testing of electronic circuits for biomedical applications.
+BME 330|Analysis of Biosignals and Systems|3|ECE 211 and MATH 252|Covers signal processing and dynamic systems analysis, including Fourier and Laplace transforms.
+BME 331|Modeling and Control of Biological Systems|3|(BME 330 or ECE 308) and BME 422|Models physiological processes and designs their feedback control.
+BME 335|Thermodynamics of Living Systems|3|MATH 251|Applies thermodynamics and mass conservation to living systems.
+BME 402|Introduction to Regulatory Science for Engineers|3||Teaches global medical device regulations and their impact on device design.
+BME 405|Physiology Laboratory|2|BME 315|Experiments on humans and animals demonstrating bioengineering design and nerve action.
+BME 417|Technologies for Treatment of Diabetes|3||Explores glucose regulation, glucose sensing, insulin pumps, and artificial pancreas systems.
+BME 418|Reaction Kinetics for BME|3|BME 335 and MATH 252|Analyzes reaction rate data and biological kinetics, including enzymes and bioreactors.
+BME 419|Introduction to Design Concepts in Biomedical Engineering|2|BME 320 or BME 325|Introduces medical device design from clinical problem to technology transfer.
+BME 420|Design Concepts in Biomedical Engineering|3|BME 419|Covers design criteria for implantable and artificial organ systems, with a team project.
+BME 422|Mathematical Methods for Biomedical Engineers|3|((MATH 252 and CS 104) or Graduate standing) and (BME 330* or ECE 308*)|Applies mathematical and MATLAB tools to diffusion, pharmacokinetics, and biosignals.
+BME 423|Cell Biomechanics: Principles and Biological Processes|3|BME 301|Examines mechanical forces on cells and their effects on development and disease.
+BME 424|Quantitative Aspects of Cell and Tissue Engineering|3|BME 482 and BME 418|Covers quantitative tissue development, cell behavior, and molecular transport.
+BME 425|Introduction to Medical Devices, BioMEMS and Microfluidics|3||Presents medical devices, BioMEMS, and microfluidics and their fabrication.
+BME 427|Extracellular Matrix Biology|3||Explores extracellular matrix structure, function, disease, and mechanobiology.
+BME 428|Engineering World Health|3|MATH 152 and PHYS 221|Teaches medical equipment principles and repair techniques for low-resource settings.
+BME 431|Modern Optics and Lasers|3|PHYS 221 or Graduate standing|Covers optics fundamentals, lasers, and imaging system design.
+BME 433|Biomedical Engineering Applications of Statistics|3|MATH 251|Applies computing methods to biomedical data, ANOVA, and clinical trial design.
+BME 437|Introduction to Molecular Imaging|3|BME 422|Overviews noninvasive imaging of molecular pathways and contrast agents.
+BME 438|Neuroimaging|3|PHYS 221|Surveys brain imaging methods, including MRI, fMRI, PET, and MEG.
+BME 439|Advanced Medical Imaging|3|BME 309|Covers clinical and research imaging techniques and image quality evaluation.
+BME 443|Biomedical Instrumentation and Electronics|3|(BME 315 and ECE 211) or Graduate standing|Applies circuit analysis to transducers and signal recording.
+BME 445|Quantitative Neural Function|3|BME 453|Models neural function computationally, covering ion channels and synapses.
+BME 450|Animal Physiology|3|BIOL 107 or BIOL 115 or Graduate standing|Surveys physiological principles across animal phyla.
+BME 452|Control Systems for Biomedical Engineers|3|BME 330|Analyzes control systems in time and frequency domains, emphasizing physiological control.
+BME 453|Quantitative Physiology|3|BIOL 115|Takes a quantitative approach to cell physiology and major organ systems.
+BME 455|Cardiovascular Fluid Mechanics|3|BME 301 or MMAE 310 or MMAE 313 or Graduate standing|Models blood flow in the cardiovascular system.
+BME 475|Neuromechanics of Human Movement|3|BME 330 or ECE 308 or MMAE 305 or Graduate standing|Models human limb movement using kinematics, dynamics, and muscle models.
+BME 482|Mass Transport for Biomedical Engineers|3|BME 301 and CHE 202|Applies diffusion, convection, and reaction transport to biological systems.
+BME 490|Senior Seminar|1||Explores bioengineering industry roles, product development, and professional identity.
+BME 491|Independent Study|Variable||Supervised focused reading and study with a BME faculty member.
+BME 492|Undergraduate Research|Variable||Supervised research with a BME faculty member, with a final written report.
+BME 493|BME Undergraduate Project|3||Supervised research or design project with a written report.
+BME 497|Special Problems|3||Design, development, or research on special topics defined by a faculty member.

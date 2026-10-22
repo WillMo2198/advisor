@@ -1,0 +1,6 @@
+ITMT 330|Introduction to Information Systems and the IT Profession|3||Introduces systems theory, information systems, and the IT profession's responsibilities.
+ITMT 430|System Integration|3|ITMD 411 and ITMD 321 and ITMM 471 and ITMO 356 and ITMD 362 and ITMO 340|Capstone on gathering requirements and designing and integrating an information system.
+ITMT 491|Undergraduate Research|Variable||Undergraduate research under instructor supervision.
+ITMT 492|Introduction to Smart Technologies|3|ITM 311 or ITM 312|Covers intelligent devices, wireless sensor networks, and rapid prototyping.
+ITMT 495|Topics in Information Technology|Variable||Covers a topic that varies by semester.
+ITMT 499|Experiential Learning|Variable||Academic credit for approved experiential learning.

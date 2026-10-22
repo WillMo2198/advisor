@@ -1,0 +1,2 @@
+STAT 225|Introductory Statistics|3||Covers data collection, description, visualization, basic probability, and inference.
+STAT 473|Statistical Consulting|3||Applies data to real-world problems, interprets results, and addresses ethics.

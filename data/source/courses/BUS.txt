@@ -1,0 +1,32 @@
+BUS 100|Business in the 21st Century|3||Introduces business environments, organizational fundamentals, core terminology, and common business computer applications.
+BUS 102|Business Analytics Fundamentals|3||Builds data literacy, AI/ML evaluation basics, and data handling skills using Office and Google suite tools.
+BUS 210|Accounting Principles|3||Covers financial and managerial accounting basics, including GAAP, financial statements, and cost behavior.
+BUS 211|Financial Accounting|3||Explores financial reporting practices across firm sizes, plus financial health metrics and accounting software.
+BUS 212|Managerial Accounting|3|BUS 211|Shows how managers use accounting information for decisions, cost analysis, and operational control.
+BUS 221|Business Statistics|3|MATH 122 or MATH 148 or MATH 151|Teaches probability, statistics, and decision modeling under uncertainty using computer software.
+BUS 301|Organizational Behavior|3||Develops managerial skills for aligning strategy and culture, motivating teams, and building leadership.
+BUS 305|Operation and Supply Chain Analytics|3||Introduces design, planning, and improvement of operations, including process analysis and inventory management.
+BUS 311|Strategic Cost Management|3|BUS 351 or (BUS 212 and ECON 423)|Examines accounting information in managerial decisions, including cost estimation, activity-based costing, and transfer pricing.
+BUS 321|Analytics for Optimization|3|BUS 221 or PSYC 203|Teaches structured decision modeling and optimization techniques using spreadsheets for managerial problems.
+BUS 341|Business Ethical and Legal Environment|3||Surveys contract, corporate, intellectual property, and privacy law challenges facing entrepreneurs in global markets.
+BUS 351|Financial Decision Making and Capital Budgeting|3|(BUS 211 and BUS 221) or PSYC 203|Covers time value of money and after-tax cash flow models for long-term financial decisions.
+BUS 361|Topics in Entrepreneurship|3||Provides introductory or specialized entrepreneurship knowledge through rotating course topics.
+BUS 363|Entrepreneurship - Startup Launch|3||Guides students in turning ideas into startups using validation tools like the Lean Business Model Canvas.
+BUS 371|Marketing Fundamentals|3||Introduces designing products, evaluating competitors, and developing pricing and promotion strategies.
+BUS 382|Business Economics|3|ECON 151 or ECON 211|Applies economic principles, including game theory and market structure, to managerial business decisions.
+BUS 432|Artificial Intelligence in Business|3||Introduces AI and machine learning concepts with emphasis on business applications and managerial insights.
+BUS 452|International Finance|3|BUS 351|Covers exchange rates, international financial markets, and risk management tools for global finance.
+BUS 454|Investments|3|BUS 351|Explores portfolio theory, risk and return, asset pricing models, and market efficiency.
+BUS 455|Corporate Finance|3|BUS 351|Covers advanced corporate finance topics such as cash flow forecasting, dividends, and mergers and acquisitions.
+BUS 458|Financial Derivatives|3|BUS 351|Teaches pricing and risk management of derivatives using arbitrage, lattice, and simulation methods.
+BUS 469|Entrepreneurship Capstone|3|Entrepreneurship Minor Classes (4) and IPRO.|Has student teams prototype a product or service and evaluate its market suitability and funding options.
+BUS 472|New Product Development|3|BUS 371|Teaches new product development from opportunity identification through product launch using theory and hands-on work.
+BUS 473|Marketing Analytics|3|BUS 371|Covers marketing research methods for identifying, collecting, and analyzing information to improve marketing decisions.
+BUS 475|Sales Management and Analytics|3|BUS 371|Develops modern selling, presentation, and sales force management skills, including CRM tool familiarity.
+BUS 476|Consumer Behavior|3|BUS 371|Examines how internal, external, and social influences shape consumer purchase decisions through team projects.
+BUS 477|Analytics for Decision Making|3||Applies advanced Excel for data analysis, spreadsheet modeling, optimization, and Monte Carlo risk simulation.
+BUS 480|Strategic Management and Design Thinking|3||Capstone course combining strategic management and product design through simulation, case studies, and a term project.
+BUS 484|Data Analytics and Visualization|3||Teaches data literacy and visualization design principles using tools such as Tableau for managerial decisions.
+BUS 485|Power Skills|3||Develops communication, leadership, conflict resolution, and collaboration skills through experiential projects.
+BUS 495|Special Topics in Business|3||Explores a business topic or application of current interest when offered.
+BUS 497|Independent Study in Business|Variable||Allows in-depth study of a business area through an agreed plan with instructor and advisor approval.

@@ -1,0 +1,13 @@
+GEM 100|Game Design and Experiential Media Intro to the Professions|3||Introduces game design and experiential media as professional practice through studio work.
+GEM 180|Illness, Care, and the Moving Image|3||Examines how films, games, and literature portray medicine, illness, disability, and care.
+GEM 210|Game Design II|3||Covers professional development cycles as studios complete a single digital game.
+GEM 220|Worldbuilding for Storytellers|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Covers building immersive fictional worlds, including maps, histories, languages, and characters.
+GEM 250|Digital Art|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Introduces creative use of digital tools such as Photoshop, Illustrator, and After Effects.
+GEM 251|Character Art|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Explores crafting and developing believable characters.
+GEM 271|Philosophy of Games|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Applies philosophical concepts to games, covering ethics, identity, and agency.
+GEM 276|Game Design I|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Introduces game design principles and mechanics through analog game projects.
+GEM 277|Interactive Storytelling|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Teaches narrative techniques and guides students in producing interactive works.
+GEM 278|Elements of Art|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Teaches art vocabulary and drawing skills.
+GEM 380|Topics in Game Design in Experiential Media|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Investigates a rotating topic in game design and experiential media.
+GEM 400|Game Design and Experiential Media Capstone I|3||Begins a two-semester capstone in which studios develop projects for external clients.
+GEM 401|Game Design and Experiential Media Capstone II|3|HUM 100 or HUM 102 or HUM 104 or HUM 106 or HUM 108 or HUM 180 or HUM 200-299|Completes the two-semester capstone.

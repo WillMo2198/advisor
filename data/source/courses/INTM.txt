@@ -1,0 +1,46 @@
+INTM 301|Communications for the Workplace|3||Builds workplace writing, presentation, and interpersonal communication skills.
+INTM 315|Industrial Enterprises|3||Introduces how industrial firms pursue efficiency by eliminating waste.
+INTM 319|Electronics in Industry|3||Overviews electrical and electronic components and basic troubleshooting.
+INTM 322|Industrial Project Management|3||Covers tools for leading projects, including planning and risk management.
+INTM 403|Management and Leadership|3||Examines organizational behavior, leadership, team dynamics, and change.
+INTM 404|Marketing, Sales and E-Commerce|3||Integrates marketing, sales strategy, digital commerce, and new product introduction.
+INTM 405|Maintenance Technology and Management|3||Combines technical and managerial approaches to maintaining facility systems.
+INTM 406|Quality Management Systems|3||Explores measuring, controlling, and improving quality using statistical tools.
+INTM 407|Construction Technology|3||Surveys construction technologies, materials, and building systems.
+INTM 408|Cost Management|3||Introduces accounting information for business decisions and budgeting.
+INTM 409|Inventory Control|3||Covers inventory classification, safety stock, forecasting, and MRP and ERP systems.
+INTM 410|Operations Management|3||Introduces tools for managing processes such as scheduling and forecasting.
+INTM 411|Functional Facilities Management|3||Covers facilities management responsibilities, maintenance, budgeting, and safety.
+INTM 413|Contract Administration for Construction Projects|3||Addresses construction contracts, bidding, payments, and dispute resolution.
+INTM 415|Advanced Project Management|3||Applies PMP-based project management using Microsoft Project and Excel.
+INTM 416|Integrated Facilities Management|3||Teaches managing construction, renovation, and technology integration in facilities.
+INTM 417|Construction Estimating|3||Introduces construction cost estimating approaches and software.
+INTM 418|Industrial Risk Management|3||Prepares students to handle critical incidents through risk assessment and planning.
+INTM 419|Budgeting and Finance for Facility Managers|3||Covers facility budgeting, lifecycle costs, and capital budgets.
+INTM 420|Applied Strategies for the Competitive Enterprise|3||Applies management principles and case studies to build competitive advantage.
+INTM 423|Sustainable Facilities Operations|3||Examines sustainable facility operations and green technology, with LEED focus.
+INTM 425|Human Resource Management|3||Introduces HR practices and legal requirements.
+INTM 427|Manufacturing Planning and Production Management|3||Guides students through a component's production cycle.
+INTM 430|Global Logistics Management|3||Explores designing logistics across global supply chains.
+INTM 432|Sales and Operations Planning|3||Explains S&OP processes, demand and capacity planning, and CRM tools.
+INTM 434|Digital Transformation|3||Surveys digital technologies such as IoT, AI, and analytics in organizations.
+INTM 435|Artificial Intelligence for Industrial Operations|3||Introduces AI methods and responsible practices for industrial operations.
+INTM 436|Manufacturing Technologies for Industrial Applications|3||Compares manufacturing equipment, automation, safety, and quality practices.
+INTM 437|Smart Factory Automation|3||Covers connecting and optimizing manufacturing processes in real time.
+INTM 438|Advanced Machining for Manufacturing 1|3||Introduces 5-axis CNC machining, programming, and IIoT technologies.
+INTM 439|Advanced Machining for Manufacturing 2|3|INTM 438|Builds on 5-axis CNC skills with metrology, GD&T, and CAD/CAM.
+INTM 441|Supply Chain Management|3||Covers supply chain optimization and performance measurement.
+INTM 442|Inventory Management and Distribution Methods|3||Covers distribution strategy, inventory levels, and warehouse design.
+INTM 443|Strategic Procurement and Supply Chain Innovation|3||Explores strategic purchasing, sourcing, negotiation, and e-procurement.
+INTM 444|Export/Import|3||Covers international trade topics such as customs, shipping, and duties.
+INTM 446|Manufacturing and Logistics Information Systems|3|INTM 441|Provides hands-on experience with ERP systems for manufacturing and logistics.
+INTM 448|Agile Methodologies for New Product/Process Development|3||Explores agile methods for developing new products and processes.
+INTM 452|Pharmaceutical Manufacturing Technologies, Regulation and Practice|3||Covers pharmaceutical development, approval, and manufacturing practices.
+INTM 459|Issues in Industrial Sustainability|3||Examines sustainability concepts and legal and ethical issues in industry.
+INTM 460|Sustainability of Critical Materials|3||Analyzes supply limits of key resources and strategies to manage shortages.
+INTM 461|Energy Options for Industry|3||Surveys energy production, storage, efficiency, and policy for industry.
+INTM 462|Special Topics in Sustainability|Variable||Research on an industrial sustainability issue.
+INTM 477|Entrepreneurship in Industry|3||Introduces entrepreneurship tools for change inside organizations or new industrial ventures.
+INTM 491|Undergraduate Research|Variable||Undergraduate research experience.
+INTM 497|Special Projects INTM|Variable||Special projects in industrial technology and management.
+INTM 498|Undergraduate Research Experience|3||Team research experience on a topic set by the supervising faculty member.

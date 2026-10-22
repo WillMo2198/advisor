@@ -1,0 +1,66 @@
+CAE 100|Introduction to Engineering Drawing and Design|2||Introduces engineering graphics as a problem-solving tool, covering orthographic projection, dimensioning, and ANSI standards.
+CAE 101|Introduction to AutoCAD Drawing and Design|2|CAE 100|Teaches PC-based CAD software for civil and architectural design problems.
+CAE 105|Surveying|2|CAE 100*|Covers surveying tools and methods for leveling, mapping, earthwork, and GPS/GIS-based infrastructure work.
+CAE 110|Professional Practice I|1||Introduces civil, architectural, and environmental engineering professions, learning skills, ethics, and degree planning.
+CAE 111|Professional Practice II|1||Continues the introduction to engineering professions, emphasizing teamwork, ethics, and career preparation.
+CAE 208|Thermodynamics|3|(CHEM 122 or CHEM 123 or CHEM 124) and MATH 151|Introduces thermodynamic properties, the First and Second Laws, and power and refrigeration cycles.
+CAE 209|Fluid Mechanics and Heat Transfer|3|CAE 208 and (MATH 252* or CAE 320)|Covers fluid statics and flow analysis plus conduction, convection, and radiation in building systems.
+CAE 221|Engineering Geology|3||Explores geology's relationship to civil engineering, including soils, groundwater, earthquakes, and subsurface exploration.
+CAE 286|Theory and Concept of Structural Mechanics|3|PHYS 123 and MATH 152|Covers equilibrium, free body diagrams, truss analysis, centroids, and particle kinetics and kinematics.
+CAE 287|Mechanics of Structural Materials|3|CAE 286|Examines stress, strain, bending, deflection, buckling, and combined loading in structural members.
+CAE 302|Fluid Mechanics|3|MATH 252* and (CAE 286 or MMAE 200)|Covers fluid properties, conduit and open-channel flow, dimensional analysis, and turbomachinery.
+CAE 303|Steel Structures I|3|CAE 287 and CAE 304 and CAE 315*|Introduces steel design using LRFD and ASD for tension members, columns, beams, and simple connections.
+CAE 304|Structural Analysis I|3|MATH 252 and CAE 287|Covers analysis of statically determinate trusses and frames, deflections, virtual work, and column stability.
+CAE 307|Concrete Structures I|3|CAE 287 and CAE 304 and CAE 315|Introduces concrete mix design, reinforced concrete behavior, load factors, and rebar detailing.
+CAE 312|Engineering Systems Analysis|3|MATH 251|Covers engineering economics, probability, random variables, statistical estimation, and regression analysis.
+CAE 315|Materials of Construction|3|CAE 287|Examines mechanical behavior and testing of concrete, wood, steel, and other construction materials.
+CAE 323|Introduction to Geotechnical Engineering|3|CAE 287 and (CAE 302* or CAE 209* or MMAE 313*)|Introduces soil properties, permeability, consolidation, earth pressures, and bearing capacity with lab work.
+CAE 331|Building Science|3|(CAE 208 or MMAE 320) and (CAE 302 or MMAE 313 or CAE 209)|Studies heat transfer, psychrometrics, ventilation, thermal comfort, and building energy and load calculations.
+CAE 383|Electrical and Electronic Circuits|3|MATH 252 and PHYS 221|Introduces AC and DC circuit analysis, three-phase power, diodes, transistors, and operational amplifiers.
+CAE 401|Hydraulics, Hydrology, and Their Applications|3|MATH 252*|Covers water distribution, flow through orifices and conduits, open-channel flow, and rainfall-runoff.
+CAE 402|Introduction to Environmental Engineering and Sustainable Design|3|(CHEM 122 or CHEM 124) and MATH 152|Overviews air and water pollution, waste management, contaminant transport, regulation, and sustainability.
+CAE 405|Applications of Computational Fluid Dynamics in Engineering|3||Introduces CFD concepts and tools for modeling internal and external flows.
+CAE 408|Bridge and Structural Design|3|CAE 431*|Covers modern bridge design using LRFD, including seismic, wind, fatigue, and support design.
+CAE 410|Introduction to Wind and Earthquake Engineering|3|CAE 411*|Covers vibration fundamentals and analysis and design of structures for wind and earthquake loads.
+CAE 411|Structural Analysis II|3|CAE 304 or Graduate standing|Covers analysis of indeterminate frames using classical methods, the stiffness method, and computer analysis.
+CAE 412|Traffic Engineering Studies and Design|3||Covers traffic volume, speed, accident, and parking studies, facility capacity, and traffic control design.
+CAE 415|Pavement Design, Construction and Maintenance|4|CAE 323 or Graduate standing|Covers flexible and rigid pavement design, construction, drainage, rehabilitation, and maintenance.
+CAE 416|Facility Design of Transportation Systems|3||Covers design of transportation facilities such as guideways, terminals, railroads, airports, and harbors.
+CAE 417|Railroad Engineering and Design|3||Covers railroad history, train operations, track design, and vehicle-track dynamic interaction.
+CAE 419|Introduction to Transportation Engineering and Design|3||Covers highway functions, design criteria, cross-sections, intersections, interchanges, and capacity analysis.
+CAE 421|Risk Assessment Engineering|3||Introduces risk concepts and hazard identification using fault tree and failure mode analysis.
+CAE 422|Sprinklers, Standpipes, Fire Pumps, Special Suppression, and Detection Systems|3|CAE 209 or CAE 302 or Graduate standing|Covers hydraulic design of fire suppression, standpipe, pump, and detection systems per NFPA standards.
+CAE 424|Introduction to Fire Dynamics|3|CAE 209 or Graduate standing|Introduces fire chemistry, heat and mass transfer, material burning, and enclosure fire phenomena.
+CAE 425|Fire Protection and Life Safety in Building Design|3||Covers building design for fire and life safety, including codes, exits, and protective systems.
+CAE 428|Bridge Evaluation and Management|3|(CAE 303* or CAE 307*) and ((CAE 304 and CAE 312 and CAE 315) or Graduate standing)|Covers bridge condition and load rating, fatigue assessment, management systems, and life cycle analysis.
+CAE 430|Probability Concepts in Civil Engineering Design|3|MATH 252 or Graduate standing|Introduces probabilistic modeling and simulation for civil engineering design problems.
+CAE 431|Steel Structures II|3|CAE 303|Covers steel frame systems, composite floors, plate girders, and bolted and welded connections.
+CAE 432|Concrete Structures II|3|CAE 307|Covers reinforced concrete beam and column design, serviceability, and foundation design.
+CAE 433|Repair of Existing Building Structures|3|CAE 432 and CAE 431|Covers building assessment, forensic evaluation, and repair and strengthening methods.
+CAE 435|Experimental Analysis of Structures|3|(CAE 304 and CAE 411) or Graduate standing|Uses physical and computational models and similitude theory to study structural behavior.
+CAE 436|Design of Masonry and Timber Structures|3|CAE 307 or Graduate standing|Covers design of masonry and wood structural elements, seismic response, and mechanical connectors.
+CAE 437|Homeland Security Concerns in Engineering Systems|3||Reviews blast effects, threat risk estimation, protective design, and emergency preparedness for infrastructure.
+CAE 438|Control of Building Environmental Systems|3|CAE 331 or CAE 513 with min. grade of C or MMAE 322|Introduces control systems, sensors, actuators, and HVAC control strategies for energy and comfort.
+CAE 439|Introduction to Geographic Information Systems|3||Teaches GIS and GPS skills through hands-on projects using ESRI and GPS tools.
+CAE 453|Measurement and Instrumentation in Architectural Engineering|3|CAE 331|Provides hands-on building energy and indoor air quality measurements, including field work.
+CAE 454|Building Commissioning|3|CAE 331 or INTM 407 or (ARCH 403 and ARCH 404)|Introduces building commissioning fundamentals and prepares students for the BCxP exam.
+CAE 457|Geotechnical Foundation Design|3|CAE 323 or Graduate standing|Covers subsoil exploration and design of shallow and deep foundations, retaining walls, and drainage.
+CAE 461|Plumbing and Fire Protection Design|3|CAE 302 or CAE 209 or MMAE 313 or Graduate standing|Covers plumbing, water supply, venting, and building fire protection system design.
+CAE 462|Introduction to Sustainable Building Design|3||Introduces passive building fundamentals, design strategies, and green building certification systems.
+CAE 463|Building Enclosure Design|3|CAE 331 or Graduate standing|Covers design of building exteriors for heat, air, and moisture control.
+CAE 464|HVAC Systems Design|3|CAE 331 or CAE 513|Covers HVAC design principles, system and equipment selection, duct design, and energy conservation.
+CAE 465|Energy Conservation in Buildings|3|CAE 331 or CAE 513|Covers building energy analysis, rating systems, simulation tools, and energy retrofit strategies.
+CAE 466|Building Electrical/Lighting Systems Design|3|CAE 383 or (ECE 216 and ECE 215)|Covers electrical system design per the National Electric Code, including circuits, protection, and backup power.
+CAE 467|Lighting Systems Design|3||Covers lighting calculations, color, visual perception, daylighting, and lighting energy conservation.
+CAE 468|Architectural Design|3||Introduces the architectural design process, code integration, and presentation techniques.
+CAE 470|Construction Methods and Cost Estimating|3||Covers construction estimating, unit costs, bid preparation, and quantity takeoff.
+CAE 471|Construction Planning and Scheduling|3||Covers planning, scheduling, critical path methods, resource leveling, and project controls.
+CAE 472|Construction Site Operation|3||Covers site layout, construction methods, formwork, temporary facilities, and site safety.
+CAE 473|Construction Contract Administration|3||Covers project delivery systems, contract duties, payments, change orders, bonds, and dispute resolution.
+CAE 474|Introduction to Building Information Modeling|3||Introduces BIM as an information exchange process, covering parametric modeling and standards.
+CAE 482|Hydraulic Design of Open Channel Systems|3||Covers uniform and varied open-channel flow, flood routing, and numerical solutions for channel design.
+CAE 486|Soil and Site Improvement|3|CAE 323 or Graduate standing|Covers water flow through soils, site grading and dewatering, and soil improvement techniques.
+CAE 491|Undergraduate Research|Variable|Senior standing, minimum GPA of 3.0, and consent of the instructor|Individual supervised research in civil and architectural engineering, with a required seminar presentation.
+CAE 495|Capstone Senior Design|3||Integrated team project across engineering disciplines for a real client, with verbal, visual, and written communication.
+CAE 496|Fundamentals of Engineering Preparation|0||Reviews FE Examination content and strategies, for senior and graduate students only.
+CAE 497|Special Project|Variable|Senior standing, minimum GPA of 3.0, and consent of instructor|Individually supervised special design project under instructor guidance.

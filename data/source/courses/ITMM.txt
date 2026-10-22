@@ -1,0 +1,7 @@
+ITMM 464|Social Media Marketing|3||Explores tactics, tools, and strategies for using new media channels.
+ITMM 470|Fundamentals of Management for Technology Professionals|3||Covers management fundamentals for high-tech professionals.
+ITMM 471|Project Management for Information Technology and Management|3|ITMT 330|Teaches project management basics for IT implementations.
+ITMM 481|Information Technology Entrepreneurship|3||Prepares students to build IT companies with a prototype and a business plan.
+ITMM 482|Business Innovation|3||Teaches an innovation process for business.
+ITMM 485|Legal and Ethical Issues in Information Technology|3||Covers IT legal issues such as contracting, privacy, and computer crime, plus ethics.
+ITMM 487|Product Management|3||Explores the product management role and leading cross-functional teams.

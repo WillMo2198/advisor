@@ -1,0 +1,13 @@
+ITMO 340|Introduction to Data Networks and the Internet|3||Covers Internet architecture, protocols, and networking tools.
+ITMO 356|Introduction to Open Source Operating Systems|3||Teaches setting up and administering an open source operating system.
+ITMO 417|Shell Scripting for System Administration|3|ITMO 356|Teaches shell scripting to automate system administration tasks.
+ITMO 433|Enterprise Server Administration|3|ITM 301 and ITMO 340|Covers setting up, securing, and maintaining enterprise servers and services.
+ITMO 441|Network Administration and Operations|3|ITMO 340 or ITMO 540 with min. grade of C|Examines configuration of network applications and protocols.
+ITMO 444|Cloud Computing Technologies|3|ITMO 356|Examines cloud applications and architectures, with a group project.
+ITMO 446|Telecommunications Over Data Networks|3|ITMO 440 or ITMO 340|Covers VoIP protocols such as SIP, RTP, and SDP.
+ITMO 450|Enterprise End-User System Administration|3|ITM 301|Covers installing and maintaining end-user desktops and devices in enterprise networks.
+ITMO 453|Open Source Server Administration|3|ITMO 340 and ITMO 356|Covers automation, orchestration, scripting, and monitoring of infrastructure.
+ITMO 454|Operating System Virtualization|3|ITM 301 or ITMO 356|Covers hypervisors, virtual machines, and their security implications.
+ITMO 463|Cloud: Software as a Service|3|ITMO 444|Explores building and managing cloud-native applications.
+ITMO 464|Cloud: Platform as a Service|3|ITMO 444|Covers developing and managing applications on cloud platforms.
+ITMO 465|Cloud: Infrastructure as a Service|3|ITMO 444|Covers provisioning and managing cloud servers, storage, and virtual networking.

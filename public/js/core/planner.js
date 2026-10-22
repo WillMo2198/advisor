@@ -78,7 +78,9 @@ export function neededItems(audit, program, index, { exclude = new Set(), electi
           left = 0;
         }
         while (left > 0 && options.length) {
-          const code = known.length ? known.shift() : (wanted.length ? wanted.shift() : options[0]);
+          const code = options.find((c) => wantedLeaves.has(c) && index.has(c)) || (known.length ? known[0] : (wanted.length ? wanted[0] : options[0]));
+          known.splice(0, known.length, ...known.filter((c) => c !== code));
+          wanted.splice(0, wanted.length, ...wanted.filter((c) => c !== code));
           options.splice(options.indexOf(code), 1);
           if (index.has(code) || wantedLeaves.has(code)) {
             const why = !index.has(code) && wantedFor.get(code)?.length ? `Also opens ${wantedFor.get(code).join(', ')}` : '';

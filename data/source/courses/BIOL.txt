@@ -1,0 +1,35 @@
+BIOL 100|Introduction to the Profession|2||Introduction to biological sciences, scientific method, computing tools, and critical thinking.
+BIOL 104|Linux and Perl Programming|3||Introductory Linux, shell, and Perl programming with examples using biological data.
+BIOL 105|Introduction to Biology|3||Non-major survey of biology from molecules to the biosphere, including human impact on the planet.
+BIOL 107|General Biology Lectures|3||Organismal biology covering plant and animal structure, evolution, reproduction, genetics, and ecology.
+BIOL 109|General Biology Laboratory|1|BIOL 105* or BIOL 107*|Laboratory techniques applied to general biological concepts, accompanying BIOL 107.
+BIOL 114|Introduction to Human Biology|3||Non-major course on human health topics, including biochemistry, genetics, development, pathogens, and evolution.
+BIOL 115|Human Biology|3||Human cells, organ systems, genetics, neurobiology, toxicology, immunology, nutrition, and microbial diseases.
+BIOL 117|Human Biology Laboratory|1|BIOL 114* or BIOL 115*|Laboratory linking cell structure and function in organs and organ systems, accompanying BIOL 114 or 115.
+BIOL 210|Microbiology|3|BIOL 107 or BIOL 114 or BIOL 115|Microbial structure, genetics, growth, and metabolism, plus roles in health, industry, and food and water safety.
+BIOL 214|Genetics|3|BIOL 107 or BIOL 114 or BIOL 115|Transmission and molecular genetics for biology and other science majors, with practical applications.
+BIOL 225|Microbiology Laboratory|2|BIOL 210*|Sterile technique, microbial growth, biochemical identification, and food and water microbiology exercises.
+BIOL 305|Human Anatomy|3|BIOL 107 or BIOL 114 or BIOL 115|Structural, functional, and developmental human anatomy, emphasizing bones, vessels, nerves, and muscles.
+BIOL 327|Introduction to Immunology|3|BIOL 107 or BIOL 115|Innate and adaptive immunity, immune cell development, infection responses, and consequences of immune failure.
+BIOL 401|Introductory Biochemistry|3|(BIOL 107 or BIOL 115 or Graduate standing) and (CHEM 237 or Graduate standing)|First-semester biochemistry covering proteins, nucleic acids, carbohydrates, lipids, and enzyme reactions.
+BIOL 402|Metabolic Biochemistry|3|BIOL 401 and (CHEM 239 or Graduate standing)|Second-semester biochemistry covering metabolic pathways, biomolecule synthesis and breakdown, and metabolic control.
+BIOL 403|Biochemistry|4|(BIOL 107 or BIOL 115 or CHE 311) and CHEM 237|Cell membranes, biomolecules, enzymes, and metabolism; does not meet biochemistry requirements for certain majors.
+BIOL 404|Biochemistry Laboratory|3|BIOL 401* or BIOL 402* or BIOL 403*|Analytical methods for proteins, amino acids, and nucleic acids, including chromatography, spectrophotometry, and electrophoresis.
+BIOL 410|Medical Microbiology|3|BIOL 210 or Graduate standing|Pathogenic bacteria, fungi, viruses, and parasites, and how they cause human disease.
+BIOL 413|Genomics and Transcriptomics|3|BIOL 214 or Graduate standing|Sequencing technologies and data for genome assembly, annotation, and gene expression analysis, with hands-on exercises.
+BIOL 414|Genetics for Engineering Scientists|3||Advanced genetics for engineering students covering transmission, molecular genetics, and practical problem-solving.
+BIOL 415|Advanced Human Genetics|3|BIOL 214 or Graduate standing|Formal and molecular human genetics, including Mendelian inheritance, gene mapping, mutation analysis, and genomics.
+BIOL 420|Population Genetics|3|(BIOL 214 and MATH 148) or (BIOL 214 and MATH 151) or Graduate standing|Genetic variation in populations, covering drift, coalescence, migration, mutation, and natural selection.
+BIOL 426|Concepts of Cancer Biology|3|(BIOL 107 and BIOL 115 and CHEM 237 and BIOL 445* and BIOL 401*) or Graduate standing|Overview of cancer, covering signaling pathways, cancer genes, carcinogenesis, metastasis, prevention, and therapy.
+BIOL 430|Human Physiology|3|BIOL 114 or BIOL 115 or Graduate standing|Body function across systems, including cardiovascular, renal, respiratory, gastrointestinal, and endocrine physiology.
+BIOL 431|Animal Physiology Laboratory|3|BIOL 430*|Experiments on nerve action potentials, EKG, muscle contraction, and human blood pressure and lung capacity.
+BIOL 440|Neurobiology|3|BIOL 445|Nervous system organization, neuronal communication, integrative functions, and brain failures leading to disease.
+BIOL 445|Cell Biology|3|(BIOL 107 and CHEM 237) or (BIOL 115 and CHEM 237) or Graduate standing|Cell structure and function, including molecular components, membranes, organelles, cytoskeleton, and bioenergetics.
+BIOL 446|Cell Biology Laboratory|3|BIOL 445*|Cell biology laboratory accompanying BIOL 445.
+BIOL 451|Biological Literature|2|BIOL 400-499|Library research on advanced biology topics, followed by oral presentations of the research.
+BIOL 455|Macromolecular Techniques|3|BIOL 401* or BIOL 403* or CHEM 321* or CHEM 343* or CHEM 348* or PHYS 304* or PHYS 410*|Hands-on physical biochemistry and biophysics lab, using equipment and expertise from partner institutions.
+BIOL 470|Systems and Behavioral Neuroscience|3||Neural networks behind sensory perception, learning, memory, decision making, and behavior across organisms.
+BIOL 475|Health and Disease in Modern Society|3|BIOL 115|Biological and medical aspects of diseases like diabetes, depression, cancer, and Alzheimer's, linked to lifestyle.
+BIOL 490|Individual Study|Variable||Individual study under an instructor's supervision; consent of instructor required.
+BIOL 491|Biology Research Project|Variable||Advanced undergraduate research project requiring a written report; instructor permission required.
+BIOL 495|Biology Colloquium|1||Lectures by prominent scientists on current biology research and professional scientific presentations.

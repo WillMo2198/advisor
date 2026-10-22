@@ -1,0 +1,45 @@
+MATH 100|Introduction to the Profession|3||Introduces mathematics as a profession, problem solving, career planning, and teamwork skills.
+MATH 101|Foundations of College Algebra|4||Covers core algebra topics including polynomials, rational expressions, equations, and radicals.
+MATH 119|Geometry for Architects|3||Euclidean and analytic geometry, trigonometry, and conic sections in two and three dimensions.
+MATH 122|Introduction to Calculus|3|MATH 119 or MATH 148|Introduces limits, continuity, derivatives, and integrals with applications.
+MATH 123|AI for Computational Mathematics and Coding|3||Uses large language models as partners for computational math, coding, and critical evaluation.
+MATH 130|Thinking Mathematically|3||Explores modern math ideas through reasoning, visualization, and group problem solving.
+MATH 131|Mathematics for Sustainability|3||Quantitative reasoning and modeling for sustainability topics such as climate, resources, and economics.
+MATH 147|College Algebra|4||In-depth study of real numbers, exponents, logarithms, and equation solving.
+MATH 148|Preparation for Calculus|4|Raw Math score of 60 or MATH 147 with min. grade of C|Reviews functions, trigonometry, and exponential and logarithmic models to prepare for calculus.
+MATH 180|Fundamentals of Discrete Mathematics|3||Counting, discrete probability, graph theory, logic, and proofs for information technology students.
+MATH 191|Business Calculus|4|MATH 148|Basic calculus with applications to business, economics, and management.
+MATH 192|Linear Mathematics|3||Linear systems, matrix methods, linear optimization, and Markov chains for business applications.
+MATH 350|Introduction to Computational Mathematics|3|(CS 104 or CS 105 or CS 115) and MATH 152|Numerical methods for linear and nonlinear systems, data fitting, and differential equations.
+MATH 374|Probability and Statistics for Electrical and Computer Engineers|3|MATH 251|Probability and random processes with applications for electrical and computer engineers.
+MATH 380|Mathematical Modeling with Data|3|(CS 104 or CS 105 or CS 115) and MATH 152 and (MATH 230 or MATH 332)|Regression, optimization, networks, and simulation in an extended applied modeling project.
+MATH 400|Real Analysis|3|MATH 251 or Graduate standing|Real numbers, continuity, differentiation, and Riemann integration.
+MATH 402|Complex Analysis|3|MATH 251 or Graduate standing|Analytic functions, conformal mapping, contour integration, and residues.
+MATH 405|Introduction to Iteration and Chaos|3|(MATH 251 and MATH 252 and MATH 332) or (MATH 252 and MATH 333 and MATH 251) or Graduate standing|Iteration, chaos, dynamical systems, Julia sets, and fractals.
+MATH 410|Number Theory|3|MATH 230 or CS 330 or Graduate standing|Divisibility, congruences, primes, Diophantine equations, and encryption applications.
+MATH 420|Geometry|3||Selected topics in Euclidean, non-Euclidean, and differential geometry.
+MATH 425|Statistical Methods|3||Statistical methods for data analysis, hypothesis testing, and regression without calculus.
+MATH 426|Statistical Tools for Engineers|3||Statistics for engineers including distributions, experimental design, regression, and process control.
+MATH 430|Applied Algebra|3|MATH 230 or (CS 330 and MATH 332*) or Graduate standing|Groups, rings, and fields with applications like constructions and codes.
+MATH 431|Computational Algebraic Geometry|3|(MATH 332 and MATH 230) or CS 330|Polynomial systems, ideals, varieties, and Groebner bases.
+MATH 435|Linear Optimization|3|MATH 332|Linear programming theory and algorithms including simplex, duality, and integer programming.
+MATH 437|Network Optimization|3|MATH 230 or (CS 330 and MATH 332) or Graduate standing|Shortest path, max flow, min cost flow, and multicommodity flow network models.
+MATH 439|Network modeling and statistics|3|MATH 230 and MATH 332 and MATH 252|Representing, building, and analyzing networks from data using algorithms and Python.
+MATH 446|Introduction to Time Series|3|MATH 475 with min. grade of C or ECE 511 with min. grade of C|ARMA models, forecasting, spectral analysis, and state-space methods.
+MATH 453|Combinatorics|3|MATH 230 or CS 330 or Graduate standing|Permutations, combinations, inclusion-exclusion, recurrences, and generating functions.
+MATH 454|Graph Theory and Applications|3|(MATH 230 and MATH 251) or MATH 252|Trees, matchings, connectivity, planarity, and coloring with applications.
+MATH 461|Fourier Series and Boundary-Value Problems|3|(MATH 251 and MATH 252) or Graduate standing|Fourier series and separation of variables for heat, wave, and Laplace equations.
+MATH 476|Statistics|3|MATH 475 or Graduate standing|Estimation, hypothesis tests, goodness-of-fit, regression, ANOVA, and nonparametric methods.
+MATH 477|Computational Linear Algebra for Science and Engineering|3|MATH 350 or MMAE 350|Matrix factorizations, least squares, and iterative solvers.
+MATH 478|Numerical Methods for Differential Equations|3|MATH 350 or MMAE 350|Numerical interpolation, integration, and solvers for differential equations.
+MATH 481|Introduction to Stochastic Processes|3|(MATH 332 and MATH 475) or (MATH 475 and MATH 333)|Markov chains, martingales, Brownian motion, and Poisson processes.
+MATH 483|Design and Analysis of Experiments|3|MATH 476 or MATH 474|Experimental design including factorial, fractional factorial, and response surface methods.
+MATH 484|Regression|3|MATH 474 with min. grade of C or (MATH 476 with min. grade of C and MATH 475 with min. grade of C)|Simple and multiple linear regression, inference, and model checking.
+MATH 485|Introduction to Mathematical Finance|3|MATH 475|Binomial stock models and an introduction to Black-Scholes pricing.
+MATH 486|Mathematical Modeling I|3|MATH 251 and MATH 332 and MATH 252|Modeling of physical, biological, and business systems using analytic and computational tools.
+MATH 487|Mathematical Modeling II|3|MATH 252 or Graduate standing|Model formulation and solution with queuing theory and financial derivatives.
+MATH 488|Data-Driven Dynamical Systems|3|(MATH 252 and MATH 332) or Graduate standing|Dynamical systems theory with data-driven methods for stability and chaos.
+MATH 489|Partial Differential Equations|3|MATH 252|First- and second-order PDEs, wave, heat, and Laplace equations, and Green's functions.
+MATH 491|Reading and Research|Variable||Independent reading and research under instructor supervision.
+MATH 493|Summer Research and Independent Study|0||Research work with faculty advisers during the summer.
+MATH 497|Special Problems|Variable||Special problems course for independent study.

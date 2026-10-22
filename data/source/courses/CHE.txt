@@ -1,0 +1,32 @@
+CHE 100|Introduction to the Profession I|2||Introduces chemical engineering, productivity software, communication, technical reporting, and ethics.
+CHE 101|Introduction to the Profession II|2|CHE 100|Covers advanced productivity software, graphics, flow sheeting, and team project management.
+CHE 202|Material Energy Balances|3|(CS 105* and MATH 152 and CHEM 125) or CS 115* or CS 104*|Applies material and energy balances to systems with chemical and physical changes.
+CHE 239|Mathematical and Computational Methods|3|CHE 202 and MATH 252* and CHE 301*|Uses numeric and analytic methods, with coding, to solve chemical engineering equations.
+CHE 301|Fluid Mechanics|3|MATH 252 and CHE 202|Covers fluid flow fundamentals and design equations for unit operations.
+CHE 302|Heat and Mass Transfer Operations|3|CHE 301*|Covers heat and mass transfer design for unit operations.
+CHE 311|Foundations of Biological Science for Engineering|3|CHEM 125|Introduces basic biological science principles for engineering students.
+CHE 317|Chemical and Biological Engineering Laboratory I|2|CHE 301|Laboratory work on unit operations, fluid flow, and heat transfer.
+CHE 351|Thermodynamics I|3|CHE 202 and CHEM 343*|Applies the laws of thermodynamics to chemical engineering operations.
+CHE 401|Bridge to Chemical Engineering I|3||Covers material and energy balances and thermodynamic laws.
+CHE 402|Bridge to Chemical Engineering II|3||Covers flow, heat, and mass transfer design equations for unit operations.
+CHE 406|Transport Phenomena|3|(CHE 301 and CHE 302 and MATH 252) or Graduate standing|Derives equations of change and solutions for viscous flow, diffusion, and heat conduction.
+CHE 412|Foundations of Biological Science for Engineering|3|CHEM 125 or Graduate standing|Introduces biological science principles to graduate engineering students.
+CHE 416|Technologies for Treatment of Diabetes|3||Examines control systems for diabetes, glucose monitoring, and insulin pumps.
+CHE 418|Chemical and Biological Engineering Laboratory II|2|CHE 302 and CHE 317|Laboratory work on distillation, drying, gas absorption, and filtration.
+CHE 423|Chemical Reaction Engineering|3|(CHE 302 and CHE 351 and CHE 433) or Graduate standing|Introduces chemical kinetics and the design of homogeneous reactors.
+CHE 424|Quantitative Aspects of Cell and Tissue Engineering|3|CHE 423|Examines cell growth, adhesion, migration, and transport in tissues.
+CHE 426|Statistical Tools for Engineers|3|MATH 151 or Graduate standing|Covers distributions, significance tests, experiment design, regression, and process control.
+CHE 433|Process Modeling and System Theory|3|(CHE 302 and CHE 351) or Graduate standing|Models dynamic processes using transfer functions and Markov processes.
+CHE 435|Process Control|3|(CHE 302 and CHE 433) or Graduate standing|Covers process stability, feedback and feedforward control, and controller tuning.
+CHE 439|Numerical and Data Analysis|3|(CHE 301 and MATH 252* and CHE 202) or Graduate standing|Applies numerical methods and regression to chemical engineering problems.
+CHE 451|Thermodynamics II|3|CHE 351 or Graduate standing|Analyzes processes using second-law methods and reaction equilibrium.
+CHE 455|Polymer Processing|3|(CHE 301 and CHE 302) or Graduate standing|Analyzes transport in polymer processes such as extrusion and injection molding.
+CHE 465|Electrochemical Energy Conversion|3|CHE 302 or Graduate standing|Covers electrochemical thermodynamics and kinetics in batteries and fuel cells.
+CHE 467|Fuel Cell System Design|3|CHE 423 or Graduate standing|Explores fuel cell design from a reactor and system perspective.
+CHE 470|Introduction to Polymer Science|3|((CHEM 122 and CHEM 123) or CHEM 124 or (MATH 251 and CHEM 125 and PHYS 221)) or Graduate standing|Introduces polymer synthesis, processing, properties, and applications.
+CHE 489|Fluidization|3|CHE 302 or Graduate standing|Covers fluidized bed regimes, fluid mechanics, and industrial applications.
+CHE 491|Undergraduate Research|Variable||Independent research project guided by a chemical and biological engineering faculty member.
+CHE 494|Process Design I|3|CHE 423* and CHE 435* and CHE 451 and CHE 433|Introduces process design techniques and economic evaluation of equipment.
+CHE 496|Process Design II|3|(CHE 494 and CHE 423* and CHE 435*) or Graduate standing|Group design project integrating technical, safety, environmental, and economic considerations.
+CHE 497|Special Projects|Variable||Special projects.
+CHE 498|Chemical Process Safety Design|3|CHE 494 or Graduate standing|Integrates safety into process design, covering hazards, HAZOP, and fault trees.

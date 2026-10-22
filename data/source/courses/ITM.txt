@@ -1,0 +1,8 @@
+ITM 300|Communication in the Workplace|3||Practices workplace verbal and written communication, with emphasis on technical writing and presentations.
+ITM 301|Introduction to Contemporary Operating Systems and Hardware I|3||Covers computer architecture, operating system use, hardware installation, security, and repair.
+ITM 303|Introduction to Contemporary Operating Systems and Hardware II|3||Explores advanced operating system features, file management, and security across platforms.
+ITM 311|Introduction to Software Development|3||Introduces object-oriented programming and development tools.
+ITM 312|Introduction to Systems Software Programming|3||Teaches systems programming basics such as data types, control structures, and modularization.
+ITM 313|Introduction to Open Source Application Development|3||Introduces programming fundamentals in an open source language.
+ITM 497|Independent Study|Variable||Special projects completed independently.
+ITM 498|Undergraduate Research Immersion: Team|3||Faculty-mentored research experience as part of a student team.

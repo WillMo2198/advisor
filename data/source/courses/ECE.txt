@@ -1,0 +1,39 @@
+ECE 100|Introduction to the Profession I|3||Introduces engineering's societal role and professionalism through hands-on projects and teamwork.
+ECE 211|Circuit Analysis I|3|MATH 252*|Covers circuit laws, mesh and nodal analysis, op-amps, transient RC/RL/RLC responses, and Laplace basics.
+ECE 213|Circuit Analysis II|4|ECE 211 with min. grade of C|Phasor-based AC circuit analysis, frequency response, two-port networks, three-phase systems, and Fourier series.
+ECE 216|Circuit Analysis II|3|ECE 211 with min. grade of C|AC steady-state circuit analysis for non-ECE majors, including phasors, two-port networks, and Fourier series.
+ECE 218|Digital Systems|4||Boolean algebra, combinational and sequential logic design, and FPGA/VHDL implementation.
+ECE 222|Introduction to Cybersecurity Engineering|3||Survey of offensive and defensive cybersecurity, including penetration testing, forensics, and cyber law.
+ECE 242|Digital Computers and Computing|3|(CS 116 and ECE 218) or CS 201|Computer architecture, number representation, and machine and assembly language programming.
+ECE 307|Electrodynamics|4|ECE 213 and PHYS 221 and MATH 251|Transmission lines, Smith Chart matching, and Maxwell's equations with wave propagation.
+ECE 308|Signals and Systems|3|MATH 252 and MATH 251|Continuous and discrete signal and system analysis using Fourier, Laplace, and Z-transforms.
+ECE 311|Engineering Electronics|4|ECE 213|Semiconductor physics, diodes, transistor biasing, and amplifier analysis with laboratory work.
+ECE 319|Fundamentals of Power Engineering|4|ECE 213|Electromechanical energy conversion, machine operation, and power system load flow and fault analysis.
+ECE 403|Digital and Data Communication Systems|3|Graduate standing and ECE 308|Analog and digital modulation, sampling, channel capacity, and digital communication error analysis.
+ECE 406|Wireless Communications Systems|3|ECE 403|Radio propagation, fading, cellular systems, multiple access, and wireless network simulation.
+ECE 407|Introduction to Computer Networks with Laboratory|4||Physical, data link, and medium access networking techniques with laboratory implementation and experimentation.
+ECE 408|Introduction to Computer Networks|3||Lower-layer networking concepts such as error control, routing, and congestion control, without laboratory.
+ECE 411|Power Electronics|4|ECE 311 or Graduate standing|Power semiconductor devices and converters for AC/DC, DC/DC, and inverter applications.
+ECE 412|Hybrid Electric Vehicle Drives|4|(ECE 311 and ECE 319) or Graduate standing|Electric motor drive fundamentals and semiconductor switching for speed, position, and traction control.
+ECE 418|Power System Analysis|3|ECE 319 or Graduate standing|Transmission analysis, Newton-Raphson load flow, unsymmetrical faults, and power system stability.
+ECE 419|Power Systems Analysis with Laboratory|4|ECE 319 or Graduate standing|Power network analysis topics paired with a laboratory using commercial power system software.
+ECE 420|Analytical Methods for Power System Economics and Cybersecurity|3|ECE 319 or Graduate standing|Economic dispatch, optimal power scheduling, state estimation, and smart grid cybersecurity modeling.
+ECE 425|Analysis and Design of Integrated Circuits|3|ECE 311|Analog IC design in bipolar and CMOS technologies, covering amplifiers, biasing, and feedback.
+ECE 429|Introduction to VLSI Design|4|(ECE 218 and ECE 311) or Graduate standing|VLSI processing, MOS theory, layout design rules, and CAD tools with a term project.
+ECE 430|Fundamentals of Semiconductor Devices|3|ECE 311|Semiconductor device physics covering p-n junctions, solar cells, LEDs, FETs, and BJTs.
+ECE 437|Digital Signal Processing I|3|ECE 308 or Graduate standing or BME 330|Discrete-time systems, Z-transforms, IIR and FIR filter design, and discrete Fourier transforms.
+ECE 438|Control Systems|3|ECE 308 or BME 330 or Graduate standing|Feedback control design using root locus, Bode, Nyquist, and Routh-Hurwitz methods.
+ECE 441|Smart and Connected Embedded System Design|4||Capstone embedded design for smart, connected systems spanning IoT, sensors, and secure communication.
+ECE 443|Introduction to Computer Cyber Security|3||Cryptography, number theory, system security, and forensics with hands-on security projects.
+ECE 444|Computer Network Security|3|ECE 407 or ECE 408|Cryptographic algorithms and secure network protocols across application through link layers.
+ECE 448|Application Software Design|3|ECE 242|Application development with Java, Python, SQL, and JavaScript, including web services and IoT integration.
+ECE 449|Object-Oriented Programming and Machine Learning|3|ECE 242 with min. grade of C|Object-oriented design in C++ and Python, with machine learning and parallel computing platforms.
+ECE 460|Introduction to Signals and Systems for Advanced Studies|3||Signals and systems foundations for graduate students without an undergraduate ECE background.
+ECE 461|Introduction to Probability and Random Variables for Advanced Studies|3||Probability foundations and random variables for graduate students without an undergraduate ECE background.
+ECE 473|Cloud Computing and Cloud Native Systems|3|ECE 242|Cloud native architecture covering containers, distributed databases, stream processing, and scalability.
+ECE 474|Data Science for Engineers|3|MATH 374|Data science in Python, covering preprocessing, visualization, and machine learning methods.
+ECE 481|Image Processing|3|(ECE 308 and MATH 374*) or Graduate standing|Two-dimensional Fourier methods and techniques for image enhancement, restoration, and compression.
+ECE 485|Computer Organization and Design|3|(ECE 218 and ECE 242) or Graduate standing|CPU datapath and control design, pipelining, memory hierarchy, and computer system performance tradeoffs.
+ECE 491|Undergraduate Research|Variable|Consents of academic advisor and instructor.|Independent research project supervised by a department faculty member.
+ECE 494|Undergraduate Projects|Variable|Approval of the ECE instructor and academic advisor.|Student project completed under the guidance of an ECE faculty member.
+ECE 497|Special Problems|Variable|Consents of academic advisor and instructor.|Advanced faculty-defined design and analysis problems involving systems or circuits.
