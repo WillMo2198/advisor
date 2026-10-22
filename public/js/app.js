@@ -7,6 +7,7 @@ import { esc, $, $$, store, linkCodes, debounce } from './ui/util.js';
 import { renderSchedule, wireSchedule } from './ui/schedule-view.js';
 import { renderGraph, renderDetail, wireGraphHover } from './ui/graph-view.js';
 import { createChat } from './ui/chat.js';
+import { initSplitter } from './ui/splitter.js';
 import { renderDegree, wireDegree } from './ui/degree-view.js';
 import { bestAttempts, cleanRecords } from './core/transcript.js';
 import { cleanCommitments, sectionClashes, applyMemoryOps } from './core/commitments.js';
@@ -779,6 +780,7 @@ async function start() {
     openDegree: () => setTab('degree'),
   });
 
+  initSplitter({ app: document.querySelector('.app'), left: $('#left'), handle: $('#splitter') });
   wire();
   wireDegree({
     drop: $('#drop'), file: $('#transcript-file'), pick: $('#pick-file'), pasteToggle: $('#paste-toggle'),

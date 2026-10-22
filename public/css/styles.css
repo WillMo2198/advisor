@@ -1064,3 +1064,13 @@ button.req-chip { cursor: pointer; }
 .chat-log { height: clamp(380px, calc(100vh - 352px), 900px); }
 #view-graph > .card:first-child { padding: 12px 16px; }
 .graph-card { min-height: 477px; }
+
+/* resizable panels */
+.app { position: relative; }
+.splitter { position: absolute; top: 0; bottom: 0; width: 16px; margin-left: -8px; z-index: 20; cursor: col-resize; touch-action: none; display: flex; justify-content: center; }
+.splitter::after { content: ''; align-self: center; width: 4px; height: 56px; border-radius: 2px; background: var(--input-border); opacity: 0; transition: opacity .15s, background .15s; }
+.splitter:hover::after, .splitter:focus-visible::after, body.resizing .splitter::after { opacity: 1; }
+.splitter:focus-visible { outline: none; }
+.splitter:focus-visible::after { background: var(--focus); }
+body.resizing { cursor: col-resize; user-select: none; }
+body.resizing iframe { pointer-events: none; }
