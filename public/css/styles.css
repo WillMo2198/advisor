@@ -1100,3 +1100,5 @@ body.resizing iframe { pointer-events: none; }
 .preset .sw i:first-child { margin-left: 0; }
 .set-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 5px 0; color: var(--text); }
 .set-row input[type="color"] { width: 38px; height: 26px; padding: 0; border: 1px solid var(--input-border); border-radius: 6px; background: none; cursor: pointer; }
+.set-pick { display: flex; align-items: center; gap: 6px; }
+.set-pick .hex { width: 78px; height: 26px; padding: 0 6px; font: 12px ui-monospace, monospace; text-transform: lowercase; border: 1px solid var(--input-border); border-radius: 6px; background: var(--card); color: var(--text); }

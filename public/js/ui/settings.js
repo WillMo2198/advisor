@@ -80,9 +80,9 @@ export function createSettings({ button, menu, onChange }) {
         </div>
       </fieldset>
       <fieldset class="set-group"><legend>Colors</legend>
-        ${Object.keys(DEFAULTS).map((k) => `<label class="set-row"><span>${esc(LABELS[k])}</span><input type="color" data-color="${k}" value="${val(k)}"></label>`).join('')}
-        <label class="set-row"><span>Left panel (${mode})</span><input type="color" data-bg="left" value="${bg[mode].left || BG_DEFAULT[mode].left}"></label>
-        <label class="set-row"><span>Right panel (${mode})</span><input type="color" data-bg="right" value="${bg[mode].right || BG_DEFAULT[mode].right}"></label>
+        ${Object.keys(DEFAULTS).map((k) => `<label class="set-row"><span>${esc(LABELS[k])}</span><span class="set-pick"><input type="text" class="hex" data-color="${k}" value="${val(k)}" maxlength="7" spellcheck="false" aria-label="${esc(LABELS[k])} hex"><input type="color" data-color="${k}" value="${val(k)}" aria-label="${esc(LABELS[k])}"></span></label>`).join('')}
+        <label class="set-row"><span>Left panel (${mode})</span><span class="set-pick"><input type="text" class="hex" data-bg="left" value="${bg[mode].left || BG_DEFAULT[mode].left}" maxlength="7" spellcheck="false" aria-label="left panel hex"><input type="color" data-bg="left" value="${bg[mode].left || BG_DEFAULT[mode].left}" aria-label="left panel"></span></label>
+        <label class="set-row"><span>Right panel (${mode})</span><span class="set-pick"><input type="text" class="hex" data-bg="right" value="${bg[mode].right || BG_DEFAULT[mode].right}" maxlength="7" spellcheck="false" aria-label="right panel hex"><input type="color" data-bg="right" value="${bg[mode].right || BG_DEFAULT[mode].right}" aria-label="right panel"></span></label>
       </fieldset>
       <button type="button" class="btn" data-reset>Reset colors</button>`;
   }
@@ -105,11 +105,14 @@ export function createSettings({ button, menu, onChange }) {
   });
   // live update while a color picker is dragged
   menu.addEventListener('input', (e) => {
-    const c = e.target.closest('[data-color]');
-    const b = e.target.closest('[data-bg]');
-    if (c && HEX.test(c.value)) colors[c.dataset.color] = c.value;
-    else if (b && HEX.test(b.value)) bg[effective()][b.dataset.bg] = b.value;
-    else return;
+    const el = e.target.closest('[data-color], [data-bg]');
+    if (!el) return;
+    let v = el.value.trim();
+    if (el.type === 'text' && /^[0-9a-f]{6}$/i.test(v)) v = `#${v}`;
+    if (!HEX.test(v)) return;
+    if (el.dataset.color) colors[el.dataset.color] = v; else bg[effective()][el.dataset.bg] = v;
+    // keep the picker and the text box in step
+    for (const o of el.closest('.set-pick').querySelectorAll('input')) if (o !== el && o !== document.activeElement) o.value = v;
     save(); apply();
   });
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', () => { if (theme === 'system') apply(); });
