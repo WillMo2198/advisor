@@ -4,7 +4,7 @@
 //
 // A commitment: { id, label, days: 'MTWRF', start: 14, end: 17.5 }  (hours, 24-hour clock)
 
-import { parseRange, DAY_LETTERS, DAY_LABELS, formatHour } from './schedule.js';
+import { parseRange, parseClock, DAY_LETTERS, DAY_LABELS, formatHour } from './schedule.js';
 
 const MAX = 20;
 const clip = (s, n) => String(s ?? '').replace(/\s+/g, ' ').trim().slice(0, n);
@@ -68,3 +68,47 @@ export const dayWords = (days) => [...days].map((l) => DAY_LABELS[DAY_LETTERS.in
 
 /** One plain line per commitment (Degree/Chat context and the list in the UI). */
 export const describeCommitment = (c) => `${c.label}: ${dayWords(c.days)}, ${formatHour(c.start)}-${formatHour(c.end)}`;
+
+// ----- memory: the chat advisor saves commitments from what the student says -----
+//   ```advisor-memory
+//   [{"op":"add","label":"Work","days":"MW","start":"15:00","end":"19:00"},{"op":"remove","label":"Work"},{"op":"clear"}]
+//   ```
+const MEMORY_FENCE = /```advisor-memory[ \t]*\n?([\s\S]*?)(?:```|$)/;
+
+/** Split a chat answer into its text and the memory operations. Works on partial (streaming) text. */
+export function parseMemory(content) {
+  const text = String(content || '');
+  const m = MEMORY_FENCE.exec(text);
+  if (!m) return { text, ops: [] };
+  const shown = (text.slice(0, m.index) + text.slice(m.index + m[0].length)).trim();
+  let ops = [];
+  try {
+    const parsed = JSON.parse(m[1]);
+    if (Array.isArray(parsed)) ops = parsed.filter((o) => o && typeof o === 'object').slice(0, 10);
+  } catch { /* partial or invalid */ }
+  return { text: shown, ops };
+}
+
+const clock = (v) => (typeof v === 'number' ? v : parseClock(v));
+
+/** Apply operations to a list. Returns { busy, notes } (notes are plain lines for the student). */
+export function applyMemoryOps(list, ops) {
+  let busy = [...list];
+  const notes = [];
+  for (const op of ops || []) {
+    if (op.op === 'clear') {
+      if (busy.length) { busy = []; notes.push('Cleared all time commitments'); }
+    } else if (op.op === 'remove') {
+      const want = clip(op.label, 40).toLowerCase();
+      const keep = busy.filter((c) => c.label.toLowerCase() !== want);
+      if (keep.length !== busy.length) { busy = keep; notes.push(`Removed ${clip(op.label, 40)}`); }
+    } else if (op.op === 'add') {
+      const c = cleanCommitment({ label: op.label, days: op.days, start: clock(op.start), end: clock(op.end) });
+      if (!c) continue;
+      // same name replaces the old entry, so "my work hours changed" works
+      busy = [...busy.filter((x) => x.label.toLowerCase() !== c.label.toLowerCase()), c].slice(-MAX);
+      notes.push(describeCommitment(c));
+    }
+  }
+  return { busy, notes };
+}

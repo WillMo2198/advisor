@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { buildIndex } from '../public/js/core/catalog.js';
-import { cleanCommitment, cleanCommitments, hoursFromInput, sectionClashes, courseFits, describeCommitment, commitmentBlocks } from '../public/js/core/commitments.js';
+import { parseMemory, applyMemoryOps, cleanCommitment, cleanCommitments, hoursFromInput, sectionClashes, courseFits, describeCommitment, commitmentBlocks } from '../public/js/core/commitments.js';
 import { readClientContext, studentContextBlock } from '../lib/context.js';
 
 const j = (f) => JSON.parse(readFileSync(new URL(`../${f}`, import.meta.url)));
@@ -44,4 +44,23 @@ test('chat context lists commitments and the sections that fit', () => {
   assert.match(text, /Sections that fit the student's commitments/);
   const none = studentContextBlock(index, 'hi', readClientContext({}, index), programs);
   assert.match(none, /Time commitments: none listed/);
+});
+
+test('advisor memory: the chat saves, replaces, and removes commitments', () => {
+  const reply = 'Saved your hours.\n```advisor-memory\n[{"op":"add","label":"Work","days":"MW","start":"3:00 PM","end":"19:00"},{"op":"add","label":"Gym","days":"F","start":"07:00","end":"08:00"}]\n```';
+  const { text, ops } = parseMemory(reply);
+  assert.equal(text, 'Saved your hours.');
+  assert.equal(ops.length, 2);
+  let r = applyMemoryOps([], ops);
+  assert.equal(r.busy.length, 2);
+  assert.equal(r.busy[0].start, 15);
+  r = applyMemoryOps(r.busy, [{ op: 'add', label: 'work', days: 'T', start: '09:00', end: '12:00' }]);
+  assert.equal(r.busy.length, 2); // same name replaced
+  assert.equal(r.busy.find((c) => c.label === 'work').days, 'T');
+  r = applyMemoryOps(r.busy, [{ op: 'remove', label: 'Gym' }]);
+  assert.equal(r.busy.length, 1);
+  assert.equal(applyMemoryOps(r.busy, [{ op: 'clear' }]).busy.length, 0);
+  assert.equal(applyMemoryOps([], [{ op: 'add', label: 'x', days: 'M', start: '10:00', end: '09:00' }]).notes.length, 0);
+  // partial streaming text never shows the block
+  assert.equal(parseMemory('Hi\n```advisor-memory\n[{"op":"ad').text, 'Hi');
 });

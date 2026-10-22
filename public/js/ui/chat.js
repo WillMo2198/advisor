@@ -2,6 +2,7 @@
 
 import { esc, renderMarkdown, store } from './util.js';
 import { parseProposals } from '../core/changes.js';
+import { parseMemory } from '../core/commitments.js';
 
 const BOT_ICON = '<span class="bot-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M2 13v2M22 13v2"/></svg></span>';
 const GREETING = 'Hi there! 👋 I’m your course advisor. How can I help you today?';
@@ -12,7 +13,7 @@ const SUGGESTIONS = [
   'Does my schedule have any time conflicts?',
 ];
 
-export function createChat({ els, known, getContext, onCodeClick, resolveProposals, applyProposals, openDegree }) {
+export function createChat({ els, known, getContext, onCodeClick, resolveProposals, applyProposals, onMemory, openDegree }) {
   let messages = store.get('chat', []);
   if (!Array.isArray(messages)) messages = [];
   messages = messages.filter((m) => m && (m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string').slice(-40);
@@ -24,13 +25,14 @@ export function createChat({ els, known, getContext, onCodeClick, resolveProposa
 
   function bubble(m, i) {
     if (m.role === 'user') return `<div class="msg user"><div class="bubble">${esc(m.content)}</div></div>`;
-    const { text, proposals } = parseProposals(m.content);
+    const { text, proposals } = parseProposals(parseMemory(m.content).text);
     const body = m.pending && !text
       ? '<span class="typing" aria-label="Thinking"><i></i><i></i><i></i></span>'
       : renderMarkdown(text, known);
     const card = proposals.length && !m.pending && !m.error ? proposalCard(m, i, proposals) : '';
+    const mem = m.memoryNotes?.length ? `<p class="memory-note small muted">Saved to the advisor's memory: ${m.memoryNotes.map(esc).join('; ')}</p>` : '';
     const retry = m.error ? '<button type="button" class="btn retry" data-retry>Try again</button>' : '';
-    return `<div class="msg bot${m.error ? ' error' : ''}">${BOT_ICON}<div class="bubble">${body}${card}${retry}</div></div>`;
+    return `<div class="msg bot${m.error ? ' error' : ''}">${BOT_ICON}<div class="bubble">${body}${card}${mem}${retry}</div></div>`;
   }
 
   /** The "Changes to your degree plan" card under an answer. */
@@ -120,6 +122,10 @@ export function createChat({ els, known, getContext, onCodeClick, resolveProposa
       }
     } finally {
       reply.pending = false;
+      if (!reply.error && onMemory) {
+        const { ops } = parseMemory(reply.content);
+        if (ops.length) { const notes = onMemory(ops); if (notes.length) reply.memoryNotes = notes; }
+      }
       busy = false;
       controller = null;
       save();
