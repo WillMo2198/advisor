@@ -146,3 +146,12 @@ The server tests run a fake Claude API on a local port, so no key or network is 
 - The degree audit guesses course attributes (H), (S), (N) from the subject and does not check the 36-credit (C) rule. It is a planning aid, not an official audit.
 - The future-course forecast is tentative, and it only covers CS and CSP courses. Other subjects are assumed to run every term.
 - Not an official Illinois Tech service. Students should confirm plans with their academic advisor.
+
+## Deploy on Render
+
+1. Push this repo to GitHub. Do not commit `.env`.
+2. On render.com: **New → Blueprint**, pick the repo. Render reads `render.yaml`.
+3. When asked, paste your `ANTHROPIC_API_KEY`.
+4. Deploy. Your app is at `https://advisor.onrender.com` (or the name Render gives).
+
+Notes: the free plan sleeps after 15 minutes idle, so the first load can take about 30 seconds. Each push to GitHub redeploys the app.
