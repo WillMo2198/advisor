@@ -1136,3 +1136,65 @@ body.resizing iframe { pointer-events: none; }
 .chat-hint .link-btn { font-size: 13px; font-weight: 600; }
 .chat-hint .tab-bot svg { width: 15px; height: 15px; }
 @media (max-width: 960px) { .search-icon { left: 28px; } }
+
+/* ---------- nicer checkboxes and radios ---------- */
+input[type="checkbox"], input[type="radio"] {
+  appearance: none; -webkit-appearance: none; flex: none;
+  width: 20px; height: 20px; margin: 0; vertical-align: -5px;
+  border: 1.5px solid var(--input-border); background: var(--card); cursor: pointer;
+  display: inline-grid; place-content: center; transition: background .12s, border-color .12s, box-shadow .12s;
+}
+input[type="checkbox"] { border-radius: 6px; }
+input[type="radio"] { border-radius: 50%; }
+input[type="checkbox"]:hover, input[type="radio"]:hover { border-color: var(--focus); }
+input[type="checkbox"]:checked, input[type="radio"]:checked { background: var(--focus); border-color: var(--focus); }
+input[type="checkbox"]:checked::after {
+  content: ''; width: 5px; height: 10px; margin-top: -2px;
+  border: solid #fff; border-width: 0 2.2px 2.2px 0; transform: rotate(45deg);
+}
+input[type="radio"]:checked::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #fff; }
+input[type="checkbox"]:focus-visible, input[type="radio"]:focus-visible { outline: 3px solid color-mix(in srgb, var(--focus) 35%, transparent); outline-offset: 1px; }
+.panel label, .filter-row label { display: flex; align-items: center; gap: 10px; padding: 6px 0; cursor: pointer; line-height: 1.35; }
+.panel input[type="checkbox"], .panel input[type="radio"] { margin-top: 0; }
+
+/* ---------- phone layout: one pane at a time, bottom bar ---------- */
+.mtab, .tl-short { display: none; }
+@media (max-width: 960px) {
+  .app.show-left .right > :not(.tabs) { display: none !important; }
+  .app.show-left .right { padding: 0; background: none; min-height: 0; }
+  .app.show-right .left { display: none; }
+  .app.show-right .right { border-radius: 0; min-height: 100vh; padding: 20px 14px calc(92px + env(safe-area-inset-bottom)); }
+  .app.show-left .left { padding-bottom: calc(96px + env(safe-area-inset-bottom)); border-radius: 0; }
+  .tabs {
+    position: fixed; left: 0; right: 0; bottom: 0; top: auto; z-index: 40; margin: 0; border-radius: 0;
+    display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 0; padding: 6px 6px calc(6px + env(safe-area-inset-bottom));
+    background: var(--card); border-top: 1px solid var(--card-border); box-shadow: 0 -4px 18px rgba(20, 24, 40, .08);
+  }
+  .tab, .mtab {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+    height: 54px; padding: 0 2px; font-size: 11px; font-weight: 600; border: 0; background: none; color: var(--tab-text); border-radius: 12px;
+  }
+  .tab[aria-selected="true"], .mtab.on { background: color-mix(in srgb, var(--focus) 12%, transparent); color: var(--focus); box-shadow: none; }
+  .mtab svg, .tab-bot svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .tab-bot { margin: 0; }
+  .tl-long { display: none; } .tl-short { display: inline; }
+  .tab:not(:has(svg))::before { content: ''; width: 20px; height: 20px; background: currentColor; opacity: .85; mask: var(--ico) center / contain no-repeat; -webkit-mask: var(--ico) center / contain no-repeat; }
+  #tab-degree { --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 3h7l5 5v13H7zM14 3v5h5M10 13h6M10 17h6'/%3E%3C/svg%3E"); }
+  #tab-schedule { --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='5' width='16' height='15' rx='2'/%3E%3Cpath d='M4 10h16M9 3v4M15 3v4'/%3E%3C/svg%3E"); }
+  #tab-graph { --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='5' r='2.2'/%3E%3Ccircle cx='6' cy='19' r='2.2'/%3E%3Ccircle cx='18' cy='19' r='2.2'/%3E%3Cpath d='M12 7v5M12 12l-6 5M12 12l6 5'/%3E%3C/svg%3E"); }
+  .mtab { display: flex; }
+  .chat-fab, .chat-fab.hide { display: none; }
+  .chat-hint { display: none; }
+  .left { padding-top: 60px; }
+  /* schedule fits the screen */
+  .sched { --timecol: 40px; --row: 52px; min-width: 0 !important; }
+  .sched .t { font-size: 10px; }
+  .grid-wrap { margin: 0; padding: 0; }
+  .saved-card { padding: 16px; }
+  .chat-log { height: calc(100vh - 250px); min-height: 300px; }
+  .graph-filter input { max-width: none; }
+  .settings-menu { right: 12px; top: 54px; }
+  /* tap targets */
+  .pill, .btn, .link-btn, .seg button { min-height: 40px; }
+  #chat-input, #search, #graph-add, input[type="text"], textarea { font-size: 16px; }
+}

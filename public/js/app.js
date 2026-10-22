@@ -442,6 +442,8 @@ function applyMemory(ops) {
 
 // ---------- tabs ----------
 let scheduleLayout = null;
+let paneHook = null;
+let startPhone = null;
 function setTab(tab) {
   if (!['schedule', 'chat', 'graph', 'degree'].includes(tab)) tab = 'degree';
   state.tab = tab;
@@ -460,6 +462,7 @@ function setTab(tab) {
   if (tab === 'schedule') requestAnimationFrame(() => scheduleLayout?.place());
   if (tab === 'graph') renderGraphTab();
   if (tab === 'degree') renderDegreeTab();
+  paneHook?.();
 }
 
 function renderScheduleTab() {
@@ -805,8 +808,26 @@ async function start() {
     if (r) setGraphFilter(state.graphFilter.filter((c) => c !== r.dataset.unfilter));
   });
   $('#hint-chat').addEventListener('click', () => setTab('chat'));
+  // phone layout: one pane at a time, switched by the bottom bar
+  const appEl = document.querySelector('.app');
+  const phone = window.matchMedia('(max-width: 960px)');
+  const showPane = (pane) => {
+    appEl.classList.toggle('show-left', pane === 'left');
+    appEl.classList.toggle('show-right', pane === 'right');
+    $('#mtab-search').classList.toggle('on', pane === 'left');
+    if (pane === 'left') for (const t of $$('.tab')) t.setAttribute('aria-selected', 'false');
+    else window.scrollTo({ top: 0 });
+  };
+  $('#mtab-search').addEventListener('click', () => showPane('left'));
+  for (const t of $$('.tab')) t.addEventListener('click', () => showPane('right'));
+  // anything that calls setTab (Add buttons, graph links, chat links) also reveals the right pane
+  let ready = false;
+  paneHook = () => { if (ready && phone.matches) showPane('right'); };
+  startPhone = () => { ready = true; if (phone.matches) showPane('left'); };
+  els.search.placeholder = phone.matches ? 'Search courses, e.g. CS 331' : els.search.placeholder;
   renderScheduleTab();
   setTab(state.tab);
+  startPhone?.();
 
   const q = readHash();
   if (q) setQuery(q, { focusInput: false });
