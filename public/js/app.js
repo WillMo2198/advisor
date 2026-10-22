@@ -8,6 +8,7 @@ import { renderSchedule, wireSchedule } from './ui/schedule-view.js';
 import { renderGraph, renderDetail, wireGraphHover } from './ui/graph-view.js';
 import { createChat } from './ui/chat.js';
 import { initSplitter } from './ui/splitter.js';
+import { createSettings } from './ui/settings.js';
 import { renderDegree, wireDegree } from './ui/degree-view.js';
 import { bestAttempts, cleanRecords } from './core/transcript.js';
 import { cleanCommitments, sectionClashes, applyMemoryOps } from './core/commitments.js';
@@ -80,25 +81,7 @@ const els = {
 };
 
 // ---------- theme ----------
-function effectiveTheme() {
-  const t = document.documentElement.getAttribute('data-theme');
-  if (t === 'light' || t === 'dark') return t;
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-}
-function updateThemeButton() {
-  const btn = $('#theme-toggle');
-  const next = effectiveTheme() === 'dark' ? 'light' : 'dark';
-  btn.setAttribute('aria-label', `Switch to ${next} mode`);
-  btn.title = `Switch to ${next} mode`;
-}
-$('#theme-toggle').addEventListener('click', () => {
-  const next = effectiveTheme() === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', next);
-  store.set('theme', next);
-  updateThemeButton();
-});
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', updateThemeButton);
-updateThemeButton();
+createSettings({ button: $('#settings-btn'), menu: $('#settings-menu') });
 
 // ---------- helpers ----------
 const known = (code) => !!state.index?.has(code);
