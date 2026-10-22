@@ -80,9 +80,9 @@ export function createSettings({ button, menu, onChange }) {
         </div>
       </fieldset>
       <fieldset class="set-group"><legend>Colors</legend>
-        ${Object.keys(DEFAULTS).map((k) => `<label class="set-row"><span>${esc(LABELS[k])}</span><span class="set-pick"><input type="text" class="hex" data-color="${k}" value="${val(k)}" maxlength="7" spellcheck="false" aria-label="${esc(LABELS[k])} hex"><input type="color" data-color="${k}" value="${val(k)}" aria-label="${esc(LABELS[k])}"></span></label>`).join('')}
-        <label class="set-row"><span>Left panel (${mode})</span><span class="set-pick"><input type="text" class="hex" data-bg="left" value="${bg[mode].left || BG_DEFAULT[mode].left}" maxlength="7" spellcheck="false" aria-label="left panel hex"><input type="color" data-bg="left" value="${bg[mode].left || BG_DEFAULT[mode].left}" aria-label="left panel"></span></label>
-        <label class="set-row"><span>Right panel (${mode})</span><span class="set-pick"><input type="text" class="hex" data-bg="right" value="${bg[mode].right || BG_DEFAULT[mode].right}" maxlength="7" spellcheck="false" aria-label="right panel hex"><input type="color" data-bg="right" value="${bg[mode].right || BG_DEFAULT[mode].right}" aria-label="right panel"></span></label>
+        ${Object.keys(DEFAULTS).map((k) => `<label class="set-row"><span>${esc(LABELS[k])}</span><span class="set-pick"><input type="color" data-color="${k}" value="${val(k)}" aria-label="${esc(LABELS[k])}"></span></label>`).join('')}
+        <label class="set-row"><span>Left panel (${mode})</span><span class="set-pick"><input type="color" data-bg="left" value="${bg[mode].left || BG_DEFAULT[mode].left}" aria-label="left panel"></span></label>
+        <label class="set-row"><span>Right panel (${mode})</span><span class="set-pick"><input type="color" data-bg="right" value="${bg[mode].right || BG_DEFAULT[mode].right}" aria-label="right panel"></span></label>
       </fieldset>
       <button type="button" class="btn" data-reset>Reset colors</button>`;
   }
