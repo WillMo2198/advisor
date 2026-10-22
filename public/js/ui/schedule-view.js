@@ -52,7 +52,7 @@ export function renderSchedule({ index, savedCrns, busy = [], els, onRemove, onO
       const busyHits = sectionClashes(s, busy);
       const busyText = busyHits.length ? `<span class="conflict-note">Clashes with ${[...new Set(busyHits.map((h) => esc(h.label)))].join(', ')}</span>` : '';
       const seats = s.available == null ? '' : `<small>${s.available} seat${s.available === 1 ? '' : 's'} open · CRN ${esc(s.crn)}</small>`;
-      return `<div class="saved-item c-${fam}" data-crn="${esc(s.crn)}">
+      return `<div class="saved-item c-${fam}${clash.length || busyHits.length ? ' has-conflict' : ''}" data-crn="${esc(s.crn)}">
           <div>
             <button type="button" class="saved-code" data-open="${esc(s.course)}">${esc(s.course)}${s.scheduleType && s.scheduleType !== 'Lecture' ? ` <span class="sub" style="font-size:14px;font-weight:500">· ${esc(s.scheduleType)}</span>` : ''}</button>
             <div class="saved-title sub">${esc(course?.title || '')}</div>

@@ -32,6 +32,7 @@ const state = {
   query: '',
   results: [],
   focus: [],
+  graphFilter: store.get('graphFilter', []).filter((c) => typeof c === 'string').slice(0, 8),
   keywords: [],
   shown: 25,
   expanded: new Set(), // course codes whose sections are fully shown
@@ -41,7 +42,7 @@ const state = {
   saved: store.get('saved', []),
   busy: cleanCommitments(store.get('busy', [])),
   completed: store.get('completed', []),
-  tab: store.get('tab', 'schedule'),
+  tab: store.get('tab', 'degree'),
   graphSelected: null,
   transcript: loadTranscript(),
   // recommended plan: which one to show, and the advisor's latest plan
@@ -442,7 +443,7 @@ function applyMemory(ops) {
 // ---------- tabs ----------
 let scheduleLayout = null;
 function setTab(tab) {
-  if (!['schedule', 'chat', 'graph', 'degree'].includes(tab)) tab = 'schedule';
+  if (!['schedule', 'chat', 'graph', 'degree'].includes(tab)) tab = 'degree';
   state.tab = tab;
   store.set('tab', tab);
   for (const t of $$('.tab')) {
@@ -466,6 +467,7 @@ function renderScheduleTab() {
 }
 
 function graphFocus() {
+  if (state.graphFilter.length) return state.graphFilter.slice(0, 8);
   if (state.focus.length) return state.focus.slice(0, 6);
   if (state.query.trim() && state.results.length) return state.results.slice(0, 3).map((r) => r.course.code);
   return [...plannedCourses()].slice(0, 6);
@@ -480,7 +482,9 @@ function renderGraphTab() {
     planned: plannedCourses(),
     els: els.graph,
     selected: state.graphSelected,
+    filtered: state.graphFilter.length > 0,
   });
+  $('#graph-clear').hidden = !state.graphFilter.length;
 }
 
 // ---------- events ----------
@@ -788,6 +792,19 @@ async function start() {
     $('#drop').focus();
   });
   $('#clear-transcript-2').addEventListener('click', () => $('#clear-transcript').click());
+  $('#graph-courses').innerHTML = idx.list.map((c) => `<option value="${esc(c.code)}">${esc(c.title)}</option>`).join('');
+  const setGraphFilter = (list) => { state.graphFilter = list; store.set('graphFilter', list); renderGraphTab(); };
+  $('#graph-add').addEventListener('change', (e) => {
+    const code = e.target.value.trim().toUpperCase().replace(/^([A-Z]+)\s*(\d)/, '$1 $2');
+    e.target.value = '';
+    if (known(code) && !state.graphFilter.includes(code)) { state.graphSelected = null; setGraphFilter([...state.graphFilter, code]); }
+  });
+  $('#graph-clear').addEventListener('click', () => setGraphFilter([]));
+  $('#graph-focus').addEventListener('click', (e) => {
+    const r = e.target.closest('[data-unfilter]');
+    if (r) setGraphFilter(state.graphFilter.filter((c) => c !== r.dataset.unfilter));
+  });
+  $('#hint-chat').addEventListener('click', () => setTab('chat'));
   renderScheduleTab();
   setTab(state.tab);
 

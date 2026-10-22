@@ -14,7 +14,7 @@ function subjectClass(node) {
   return 'other';
 }
 
-export function renderGraph({ index, focus, options, completed, planned, els, selected }) {
+export function renderGraph({ index, focus, options, completed, planned, els, selected, filtered = false }) {
   const graph = buildGraph(index, focus, {
     showDependents: options.showDependents,
     hideBridge: !options.showBridge,
@@ -33,7 +33,7 @@ export function renderGraph({ index, focus, options, completed, planned, els, se
 
   els.focus.innerHTML = `<span>Showing:</span>${graph.focus.map((c) => {
     const cls = `c-${colorFamily(c.split(' ')[0])}`;
-    return `<span class="focus-chip ${cls}">${esc(c)}</span>`;
+    return `<span class="focus-chip ${cls}">${esc(c)}${filtered ? `<button type="button" class="chip-x" data-unfilter="${esc(c)}" aria-label="Remove ${esc(c)} from filter">×</button>` : ''}</span>`;
   }).join('')}<span>· ${graph.nodes.length} course${graph.nodes.length === 1 ? '' : 's'}</span>`;
 
   const avail = Math.max(320, (els.scroll.clientWidth || els.scroll.parentElement?.clientWidth || 520) - 4);
@@ -44,6 +44,13 @@ export function renderGraph({ index, focus, options, completed, planned, els, se
   const pos = new Map(lay.nodes.map((n) => [n.code, n]));
   const nodeInfo = new Map(graph.nodes.map((n) => [n.code, n]));
   const { nodeW, nodeH } = lay;
+  // Courses that touch a focus course stay bold. Everything else is faded.
+  const focusSet = new Set(graph.focus);
+  const near = new Set();
+  for (const e of graph.edges) {
+    if (focusSet.has(e.from)) near.add(e.to);
+    if (focusSet.has(e.to)) near.add(e.from);
+  }
 
   const svg = document.createElementNS(SVGNS, 'svg');
   svg.setAttribute('width', Math.round(lay.width * scale));
@@ -67,7 +74,8 @@ export function renderGraph({ index, focus, options, completed, planned, els, se
     const y2 = b.y - nodeH / 2 - 2;
     const dy = Math.max(30, (y2 - y1) * 0.5);
     const d = `M${x1},${y1} C${x1},${y1 + dy} ${x2},${y2 - dy} ${x2},${y2}`;
-    const cls = `gedge${e.concurrent ? ' co' : ''}${e.alternative ? ' alt' : ''}`;
+    const touches = focusSet.has(e.from) || focusSet.has(e.to);
+    const cls = `gedge${e.concurrent ? ' co' : ''}${e.alternative ? ' alt' : ''}${touches ? '' : ' faded'}`;
     const how = e.concurrent ? 'can be taken at the same time as' : 'is a prerequisite for';
     out += `<path class="${cls}" d="${d}" data-from="${esc(e.from)}" data-to="${esc(e.to)}" marker-end="url(#${e.concurrent ? 'arr-co' : 'arr-pre'})"><title>${esc(`${e.from} ${how} ${e.to}${e.alternative ? ' (one of several options)' : ''}`)}</title></path>`;
   }
@@ -77,7 +85,7 @@ export function renderGraph({ index, focus, options, completed, planned, els, se
     const info = nodeInfo.get(n.code);
     const done = completed.has(n.code);
     const course = index.get(n.code);
-    const cls = `gnode ${subjectClass(info)}${info.focus ? ' focus' : ''}${done ? ' done' : ''}${selected === n.code ? ' selected' : ''}`;
+    const cls = `gnode${info.focus || near.has(n.code) ? '' : ' faded'} ${subjectClass(info)}${info.focus ? ' focus' : ''}${done ? ' done' : ''}${selected === n.code ? ' selected' : ''}`;
     const tip = info.external ? `${n.code} (not in this catalog)` : `${n.code}: ${course.title}${done ? ' — completed' : ''}`;
     out += `<g class="${cls}" data-code="${esc(n.code)}" tabindex="0" role="button" aria-label="${esc(tip)}" transform="translate(${n.x - nodeW / 2},${n.y - nodeH / 2})">
         <title>${esc(tip)}</title>
