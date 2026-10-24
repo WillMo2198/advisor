@@ -11,6 +11,7 @@ import { normalizeCode, courseLeaves } from '../public/js/core/prereq.js';
 import { parseRange } from '../public/js/core/schedule.js';
 import { parseForecastCsv } from '../public/js/core/forecast.js';
 import { programs } from './programs-source.mjs';
+import { SUGGEST_RULES } from './programs-extra.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const errors = [];
@@ -78,6 +79,13 @@ for (const prog of programs) {
     for (const code of g.from?.codes || []) if (normalizeCode(code) !== code) errors.push(`${prog.id}/${g.id}: bad code ${code}`);
   }
   if (sum !== prog.totalCredits) errors.push(`${prog.id}: groups add up to ${sum}, not ${prog.totalCredits}`);
+}
+
+// every suggestion rule must point to an open group (catches typos in program or group ids)
+for (const key of Object.keys(SUGGEST_RULES)) {
+  const [pid, gid] = key.split('/');
+  const g = programs.find((p) => p.id === pid)?.groups.find((x) => x.id === gid);
+  if (!g?.suggest) errors.push(`SUGGEST_RULES: ${key} does not match an open elective group`);
 }
 
 if (errors.length) {

@@ -271,11 +271,16 @@ function renderResults() {
     ${total > state.shown ? `<button type="button" class="btn more-btn" data-show-more>Show ${Math.min(25, total - state.shown)} more</button>` : ''}`;
 }
 
+// phone layout hooks (set in init)
+let paneHook = null;
+let startPhone = null;
+let paneLeft = null;
 function setQuery(text, { focusInput = true } = {}) {
   state.query = text;
   els.search.value = text;
   updateHash();
   runSearch();
+  paneLeft?.(); // phone: show the search results
   if (focusInput) els.search.focus();
   window.scrollTo({ top: 0 });
 }
@@ -386,7 +391,7 @@ function shownPlanSummary() {
   if (!shown) return [];
   return shown.terms.filter((t) => t.items.length).map((t) => ({
     term: t.label,
-    items: t.items.map((i) => i.code || `[${i.label || i.requirement}]`),
+    items: t.items.map((i) => i.code || `[${i.label || i.requirement}${i.suggestions?.length ? `; suggested: ${i.suggestions.join(', ')}` : ''}]`),
   }));
 }
 function askAboutPlan() {
@@ -442,8 +447,6 @@ function applyMemory(ops) {
 
 // ---------- tabs ----------
 let scheduleLayout = null;
-let paneHook = null;
-let startPhone = null;
 function setTab(tab) {
   if (!['schedule', 'chat', 'graph', 'degree'].includes(tab)) tab = 'degree';
   state.tab = tab;
@@ -824,6 +827,7 @@ async function start() {
   let ready = false;
   paneHook = () => { if (ready && phone.matches) showPane('right'); };
   startPhone = () => { ready = true; if (phone.matches) showPane('left'); };
+  paneLeft = () => { if (ready && phone.matches) showPane('left'); };
   els.search.placeholder = phone.matches ? 'Search courses, e.g. CS 331' : els.search.placeholder;
   renderScheduleTab();
   setTab(state.tab);

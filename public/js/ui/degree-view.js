@@ -6,6 +6,7 @@ import { parseTranscriptText, linesFromPdfItems, gradeStatus, cleanRecords, best
 import { auditDegree } from '../core/audit.js';
 import { planSemesters, planInputs, describePlan } from '../core/planner.js';
 import { checkPlan } from '../core/plan-check.js';
+import { addSuggestions } from '../core/suggest.js';
 import { normalizeCode } from '../core/prereq.js';
 import { esc } from './util.js';
 
@@ -90,32 +91,38 @@ function linkify(text, known) {
 }
 
 /** One course row in a term card. */
-function planRow(it, known) {
+function planRow(it, known, titleOf = () => '') {
   const k = KIND[it.kind] || KIND.choice;
   const tag = k.tag || it.requirement || '';
   const name = it.code
     ? `${known(it.code) ? `<button type="button" class="code-link pr-code" data-code="${esc(it.code)}">${esc(it.code)}</button>` : `<span class="pr-code">${esc(it.code)}</span>`}<span class="pr-title">${esc(it.title || '')}</span>`
     : `<span class="pr-code open">${esc(it.label || it.requirement || 'Elective')}</span>`;
+  // "One of A, B, C" repeats the options list shown above it
+  const reason = !it.code && it.options?.length && /^One of /.test(it.reason || '') ? '' : (it.reason || '');
   const issues = [...(it.issues || []), ...(it.warning ? [{ level: 'warn', message: it.warning }] : [])];
   return `<li class="pr ${k.cls}">
       <div class="pr-top">
         <div class="pr-name">${name}</div>
         <span class="pr-cr">${esc(it.credits)} cr</span>
       </div>
+      ${it.suggestions?.length ? `<div class="pr-options pr-suggest"><span class="small muted">Suggested:</span> ${it.suggestions.map((c) => {
+    const title = titleOf(c);
+    return `<button type="button" class="code-link sug" data-code="${esc(c)}" title="${esc(title ? `${c}: ${title}` : c)}">${esc(c)}${title ? `<span class="sug-title"> ${esc(title)}</span>` : ''}</button>`;
+  }).join('')}</div>` : ''}
       ${it.options?.length ? `<div class="pr-options"><span class="small muted">${it.code ? 'Other options' : 'Options'}:</span> ${it.options.filter((c) => known(c)).map((c) => `<button type="button" class="code-link" data-code="${esc(c)}">${esc(c)}</button>`).join(' ')}</div>` : ''}
-      ${tag || it.reason ? `<div class="pr-sub">${tag ? `<span class="pr-tag">${esc(tag)}</span>` : ''}${it.reason ? `<span class="pr-why">${linkify(it.reason, known)}</span>` : ''}</div>` : ''}
+      ${tag || reason ? `<div class="pr-sub">${tag ? `<span class="pr-tag">${esc(tag)}</span>` : ''}${reason ? `<span class="pr-why">${linkify(reason, known)}</span>` : ''}</div>` : ''}
       ${issues.map((x) => `<div class="pr-issue ${x.level}">${x.level === 'error' ? '⚠' : '•'} ${esc(x.message)}</div>`).join('')}
     </li>`;
 }
 
-function termCard(term, i, firstIdx, known) {
+function termCard(term, i, firstIdx, known, titleOf) {
   return `<section class="term${i === firstIdx ? ' next' : ''}">
       <header class="term-head">
         <h3>${i === firstIdx ? '<span class="next-badge">Next</span>' : ''}${esc(term.label)}</h3>
         <span class="term-cr">${term.credits} credits</span>
       </header>
       ${term.note ? `<p class="term-note">${esc(term.note)}</p>` : ''}
-      <ul class="term-list">${term.items.map((it) => planRow(it, known)).join('')}</ul>
+      <ul class="term-list">${term.items.map((it) => planRow(it, known, titleOf)).join('')}</ul>
     </section>`;
 }
 
@@ -192,11 +199,15 @@ export function renderDegree(el, ctx) {
   const inputs = planInputs(index, { completed, inProgress, saved: planned });
   const rule = planSemesters(audit, program, index, { ...inputs, grades, maxCredits });
   const ruleView = describePlan(rule, audit, { maxCredits });
+  // real courses that fit each open slot (Core Curriculum, electives), shown under the slot
+  const suggestCtx = { index, program, audit, done: inputs.done, grades };
+  addSuggestions(ruleView, suggestCtx);
+  const titleOf = (code) => index.get(code)?.title || '';
 
   // which plan to show: the advisor's (if made and chosen) or the app's
   const p = ctx.plan || {};
   const useAi = p.view === 'advisor' && p.ai;
-  const shown = useAi ? JSON.parse(JSON.stringify(p.ai)) : ruleView;
+  const shown = useAi ? addSuggestions(JSON.parse(JSON.stringify(p.ai)), suggestCtx) : ruleView;
   const check = checkPlan(shown, { index, program, records: transcript.courses, done: inputs.done, grades, maxCredits, waivers });
   const t = audit.totals;
   const pct = (n) => `${Math.max(0, Math.min(100, (n / t.required) * 100)).toFixed(1)}%`;
@@ -264,10 +275,10 @@ export function renderDegree(el, ctx) {
       <div class="plan-actions">${actions}</div>
       ${shown.summary ? `<p class="plan-summary">${linkify(shown.summary, known)}</p>` : ''}`;
   if (usedTerms.length) {
-    html += `<div class="timeline">${shown.terms.map((term, i) => (term.items.length ? termCard(term, i, firstIdx, known) : '')).join('')}</div>`;
+    html += `<div class="timeline">${shown.terms.map((term, i) => (term.items.length ? termCard(term, i, firstIdx, known, titleOf) : '')).join('')}</div>`;
   }
   if (shown.later?.length) {
-    html += `<section class="term later"><header class="term-head"><h3>Not placed yet</h3></header><ul class="term-list">${shown.later.map((it) => planRow({ ...it, issues: [{ level: 'warn', message: it.reason }], reason: '' }, known)).join('')}</ul></section>`;
+    html += `<section class="term later"><header class="term-head"><h3>Not placed yet</h3></header><ul class="term-list">${shown.later.map((it) => planRow({ ...it, issues: [{ level: 'warn', message: it.reason }], reason: '' }, known, titleOf)).join('')}</ul></section>`;
   }
   const general = check.issues.filter((x) => !x.code && x.term == null);
   const termWide = check.issues.filter((x) => !x.code && x.term != null);

@@ -527,24 +527,10 @@
           "credits": 15,
           "type": "pick",
           "note": "Fifteen credits of architecture electives.",
-          "from": {}
-        },
-        {
-          "id": "humanities-and-social-science-requirements",
-          "name": "Humanities and Social Science Requirements",
-          "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
+          "from": {},
+          "suggest": {
             "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
+              "ARCH"
             ]
           }
         },
@@ -559,6 +545,27 @@
               "IPRO"
             ]
           }
+        },
+        {
+          "id": "humanities-and-social-science-requirements",
+          "name": "Humanities and Social Science Requirements",
+          "credits": 21,
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         }
       ]
     },
@@ -850,17 +857,20 @@
           "name": "Humanities and Social Science Requirements",
           "credits": 15,
           "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
+          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts H and S courses by subject.",
           "from": {
             "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
+              "HUM",
+              "HIST",
+              "LIT",
+              "PHIL",
+              "AAH",
+              "PSYC",
+              "SOC",
+              "PS",
+              "ECON",
+              "SSCI",
+              "COM"
             ]
           }
         },
@@ -1301,7 +1311,15 @@
           "credits": 3,
           "type": "pick",
           "note": "Any 300+ BIOL, CHEM, or FDSN course, or a listed option.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "BIOL",
+              "CHEM",
+              "FDSN"
+            ],
+            "minLevel": 300
+          }
         },
         {
           "id": "interprofessional-projects-ipro",
@@ -1320,17 +1338,20 @@
           "name": "Humanities and Social Science Requirements",
           "credits": 15,
           "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
+          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts H and S courses by subject.",
           "from": {
             "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
+              "HUM",
+              "HIST",
+              "LIT",
+              "PHIL",
+              "AAH",
+              "PSYC",
+              "SOC",
+              "PS",
+              "ECON",
+              "SSCI",
+              "COM"
             ]
           }
         }
@@ -1586,24 +1607,33 @@
           "credits": 6,
           "type": "pick",
           "note": "Six credits of PHYS 300-level or higher.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "PHYS"
+            ],
+            "minLevel": 300
+          }
         },
         {
           "id": "humanities-and-social-science-requirements",
           "name": "Humanities and Social Science Requirements",
           "credits": 15,
           "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
+          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts H and S courses by subject.",
           "from": {
             "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
+              "HUM",
+              "HIST",
+              "LIT",
+              "PHIL",
+              "AAH",
+              "PSYC",
+              "SOC",
+              "PS",
+              "ECON",
+              "SSCI",
+              "COM"
             ]
           }
         },
@@ -1868,7 +1898,27 @@
           "credits": 13,
           "type": "pick",
           "note": "3 credits of mathematics and 10 of natural science or engineering.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "MATH",
+              "BIOL",
+              "CHEM",
+              "PHYS",
+              "MS",
+              "FDSN",
+              "ENVE",
+              "ASTR",
+              "GEOL",
+              "MMAE",
+              "ECE",
+              "CAE",
+              "CHE",
+              "BME",
+              "ENVE",
+              "ENGR"
+            ]
+          }
         },
         {
           "id": "interprofessional-projects-ipro",
@@ -1887,17 +1937,20 @@
           "name": "Humanities and Social Science Requirements",
           "credits": 9,
           "type": "pick",
-          "note": "Nine credits of social and behavioral sciences (S); 6 at 300+, two disciplines. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
+          "note": "Nine credits of social and behavioral sciences (S); 6 at 300+, two disciplines. The app counts H and S courses by subject.",
           "from": {
             "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
+              "HUM",
+              "HIST",
+              "LIT",
+              "PHIL",
+              "AAH",
+              "PSYC",
+              "SOC",
+              "PS",
+              "ECON",
+              "SSCI",
+              "COM"
             ]
           }
         },
@@ -2097,24 +2150,10 @@
           "credits": 15,
           "type": "pick",
           "note": "Fifteen credits of architecture electives.",
-          "from": {}
-        },
-        {
-          "id": "humanities-and-social-science-requirements",
-          "name": "Humanities and Social Science Requirements",
-          "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
+          "from": {},
+          "suggest": {
             "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
+              "ARCH"
             ]
           }
         },
@@ -2129,6 +2168,27 @@
               "IPRO"
             ]
           }
+        },
+        {
+          "id": "humanities-and-social-science-requirements",
+          "name": "Humanities and Social Science Requirements",
+          "credits": 21,
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         },
         {
           "id": "free-electives",
@@ -2381,7 +2441,16 @@
           "credits": 3,
           "type": "pick",
           "note": "Three credits of architectural history.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "codes": [
+              "AAH 380",
+              "ARCH 446",
+              "ARCH 491",
+              "AAH 119",
+              "AAH 120"
+            ]
+          }
         },
         {
           "id": "architecture-electives",
@@ -2389,24 +2458,10 @@
           "credits": 15,
           "type": "pick",
           "note": "Fifteen credits of architecture electives.",
-          "from": {}
-        },
-        {
-          "id": "humanities-and-social-science-requirements",
-          "name": "Humanities and Social Science Requirements",
-          "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
+          "from": {},
+          "suggest": {
             "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
+              "ARCH"
             ]
           }
         },
@@ -2421,6 +2476,27 @@
               "IPRO"
             ]
           }
+        },
+        {
+          "id": "humanities-and-social-science-requirements",
+          "name": "Humanities and Social Science Requirements",
+          "credits": 21,
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         }
       ]
     },
@@ -2708,25 +2784,6 @@
           "from": {}
         },
         {
-          "id": "humanities-and-social-science-requirements",
-          "name": "Humanities and Social Science Requirements",
-          "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
-            "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
-          }
-        },
-        {
           "id": "interprofessional-projects-ipro",
           "name": "Interprofessional Projects (IPRO)",
           "credits": 6,
@@ -2737,6 +2794,27 @@
               "IPRO"
             ]
           }
+        },
+        {
+          "id": "humanities-and-social-science-requirements",
+          "name": "Humanities and Social Science Requirements",
+          "credits": 21,
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         }
       ]
     },
@@ -2958,25 +3036,6 @@
           }
         },
         {
-          "id": "humanities-and-social-science-requirements",
-          "name": "Humanities and Social Science Requirements",
-          "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
-            "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
-          }
-        },
-        {
           "id": "interprofessional-projects-ipro",
           "name": "Interprofessional Projects (IPRO)",
           "credits": 6,
@@ -2987,6 +3046,27 @@
               "IPRO"
             ]
           }
+        },
+        {
+          "id": "humanities-and-social-science-requirements",
+          "name": "Humanities and Social Science Requirements",
+          "credits": 21,
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         },
         {
           "id": "free-electives",
@@ -3239,25 +3319,6 @@
           }
         },
         {
-          "id": "humanities-and-social-science-requirements",
-          "name": "Humanities and Social Science Requirements",
-          "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
-            "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
-          }
-        },
-        {
           "id": "interprofessional-projects-ipro",
           "name": "Interprofessional Projects (IPRO)",
           "credits": 6,
@@ -3268,6 +3329,27 @@
               "IPRO"
             ]
           }
+        },
+        {
+          "id": "humanities-and-social-science-requirements",
+          "name": "Humanities and Social Science Requirements",
+          "credits": 21,
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         },
         {
           "id": "free-electives",
@@ -3517,25 +3599,6 @@
           }
         },
         {
-          "id": "humanities-and-social-science-requirements",
-          "name": "Humanities and Social Science Requirements",
-          "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
-            "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
-          }
-        },
-        {
           "id": "interprofessional-projects-ipro",
           "name": "Interprofessional Projects (IPRO)",
           "credits": 6,
@@ -3546,6 +3609,27 @@
               "IPRO"
             ]
           }
+        },
+        {
+          "id": "humanities-and-social-science-requirements",
+          "name": "Humanities and Social Science Requirements",
+          "credits": 21,
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         },
         {
           "id": "free-electives",
@@ -3794,25 +3878,6 @@
           }
         },
         {
-          "id": "humanities-and-social-science-requirements",
-          "name": "Humanities and Social Science Requirements",
-          "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
-            "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
-          }
-        },
-        {
           "id": "interprofessional-projects-ipro",
           "name": "Interprofessional Projects (IPRO)",
           "credits": 6,
@@ -3823,6 +3888,27 @@
               "IPRO"
             ]
           }
+        },
+        {
+          "id": "humanities-and-social-science-requirements",
+          "name": "Humanities and Social Science Requirements",
+          "credits": 21,
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         },
         {
           "id": "free-electives",
@@ -4120,20 +4206,22 @@
           "id": "humanities-and-social-science-requirements",
           "name": "Humanities and Social Science Requirements",
           "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
-            "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
-          }
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         },
         {
           "id": "free-electives",
@@ -4378,25 +4466,6 @@
           }
         },
         {
-          "id": "humanities-and-social-science-requirements",
-          "name": "Humanities and Social Science Requirements",
-          "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
-            "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
-          }
-        },
-        {
           "id": "interprofessional-projects-ipro",
           "name": "Interprofessional Projects (IPRO)",
           "credits": 6,
@@ -4407,6 +4476,27 @@
               "IPRO"
             ]
           }
+        },
+        {
+          "id": "humanities-and-social-science-requirements",
+          "name": "Humanities and Social Science Requirements",
+          "credits": 21,
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         },
         {
           "id": "free-electives",
@@ -4624,7 +4714,12 @@
           "credits": 9,
           "type": "pick",
           "note": "Three psychology electives.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "PSYC"
+            ]
+          }
         },
         {
           "id": "natural-science-requirements",
@@ -4661,20 +4756,22 @@
           "id": "humanities-and-social-science-requirements",
           "name": "Humanities and Social Science Requirements",
           "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
-            "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
-          }
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         },
         {
           "id": "free-electives",
@@ -4910,25 +5007,6 @@
           }
         },
         {
-          "id": "humanities-and-social-science-requirements",
-          "name": "Humanities and Social Science Requirements",
-          "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
-            "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
-          }
-        },
-        {
           "id": "interprofessional-projects-ipro",
           "name": "Interprofessional Projects (IPRO)",
           "credits": 6,
@@ -4939,6 +5017,27 @@
               "IPRO"
             ]
           }
+        },
+        {
+          "id": "humanities-and-social-science-requirements",
+          "name": "Humanities and Social Science Requirements",
+          "credits": 21,
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         },
         {
           "id": "free-electives",
@@ -5170,25 +5269,6 @@
           }
         },
         {
-          "id": "humanities-and-social-science-requirements",
-          "name": "Humanities and Social Science Requirements",
-          "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
-            "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
-          }
-        },
-        {
           "id": "interprofessional-projects-ipro",
           "name": "Interprofessional Projects (IPRO)",
           "credits": 6,
@@ -5199,6 +5279,27 @@
               "IPRO"
             ]
           }
+        },
+        {
+          "id": "humanities-and-social-science-requirements",
+          "name": "Humanities and Social Science Requirements",
+          "credits": 21,
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         },
         {
           "id": "free-electives",
@@ -5495,25 +5596,6 @@
           }
         },
         {
-          "id": "humanities-and-social-science-requirements",
-          "name": "Humanities and Social Science Requirements",
-          "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
-            "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
-          }
-        },
-        {
           "id": "interprofessional-projects-ipro",
           "name": "Interprofessional Projects (IPRO)",
           "credits": 6,
@@ -5524,6 +5606,27 @@
               "IPRO"
             ]
           }
+        },
+        {
+          "id": "humanities-and-social-science-requirements",
+          "name": "Humanities and Social Science Requirements",
+          "credits": 21,
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         },
         {
           "id": "free-electives",
@@ -5763,25 +5866,6 @@
           }
         },
         {
-          "id": "humanities-and-social-science-requirements",
-          "name": "Humanities and Social Science Requirements",
-          "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
-            "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
-          }
-        },
-        {
           "id": "interprofessional-projects-ipro",
           "name": "Interprofessional Projects (IPRO)",
           "credits": 6,
@@ -5800,6 +5884,27 @@
           "type": "pick",
           "note": "Fourteen credits of open electives.",
           "from": {}
+        },
+        {
+          "id": "humanities-and-social-science-requirements",
+          "name": "Humanities and Social Science Requirements",
+          "credits": 21,
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         }
       ]
     },
@@ -6413,7 +6518,10 @@
           "credits": 15,
           "type": "pick",
           "note": "Fifteen credits of courses marked (T) in the catalog.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "attr": "T"
+          }
         },
         {
           "id": "computer-science-electives",
@@ -6421,7 +6529,17 @@
           "credits": 6,
           "type": "pick",
           "note": "Six credits of CS 300-level or higher, not CS 401 or CS 402.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "CS"
+            ],
+            "minLevel": 300,
+            "exclude": [
+              "CS 401",
+              "CS 402"
+            ]
+          }
         },
         {
           "id": "mathematics-elective",
@@ -6429,7 +6547,12 @@
           "credits": 3,
           "type": "pick",
           "note": "Three credits of mathematics.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "MATH"
+            ]
+          }
         },
         {
           "id": "political-science-requirement",
@@ -6437,7 +6560,14 @@
           "credits": 3,
           "type": "pick",
           "note": "Any 200-level political science course.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "PS"
+            ],
+            "minLevel": 200,
+            "maxLevel": 200
+          }
         },
         {
           "id": "interprofessional-projects-ipro",
@@ -6867,25 +6997,6 @@
           }
         },
         {
-          "id": "humanities-and-social-science-requirements",
-          "name": "Humanities and Social Science Requirements",
-          "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C (some may double-count). The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
-            "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
-          }
-        },
-        {
           "id": "interprofessional-projects-ipro",
           "name": "Interprofessional Projects (IPRO)",
           "credits": 6,
@@ -6896,6 +7007,27 @@
               "IPRO"
             ]
           }
+        },
+        {
+          "id": "humanities-and-social-science-requirements",
+          "name": "Humanities and Social Science Requirements",
+          "credits": 21,
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         },
         {
           "id": "free-electives",
@@ -7150,15 +7282,8 @@
           "credits": 6,
           "type": "pick",
           "note": "Six credits of science electives.",
-          "from": {}
-        },
-        {
-          "id": "humanities-and-social-science-requirements",
-          "name": "Humanities and Social Science Requirements",
-          "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
+          "from": {},
+          "suggest": {
             "subjects": [
               "BIOL",
               "CHEM",
@@ -7182,6 +7307,27 @@
               "IPRO"
             ]
           }
+        },
+        {
+          "id": "humanities-and-social-science-requirements",
+          "name": "Humanities and Social Science Requirements",
+          "credits": 21,
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         },
         {
           "id": "free-electives",
@@ -7399,25 +7545,6 @@
           }
         },
         {
-          "id": "humanities-and-social-science-requirements",
-          "name": "Humanities and Social Science Requirements",
-          "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
-            "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
-          }
-        },
-        {
           "id": "interprofessional-projects-ipro",
           "name": "Interprofessional Projects (IPRO)",
           "credits": 6,
@@ -7428,6 +7555,27 @@
               "IPRO"
             ]
           }
+        },
+        {
+          "id": "humanities-and-social-science-requirements",
+          "name": "Humanities and Social Science Requirements",
+          "credits": 21,
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         },
         {
           "id": "free-electives",
@@ -8106,7 +8254,13 @@
           "credits": 6,
           "type": "pick",
           "note": "Discrete mathematics and statistics.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "MATH",
+              "STAT"
+            ]
+          }
         },
         {
           "id": "natural-science-and-engineering-requirements",
@@ -8434,7 +8588,18 @@
           "credits": 18,
           "type": "pick",
           "note": "Eighteen credits from ITM, ITMD, ITMM, ITMO, ITMS, ITMT, and TECH.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "ITM",
+              "ITMD",
+              "ITMM",
+              "ITMO",
+              "ITMS",
+              "ITMT",
+              "TECH"
+            ]
+          }
         },
         {
           "id": "natural-science-and-engineering-requirements",
@@ -8719,25 +8884,6 @@
           ]
         },
         {
-          "id": "humanities-and-social-science-requirements",
-          "name": "Humanities and Social Science Requirements",
-          "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
-            "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
-          }
-        },
-        {
           "id": "interprofessional-projects-ipro",
           "name": "Interprofessional Projects (IPRO)",
           "credits": 6,
@@ -8755,7 +8901,44 @@
           "credits": 12,
           "type": "pick",
           "note": "A 300+ course in engineering, math, chemistry, physics, or computer science, approved by an adviser.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "MMAE",
+              "ECE",
+              "CAE",
+              "CHE",
+              "BME",
+              "ENVE",
+              "ENGR",
+              "MATH",
+              "CHEM",
+              "PHYS",
+              "CS"
+            ],
+            "minLevel": 300
+          }
+        },
+        {
+          "id": "humanities-and-social-science-requirements",
+          "name": "Humanities and Social Science Requirements",
+          "credits": 21,
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         },
         {
           "id": "free-electives",
@@ -8957,7 +9140,13 @@
           "credits": 17,
           "type": "pick",
           "note": "400-level ECE (P) courses; two with labs and one Major Design (M) course.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "ECE"
+            ],
+            "minLevel": 400
+          }
         },
         {
           "id": "career-electives",
@@ -8965,7 +9154,25 @@
           "credits": 12,
           "type": "pick",
           "note": "Advisor-approved engineering, science, math, CS, business, or law course.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "MMAE",
+              "ECE",
+              "CAE",
+              "CHE",
+              "BME",
+              "ENVE",
+              "ENGR",
+              "MATH",
+              "CHEM",
+              "PHYS",
+              "CS",
+              "BIOL",
+              "BUS",
+              "LAW"
+            ]
+          }
         },
         {
           "id": "interprofessional-projects-ipro",
@@ -9300,7 +9507,17 @@
           "credits": 6,
           "type": "pick",
           "note": "Any ECE 4xx (P) course or CS 4xx except CS 485.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "ECE",
+              "CS"
+            ],
+            "minLevel": 400,
+            "exclude": [
+              "CS 485"
+            ]
+          }
         },
         {
           "id": "career-elective",
@@ -9308,7 +9525,25 @@
           "credits": 9,
           "type": "pick",
           "note": "Advisor-approved engineering, science, math, CS, business, or law course.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "MMAE",
+              "ECE",
+              "CAE",
+              "CHE",
+              "BME",
+              "ENVE",
+              "ENGR",
+              "MATH",
+              "CHEM",
+              "PHYS",
+              "CS",
+              "BIOL",
+              "BUS",
+              "LAW"
+            ]
+          }
         },
         {
           "id": "interprofessional-projects-ipro",
@@ -10039,7 +10274,15 @@
           "credits": 9,
           "type": "pick",
           "note": "400-level or above CAE, ENVE, or EMGT courses; only one EMGT.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "CAE",
+              "ENVE",
+              "EMGT"
+            ],
+            "minLevel": 400
+          }
         },
         {
           "id": "interprofessional-projects-ipro",
@@ -10057,20 +10300,22 @@
           "id": "humanities-and-social-science-requirements",
           "name": "Humanities and Social Science Requirements",
           "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
-            "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
-          }
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         }
       ]
     },
@@ -10395,7 +10640,15 @@
           "credits": 9,
           "type": "pick",
           "note": "Nine credits of 400-level+ CAE, ENVE, or EMGT; one EMGT at most.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "CAE",
+              "ENVE",
+              "EMGT"
+            ],
+            "minLevel": 400
+          }
         },
         {
           "id": "interprofessional-projects-ipro",
@@ -10705,25 +10958,12 @@
           "credits": 9,
           "type": "pick",
           "note": "Nine credits; one must be CHE 426 or a CHE 400+ engineering science elective.",
-          "from": {}
-        },
-        {
-          "id": "humanities-and-social-science-requirements",
-          "name": "Humanities and Social Science Requirements",
-          "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
+          "from": {},
+          "suggest": {
             "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
+              "CHE"
+            ],
+            "minLevel": 400
           }
         },
         {
@@ -10737,6 +10977,27 @@
               "IPRO"
             ]
           }
+        },
+        {
+          "id": "humanities-and-social-science-requirements",
+          "name": "Humanities and Social Science Requirements",
+          "credits": 21,
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         }
       ]
     },
@@ -11003,17 +11264,20 @@
           "name": "Humanities and Social Science Requirements",
           "credits": 18,
           "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
+          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts H and S courses by subject.",
           "from": {
             "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
+              "HUM",
+              "HIST",
+              "LIT",
+              "PHIL",
+              "AAH",
+              "PSYC",
+              "SOC",
+              "PS",
+              "ECON",
+              "SSCI",
+              "COM"
             ]
           }
         },
@@ -11279,7 +11543,23 @@
           "credits": 3,
           "type": "pick",
           "note": "Any 300+ engineering, math, chemistry, physics, or CS course.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "MMAE",
+              "ECE",
+              "CAE",
+              "CHE",
+              "BME",
+              "ENVE",
+              "ENGR",
+              "MATH",
+              "CHEM",
+              "PHYS",
+              "CS"
+            ],
+            "minLevel": 300
+          }
         },
         {
           "id": "humanities-and-social-sciences-requirements",
@@ -11444,7 +11724,12 @@
           "credits": 3,
           "type": "pick",
           "note": "Three to four credits of chemistry.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "CHEM"
+            ]
+          }
         },
         {
           "id": "introduction-to-the-profession",
@@ -11452,7 +11737,15 @@
           "credits": 2,
           "type": "pick",
           "note": "One Introduction to the Profession course.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "codes": [
+              "BME 100",
+              "CHE 100",
+              "ECE 100",
+              "MMAE 100"
+            ]
+          }
         },
         {
           "id": "core-engineering-specialization",
@@ -11627,7 +11920,12 @@
           "credits": 18,
           "type": "pick",
           "note": "Eighteen credits of INTM technical or specialization electives.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "INTM"
+            ]
+          }
         },
         {
           "id": "humanities-electives",
@@ -11864,25 +12162,12 @@
           "credits": 6,
           "type": "pick",
           "note": "Six credits of PHYS 300-level or higher courses.",
-          "from": {}
-        },
-        {
-          "id": "humanities-and-social-science-requirements",
-          "name": "Humanities and Social Science Requirements",
-          "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
+          "from": {},
+          "suggest": {
             "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
+              "PHYS"
+            ],
+            "minLevel": 300
           }
         },
         {
@@ -11896,6 +12181,27 @@
               "IPRO"
             ]
           }
+        },
+        {
+          "id": "humanities-and-social-science-requirements",
+          "name": "Humanities and Social Science Requirements",
+          "credits": 21,
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         },
         {
           "id": "free-electives",
@@ -12120,25 +12426,6 @@
           ]
         },
         {
-          "id": "humanities-and-social-science-requirements",
-          "name": "Humanities and Social Science Requirements",
-          "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
-            "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
-          }
-        },
-        {
           "id": "interprofessional-projects-ipro",
           "name": "Interprofessional Projects (IPRO)",
           "credits": 6,
@@ -12149,6 +12436,27 @@
               "IPRO"
             ]
           }
+        },
+        {
+          "id": "humanities-and-social-science-requirements",
+          "name": "Humanities and Social Science Requirements",
+          "credits": 21,
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         },
         {
           "id": "free-electives",
@@ -12427,20 +12735,22 @@
           "id": "humanities-and-social-science-requirements",
           "name": "Humanities and Social Science Requirements",
           "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
-            "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
-          }
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         }
       ]
     },
@@ -12699,20 +13009,22 @@
           "id": "humanities-and-social-science-requirements",
           "name": "Humanities and Social Science Requirements",
           "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
-            "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
-          }
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         },
         {
           "id": "free-elective",
@@ -13188,20 +13500,22 @@
           "id": "humanities-and-social-science-requirements",
           "name": "Humanities and Social Science Requirements",
           "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
-            "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
-          }
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         }
       ]
     },
@@ -13471,7 +13785,13 @@
           "credits": 6,
           "type": "pick",
           "note": "Two CHEM electives at the 400 or 500 level.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "CHEM"
+            ],
+            "minLevel": 400
+          }
         },
         {
           "id": "interprofessional-projects-ipro",
@@ -13752,7 +14072,13 @@
           "credits": 15,
           "type": "pick",
           "note": "Fifteen credits of 300/400-level psychology courses not in the core.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "PSYC"
+            ],
+            "minLevel": 300
+          }
         },
         {
           "id": "mathematics-course",
@@ -13760,7 +14086,13 @@
           "credits": 3,
           "type": "pick",
           "note": "Any MATH course at MATH 122 level or above.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "MATH"
+            ],
+            "minNumber": 122
+          }
         },
         {
           "id": "natural-sciences-requirements",
@@ -13922,7 +14254,14 @@
           "credits": 18,
           "type": "pick",
           "note": "Six other PS, SSCI, or SOC courses.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "PS",
+              "SSCI",
+              "SOC"
+            ]
+          }
         },
         {
           "id": "mathematics-requirements",
@@ -13930,7 +14269,13 @@
           "credits": 6,
           "type": "pick",
           "note": "Two courses at MATH 119 level or above, including PSYC 203 or BUS 221.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "MATH"
+            ],
+            "minNumber": 119
+          }
         },
         {
           "id": "natural-sciences-requirements",
@@ -14060,7 +14405,16 @@
           "credits": 18,
           "type": "pick",
           "note": "Eighteen credits of humanities electives.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "HUM",
+              "HIST",
+              "LIT",
+              "PHIL",
+              "AAH"
+            ]
+          }
         },
         {
           "id": "minor-second-major-or-free-electives",
@@ -14273,7 +14627,27 @@
           "credits": 16,
           "type": "pick",
           "note": "5-6 credits of mathematics and 10-11 credits of natural science or engineering.",
-          "from": {}
+          "from": {},
+          "suggest": {
+            "subjects": [
+              "MATH",
+              "BIOL",
+              "CHEM",
+              "PHYS",
+              "MS",
+              "FDSN",
+              "ENVE",
+              "ASTR",
+              "GEOL",
+              "MMAE",
+              "ECE",
+              "CAE",
+              "CHE",
+              "BME",
+              "ENVE",
+              "ENGR"
+            ]
+          }
         },
         {
           "id": "interprofessional-projects-ipro",
@@ -14291,20 +14665,22 @@
           "id": "humanities-and-social-science-requirements",
           "name": "Humanities and Social Science Requirements",
           "credits": 21,
-          "type": "pick",
-          "note": "Illinois Tech Core Curriculum, sections B and C. The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.",
-          "from": {
-            "subjects": [
-              "BIOL",
-              "CHEM",
-              "PHYS",
-              "MS",
-              "FDSN",
-              "ENVE",
-              "ASTR",
-              "GEOL"
-            ]
-          }
+          "type": "hss",
+          "note": "One HUM 100-level course; two (H) courses at 200+; three (S) courses (two at 200+, from two or more fields); one more (H), (S), or COM course (not COM 101 or 111).",
+          "hSubjects": [
+            "HUM",
+            "HIST",
+            "LIT",
+            "PHIL",
+            "AAH"
+          ],
+          "sSubjects": [
+            "PSYC",
+            "SOC",
+            "PS",
+            "ECON",
+            "SSCI"
+          ]
         },
         {
           "id": "free-electives",

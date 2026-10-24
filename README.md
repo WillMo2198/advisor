@@ -76,6 +76,10 @@ Edit the matching file in `data/source/programs/` (the line format is at the top
 
 The other programs were read from catalog.iit.edu pages and some were simplified (for example, specializations are optional and not counted in the total). Check them against the catalog before you rely on them.
 
+### Suggested courses in the plan
+
+Open slots in a plan ("Humanities (H) course, 200+", "IPRO", "Technical Elective") show up to three suggested courses. `public/js/core/suggest.js` picks real catalog courses that fit the requirement, are not taken or planned, have their prerequisites done by that term, and (for CS) are on the forecast. Humanities and social science slots use the catalog's (H) and (S) attributes. Free electives get no suggestions. Open elective groups with no course list get hints from `SUGGEST_RULES` in `scripts/programs-extra.mjs`; these only change the suggestions, not the audit.
+
 ### Program detection
 
 When a student uploads a transcript, `public/js/core/detect.js` picks the program. It reads the major in the header first ("Major and Department: …"). If the header has none, it matches the courses. "Read with Claude" also returns the major it sees in the header. The student can change the program on the Degree tab, and that choice is kept.
@@ -122,6 +126,7 @@ public/js/core/           shared with the server and tests:
   audit.js                degree audit (matches courses to requirements)
   planner.js              semester-by-semester plan (rule-based) with reasons
   plan-check.js           checks any plan: prerequisites, forecast, credits, coverage
+  suggest.js              suggested courses for open plan slots
   forecast.js             future-offerings CSV parser
 public/js/ui/             schedule, graph, chat, and degree views
 public/vendor/pdfjs/      pdf.js browser build (for reading transcript PDFs)

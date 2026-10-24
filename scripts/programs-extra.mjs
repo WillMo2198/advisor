@@ -183,7 +183,8 @@ function hssGroup(group, id, credits) {
   if (/interprofessional|ipro/i.test(name)) {
     return { id, name, credits, type: 'pick', note: note || 'At least two IPRO experiences.', from: { subjects: ['IPRO'] } };
   }
-  if (/natural science|science and engineering|science requirement/i.test(name)) {
+  // "Humanities and Social Science Requirements" also says "Science Requirement": check humanities first
+  if (/natural science|science and engineering|science requirement/i.test(name) && !/humanit|social/i.test(name)) {
     return { id, name, credits, type: 'pick', note: `${note} The app counts BIOL, CHEM, PHYS, MS, FDSN, and ENVE courses.`.trim(), from: { subjects: N_SUBJECTS } };
   }
   if (/^humanities elective|humanities requirements?$/i.test(name) && credits <= 9) {
@@ -241,6 +242,48 @@ function buildGroup(program, group, index, usedIds) {
   // elective
   return { id, name: group.name, credits, type: 'pick', note, from: codes.length ? { codes } : {} };
 }
+
+// What to suggest for open elective groups that have no course list (the audit still accepts any
+// leftover credit there). Keys are "program id/group id". Only rules the catalog states are used.
+const ENGINEERING = ['MMAE', 'ECE', 'CAE', 'CHE', 'BME', 'ENVE', 'ENGR'];
+const ENG_MATH_SCI_CS = [...ENGINEERING, 'MATH', 'CHEM', 'PHYS', 'CS'];
+export const SUGGEST_RULES = {
+  'ba-architectural-studies-with-artificial-intelligence/architecture-electives': { subjects: ['ARCH'] },
+  'ba-architectural-studies/architecture-electives': { subjects: ['ARCH'] },
+  'b-architecture/architecture-electives': { subjects: ['ARCH'] },
+  'b-architecture/architectural-history-elective': { codes: ['AAH 380', 'ARCH 446', 'ARCH 491', 'AAH 119', 'AAH 120'] },
+  'bs-biochemistry-with-artificial-intelligence/technical-electives': { subjects: ['BIOL', 'CHEM', 'FDSN'], minLevel: 300 },
+  'bs-physics-with-artificial-intelligence/physics-electives': { subjects: ['PHYS'], minLevel: 300 },
+  'bs-physics/physics-electives': { subjects: ['PHYS'], minLevel: 300 },
+  'bs-game-design-and-experiential-media-with-artificial-intelligence/stem-module': { subjects: ['MATH', ...N_SUBJECTS, ...ENGINEERING] },
+  'bs-game-design-and-experiential-media/stem-module': { subjects: ['MATH', ...N_SUBJECTS, ...ENGINEERING] },
+  'bs-business-and-psychology/psychology-electives': { subjects: ['PSYC'] },
+  'bs-psychology/psychology-electives': { subjects: ['PSYC'], minLevel: 300 },
+  'bs-psychology/mathematics-course': { subjects: ['MATH'], minNumber: 122 },
+  'bs-computer-information-systems/computer-science-technical-electives': { attr: 'T' },
+  'bs-computer-information-systems/computer-science-electives': { subjects: ['CS'], minLevel: 300, exclude: ['CS 401', 'CS 402'] },
+  'bs-computer-information-systems/mathematics-elective': { subjects: ['MATH'] },
+  'bs-computer-information-systems/political-science-requirement': { subjects: ['PS'], minLevel: 200, maxLevel: 200 },
+  'bs-applied-mathematics/science-electives': { subjects: N_SUBJECTS },
+  'b-information-technology/mathematics-requirements-discrete-mathematics-and-statistics': { subjects: ['MATH', 'STAT'] },
+  'b-information-technology-and-management/itm-electives': { subjects: ['ITM', 'ITMD', 'ITMM', 'ITMO', 'ITMS', 'ITMT', 'TECH'] },
+  'bs-mechanical-engineering/technical-elective': { subjects: ENG_MATH_SCI_CS, minLevel: 300 },
+  'bs-aerospace-engineering/technical-electives': { subjects: ENG_MATH_SCI_CS, minLevel: 300 },
+  'bs-electrical-engineering/professional-ece-electives': { subjects: ['ECE'], minLevel: 400 },
+  'bs-electrical-engineering/career-electives': { subjects: [...ENG_MATH_SCI_CS, 'BIOL', 'BUS', 'LAW'] },
+  'bs-computer-engineering/professional-ece-electives': { subjects: ['ECE', 'CS'], minLevel: 400, exclude: ['CS 485'] },
+  'bs-computer-engineering/career-elective': { subjects: [...ENG_MATH_SCI_CS, 'BIOL', 'BUS', 'LAW'] },
+  'bs-civil-engineering/cae-technical-electives': { subjects: ['CAE', 'ENVE', 'EMGT'], minLevel: 400 },
+  'bs-architectural-engineering/cae-technical-electives': { subjects: ['CAE', 'ENVE', 'EMGT'], minLevel: 400 },
+  'bs-chemical-engineering/technical-electives': { subjects: ['CHE'], minLevel: 400 },
+  'bs-engineering-management/chemistry-requirement': { subjects: ['CHEM'] },
+  'bs-engineering-management/introduction-to-the-profession': { codes: ['BME 100', 'CHE 100', 'ECE 100', 'MMAE 100'] },
+  'b-industrial-technology-and-management/intm-electives-technical-and-or-specialization': { subjects: ['INTM'] },
+  'bs-chemistry/chemistry-electives': { subjects: ['CHEM'], minLevel: 400 },
+  'bs-public-policy/public-policy-electives': { subjects: ['PS', 'SSCI', 'SOC'] },
+  'bs-public-policy/mathematics-requirements': { subjects: ['MATH'], minNumber: 119 },
+  'bs-humanities/humanities-electives': { subjects: H_SUBJECTS },
+};
 
 const TYPE_RANK = { all: 0, pick: 1, hss: 2, free: 3 };
 
@@ -314,8 +357,16 @@ function buildProgram(raw, used) {
   for (const code of codesInGroups) if (titles[code]) programTitles[code] = titles[code];
 
   const printed = raw.name.replace(/\*+$/, '').trim();
+  const id = programId(raw.name, used);
+  // suggestion hints for open groups (see SUGGEST_RULES)
+  for (const g of groups) {
+    const rule = SUGGEST_RULES[`${id}/${g.id}`];
+    if (!rule) continue;
+    if (g.type !== 'pick' || g.from?.codes?.length || g.from?.subjects?.length) warn(raw.name, `SUGGEST_RULES: ${g.id} already has a course rule`);
+    else g.suggest = rule;
+  }
   return {
-    id: programId(raw.name, used),
+    id,
     name: shortName(raw.name),
     majorName: printed.replace(/^Bachelor of (Science|Arts) in /, '').replace(/^Bachelor of /, ''),
     college: COLLEGES[raw.path.split('/')[3]] || 'Other programs',

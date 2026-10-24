@@ -221,6 +221,8 @@ function remainingText(group, result, creditsLeft, index) {
   const from = group.from || {};
   if (group.count) return [`${group.count - result.used.length} course from: ${(from.codes.some(known) ? from.codes.filter(known) : from.codes).join(', ')}`];
   const listed = from.codes ? (from.codes.some(known) ? from.codes.filter(known) : from.codes) : null;
+  // an open elective group (no course list and no subjects): the catalog note says what counts
+  if (!listed && !from.subjects?.length) return [`${creditsLeft} more credit${creditsLeft === 1 ? '' : 's'}${group.note ? `: ${group.note}` : ''}`];
   const where = listed ? listed.join(', ') : `${from.subjects.join(', ')}${from.minLevel ? ` at the ${from.minLevel} level or above` : ''}`;
   return [`${creditsLeft} more credit${creditsLeft === 1 ? '' : 's'} from ${where}`];
 }

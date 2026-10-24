@@ -1198,3 +1198,34 @@ input[type="checkbox"]:focus-visible, input[type="radio"]:focus-visible { outlin
   .pill, .btn, .link-btn, .seg button { min-height: 40px; }
   #chat-input, #search, #graph-add, input[type="text"], textarea { font-size: 16px; }
 }
+
+/* suggested courses for open plan slots */
+.pr-suggest { gap: 6px; }
+.pr-suggest .sug {
+  display: inline-flex; align-items: baseline; max-width: 100%; min-width: 0;
+  border: 1px solid var(--pill-border); background: var(--pill-bg); color: var(--focus);
+  border-radius: 999px; padding: 3px 10px; font-size: 12.5px; font-weight: 700; text-decoration: none; line-height: 1.4;
+}
+.pr-suggest .sug:hover { border-color: var(--focus); }
+.pr-suggest .sug-title { font-weight: 500; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 22ch; margin-left: 4px; }
+
+/* phone: nothing may be wider than the screen */
+@media (max-width: 960px) {
+  .program-banner { grid-template-columns: minmax(0, 1fr); }
+  .program-banner > * { min-width: 0; }
+  .pb-pick select, .apply-pick select, .plan-max select { width: 100%; max-width: 100%; }
+  .timeline { grid-template-columns: minmax(0, 1fr); }
+  .pr-name, .pr-sub, .pb-title, .left-name, .req-name { overflow-wrap: anywhere; }
+  .view, .card { min-width: 0; max-width: 100%; }
+  select, input, textarea { max-width: 100%; }
+}
+@media (max-width: 960px) {
+  .plan-max select { width: auto; }
+  /* departments: one swipeable row instead of a full screen of pills */
+  #f-subject { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+  #f-subject button { flex: none; }
+}
+@media (max-width: 960px) {
+  .filter-row, .filter-block, #filters-panel { min-width: 0; max-width: 100%; }
+  .filter-row > .filter-block:has(#f-subject) { flex: 1 1 100%; width: 100%; }
+}
