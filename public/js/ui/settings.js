@@ -68,7 +68,7 @@ export function createSettings({ button, menu, onChange }) {
       <h2 class="set-title">Settings</h2>
       <fieldset class="set-group"><legend>Mode</legend>
         <div class="set-seg" role="radiogroup" aria-label="Mode">
-          ${['light', 'dark', 'system'].map((t) => `<button type="button" role="radio" aria-checked="${theme === t}" data-theme="${t}">${t[0].toUpperCase()}${t.slice(1)}</button>`).join('')}
+          ${['light', 'dark', 'system'].map((t) => `<button type="button" role="radio" aria-checked="${theme === t}" data-mode="${t}">${t[0].toUpperCase()}${t.slice(1)}</button>`).join('')}
         </div>
       </fieldset>
       <fieldset class="set-group"><legend>Color themes</legend>
@@ -97,8 +97,9 @@ export function createSettings({ button, menu, onChange }) {
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !menu.hidden) { close(); button.focus(); } });
 
   menu.addEventListener('click', (e) => {
-    const t = e.target.closest('[data-theme]');
-    if (t) { theme = t.dataset.theme; save(); apply(); render(); return; }
+    // data-mode, not data-theme: <html> carries data-theme too, and closest() would find it
+    const t = e.target.closest('[data-mode]');
+    if (t && menu.contains(t)) { theme = t.dataset.mode; save(); apply(); render(); return; }
     const p = e.target.closest('[data-preset]');
     if (p) { const preset = PRESETS.find((x) => x.name === p.dataset.preset); colors = preset?.colors ? { ...preset.colors } : {}; save(); apply(); render(); return; }
     if (e.target.closest('[data-reset]')) { colors = {}; bg = { light: {}, dark: {} }; save(); apply(); render(); }
