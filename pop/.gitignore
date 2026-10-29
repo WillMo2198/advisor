@@ -1,0 +1,10 @@
+.DS_Store
+*.pyc
+__pycache__/
+.venv/
+www/soda.js
+www/data
+www/*.html
+data/pop.db
+data/pop.db-*
+.env
