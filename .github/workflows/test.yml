@@ -1,8 +1,11 @@
 name: test
 
 on:
+  # Pop (pop/) is a separate Python app; its changes do not need the advisor tests
   push:
+    paths-ignore: ['pop/**']
   pull_request:
+    paths-ignore: ['pop/**']
 
 jobs:
   test:

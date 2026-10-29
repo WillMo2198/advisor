@@ -1,11 +1,11 @@
 // Import real section data from pop.ai.
 //
-// In your pop.ai checkout:
+// In pop/ (Pop, the Python app in this repo):
 //   python scraping/scrape_descriptions.py
 //   python scraping/scrape_courses.py spring 2027 -s CS MATH
 //   python -c "from app.db import write_semester_files; write_semester_files('spring', 2027)"
-// That writes www/data/spring_2027.json. Then here:
-//   node scripts/import-pop.mjs ../pop.ai/www/data/spring_2027.json [--subjects CS,MATH]
+// That writes pop/www/data/spring_2027.json. Then in the repo root:
+//   node scripts/import-pop.mjs pop/www/data/spring_2027.json [--subjects CS,MATH]
 //
 // This replaces data/sections.json. Prerequisite trees still come from data/catalog.json.
 
@@ -23,7 +23,7 @@ const subjects = subjIdx >= 0 && args[subjIdx + 1]
   : null;
 
 if (!file) {
-  console.error('usage: node scripts/import-pop.mjs <pop.ai spring_2027.json> [--subjects CS,MATH]');
+  console.error('usage: node scripts/import-pop.mjs pop/www/data/spring_2027.json [--subjects CS,MATH]');
   process.exit(1);
 }
 

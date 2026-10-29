@@ -1,9 +1,9 @@
 # advisor.
 
-A course advisor for Illinois Tech. One search box, a prerequisite graph, a weekly schedule, a degree audit from your unofficial transcript, and a chat advisor powered by the Claude API.
+A course advisor for Illinois Tech. This repo also holds [Pop](pop/) (`pop/`), the course search and scraper the advisor builds on. One search box, a prerequisite graph, a weekly schedule, a degree audit from your unofficial transcript, and a chat advisor powered by the Claude API.
 
 - **Search** every course as you type: CRNs, rooms, professors, semesters, departments, titles, days (`mwf`), descriptions, codes (`cs440`), or a mix. Commas OR the parts together: `CS 331, MATH 251, MATH 474`.
-- **Schedule** tab: saved sections and a weekly grid. The grid uses the layout from [pop.ai](https://github.com/johnchmura/pop.ai) (`src/schedule.js`): overlapping classes split a day into columns. Time conflicts are flagged.
+- **Schedule** tab: saved sections and a weekly grid. The grid uses Pop's layout ([`pop/src/schedule.js`](pop/src/schedule.js)): overlapping classes split a day into columns. Time conflicts are flagged.
 - **Course Graph** tab: the prerequisite chain for the courses you searched, plus what they unlock. Solid = prerequisite, green = can be taken in the same term, dashed = one of several options. Click a node for details.
 - **Time commitments**: tell the chat advisor your fixed hours ("I work Mon and Wed 3 to 7pm"). It saves them in the browser, shows them as hatched blocks on the weekly grid, marks sections that clash, and plans around them. Say "remove my work hours" to delete one. There is no form.
 - **Chat** tab: ask advising questions. The server sends Claude the full course data and your context (completed courses, saved sections, conflicts, and prerequisite checks it already ran).
@@ -84,20 +84,22 @@ Open slots in a plan ("Humanities (H) course, 200+", "IPRO", "Technical Elective
 
 When a student uploads a transcript, `public/js/core/detect.js` picks the program. It reads the major in the header first ("Major and Department: …"). If the header has none, it matches the courses. "Read with Claude" also returns the major it sees in the header. The student can change the program on the Degree tab, and that choice is kept.
 
-### Use real sections from pop.ai
+### Use real sections from Pop
 
-In your pop.ai checkout:
+Pop (in `pop/`, a Python app; see [pop/README.md](pop/README.md) for setup) scrapes real sections:
 
 ```bash
+cd pop
 python scraping/scrape_descriptions.py
 python scraping/scrape_courses.py spring 2027 -s CS MATH
 python -c "from app.db import write_semester_files; write_semester_files('spring', 2027)"
 ```
 
-Then here:
+Then back in the repo root:
 
 ```bash
-npm run import:pop -- ../pop.ai/www/data/spring_2027.json --subjects CS,MATH
+cd ..
+npm run import:pop -- pop/www/data/spring_2027.json --subjects CS,MATH
 npm start
 ```
 
@@ -131,8 +133,9 @@ public/js/core/           shared with the server and tests:
 public/js/ui/             schedule, graph, chat, and degree views
 public/vendor/pdfjs/      pdf.js browser build (for reading transcript PDFs)
 public/samples/           a made-up sample transcript
-scripts/                  data sources, build, pop.ai import
+scripts/                  data sources, build, Pop import
 test/                     node --test suites (core, offline, server with a fake Claude API)
+pop/                      Pop: Python course search, scrapers, and API (from johnchmura/pop.ai, with its history)
 ```
 
 ## Tests
