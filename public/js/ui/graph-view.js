@@ -14,7 +14,7 @@ function subjectClass(node) {
   return 'other';
 }
 
-export function renderGraph({ index, focus, options, completed, planned, els, selected, filtered = false }) {
+export function renderGraph({ index, focus, options, completed, planned, els, selected, filtered = false, addButton = () => '' }) {
   const graph = buildGraph(index, focus, {
     showDependents: options.showDependents,
     hideBridge: !options.showBridge,
@@ -98,10 +98,10 @@ export function renderGraph({ index, focus, options, completed, planned, els, se
   svg.innerHTML = out;
   els.scroll.replaceChildren(svg);
 
-  renderDetail({ index, code: selected && pos.has(selected) ? selected : null, completed, planned, els });
+  renderDetail({ index, code: selected && pos.has(selected) ? selected : null, completed, planned, els, addButton });
 }
 
-export function renderDetail({ index, code, completed, planned, els }) {
+export function renderDetail({ index, code, completed, planned, els, addButton = () => '' }) {
   if (!code) { els.detail.hidden = true; return; }
   const course = index.get(code);
   els.detail.hidden = false;
@@ -125,6 +125,7 @@ export function renderDetail({ index, code, completed, planned, els }) {
     ${course.note ? `<p class="meta-line">${esc(course.note)}</p>` : ''}
     <p><b>Unlocks:</b> ${course.dependents.length ? course.dependents.map((d, i, a) => `<span class="nw"><button type="button" class="code-link" data-code="${esc(d.code)}">${esc(d.code)}</button>${i < a.length - 1 ? ',' : ''}</span>`).join(' ') : 'Nothing in this catalog'}</p>
     <div class="course-actions">
+      ${addButton(code)}
       <button type="button" class="btn" data-search="${esc(code)}">Search ${esc(code)}</button>
       <button type="button" class="btn" data-ask="${esc(code)}">Ask advisor</button>
       <button type="button" class="btn${completed.has(code) ? ' on' : ''}" data-complete="${esc(code)}">${completed.has(code) ? '✓ Completed' : 'Mark completed'}</button>

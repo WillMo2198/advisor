@@ -202,6 +202,32 @@ function sectionRow(s) {
     </div>`;
 }
 
+/**
+ * One Add button for a whole course (compact results, graph details, Degree plan).
+ * One section: adds it. Several: opens the course in search with every section shown, to pick one.
+ * Returns '' when the course has no sections this semester.
+ */
+function addCourseButton(code) {
+  const course = state.index?.get(code);
+  const n = course?.sections?.length || 0;
+  if (!n) return '';
+  const added = course.sections.some((s) => state.saved.includes(s.crn));
+  const label = added ? '✓ Added' : n === 1 ? 'Add' : `Add · ${n} sections`;
+  const tip = n === 1 ? `Add ${code} (CRN ${course.sections[0].crn}) to your schedule` : `Pick one of the ${n} ${code} sections to add`;
+  return `<button type="button" class="add-btn${added ? ' added' : ''}" data-add-course="${esc(code)}" title="${esc(tip)}" aria-label="${esc(tip)}">${label}</button>`;
+}
+function addCourse(code) {
+  const course = state.index?.get(code);
+  if (!course?.sections?.length) return;
+  if (course.sections.length === 1) return toggleSaved(course.sections[0].crn);
+  // several sections: show them all so the student picks one
+  state.expanded.add(code);
+  setQuery(code, { focusInput: false });
+  state.expanded.add(code);
+  state.compactOpen.add(code);
+  renderResults();
+}
+
 function courseCard(course) {
   const detail = state.compactOpen.has(course.code) ? 3 : Number(state.options.detail);
   const head = `<div class="course-head">
@@ -210,14 +236,14 @@ function courseCard(course) {
       ${detail > 1 ? `<span class="course-credits">${esc(course.credits || '?')} credit${course.credits === '1' ? '' : 's'}</span>` : ''}
     </div>`;
   if (detail === 1) {
-    return `<article class="course compact" data-expand="${esc(course.code)}" tabindex="0" title="Click to expand ${esc(course.code)}">${head}</article>`;
+    return `<article class="course compact" data-expand="${esc(course.code)}" tabindex="0" title="Click to expand ${esc(course.code)}">${head}${course.sections.length ? `<div class="compact-add">${addCourseButton(course.code)}</div>` : ''}</article>`;
   }
   const badges = [eligibilityBadge(course), course.satisfies ? `<span class="badge">${hl(course.satisfies)}</span>` : '', course.bridge ? '<span class="badge">Graduate bridge course</span>' : '']
     .filter(Boolean).join('');
   let html = `<article class="course${detail === 2 ? ' compact' : ''}" ${detail === 2 ? `data-expand="${esc(course.code)}" tabindex="0"` : ''}>${head}`;
   if (badges) html += `<div class="badges">${badges}</div>`;
   html += `<p class="desc">${state.options.searchDescriptions ? hl(course.description) : esc(course.description)}</p>`;
-  if (detail === 2) return `${html}</article>`;
+  if (detail === 2) return `${html}${course.sections.length ? `<div class="compact-add">${addCourseButton(course.code)}</div>` : ''}</article>`;
 
   html += `<p class="meta-line"><b>Prerequisites:</b> ${course.prereqText ? linkCodes(course.prereqText, known) : 'None'}</p>`;
   if (course.note) html += `<p class="meta-line">${esc(course.note)}</p>`;
@@ -381,6 +407,7 @@ function renderDegreeTab() {
     transcript: state.transcript,
     savedCourses: plannedCourses(),
     known,
+    addButton: addCourseButton,
     hasClaude: state.health?.mode === 'claude',
     plan: { ...state.plan, aiStale: !!state.plan.ai && state.plan.aiFingerprint !== planFingerprint() },
   });
@@ -489,6 +516,7 @@ function renderGraphTab() {
     els: els.graph,
     selected: state.graphSelected,
     filtered: state.graphFilter.length > 0,
+    addButton: addCourseButton,
   });
   $('#graph-clear').hidden = !state.graphFilter.length;
 }
@@ -580,6 +608,7 @@ function wire() {
     const by = (attr) => t.closest(`[${attr}]`);
     let el;
     if ((el = by('data-add'))) return toggleSaved(el.dataset.add);
+    if ((el = by('data-add-course'))) return addCourse(el.dataset.addCourse);
     if ((el = by('data-complete'))) return toggleCompleted(el.dataset.complete);
     if ((el = by('data-graph'))) { state.graphSelected = el.dataset.graph; if (!state.focus.includes(el.dataset.graph)) setQuery(el.dataset.graph, { focusInput: false }); setTab('graph'); return; }
     if ((el = by('data-ask'))) { setTab('chat'); chat.ask(`Tell me about ${el.dataset.ask}. What do I need before I can take it, and what does it lead to?`); return; }
@@ -625,7 +654,7 @@ function wire() {
     if (!node) return;
     state.graphSelected = node.dataset.code;
     for (const g of $$('.gnode', els.graph.scroll)) g.classList.toggle('selected', g.dataset.code === state.graphSelected);
-    renderDetail({ index: state.index, code: state.graphSelected, completed: completedSet(), planned: plannedCourses(), els: els.graph });
+    renderDetail({ index: state.index, code: state.graphSelected, completed: completedSet(), planned: plannedCourses(), els: els.graph, addButton: addCourseButton });
   });
   els.graph.scroll.addEventListener('keydown', (e) => {
     const node = e.target.closest('.gnode');

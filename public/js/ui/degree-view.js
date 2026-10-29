@@ -91,7 +91,7 @@ function linkify(text, known) {
 }
 
 /** One course row in a term card. */
-function planRow(it, known, titleOf = () => '') {
+function planRow(it, known, titleOf = () => '', addButton = () => '') {
   const k = KIND[it.kind] || KIND.choice;
   const tag = k.tag || it.requirement || '';
   const name = it.code
@@ -104,6 +104,7 @@ function planRow(it, known, titleOf = () => '') {
       <div class="pr-top">
         <div class="pr-name">${name}</div>
         <span class="pr-cr">${esc(it.credits)} cr</span>
+        ${addButton(it.code)}
       </div>
       ${it.suggestions?.length ? `<div class="pr-options pr-suggest"><span class="small muted">Suggested:</span> ${it.suggestions.map((c) => {
     const title = titleOf(c);
@@ -115,14 +116,14 @@ function planRow(it, known, titleOf = () => '') {
     </li>`;
 }
 
-function termCard(term, i, firstIdx, known, titleOf) {
+function termCard(term, i, firstIdx, known, titleOf, addFor) {
   return `<section class="term${i === firstIdx ? ' next' : ''}">
       <header class="term-head">
         <h3>${i === firstIdx ? '<span class="next-badge">Next</span>' : ''}${esc(term.label)}</h3>
         <span class="term-cr">${term.credits} credits</span>
       </header>
       ${term.note ? `<p class="term-note">${esc(term.note)}</p>` : ''}
-      <ul class="term-list">${term.items.map((it) => planRow(it, known, titleOf)).join('')}</ul>
+      <ul class="term-list">${term.items.map((it) => planRow(it, known, titleOf, addFor(term))).join('')}</ul>
     </section>`;
 }
 
@@ -203,6 +204,8 @@ export function renderDegree(el, ctx) {
   const suggestCtx = { index, program, audit, done: inputs.done, grades };
   addSuggestions(ruleView, suggestCtx);
   const titleOf = (code) => index.get(code)?.title || '';
+  // Add buttons only in the term the sections are for (the schedule semester)
+  const addFor = (term) => (term.label === index.semester && ctx.addButton ? (code) => (code ? ctx.addButton(code) : '') : () => '');
 
   // which plan to show: the advisor's (if made and chosen) or the app's
   const p = ctx.plan || {};
@@ -275,7 +278,7 @@ export function renderDegree(el, ctx) {
       <div class="plan-actions">${actions}</div>
       ${shown.summary ? `<p class="plan-summary">${linkify(shown.summary, known)}</p>` : ''}`;
   if (usedTerms.length) {
-    html += `<div class="timeline">${shown.terms.map((term, i) => (term.items.length ? termCard(term, i, firstIdx, known, titleOf) : '')).join('')}</div>`;
+    html += `<div class="timeline">${shown.terms.map((term, i) => (term.items.length ? termCard(term, i, firstIdx, known, titleOf, addFor) : '')).join('')}</div>`;
   }
   if (shown.later?.length) {
     html += `<section class="term later"><header class="term-head"><h3>Not placed yet</h3></header><ul class="term-list">${shown.later.map((it) => planRow({ ...it, issues: [{ level: 'warn', message: it.reason }], reason: '' }, known, titleOf)).join('')}</ul></section>`;

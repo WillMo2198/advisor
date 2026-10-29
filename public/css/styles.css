@@ -1229,3 +1229,8 @@ input[type="checkbox"]:focus-visible, input[type="radio"]:focus-visible { outlin
   .filter-row, .filter-block, #filters-panel { min-width: 0; max-width: 100%; }
   .filter-row > .filter-block:has(#f-subject) { flex: 1 1 100%; width: 100%; }
 }
+
+/* course-level Add buttons (compact results, graph details, Degree plan) */
+.compact-add { margin-top: 8px; }
+.pr-top .add-btn { flex: none; margin-left: 8px; align-self: center; }
+.graph-detail .course-actions .add-btn { align-self: center; }
