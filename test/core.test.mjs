@@ -156,3 +156,24 @@ test('alternative flag: required in every branch is not an alternative', () => {
   assert.ok(courseLeaves(index.get('MATH 474').prereq)[0].alternative); // "or Graduate standing"
   assert.ok(!courseLeaves(index.get('CS 443').prereq)[0].alternative);
 });
+
+test('sections listed once per meeting time are merged by CRN', () => {
+  const offerings = {
+    semester_name: 'Spring 2027',
+    courses: [{ name: 'ARCH 202', title: 'Studio', sections: { 'Spring 2027': { Class: [
+      { crn: '21896', schedule_type: 'STU', available: '3', meetings: [{ days: 'W', time: '4 PM - 5:50 PM', where: 'Crown Hall', instructors: ['A B'] }] },
+      { crn: '21896', schedule_type: 'STU', available: '3', meetings: [{ days: 'MF', time: '1:50 PM - 5:50 PM', where: 'Crown Hall', instructors: ['A B'] }] },
+      { crn: '21896', schedule_type: 'STU', available: '3', meetings: [{ days: 'MF', time: '1:50 PM - 5:50 PM', where: 'Crown Hall', instructors: ['A B'] }] },
+    ] } } }, { name: 'CHE 317', title: 'Lab course', sections: { 'Spring 2027': { Class: [
+      { crn: '20659', schedule_type: 'Lecture', meetings: [{ days: 'F', time: '11:25 AM - 12:40 PM', where: '', instructors: [] }] },
+      { crn: '20659', schedule_type: 'Lab', meetings: [{ days: 'F', time: '1:50 PM - 4:30 PM', where: '', instructors: [] }] },
+    ] } } }],
+  };
+  const idx = buildIndex(catalog, offerings);
+  const studio = idx.crnMap.get('21896');
+  assert.equal(idx.get('ARCH 202').sections.length, 1);
+  assert.deepEqual(studio.meetings.map((m) => m.days), ['W', 'MF']);
+  assert.equal(idx.crnMap.get('20659').scheduleType, 'Lecture + Lab');
+  const { blocks } = buildBlocks([{ key: '21896', label: 'ARCH 202', colorKey: 'ARCH 202', section: studio }]);
+  assert.equal(blocks.length, 3, 'W, M, and F blocks');
+});

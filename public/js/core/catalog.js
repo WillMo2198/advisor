@@ -22,7 +22,7 @@ function flattenSections(sections, fallbackSemester) {
       for (const s of list) {
         out.push({
           crn: String(s.crn ?? '').trim(),
-          scheduleType: s.schedule_type || '',
+          scheduleType: TYPE_NAMES[s.schedule_type] || s.schedule_type || '',
           bucket: s.type || bucket,
           available: s.available === '' || s.available == null ? null : Number(s.available),
           specialTitle: s.special_title || '',
@@ -49,6 +49,9 @@ export function dayWords(days) {
  * Build the index. `catalog` is data/catalog.json, `offerings` is data/sections.json (pop.ai export shape),
  * `forecast` (optional) is data/forecast.json: the CS department's tentative future offerings.
  */
+// IIT schedule-type codes that Pop leaves as codes. Unknown codes are shown as they are.
+const TYPE_NAMES = { STU: 'Studio', SEM: 'Seminar', PRA: 'Practicum', CLN: 'Clinic' };
+
 export function buildIndex(catalog, offerings, forecast = null) {
   const semester = offerings?.semester_name || 'Spring 2027';
   const courses = new Map();
@@ -89,6 +92,17 @@ export function buildIndex(catalog, offerings, forecast = null) {
     for (const section of flattenSections(off.sections, semester)) {
       if (!section.crn) continue;
       section.course = code;
+      // IIT's report lists a section once per meeting time (a studio that meets W 1:50 and MF 1:50),
+      // and Pop keeps each row. Merge rows with the same CRN into one section with all its meetings.
+      const same = crnMap.get(section.crn);
+      if (same && same.course === code) {
+        for (const m of section.meetings || []) {
+          const key = JSON.stringify([m.days, m.time, m.where]);
+          if (!same.meetings.some((x) => JSON.stringify([x.days, x.time, x.where]) === key)) same.meetings.push(m);
+        }
+        if (section.scheduleType && !same.scheduleType.split(' + ').includes(section.scheduleType)) same.scheduleType += ` + ${section.scheduleType}`;
+        continue;
+      }
       course.sections.push(section);
       crnMap.set(section.crn, section);
     }

@@ -10,7 +10,7 @@
 // This replaces data/sections.json. Prerequisite trees still come from data/catalog.json.
 
 import { readFileSync, writeFileSync } from 'node:fs';
-import { dirname, join } from 'node:path';
+import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { normalizeCode } from '../public/js/core/prereq.js';
 
@@ -57,7 +57,7 @@ const out = {
   semester_name: payload.semester_name,
   term_code: payload.term_code || '',
   sample: false,
-  note: `Imported from pop.ai export ${file} on ${new Date().toISOString().slice(0, 10)}.`,
+  note: `Imported from Pop export ${relative(root, resolve(file)).split('\\').join('/')} on ${new Date().toISOString().slice(0, 10)}.`,
   courses: kept,
 };
 writeFileSync(join(root, 'data', 'sections.json'), JSON.stringify(out, null, 2) + '\n');
