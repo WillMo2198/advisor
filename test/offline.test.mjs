@@ -7,7 +7,7 @@ import { readClientContext, courseDataBlock } from '../lib/context.js';
 
 const index = buildIndex(
   JSON.parse(readFileSync(new URL('../data/catalog.json', import.meta.url))),
-  JSON.parse(readFileSync(new URL('../data/sections.json', import.meta.url))),
+  JSON.parse(readFileSync(new URL('../data/sample-sections.json', import.meta.url))),
 );
 const ctx = (raw = {}) => readClientContext(raw, index);
 

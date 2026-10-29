@@ -1,7 +1,7 @@
 {
   "name": "advisor",
   "version": "1.0.0",
-  "description": "advisor. — a course advisor for Illinois Tech with a prerequisite graph, a pop.ai-style schedule, and Claude chat.",
+  "description": "advisor. \u2014 a course advisor for Illinois Tech with a prerequisite graph, a pop.ai-style schedule, and Claude chat.",
   "type": "module",
   "private": true,
   "engines": {
@@ -12,6 +12,8 @@
     "dev": "node --watch server.js",
     "build:data": "node scripts/build-data.mjs",
     "import:pop": "node scripts/import-pop.mjs",
+    "sync:pop": "node scripts/sync-pop.mjs",
+    "use:sample": "node -e \"require('fs').copyFileSync('data/sample-sections.json','data/sections.json')\" && echo Using the sample sections.",
     "test": "node --test"
   }
 }

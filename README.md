@@ -51,7 +51,8 @@ Each request sends three system blocks:
 | `data/catalog.json` | 52 real courses (all CS undergrad + bridge courses, and the MATH courses CS needs) from catalog.iit.edu, read October 2026. Each has `prereqText` (catalog wording) and `prereq` (the same rule as a tree). |
 | `data/programs.json` | Degree requirements. Built from `scripts/programs-source.mjs`. 50 undergraduate programs, 2025–2026 catalog: the B.S. in Computer Science (`scripts/programs-source.mjs`) plus every other program from `data/source/programs/*.txt` (`scripts/programs-extra.mjs`). |
 | `data/forecast.json` | The CS department's *Tentative Schedule of Future Computer Science Courses*, built from `data/source/future-cs-offerings.csv`. |
-| `data/sections.json` | **Sample** Spring 2027 sections, only for CS courses the forecast lists for Spring 2027. CRNs, times, rooms, seats, and instructor names are made up. Same shape as pop.ai's export. |
+| `data/sections.json` | The sections the app shows: real Pop data after `npm run sync:pop`, otherwise a copy of the sample. |
+| `data/sample-sections.json` | **Sample** Spring 2027 sections, only for CS courses the forecast lists for Spring 2027. CRNs, times, rooms, seats, and instructor names are made up. Same shape as pop.ai's export. |
 
 ### The prerequisite tree
 
@@ -86,24 +87,17 @@ When a student uploads a transcript, `public/js/core/detect.js` picks the progra
 
 ### Use real sections from Pop
 
-Pop (in `pop/`, a Python app; see [pop/README.md](pop/README.md) for setup) scrapes real sections:
+The app ships with sample sections. To use real class times, rooms, instructors, and seats, get them from Pop (in `pop/`), which reads IIT's Course Status Report:
 
 ```bash
-cd pop
-python scraping/scrape_descriptions.py
-python scraping/scrape_courses.py spring 2027 -s CS MATH
-python -c "from app.db import write_semester_files; write_semester_files('spring', 2027)"
+npm run sync:pop                    # the advisor's semester (Spring 2027)
+npm run sync:pop -- fall 2026       # another semester
+npm run sync:pop -- spring 2027 --subjects CS,MATH
 ```
 
-Then back in the repo root:
+This sets up Pop's Python environment the first time (`pop/.venv`), runs Pop's scraper and export, and writes the result to `data/sections.json`. It needs Python 3 and internet access to `wildfly-prd.iit.edu`. On a Mac, use Homebrew's Python (`brew install python`); Apple's built-in Python may not load the SQLite extension Pop uses. The command checks this and tells you.
 
-```bash
-cd ..
-npm run import:pop -- pop/www/data/spring_2027.json --subjects CS,MATH
-npm start
-```
-
-This replaces `data/sections.json`. The sample-data notes go away. Prerequisite trees still come from `data/catalog.json`.
+Then restart the server. Commit and push `data/sections.json` to put the real sections on the deployed site. `npm run build:data` keeps imported sections; the sample stays in `data/sample-sections.json` (the tests use it). To go back to the sample: `npm run use:sample`.
 
 ## Files
 
@@ -148,7 +142,7 @@ The server tests run a fake Claude API on a local port, so no key or network is 
 
 ## Limits
 
-- Sections are sample data until you import from pop.ai.
+- Sections are sample data until you run `npm run sync:pop`.
 - Minimum grades (“min. grade of C”) are shown but not checked; the app only knows a course is done.
 - “Graduate standing” and “Instructor permission” cannot be checked.
 - The degree audit guesses course attributes (H), (S), (N) from the subject and does not check the 36-credit (C) rule. It is a planning aid, not an official audit.

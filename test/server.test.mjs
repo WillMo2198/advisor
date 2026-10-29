@@ -67,6 +67,7 @@ before(async () => {
   process.env.ANTHROPIC_API_KEY = 'test-key';
   process.env.ANTHROPIC_BASE_URL = `http://127.0.0.1:${upstream.address().port}`;
   process.env.ANTHROPIC_MODEL = 'claude-sonnet-5-5';
+  process.env.SECTIONS_FILE = 'data/sample-sections.json';
   ({ server } = await import('../server.js'));
   await new Promise((r) => server.listen(0, '127.0.0.1', r));
   base = `http://127.0.0.1:${server.address().port}`;

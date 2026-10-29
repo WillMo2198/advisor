@@ -9,7 +9,7 @@ import { buildIndex } from '../public/js/core/catalog.js';
 
 const j = (f) => JSON.parse(readFileSync(new URL(`../${f}`, import.meta.url)));
 const { programs } = j('data/programs.json');
-const index = buildIndex(j('data/catalog.json'), j('data/sections.json'), j('data/forecast.json'));
+const index = buildIndex(j('data/catalog.json'), j('data/sample-sections.json'), j('data/forecast.json'));
 const sampleText = readFileSync(new URL('../public/samples/sample-transcript.txt', import.meta.url), 'utf8');
 const sample = parseTranscriptText(sampleText);
 

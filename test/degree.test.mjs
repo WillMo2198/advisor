@@ -12,7 +12,7 @@ import { offlineAnswer } from '../lib/offline.js';
 
 const j = (f) => JSON.parse(readFileSync(new URL(`../${f}`, import.meta.url)));
 const forecast = j('data/forecast.json');
-const index = buildIndex(j('data/catalog.json'), j('data/sections.json'), forecast);
+const index = buildIndex(j('data/catalog.json'), j('data/sample-sections.json'), forecast);
 const { programs } = j('data/programs.json');
 const program = programs[0];
 const titles = new Map(index.list.map((c) => [c.code, c.title]));

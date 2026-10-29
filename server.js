@@ -45,7 +45,9 @@ const config = {
 // ---------- data ----------
 const readJson = (file) => JSON.parse(readFileSync(file, 'utf8'));
 const catalog = readJson(join(ROOT, 'data', 'catalog.json'));
-const sections = readJson(join(ROOT, 'data', 'sections.json'));
+// SECTIONS_FILE lets the tests use data/sample-sections.json; the app uses data/sections.json
+const SECTIONS_FILE = process.env.SECTIONS_FILE ? resolve(ROOT, process.env.SECTIONS_FILE) : join(ROOT, 'data', 'sections.json');
+const sections = readJson(SECTIONS_FILE);
 const forecast = existsSync(join(ROOT, 'data', 'forecast.json')) ? readJson(join(ROOT, 'data', 'forecast.json')) : null;
 const { programs } = existsSync(join(ROOT, 'data', 'programs.json')) ? readJson(join(ROOT, 'data', 'programs.json')) : { programs: [] };
 const index = buildIndex(catalog, sections, forecast);
@@ -339,7 +341,8 @@ export const server = http.createServer(async (req, res) => {
 
     if (req.method !== 'GET' && req.method !== 'HEAD') return sendJson(res, 405, { error: 'Method not allowed.' });
 
-    if (['/data/catalog.json', '/data/sections.json', '/data/forecast.json', '/data/programs.json'].includes(path)) {
+    if (path === '/data/sections.json') return serveFile(res, SECTIONS_FILE, req);
+    if (['/data/catalog.json', '/data/forecast.json', '/data/programs.json'].includes(path)) {
       return serveFile(res, join(DATA, path.slice('/data/'.length)), req);
     }
     const file = safePath(PUBLIC, path === '/' ? '/index.html' : path);

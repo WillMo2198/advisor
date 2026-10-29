@@ -8,7 +8,7 @@ import { parseClock, parseRange, buildBlocks, findConflicts, gridBounds } from '
 import { buildGraph, layoutGraph } from '../public/js/core/graph.js';
 
 const catalog = JSON.parse(readFileSync(new URL('../data/catalog.json', import.meta.url)));
-const sections = JSON.parse(readFileSync(new URL('../data/sections.json', import.meta.url)));
+const sections = JSON.parse(readFileSync(new URL('../data/sample-sections.json', import.meta.url)));
 const index = buildIndex(catalog, sections);
 
 test('normalizeCode and extractCodes', () => {

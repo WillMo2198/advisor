@@ -6,7 +6,7 @@ import { parseMemory, applyMemoryOps, cleanCommitment, cleanCommitments, hoursFr
 import { readClientContext, studentContextBlock } from '../lib/context.js';
 
 const j = (f) => JSON.parse(readFileSync(new URL(`../${f}`, import.meta.url)));
-const index = buildIndex(j('data/catalog.json'), j('data/sections.json'), j('data/forecast.json'));
+const index = buildIndex(j('data/catalog.json'), j('data/sample-sections.json'), j('data/forecast.json'));
 const { programs } = j('data/programs.json');
 
 test('commitments: clean input, bad input is dropped', () => {

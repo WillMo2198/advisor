@@ -114,7 +114,15 @@ const sections = {
 
 mkdirSync(join(root, 'data'), { recursive: true });
 writeFileSync(join(root, 'data', 'catalog.json'), JSON.stringify(catalog, null, 2) + '\n');
-writeFileSync(join(root, 'data', 'sections.json'), JSON.stringify(sections, null, 2) + '\n');
+// The sample sections always go to sample-sections.json (the tests use them).
+// data/sections.json is what the app serves: real Pop data once imported (npm run sync:pop),
+// otherwise a copy of the sample. A rebuild never replaces imported real data.
+const sampleText = JSON.stringify(sections, null, 2) + '\n';
+writeFileSync(join(root, 'data', 'sample-sections.json'), sampleText);
+const live = join(root, 'data', 'sections.json');
+let liveIsReal = false;
+try { liveIsReal = JSON.parse(readFileSync(live, 'utf8')).sample === false; } catch { /* missing or broken: write the sample */ }
+if (!liveIsReal) writeFileSync(live, sampleText);
 writeFileSync(join(root, 'data', 'forecast.json'), JSON.stringify({
   source: 'Tentative Schedule of Future Computer Science Courses (data/source/future-cs-offerings.csv). Tentative: the department may change it.',
   terms: forecast.terms,
@@ -122,4 +130,4 @@ writeFileSync(join(root, 'data', 'forecast.json'), JSON.stringify({
   notes: forecast.notes,
 }, null, 2) + '\n');
 writeFileSync(join(root, 'data', 'programs.json'), JSON.stringify({ programs }, null, 2) + '\n');
-console.log(`Wrote ${courses.length} courses, ${rows.length} sample sections, ${Object.keys(forecast.courses).length} forecast courses (${forecast.terms.map((t) => t.key).join(', ')}), ${programs.length} program(s).`);
+console.log(`Wrote ${courses.length} courses, ${rows.length} sample sections${liveIsReal ? ' (kept the real Pop sections in data/sections.json)' : ''}, ${Object.keys(forecast.courses).length} forecast courses (${forecast.terms.map((t) => t.key).join(', ')}), ${programs.length} program(s).`);

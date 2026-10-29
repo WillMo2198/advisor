@@ -11,7 +11,7 @@ import { offeredIn } from '../public/js/core/forecast.js';
 import { REPEATABLE } from '../public/js/core/transcript.js';
 
 const j = (f) => JSON.parse(readFileSync(new URL(`../${f}`, import.meta.url)));
-const index = buildIndex(j('data/catalog.json'), j('data/sections.json'), j('data/forecast.json'));
+const index = buildIndex(j('data/catalog.json'), j('data/sample-sections.json'), j('data/forecast.json'));
 const { programs } = j('data/programs.json');
 const titles = new Map(index.list.map((c) => [c.code, c.title]));
 const sample = parseTranscriptText(readFileSync(new URL('../public/samples/sample-transcript.txt', import.meta.url), 'utf8'), { catalogTitles: titles });
